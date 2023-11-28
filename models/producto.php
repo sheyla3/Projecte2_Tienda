@@ -13,7 +13,7 @@ class Producto extends Database
     // private $imagen;
 
     private $cantidad;
-
+    
     public function getCantidad()
     {
         return $this->cantidad;

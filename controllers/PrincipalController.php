@@ -7,9 +7,10 @@ class PrincipalController
     public function mostrarPaginaPrincipal()
     {
         $categoria = new Categoria();
-        $resultado = $categoria->obtenerListado();
+        $listaCategorias = $categoria->obtenerCategorias();
         require_once "views/general/mostrarListaCategorias.php";
         $producto = new Producto();
-        $resultado = $producto->productoDestacado();
+        $destacados = $producto->productoDestacado();
+        require_once "views/general/mostrarDestacados.php";
     }
 }
