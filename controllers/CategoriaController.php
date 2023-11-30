@@ -8,9 +8,12 @@ class CategoriaController
     {
         if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
             // require_once "views/adminPanel/menu.php";
-            $categoria = new Categoria();
-            $catalogo = $producto->obtenerCatalogo();
-            require_once "views/adminPanel/tablaProductos.php";
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            $categoria = new Categoria($dbInstance,null,null,null,null);
+            $catalogo = $categoria->obtenerCategorias();
+            require_once "views/general/adminPanel/tablaCategorias.php";
+
         }
         else{
             adminIncorrecte();

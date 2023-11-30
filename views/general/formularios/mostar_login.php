@@ -5,7 +5,7 @@
 </head>
 <body>
     <h2>Iniciar Sesión</h2>
-    <form action="" method="POST">
+    <form action="index.php?controller=Admin&action=procesar_login" method="POST">
         <label for="email">Nombre de usuario:</label>
         <input type="text" id="email" name="email" required><br><br>
 

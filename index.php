@@ -17,8 +17,8 @@ session_start();
 <body>
     <script src="script.js"></script>
     <?php
-    include "functions.php";
     require_once "autoload.php";
+    require_once "views/general/pie.html";
     // require_once "views/general/menu.php";
     // require_once "views/general/botonSubir.html";
     
@@ -26,14 +26,14 @@ session_start();
         $nombreController = $_GET['controller'] . "Controller";
     } else {
         //Controlador per dedecte
-        $nombreController = "LoginController";
+        $nombreController = "adminController";
     }
     if (class_exists($nombreController)) {
         $controlador = new $nombreController();
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
         } else {
-            $action = "index";
+            $action = "procesar_login";
         }
         $controlador->$action();
     } else {
