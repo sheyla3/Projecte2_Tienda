@@ -36,10 +36,11 @@ class Producto extends Database
 
     public function obtenerCatalogo()
     {
-        $consulta = $this->db->prepare("SELECT id_producto, categorias.nombre AS categoria, referencia, nombre, descripcion, precio, stock, destacado, fk_id_categoria, estado, imagen FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
+        // $consulta = $this->db->prepare("SELECT id_producto, categorias.nombre AS categoria, referencia, nombre, descripcion, precio, stock, destacado, fk_id_categoria, estado, imagen FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria");
+        // $consulta->execute();
+        // $resultado = $consulta->fetchAll();
+        // return $resultado;
+        return "holaa admin";
     }
 
     public function anadir(

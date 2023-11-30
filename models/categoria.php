@@ -1,109 +1,109 @@
 <?php
 require_once("database.php");
-class Categoria extends Database
-{
-    private $id_categoria;
-    private $nombre;
-    private $estado;
-    private $sexo;
 
-    public function getEstado()
-    {
-        return $this->estado;
-    }
+class Categoria extends Database {
+	private $id_categoria;
+	private $nombre;
+	private $estado;
+	private $sexo;
 
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
+	public function buscarCategoria($filtro) {
+    	$filtro = "%$filtro%";
+    	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias WHERE nombre LIKE ? OR estado LIKE ?");
+    	$consulta->bindParam(1, $filtro);
+    	$consulta->bindParam(2, $filtro);
+    	$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+	}
 
-        return $this;
-    }
+	public function obtenerCategorias() {
+    	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias");
+    	$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+	}
 
-    public function buscarCategoria($filtro)
-    {
-        $consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo, FROM categorias WHERE nombre LIKE '%$filtro%' OR estado LIKE '%$filtro%'");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+	public function obtenerNombre() {
+    	$consulta = $this->db->prepare("SELECT nombre FROM categorias");
+    	$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+	}
 
-    public function obtenerCategorias()
-    {
-        $consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo, FROM categorias");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+	public function anadir(
+    	$id_categoria,
+    	$nombre,
+    	$estado,
+    	$sexo
+	) {
+    	$consulta = $this->db->prepare("INSERT INTO categorias (id_categoria, nombre, estado, sexo) VALUES (?, ?, ?, ?)");
+    	$consulta->bindParam(1, $id_categoria);
+    	$consulta->bindParam(2, $nombre);
+    	$consulta->bindParam(3, $estado);
+    	$consulta->bindParam(4, $sexo);
 
-    public function obtenerNombre()
-    {
-        $consulta = $this->db->prepare("SELECT nombre FROM categorias");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+    	$consulta->execute();
+    	$last_id = $this->db->lastInsertId();
+    	echo "Nueva categoría agregada correctamente";
+    	echo "ID de la última categoría: " . $last_id;
+	}
 
-    public function anadir(
-        $id_categoria,
-        $nombre,
-        $estado,
-        $sexo,
-    ) 
-    {
-        $consulta = $this->db->prepare("INSERT INTO categorias (id_categoria, nombre, estado, sexo) VALUES ($id_categoria,$nombre,$estado,$sexo)") ;
-        $consulta->execute();
-        $last_id = $this->db->lastInsertId();
-        echo "Nuevo categoria agregado correctamente";
-        echo "ID de la ultima categoria: " . $last_id;
-    }
+	public function editar(
+    	$id_categoria,
+    	$nombre,
+    	$estado,
+    	$sexo
+	) {
+    	$consulta = $this->db->prepare("UPDATE categorias SET nombre = ?, estado = ?, sexo = ? WHERE id_categoria = ?");
+    	$consulta->bindParam(1, $nombre);
+    	$consulta->bindParam(2, $estado);
+    	$consulta->bindParam(3, $sexo);
+    	$consulta->bindParam(4, $id_categoria);
 
-    public function editar(
-        $id_categoria,
-        $nombre,
-        $estado,
-        $sexo,
-    ) 
-    {
-        $consulta = $this->db->prepare("UPDATE categotias SET id_categoria= $id_categoria, nombre = $nombre, estado = '$estado', sexo= '$sexo'");
-        $count =$consulta->execute();
-        echo $count." registros actualizados correctamente";
-    }
+    	$count = $consulta->execute();
+    	echo $count . " registros actualizados correctamente";
+	}
 
-    public function activar($id){
-        $consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria LIKE '$id'");
-        $count =$consulta->execute();
-        echo $count." registros actualizados correctamente";
-    } 
+	public function activar($id) {
+    	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");
+    	$consulta->bindParam(1, $id);
 
-    public function desactivar($id){
-        $consulta = $this->db->prepare("UPDATE categorias SET estado = 0 WHERE id_categoria LIKE '$id'");
-        $count =$consulta->execute();
-        echo $count." registros actualizados correctamente";
-    } 
+    	$count = $consulta->execute();
+    	echo $count . " registros actualizados correctamente";
+	}
 
-    public function obtenerInfo($id){
-        $consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias INNER JOIN WHERE id_categoria = $id");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
-    
-    public function CategoriasGeneral()
-    {
-        $consulta = $this->db->prepare("SELECT * FROM categorias");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+	public function desactivar($id) {
+    	$consulta = $this->db->prepare("UPDATE categorias SET estado = 0 WHERE id_categoria = ?");
+    	$consulta->bindParam(1, $id);
 
-    public function obtenerBusquedaGeneral($filtro,$contenido)
-    {
-        $consulta = $this->db->prepare("SELECT categoria.id_categoria, categoria.nombre, categoria.estado, categoria.sexo FROM producto WHERE $filtro LIKE '%$contenido%'");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+    	$count = $consulta->execute();
+    	echo $count . " registros actualizados correctamente";
+	}
 
+	public function obtenerInfo($id) {
+    	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias WHERE id_categoria = ?");
+    	$consulta->bindParam(1, $id);
+    	$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+	}
 
-    
+	public function CategoriasGeneral() {
+    	$consulta = $this->db->prepare("SELECT * FROM categorias");
+    	$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+	}
+
+	public function obtenerBusquedaGeneral($filtro, $contenido) {
+    	$contenido = "%$contenido%";
+    	$consulta = $this->db->prepare("SELECT categoria.id_categoria, categoria.nombre, categoria.estado, categoria.sexo FROM producto WHERE $filtro LIKE ?");
+    	$consulta->bindParam(1, $contenido);
+    	$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+	}
 }
+
+

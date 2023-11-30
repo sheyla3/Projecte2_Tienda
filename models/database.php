@@ -3,11 +3,12 @@
 class Database{
     protected $db;
     
+    
     public function __construct(){
         $servername = "localhost";
         $dbname= "srg";
-        $username = "root";
-        $password = "";
+        $username = "postgres";
+        $password = "123";
 
         try{
         //Creem una nova connexió instancinat l'objecte PDO
@@ -19,7 +20,14 @@ class Database{
         catch(PDOException $error)
         {
             echo "Connection failed: ". $error->getMessage();
+            
         }
+        
+        
     }
+    public function getDB() {
+        return $this->db;
+    }
+
 }
 

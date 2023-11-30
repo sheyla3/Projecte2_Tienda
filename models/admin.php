@@ -1,19 +1,26 @@
 <?php
 require_once("database.php");
-class Admin extends Database
-{
-    private $email;
-    private $usuario;
-    private $password;
 
-    public function login($email, $password)
-    {
-        $consulta = $this->db->prepare("SELECT * FROM admin WHERE email LIKE '$email' and password LIKE '$password'");
-        $consulta->execute();
-        if ($consulta->fetch(PDO::FETCH_OBJ)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+class Admin {
+	protected $db; // Debes tener la instancia de la base de datos aquí o pasarlo por el constructor
+
+	// Constructor, donde se inicializan propiedades u objetos necesarios
+	public function __construct($db) {
+    	$this->db = $db;
+	}
+
+	// Método para realizar el login
+	public function login($email, $password) {
+    	$consulta = $this->db->prepare("SELECT * FROM admin WHERE usuario = :email AND contrasena = :password");
+    	$consulta->bindParam(':email', $email);
+    	$consulta->bindParam(':password', $password);
+    	$consulta->execute();
+
+    	// Verifica si hay filas devueltas por la consulta
+    	if ($consulta->rowCount() > 0) {
+        	return true;
+    	} else {
+        	return false;
+    	}
+	}
 }

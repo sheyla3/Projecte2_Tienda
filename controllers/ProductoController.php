@@ -10,7 +10,7 @@ class ProductoController
             // require_once "views/adminPanel/menu.php";
             $producto = new Producto();
             $catalogo = $producto->obtenerCatalogo();
-            require_once "views/adminPanel/tablaProductos.php";
+            require_once "views/general/adminPanel/tablaProductos.php";
         }
         else{
             adminIncorrecte();
