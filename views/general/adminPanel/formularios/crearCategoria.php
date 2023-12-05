@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Iniciar Sesión</title>
+    <title>Crear Categoría</title>
 </head>
 <body>
-    <h2>Crear Categotia</h2>
+    <h2>Crear Categoría</h2>
     <form action="index.php?controller=Admin&action=botonCrearCategoria" method="POST">
         <label for="nombre">Nombre</label>
         <input type="text" id="" name="nombre" required><br><br>

@@ -1,6 +1,7 @@
 <?php
 require "models/producto.php";
 require "models/categoria.php";
+require "models/pedido.php";
 require "models/admin.php";
 require_once "models/database.php";
 
@@ -27,7 +28,7 @@ class AdminController
             	$_SESSION['email'] = $nom;
             	$_SESSION['role'] = 'admin';
                 
-            	//header('Location: index.php?controller=Producto&action=mostrarProductos');
+            	// header('Location: index.php?controller=producto&action=mostrarProductos');
 				header('Location: index.php?controller=categoria&action=mostrarProductos');
             	//exit;
         	} else {
@@ -39,7 +40,7 @@ class AdminController
         	}
     	}else{
             // Si no es una solicitud POST, simplemente muestra el formulario de inicio de sesión
-    	    include('views\general\formularios\mostar_login.php'); // Reemplaza con la ruta correcta a tu vista
+    	    // include('views\general\formularios\mostrar_login.php'); // Reemplaza con la ruta correcta a tu vista
 
         }
 
@@ -47,17 +48,19 @@ class AdminController
 	}
 
     public function botonVistaProducto(){
-        $categoria = new Categoria();
-        $catalogo = $categoria->obtenerCategorias();
+        $categoria = new Producto(null, null, null, null, null, null, null, null, null, null, null);
+        $catalogo = $categoria->obtenerProductos();
         include('views/general/adminPanel/tablaProductos.php');
     
     }
     public function botonVistaComanda(){
-         include('views/general/adminPanel/tablaComandes.php');
+        $pedido = new Pedido(null,null,null,null,null,null,null);
+        $catalogo = $pedido->obtenerPedidos();
+        include('views/general/adminPanel/tablaComandes.php');
      }
 
     public function botonVistaCategoria(){
-        $categoria = new Categoria();
+        $categoria = new Categoria(null, null,null,null,null);
         $catalogo = $categoria->obtenerCategorias();
         include('views/general/adminPanel/tablaCategorias.php');
     }
@@ -90,10 +93,50 @@ class AdminController
             }else{
 
             }
+        }
+    }
 
+    public function botonCrearProducto(){
+        include('views/general/adminPanel/formularios/crearProducto.php');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_producto = $_POST['id_producto'];
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $precio = $_POST['precio'];
+            $stock = $_POST['stock'];
+            $destacado = $_POST['destacado'];
+            $estado = $_POST['estado'];
+            $imagen = $_POST['imagen'];
+            $referencia = $_POST['referencia'];
 
             
+
+            // if (isset($_POST['estado'])) {
+            //     // El checkbox está marcado
+            //     // Realiza alguna acción si está marcado
+            //     $estado = true; // O asigna el valor que necesites para 'true'
+            // } else {
+            //     // El checkbox no está marcado
+            //     // Realiza alguna acción si no está marcado
+            //     $estado = false; // O asigna el valor que necesites para 'false'
+            // }
+
+            $database = new Database();
+            $dbInstance = $database->getDB();
+
+            $categoria = new Categoria($dbInstance ,$id_producto, $nombre, $descripcion, $precio, $stock, $destacado, $estado, $imagen, $referencia);
+            $funciona = $categoria->anadir();
+
+            if($funciona){
+                echo("hola");
+            }else{
+
+            }
         }
+    }
+
+    public function mostrarLoginAdmin(){
+        include('views/general/formularios/mostrar_login.php');
     }
     
 }

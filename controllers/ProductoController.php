@@ -8,12 +8,14 @@ class ProductoController
     {
         if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
             // require_once "views/adminPanel/menu.php";
+            $database = new Database();
+            $dbInstance = $database->getDB();
             $producto = new Producto();
-            $catalogo = $producto->obtenerCatalogo();
-            require_once "views/general/adminPanel/obtenerCategorias.php";
+            $catalogo = $producto->obtenerProductos();
+            require_once "views/general/adminPanel/tablaProductos.php";
         }
         else{
-            adminIncorrecte();
+            // adminIncorrecte();
         }
     }
 }
