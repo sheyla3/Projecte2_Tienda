@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
     <title>SRG</title>
 </head>
@@ -18,7 +18,7 @@ session_start();
     <script src="script.js"></script>
     <?php
     require_once "autoload.php";
-    require_once "views/general/pie.html";
+    require_once "views/general/pie.php";
     // require_once "views/general/menu.php";
     // require_once "views/general/botonSubir.html";
     

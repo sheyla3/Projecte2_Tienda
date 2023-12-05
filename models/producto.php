@@ -2,26 +2,38 @@
 require_once("database.php");
 class Producto extends Database
 {
-    // private $id_producto;
-    // private $nombre;
-    // private $descripcion;
-    // private $precio;
-    // private $stock;
-    // private $destacado;
-    // private $stock;
-    // private $estado;
-    // private $imagen;
+    protected $db;
+    private $id_producto;
+    private $nombre;
+    private $descripcion;
+    private $precio;
+    private $stock;
+    private $destacado;
+    private $estado;
+    private $imagen;
+    private $referencia;
 
-    private $cantidad;
+    public function __construct($db,$id_producto,$nombre,$descripcion,$precio,$stock,$destacado,$estado,$imagen,$referencia) {
+		$this->db = $db;
+		$this->id_producto = $id_producto;
+		$this->nombre = $nombre;
+        $this->descripcion = $descripcion;
+		$this->precio = $precio;
+		$this->stock = $stock;
+		$this->destacado = $destacado;
+        $this->estado = $estado;
+		$this->imagen = $imagen;
+        $this->referencia = $referencia;
+	}
     
     public function getCantidad()
     {
-        return $this->cantidad;
+        return $this->stock;
     }
 
-    public function setCantidad($cantidad)
+    public function setCantidad($stock)
     {
-        $this->cantidad = $cantidad;
+        $this->stock = $stock;
 
         return $this;
     }
@@ -34,13 +46,12 @@ class Producto extends Database
         return $resultado;
     }
 
-    public function obtenerCatalogo()
+    public function obtenerProductos()
     {
-        // $consulta = $this->db->prepare("SELECT id_producto, categorias.nombre AS categoria, referencia, nombre, descripcion, precio, stock, destacado, fk_id_categoria, estado, imagen FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria");
-        // $consulta->execute();
-        // $resultado = $consulta->fetchAll();
-        // return $resultado;
-        return "holaa admin";
+        $consulta = $this->db->prepare("SELECT * FROM productos");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        return $resultado;
     }
 
     public function anadir(

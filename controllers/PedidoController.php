@@ -1,8 +1,8 @@
 <?php
-require "models/producto.php";
-// require "models/categoria.php";
+// require "models/producto.php";
+require "models/pedido.php";
 
-class ProductoController
+class PedidoController
 {
     public function mostrarProductos()
     {
@@ -10,9 +10,10 @@ class ProductoController
             // require_once "views/adminPanel/menu.php";
             $database = new Database();
             $dbInstance = $database->getDB();
-            $producto = new Producto();
-            $catalogo = $producto->obtenerProductos();
-            require_once "views/general/adminPanel/tablaProductos.php";
+            $pedido = new Pedido();
+            $catalogo = $pedido->obtenerPedidos();
+            require_once "views/general/adminPanel/tablaComandes.php";
+
         }
         else{
             // adminIncorrecte();
