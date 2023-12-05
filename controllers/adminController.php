@@ -65,9 +65,20 @@ class AdminController
     }
 
 
-    public function botonEditarCategoria(){
-        include('views\general\adminPanel\formularios\editarCategoria.php');
+    
+    public function botonEditarCategoria() {
+        if (isset($_GET['id_categoria'])) {
+            $id_categoria = $_GET['id_categoria']; 
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            $categoria = new Categoria($dbInstance,$id_categoria,null,null,null);
+            $info = $categoria->obtenerInfo();
+            include('views\general\adminPanel\formularios\editarCategoria.php');
+        } else {
+            // Manejo para cuando no se recibe el parámetro id_categoria
+        }
     }
+
 
     public function botonCrearCategoria(){
         include('views/general/adminPanel/formularios/crearCategoria.php');

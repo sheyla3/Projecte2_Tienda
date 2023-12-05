@@ -95,7 +95,9 @@ class Categoria extends Database {
     	echo $count . " registros actualizados correctamente";
 	}
 
-	public function obtenerInfo($id) {
+	public function obtenerInfo() {
+		$id = $this->id_categoria;
+
     	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias WHERE id_categoria = ?");
     	$consulta->bindParam(1, $id);
     	$consulta->execute();
