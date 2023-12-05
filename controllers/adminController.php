@@ -5,6 +5,7 @@ require "models/admin.php";
 require_once "models/database.php";
 
 
+
 class AdminController
 {
 
@@ -47,8 +48,6 @@ class AdminController
 	}
 
     public function botonVistaProducto(){
-        $categoria = new Categoria();
-        $catalogo = $categoria->obtenerCategorias();
         include('views/general/adminPanel/tablaProductos.php');
     
     }
@@ -57,9 +56,17 @@ class AdminController
      }
 
     public function botonVistaCategoria(){
-        $categoria = new Categoria();
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $categoria = new Categoria($dbInstance,null,null,null,null);
         $catalogo = $categoria->obtenerCategorias();
         include('views/general/adminPanel/tablaCategorias.php');
+        
+    }
+
+
+    public function botonEditarCategoria(){
+        include('views\general\adminPanel\formularios\editarCategoria.php');
     }
 
     public function botonCrearCategoria(){

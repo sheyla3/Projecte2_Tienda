@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<a href="index.php?controller=admin&action=botonVistaCategortia">Categorias</a>
+<a href="index.php?controller=admin&action=botonVistaCategoria">Categorias</a>
 <a href="index.php?controller=admin&action=botonVistaProducto">Productos</a>
 
 
