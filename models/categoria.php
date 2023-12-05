@@ -54,6 +54,7 @@ class Categoria extends Database {
 			$last_id = $this->db->lastInsertId();
 			echo "Nueva categoría agregada correctamente";
 			echo "ID de la última categoría: " . $last_id;
+			header('Location: index.php?controller=Admin&action=botonVistaCategoria');
 			return true;
 		} catch (PDOException $e) {
 			// Captura la excepción y muestra el mensaje de error
@@ -62,22 +63,27 @@ class Categoria extends Database {
 		}
 	}
 	
-
-	public function editar(
-    	$id_categoria,
-    	$nombre,
-    	$estado,
-    	$sexo
-	) {
-    	$consulta = $this->db->prepare("UPDATE categorias SET nombre = ?, estado = ?, sexo = ? WHERE id_categoria = ?");
-    	$consulta->bindParam(1, $nombre);
-    	$consulta->bindParam(2, $estado);
-    	$consulta->bindParam(3, $sexo);
-    	$consulta->bindParam(4, $id_categoria);
-
-    	$count = $consulta->execute();
-    	echo $count . " registros actualizados correctamente";
+	public function editar() {
+		try {
+			$consulta = $this->db->prepare("UPDATE categorias SET nombre = ?, estado = ?, sexo = ? WHERE id_categoria = ?");
+			$consulta->bindParam(1, $this->nombre);
+			$consulta->bindParam(2, $this->estado);
+			$consulta->bindParam(3, $this->sexo);
+			$consulta->bindParam(4, $this->id_categoria);
+	
+			$count = $consulta->execute();
+			header('Location: index.php?controller=Admin&action=botonVistaCategoria');
+			return $count; // Devolver el número de registros actualizados
+		} catch (PDOException $e) {
+			// Manejar la excepción si ocurre un error durante la consulta SQL
+			
+			return false;
+		}
 	}
+	
+	
+	
+	
 
 	public function activar($id) {
     	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Iniciar Sesión</title>
+	<title>Editar categoría</title>
 </head>
 <body>
 	<h2>Editar categoría</h2>
-
-	<form action="index.php?controller=Admin&action=botonCrearCategoria" method="POST">
+	<form action="index.php?controller=Admin&action=botonEditarCategoria&id_categoria=<?php echo $info[0]['id_categoria']; ?>" method="POST">
     	<?php
     	echo("<label for='nombre'>Nombre</label>");
     	echo("<input type='text' id='nombre' name='nombre' required value='" . $info[0]['nombre'] . "'><br><br>");
@@ -24,5 +23,4 @@
 	</form>
 </body>
 </html>
-
 

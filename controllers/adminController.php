@@ -49,12 +49,17 @@ class AdminController
 	}
 
     public function botonVistaProducto(){
-        $categoria = new Producto(null, null, null, null, null, null, null, null, null, null, null);
-        $catalogo = $categoria->obtenerProductos();
+         
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null);
+        $catalogo = $producto->obtenerProductos();
         include('views/general/adminPanel/tablaProductos.php');
     
     }
     public function botonVistaComanda(){
+        $database = new Database();
+        $dbInstance = $database->getDB();
         $pedido = new Pedido(null,null,null,null,null,null,null);
         $catalogo = $pedido->obtenerPedidos();
         include('views/general/adminPanel/tablaComandes.php');
@@ -64,26 +69,53 @@ class AdminController
         $database = new Database();
         $dbInstance = $database->getDB();
         $categoria = new Categoria($dbInstance,null,null,null,null);
-        $categoria = new Categoria(null, null,null,null,null);
         $catalogo = $categoria->obtenerCategorias();
         include('views/general/adminPanel/tablaCategorias.php');
         
     }
 
 
-    
     public function botonEditarCategoria() {
-        if (isset($_GET['id_categoria'])) {
-            $id_categoria = $_GET['id_categoria']; 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_categoria = $_GET['id_categoria'];
             $database = new Database();
             $dbInstance = $database->getDB();
-            $categoria = new Categoria($dbInstance,$id_categoria,null,null,null);
-            $info = $categoria->obtenerInfo();
-            include('views\general\adminPanel\formularios\editarCategoria.php');
+            
+            $nombre = $_POST['nombre'];
+            $genero = $_POST['genero'];
+            if (isset($_POST['estado'])) {
+                // El checkbox está marcado
+                // Realiza alguna acción si está marcado
+                $estado = 1; // O asigna el valor que necesites para 'true'
+            } else {
+                // El checkbox no está marcado
+                // Realiza alguna acción si no está marcado
+                $estado = 0; // O asigna el valor que necesites para 'false'
+            }
+            
+            $categoriaEditada = new Categoria($dbInstance, $id_categoria, $nombre, $estado, $genero);
+            $funciona = $categoriaEditada->editar();
+            
+            if ($funciona) {
+                // Manejo de la edición exitosa
+            } else {
+                // Manejo del error al editar la categoría
+            }
         } else {
-            // Manejo para cuando no se recibe el parámetro id_categoria
+            if (isset($_GET['id_categoria'])) {
+                $id_categoria = $_GET['id_categoria'];
+                $database = new Database();
+                $dbInstance = $database->getDB();
+                $categoria = new Categoria($dbInstance, $id_categoria, null, null, null);
+                $info = $categoria->obtenerInfo($id_categoria);
+                include('views/general/adminPanel/formularios/editarCategoria.php');
+            } else {
+                // Manejo para cuando no se recibe el parámetro id_categoria
+            }
         }
     }
+    
+
 
 
     public function botonCrearCategoria(){
@@ -110,7 +142,8 @@ class AdminController
             $funciona = $categoria->anadir();
 
             if($funciona){
-                echo("hola");
+                header('Location: index.php?controller=Admin&action=botonVistaCategoria');
+
             }else{
 
             }
@@ -149,12 +182,15 @@ class AdminController
             $funciona = $categoria->anadir();
 
             if($funciona){
-                echo("hola");
+                header('Location: index.php?controller=Admin&action=botonVistaCategoria');
             }else{
 
             }
         }
     }
+
+
+   
 
     public function mostrarLoginAdmin(){
         include('views/general/formularios/mostrar_login.php');
