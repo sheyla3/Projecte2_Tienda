@@ -34,6 +34,7 @@
         	<td>" . $categoria['nombre'] . "</td>
         	<td>" . $categoria['sexo'] . "</td>
         	<td>" . $categoria['estado'] . "</td>
+			<td><a href='index.php?controller=admin&action=botonEditarCategoria'>Editar</a></td>
     	</tr>";
 		}
 		?>
