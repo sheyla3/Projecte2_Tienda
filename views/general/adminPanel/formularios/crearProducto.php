@@ -24,6 +24,16 @@
         <label for="destacado">Destacado</label>
         <input type="checkbox" id="" name="destacado" ><br><br>
 
+                
+        <select id="categoria" name="categoria">
+            <?php
+            foreach ($categorias as $categoria) {
+                echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}</option>";
+            }
+            ?>
+        </select>
+
+
         <label for="estado">Estado</label>
         <input type="checkbox" id="" name="estado" ><br><br>
 

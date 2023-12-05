@@ -9,11 +9,12 @@ class Producto extends Database
     private $precio;
     private $stock;
     private $destacado;
+    private $categoria;
     private $estado;
     private $imagen;
     private $referencia;
 
-    public function __construct($db,$id_producto,$nombre,$descripcion,$precio,$stock,$destacado,$estado,$imagen,$referencia) {
+    public function __construct($db,$id_producto,$nombre,$descripcion,$precio,$stock,$destacado,$categoria,$estado,$imagen,$referencia) {
 		$this->db = $db;
 		$this->id_producto = $id_producto;
 		$this->nombre = $nombre;
@@ -21,6 +22,7 @@ class Producto extends Database
 		$this->precio = $precio;
 		$this->stock = $stock;
 		$this->destacado = $destacado;
+        $this->categoria = $categoria;
         $this->estado = $estado;
 		$this->imagen = $imagen;
         $this->referencia = $referencia;
@@ -54,24 +56,52 @@ class Producto extends Database
         return $resultado;
     }
 
-    public function anadir(
-        $id_producto,
-        $referencia,
-        $nombre,
-        $descripcion,
-        $precio,
-        $stock,
-        $destacado,
-        $imagen,
-        $estado,
-    ) 
-    {
-        $consulta = $this->db->prepare("INSERT INTO producto (fk_id_categoria, referencia, nombre, descripcion, stock, precio, imagen, estado) VALUES ($id_producto, $referencia, '$nombre', '$descripcion', $stock, $precio, '$imagen', 1)") ;
-        $consulta->execute();
-        $last_id = $this->db->lastInsertId();
-        echo "Nuevo producto agregado correctamente";
-        echo "ID del ultimo producto: " . $last_id;
+    public function anadir() {
+        try {
+            $this->db->beginTransaction();
+    
+            // Insertar en la tabla productos y obtener el ID insertado
+            $consultaProducto = $this->db->prepare("INSERT INTO productos (id_producto, nombre, descripcion, precio, stock, destacado, id_categoria, estado, referencia) VALUES (:id_producto, :nombre, :descripcion, :precio, :stock, :destacado, :id_categoria, :estado, :referencia) RETURNING id_producto");
+            $consultaProducto->bindValue(':id_producto', $this->id_producto);
+            $consultaProducto->bindValue(':nombre', $this->nombre);
+            $consultaProducto->bindValue(':descripcion', $this->descripcion);
+            $consultaProducto->bindValue(':precio', $this->precio);
+            $consultaProducto->bindValue(':stock', $this->stock);
+            $consultaProducto->bindValue(':destacado', $this->destacado);
+            $consultaProducto->bindValue(':id_categoria', $this->categoria);
+            $consultaProducto->bindValue(':estado', $this->estado);
+            $consultaProducto->bindValue(':referencia', $this->referencia);
+    
+            if ($consultaProducto->execute()) {
+                $lastProductoId = $consultaProducto->fetchColumn(); // Obtener el ID del producto insertado
+                
+                // Insertar en la tabla fotos usando el ID obtenido
+                $consultaFotos = $this->db->prepare("INSERT INTO fotos (id_producto, img) VALUES (:id_producto, :img)");
+                $consultaFotos->bindValue(':id_producto', $lastProductoId);
+                $consultaFotos->bindValue(':img', $this->imagen);
+                $consultaFotos->execute();
+    
+                $this->db->commit();
+                
+                echo "Nuevo producto y foto agregados correctamente";
+                echo "ID del último producto: " . $lastProductoId;
+            } else {
+                $this->db->rollBack();
+                echo "Error al agregar el producto";
+            }
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+            echo "Error al agregar el producto y la foto: " . $e->getMessage();
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+    
 
     public function editar(
         $id_producto,

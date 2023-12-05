@@ -52,7 +52,7 @@ class AdminController
          
         $database = new Database();
         $dbInstance = $database->getDB();
-        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null);
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
         $catalogo = $producto->obtenerProductos();
         include('views/general/adminPanel/tablaProductos.php');
     
@@ -151,6 +151,13 @@ class AdminController
     }
 
     public function botonCrearProducto(){
+        $database = new Database();
+        $dbInstance = $database->getDB();
+
+        $categoria = new Categoria($dbInstance ,null, null, null , null);
+        $categorias = $categoria->obtenerIdNombreCategorias();
+
+        
         include('views/general/adminPanel/formularios/crearProducto.php');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_producto = $_POST['id_producto'];
@@ -158,28 +165,48 @@ class AdminController
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
             $stock = $_POST['stock'];
-            $destacado = $_POST['destacado'];
-            $estado = $_POST['estado'];
             $imagen = $_POST['imagen'];
-            $referencia = $_POST['referencia'];
+            $categoria1 = $_POST['categoria'];
+      
 
             
 
-            // if (isset($_POST['estado'])) {
-            //     // El checkbox está marcado
-            //     // Realiza alguna acción si está marcado
-            //     $estado = true; // O asigna el valor que necesites para 'true'
-            // } else {
-            //     // El checkbox no está marcado
-            //     // Realiza alguna acción si no está marcado
-            //     $estado = false; // O asigna el valor que necesites para 'false'
-            // }
+            if (isset($_POST['estado'])) {
+                // El checkbox está marcado
+                // Realiza alguna acción si está marcado
+                $estado = 1; // O asigna el valor que necesites para 'true'
+            } else {
+                // El checkbox no está marcado
+                // Realiza alguna acción si no está marcado
+                $estado = 0; // O asigna el valor que necesites para 'false'
+            }
+
+
+            if (isset($_POST['destacado'])) {
+                // El checkbox está marcado
+                // Realiza alguna acción si está marcado
+                $destacado = 1; // O asigna el valor que necesites para 'true'
+            } else {
+                // El checkbox no está marcado
+                // Realiza alguna acción si no está marcado
+                $destacado = 0; // O asigna el valor que necesites para 'false'
+            }
+
+            if (isset($_POST['referencia'])) {
+                // El checkbox está marcado
+                // Realiza alguna acción si está marcado
+                $referencia = 1; // O asigna el valor que necesites para 'true'
+            } else {
+                // El checkbox no está marcado
+                // Realiza alguna acción si no está marcado
+                $referencia = 0; // O asigna el valor que necesites para 'false'
+            }
 
             $database = new Database();
             $dbInstance = $database->getDB();
 
-            $categoria = new Categoria($dbInstance ,$id_producto, $nombre, $descripcion, $precio, $stock, $destacado, $estado, $imagen, $referencia);
-            $funciona = $categoria->anadir();
+            $producto = new Producto($dbInstance ,$id_producto, $nombre, $descripcion, $precio, $stock, $destacado,$categoria1, $estado, $imagen, $referencia);
+            $funciona = $producto->anadir();
 
             if($funciona){
                 header('Location: index.php?controller=Admin&action=botonVistaCategoria');
