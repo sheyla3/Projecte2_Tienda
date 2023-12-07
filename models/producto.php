@@ -103,22 +103,38 @@ class Producto extends Database
     
     
 
-    public function editar(
-        $id_producto,
-        $referencia,
-        $nombre,
-        $descripcion,
-        $precio,
-        $stock,
-        $destacado,
-        $imagen,
-        $estado,
-    ) 
-    {
-        $consulta = $this->db->prepare("UPDATE producto SET fk_id_categoria= $id_producto, referencia = $referencia, nombre = '$nombre', descripcion= '$descripcion', descripcion = '$descripcion', stock = $stock, precio = $precio, imagen = '$imagen', estado=1 WHERE id_producto = $id_producto") ;
-        $count =$consulta->execute();
-        echo $count." registros actualizados correctamente";
+    public function editar() {
+        try {
+            $this->db->beginTransaction();
+    
+            $consulta = $this->db->prepare("UPDATE productos SET nombre = :nombre, descripcion = :descripcion, precio = :precio, stock = :stock, destacado = :destacado, id_categoria = :id_categoria, estado = :estado, referencia = :referencia WHERE id_producto = :id_producto");
+            
+            $consulta->bindValue(':nombre', $this->nombre);
+            $consulta->bindValue(':descripcion', $this->descripcion);
+            $consulta->bindValue(':precio', $this->precio);
+            $consulta->bindValue(':stock', $this->stock);
+            $consulta->bindValue(':destacado', $this->destacado);
+            $consulta->bindValue(':id_categoria', $this->categoria);
+            $consulta->bindValue(':estado', $this->estado);
+            $consulta->bindValue(':referencia', $this->referencia);
+            $consulta->bindValue(':id_producto', $this->id_producto);
+    
+            $consulta->execute();
+            
+            $this->db->commit();
+    
+            echo "Producto editado correctamente";
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+            echo "Error al editar el producto: " . $e->getMessage();
+        }
     }
+    
+    
+    
+    
+    
+    
 
     public function activar($id){
         $consulta = $this->db->prepare("UPDATE producto SET estado = 1 WHERE id_producto LIKE '$id'");
@@ -132,12 +148,15 @@ class Producto extends Database
         echo $count." registros actualizados correctamente";
     } 
 
-    public function obtenerInfo($id){
-        $consulta = $this->db->prepare("SELECT id_producto, categorias.nombre AS categoria, referencia, producto.nombre AS nombre, descripcion, stock, precio, imagen, fk_id_categoria FROM productos INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE id_producto = $id");
+    public function obtenerInfo($id) {
+        $consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria, estado, referencia FROM productos WHERE id_producto = :id");
+        $consulta->bindValue(':id', $id);
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         return $resultado;
     }
+    
+    
     
     public function productoDestacado()
     {

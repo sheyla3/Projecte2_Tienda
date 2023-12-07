@@ -43,6 +43,7 @@
         <td>" . $producto['id_categoria'] . "</td>
         <td>" . $producto['estado'] . "</td>
         <td>" . $producto['referencia'] . "</td>
+        <td><a href='index.php?controller=admin&action=botonEditarProducto&id_producto=" . $producto['id_producto'] . "'>Editar</a></td>
     </tr>";
             }
             ?>

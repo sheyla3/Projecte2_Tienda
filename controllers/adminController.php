@@ -74,6 +74,65 @@ class AdminController
         
     }
 
+    public function botonEditarProducto(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            
+            // Obtener los datos del formulario
+            $id_producto = $_POST['id_producto'];
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $precio = $_POST['precio'];
+            $stock = $_POST['stock'];
+            $destacado = isset($_POST['destacado']) ? 1 : 0;
+            $id_categoria = $_POST['categoria']; // Asegúrate de tener el nombre correcto del campo select
+            $estado = isset($_POST['estado']) ? 1 : 0;
+            $referencia = isset($_POST['referencia']) ? 1 : 0;
+            // Otros campos del formulario que necesites obtener...
+
+            
+            $producto = new Producto(
+                $dbInstance,
+                $id_producto,
+                $nombre,
+                $descripcion,
+                $precio,
+                $stock,
+                $destacado,
+                $id_categoria,
+                $estado,
+                null, // Agrega el valor correspondiente para el estado
+                $referencia, // Agrega el valor correspondiente para la referencia
+                /* Agrega los otros campos del formulario aquí */
+            );
+            
+            
+            
+            $funciona = $producto->editar();
+            
+            if ($funciona) {
+                // Manejo de la edición exitosa
+            } else {
+                // Manejo del error al editar la categoría
+            }
+        } else {
+            if (isset($_GET['id_producto'])) {
+                $id_producto = $_GET['id_producto'];
+                $database = new Database();
+                $dbInstance = $database->getDB();
+                $producto = new Producto($dbInstance,$id_producto,null,null,null,null,null,null,null,null,null);
+                $info = $producto->obtenerInfo($id_producto);
+                $categoria = new Categoria($dbInstance ,null, null, null , null);
+                $categorias = $categoria->obtenerIdNombreCategorias();
+                include('views/general/adminPanel/formularios/editarProducto.php');
+            } else {
+                // Manejo para cuando no se recibe el parámetro id_categoria
+            }
+        }
+
+    }
 
     public function botonEditarCategoria() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
