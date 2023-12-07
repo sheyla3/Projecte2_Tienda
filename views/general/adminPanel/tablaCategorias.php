@@ -1,44 +1,32 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<title>Categorías</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-	<div class='admin-panel-title-container'>
+<?php
+echo "
+<div class='admin-panel-content-container'>
+<div class='admin-panel-title-container'>
 		<h1 class='admin-panel-title'>Categorías</h1>
-		<a href='index.php?controller=admin&action=botonCrearCategoria'>Añadir categoría</a><br>
+		<a class='admin-panel-add-link' href='index.php?controller=admin&action=botonCrearCategoria'>Añadir categoría</a><br>
 		<div class='blue-line'></div>
-	</div>
-	<div class="div1">
-		<a href="index.php?controller=admin&action=botonVistaProducto">Productos</a>
-		<a href="index.php?controller=admin&action=botonVistaComanda">Pedidos</a>
-	</div>
+	</div>";
 
-	<div class="div2">
-		<?php
-		echo "<table>
+	
+
+echo "<table class='admin-panel-page-table'>
     	<tr>
-        	<th>id categoria</th>
-        	<th>nombre</th>
-        	<th>genero</th>
-        	<th>estado</th>
+        	<th>ID Categoria</th>
+        	<th>Nombre</th>
+        	<th>Género</th>
+        	<th>Estado</th>
+			<th>Editar?</th>
     	</tr>";
 
-		foreach ($catalogo as $categoria) {
-			echo "<tr>
-        	<td>" . $categoria['id_categoria'] . "</td>
-        	<td>" . $categoria['nombre'] . "</td>
-        	<td>" . $categoria['sexo'] . "</td>
-        	<td>" . $categoria['estado'] . "</td>
-			<td><a href='index.php?controller=admin&action=botonEditarCategoria&id_categoria=" . $categoria['id_categoria'] . "'>Editar</a></td>
+foreach ($catalogo as $categoria) {
+	echo "<tr>
+        	<td class='text'>" . $categoria['id_categoria'] . "</td>
+        	<td class='text'>" . $categoria['nombre'] . "</td>
+        	<td class='text'>" . $categoria['sexo'] . "</td>
+        	<td class='text'>" . $categoria['estado'] . "</td>
+			<td class='text'><a href='index.php?controller=admin&action=botonEditarCategoria&id_categoria=" . $categoria['id_categoria'] . "'><img src='views/img/edit.svg' class='image_edit_icon'></a></td>
     	</tr>";
-		}
-		?>
-	</div>
-</body>
-
-</html>
+}
+echo "</table>
+</div>";
+?>

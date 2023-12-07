@@ -31,7 +31,8 @@ class AdminController
                 
             	// header('Location: index.php?controller=producto&action=mostrarProductos');
 				header('Location: index.php?controller=categoria&action=mostrarProductos');
-            	//exit;
+
+                //exit;
         	} else {
             	// En caso de credenciales incorrectas, puedes redirigir de nuevo al formulario
             	// de inicio de sesión con un mensaje de error
@@ -52,6 +53,7 @@ class AdminController
          
         $database = new Database();
         $dbInstance = $database->getDB();
+        require_once "views/general/adminPanel/menu.php";
         $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
         $catalogo = $producto->obtenerProductos();
         include('views/general/adminPanel/tablaProductos.php');
@@ -60,7 +62,8 @@ class AdminController
     public function botonVistaComanda(){
         $database = new Database();
         $dbInstance = $database->getDB();
-        $pedido = new Pedido(null,null,null,null,null,null,null);
+        require_once "views/general/adminPanel/menu.php";
+        $pedido = new Pedido($dbInstance,null,null,null,null,null,null);
         $catalogo = $pedido->obtenerPedidos();
         include('views/general/adminPanel/tablaComandes.php');
      }
@@ -68,9 +71,10 @@ class AdminController
     public function botonVistaCategoria(){
         $database = new Database();
         $dbInstance = $database->getDB();
+        require_once "views/general/adminPanel/menu.php";
         $categoria = new Categoria($dbInstance,null,null,null,null);
         $catalogo = $categoria->obtenerCategorias();
-        include('views/general/adminPanel/tablaCategorias.php');
+        require_once 'views/general/adminPanel/tablaCategorias.php';
         
     }
 

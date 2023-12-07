@@ -10,6 +10,7 @@ class ProductoController
             // require_once "views/adminPanel/menu.php";
             $database = new Database();
             $dbInstance = $database->getDB();
+            require_once "views/general/adminPanel/menu.php";
             $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null);
             $catalogo = $producto->obtenerProductos();
             require_once "views/general/adminPanel/tablaProductos.php";
