@@ -15,7 +15,7 @@ echo "<table class='admin-panel-page-table'>
         	<th>Nombre</th>
         	<th>Género</th>
         	<th>Estado</th>
-			<th>Editar?</th>
+			<th>Editar</th>
     	</tr>";
 
 foreach ($catalogo as $categoria) {
