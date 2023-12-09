@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Editar Producto</title>
-</head>
-<body>
-	<h2>Editar Producto</h2>
-	<form action="index.php?controller=Admin&action=botonEditarProducto&id_producto=<?php echo $info[0]['id_producto']; ?>" method="POST">
-    	<label for="id_producto">ID Producto</label>
+
+	<form class='admin-panel-form' action="index.php?controller=Admin&action=botonEditarProducto&id_producto=<?php echo $info[0]['id_producto']; ?>" method="POST">
+	<h2 class="h2-form">Editar Producto</h2>	
+	<label for="id_producto">ID Producto</label>
     	<input type="text" id="" name="id_producto" value="<?php echo $info[0]['id_producto']; ?>" required><br><br>
     
     	<label for="nombre">Nombre</label>
@@ -39,10 +34,9 @@
     	<label for="referencia">Referencia</label>
     	<input type="text" id="" name="referencia" value="<?php echo $info[0]['referencia']; ?>"><br><br>
 
-    	<input type="submit" value="Guardar Cambios">
+    	<input class='admin-panel-submit-link' type="submit" value="Guardar Cambios">
 	</form>
-</body>
-</html>
+
 
 
 

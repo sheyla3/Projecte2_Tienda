@@ -359,3 +359,38 @@ body {
   text-decoration: none;
 }
 /* FIN PANEL ADMIN */
+
+/* FORMULARIOS AÑADIR  */
+
+.admin-panel-form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 30px;
+}
+
+.h2-form {
+  padding-bottom: 10px;
+  color: #537FE7;
+}
+
+.admin-panel-submit-link {
+  background-color: #537FE7;
+  color: black;
+  margin-top: 20px;
+  padding: 8px;
+  margin-right: 5%;
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+}
+
+.admin-panel-submit-link:hover {
+  background-color: #1F1F1F;
+  color: #537FE7;
+}

@@ -38,7 +38,8 @@ class AdminController
             	// de inicio de sesión con un mensaje de error
                // header('Location: index.php?controller=Login&action=mostrarFormularioLogin&error=1');
             	//exit;
-                echo("no valido");
+                echo("Credenciales no válidas");
+                // header("Refresh:1; url=index.php?controller=Principal&action=mostrarPaginaPrincipal");
         	}
     	}else{
             // Si no es una solicitud POST, simplemente muestra el formulario de inicio de sesión
