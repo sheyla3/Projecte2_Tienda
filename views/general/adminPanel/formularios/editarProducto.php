@@ -19,6 +19,7 @@
     	<label for="destacado">Destacado</label>
     	<input type="checkbox" id="" name="destacado" <?php if($info[0]['destacado']) echo 'checked'; ?>><br><br>
 
+		<p>Categoria Asignada</p>
     	<select id="categoria" name="categoria">
         	<?php
         	foreach ($categorias as $categoria) {

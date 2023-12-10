@@ -16,22 +16,25 @@
         <label for='stock'>Stock</label>
         <input type='text' id='' name='stock' required><br><br>
 
-        <label for='destacado'>Destacado</label>
+        <label for='destacado'>Destacado? (Desactivado por defecto)</label>
         <input type='checkbox' id='' name='destacado' ><br><br>
+
+        <p>Categoria Asignada</p>
+        <select id="producto" name="producto">
 <?php
             foreach ($categorias as $categoria) {
                 echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}</option>";
             }
             ?>
-        </select>
+        </select><br><br>
 
-        <label for='estado'>Estado</label>
-        <input type='checkbox' id='' name='estado' ><br><br>
+        <label for='estado'>Estado (Activado por defecto)</label>
+        <input type='checkbox' id='' name='estado' checked ><br><br>
 
         <label for='referencia'>Referencia</label>
-        <input type='checkbox' id='' name='referencia' ><br><br>
+        <input type='text' id='' name='referencia' ><br><br>
 
-        <label for='imagen'>Imagen del producto</label>
+        <label for='imagen'>Imagen del producto</label><br><br>
 	    <input type='file' id='imagen' name='imagen'><br><br>
 
         <input class='admin-panel-submit-link' type='submit' value='AÑADIR'>
