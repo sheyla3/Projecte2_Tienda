@@ -20,7 +20,7 @@
         <input type='checkbox' id='' name='destacado' ><br><br>
 
         <p>Categoria Asignada</p>
-        <select id="producto" name="producto">
+        <select id="categoria" name="categoria">
 <?php
             foreach ($categorias as $categoria) {
                 echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}</option>";
