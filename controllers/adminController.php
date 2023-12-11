@@ -39,7 +39,7 @@ class AdminController
                // header('Location: index.php?controller=Login&action=mostrarFormularioLogin&error=1');
             	//exit;
                 echo("Credenciales no válidas");
-                // header("Refresh:1; url=index.php?controller=Principal&action=mostrarPaginaPrincipal");
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php'>";
         	}
     	}else{
             // Si no es una solicitud POST, simplemente muestra el formulario de inicio de sesión
@@ -118,7 +118,7 @@ class AdminController
             $funciona = $producto->editar();
             
             if ($funciona) {
-                // Manejo de la edición exitosa
+                header('Location: index.php?controller=Admin&action=botonVistaProducto');
             } else {
                 // Manejo del error al editar la categoría
             }
@@ -161,7 +161,7 @@ class AdminController
             $funciona = $categoriaEditada->editar();
             
             if ($funciona) {
-                // Manejo de la edición exitosa
+                header('Location: index.php?controller=Admin&action=botonVistaCategoria');
             } else {
                 // Manejo del error al editar la categoría
             }
@@ -207,7 +207,6 @@ class AdminController
 
             if($funciona){
                 header('Location: index.php?controller=Admin&action=botonVistaCategoria');
-
             }else{
 
             }
@@ -273,7 +272,7 @@ class AdminController
             $funciona = $producto->anadir();
 
             if($funciona){
-                header('Location: index.php?controller=Admin&action=botonVistaCategoria');
+                header('Location: index.php?controller=Admin&action=botonVistaProducto');
             }else{
 
             }

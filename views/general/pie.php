@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=ç, initial-scale=1.0">
-    <title>Pie</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
     <div class="pie">
-        <footer>
             <div class="columna">
                 <div class="item">
                     <h3>Servicios</h3>
@@ -47,23 +36,5 @@
                 <p class="copyright">© 2023 SRG Todos los derechos reservados |<a class="linkAdminLogin"
                         href="index.php?controller=admin&action=mostrarLoginAdmin"> Panel Administrador</a></p>
             </div>
-        </footer>
+
     </div>
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=ç, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
