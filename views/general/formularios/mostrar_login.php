@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body class="background_admin_login">
