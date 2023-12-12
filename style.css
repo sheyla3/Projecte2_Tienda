@@ -281,7 +281,7 @@ nav input {
   background-color: black;
   padding-left: 1%;
   padding-top: 50px;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
