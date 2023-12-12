@@ -20,6 +20,8 @@ session_start();
     require_once "autoload.php";
     require_once "views/general/pie.php";
     
+   
+    
     // require_once "views/general/menu.php";
     // require_once "views/general/botonSubir.html";
     

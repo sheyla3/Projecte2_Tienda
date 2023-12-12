@@ -7,12 +7,12 @@ echo "
     	<div class='blue-line'></div>
 	</div>";
 
-// Agrega la barra de búsqueda antes de la tabla
-echo "
-	<div class='search-bar'>
-    	<input type='text' id='query' placeholder='Buscar por nombre...' onkeyup='buscarProducto()'>
-    	<button onclick='buscarProducto()'>Buscar</button>
-	</div>";
+// // Agrega la barra de búsqueda antes de la tabla
+// echo "
+// 	<div class='search-bar'>
+//     	<input type='text' id='query' placeholder='Buscar por nombre...' onkeyup='buscarProducto()'>
+//     	<button onclick='buscarProducto()'>Buscar</button>
+// 	</div>";
 
 echo "<table class='admin-panel-page-table'>
 	<tr>

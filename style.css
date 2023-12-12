@@ -395,12 +395,9 @@ nav input {
 }
 
 /* LOGIN ADMIN */
-
 .background_admin_login {
-  background-image: url("../Projecte2_Tienda/views/img/fondo_admin_login.png");
-  background-repeat: no-repeat;
-  background-position: fixed;
-  background-position: center;
+  background-image: url('views/img/fondo_inicio.png');
+  background-size: cover;
 }
 
 .login-page {
