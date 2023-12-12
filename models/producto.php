@@ -41,12 +41,13 @@ class Producto extends Database
     }
 
     public function buscarproductos($filtro)
-    {
-        $consulta = $this->db->prepare("SELECT id_producto, categorias.nombre AS categoria, referencia, nombre, descripcion, precio, stock, destacado, fk_id_categoria, estado, imagen FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE producto.nombre LIKE '%$filtro%' OR referencia LIKE '%$filtro%'");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+{
+	$consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria AS fk_id_categoria, estado, referencia FROM productos WHERE nombre LIKE '%$filtro%' OR referencia LIKE '%$filtro%'");
+	$consulta->execute();
+	$resultado = $consulta->fetchAll();
+	return $resultado;
+}
+
 
     public function obtenerProductos()
     {
@@ -181,13 +182,15 @@ class Producto extends Database
         return $resultado;
     }
 
-    public function obtenerBusquedaGeneral($filtro,$contenido)
-    {
-        $consulta = $this->db->prepare("SELECT producto.id_producto, producto.fk_id_categoria, producto.referencia, producto.nombre, producto.descripcion, producto.stock, producto.precio, producto.imagen, producto.destacado, producto.estado FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE $filtro LIKE '%$contenido%'");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+    public function obtenerBusquedaGeneral($filtro, $contenido)
+{
+	$consulta = $this->db->prepare("SELECT producto.id_producto, producto.fk_id_categoria, producto.referencia, producto.nombre, producto.descripcion, producto.stock, producto.precio, producto.imagen, producto.destacado, producto.estado FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE $filtro LIKE :contenido");
+	$consulta->bindValue(':contenido', '%' . $contenido . '%');
+	$consulta->execute();
+	$resultado = $consulta->fetchAll();
+	return $resultado;
+}
+
 
 
     
