@@ -28,10 +28,8 @@ class AdminController
         	if ($isAdminValid) {
             	$_SESSION['email'] = $nom;
             	$_SESSION['role'] = 'admin';
-                
             	// header('Location: index.php?controller=producto&action=mostrarProductos');
 				header('Location: index.php?controller=categoria&action=mostrarProductos');
-
                 //exit;
         	} else {
             	// En caso de credenciales incorrectas, puedes redirigir de nuevo al formulario

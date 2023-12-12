@@ -15,15 +15,17 @@ session_start();
 </head>
 
 <body>
+    
     <script src="script.js"></script>
     <?php
+   
     require_once "autoload.php";
     require_once "views/general/pie.php";
-    
    
     
     // require_once "views/general/menu.php";
     // require_once "views/general/botonSubir.html";
+    
     
     if (isset($_GET['controller'])) {
         $nombreController = $_GET['controller'] . "Controller";
@@ -37,11 +39,20 @@ session_start();
             $action = $_GET['action'];
         } else {
             $action = "procesar_login";
+            
         }
         $controlador->$action();
     } else {
         echo "No existe el controlador";
     }
+    
+    if ($_SESSION['role'] != 'admin'){
+        require_once "views/general/cabezera.html";
+    }else{
+        //require_once "views/general/adminPanel/cabezeraAdmin.html";
+        require_once "views/general/cabezera.html";
+    }
+
     // require_once "views/general/pie.html";
     // require_once "views/general/wrapper.php";
     ?>
