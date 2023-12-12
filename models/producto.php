@@ -86,6 +86,8 @@ class Producto extends Database
                 
                 echo "Nuevo producto y foto agregados correctamente";
                 echo "ID del último producto: " . $lastProductoId;
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaProducto'>";
+
             } else {
                 $this->db->rollBack();
                 echo "Error al agregar el producto";
@@ -125,6 +127,9 @@ class Producto extends Database
             $this->db->commit();
     
             echo "Producto editado correctamente";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaProducto'>";
+
+
         } catch (PDOException $e) {
             $this->db->rollBack();
             echo "Error al editar el producto: " . $e->getMessage();

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        header,
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid black;
+        }
+
+        .logo {
+            margin-top: 25px;
+        }
+
+        body {
+            margin-top: 70px;
+        }
+
+        nav .header {
+            position: relative;
+            max-width: 1300px;
+            padding: 0px 30px;
+            height: 70px;
+            line-height: 70px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header .nav-links {
+            display: inline-flex;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 9px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background: #C0EEF2;
+        }
+    </style>
+</head>
+
+<header>
+    <nav>
+        <div class="header">
+            <div class="logo"><img src="img/logo.png" alt="SRG" width="200" height="70"></div>
+            <ul class="nav-links">
+                <li>
+                    <a href="#" class="tipo"><img src="img/cerrar_sesion.png" alt="Cerrar sesión" width="20" height="20"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+</html>

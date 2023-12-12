@@ -54,7 +54,7 @@ class Categoria extends Database {
 			$last_id = $this->db->lastInsertId();
 			echo "Nueva categoría agregada correctamente";
 			echo "ID de la última categoría: " . $last_id;
-			header('Location: index.php?controller=Admin&action=botonVistaCategoria');
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaCategoria'>";
 			return true;
 		} catch (PDOException $e) {
 			// Captura la excepción y muestra el mensaje de error
@@ -72,7 +72,8 @@ class Categoria extends Database {
 			$consulta->bindParam(4, $this->id_categoria);
 	
 			$count = $consulta->execute();
-			header('Location: index.php?controller=Admin&action=botonVistaCategoria');
+			echo "Categoría editada correctamente";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaCategoria'>";
 			return $count; // Devolver el número de registros actualizados
 		} catch (PDOException $e) {
 			// Manejar la excepción si ocurre un error durante la consulta SQL
