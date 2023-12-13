@@ -95,6 +95,17 @@ class CategoriaController
         }
     }
 
+    public function MostrarCubosCategoriasHombre(){
+        $database = new Database();
+        $dbInstance = $database->getDB();
+
+        $categoria = new Categoria($dbInstance ,null, null, null , null);
+        $categorias = $categoria->obtenerIdNombreCategoriasHombre();
+
+        require_once "views/general/paginaPrincipal/categortiasH.php";
+
+    }
+
    
 
 }

@@ -836,3 +836,31 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"]{
 }
 
 /* FIN LISTA MENU TITULO */
+
+/*Cubos categorias*/
+
+.cubosCategorias{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  
+}
+
+
+.categoriaCubo{
+  width: fit-content; /* El ancho será igual al de su contenido */
+  height: fit-content;
+  padding: 1px;
+  width: 900px;
+  height: 600px;
+  background-color: rgb(145, 145, 221);
+  border: 1px solid;
+}
+
+.rowCubos{
+  display: flex;
+  flex-direction: row;
+}
+
