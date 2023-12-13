@@ -10,7 +10,7 @@
 <body class="background_admin_login">
     <div class="login-page">
         <div class="form">
-        <img src="#" alt="img" width="500" height="600">
+        <img src="views/img/inicia_sesion_1.png" alt="img" width="150" height="150">
         <h2>Inicia sesión</h2>
             <form class="login-form" action="index.php?controller=Usuario&action=procesar_login" method="POST"> 
                 <input type="text" id="email" name="email" placeholder="Correo" required/>
