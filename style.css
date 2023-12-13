@@ -1,20 +1,22 @@
 /****** HEADER *************************************************************************************************************/
 header,
 nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background: white;
-    border-bottom: 1px solid black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid black;
+  z-index: 999;
 }
 
 .logo {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 body {
-    margin-top: 70px;
+  padding-top: 70px;
+  padding-bottom: 250px;
 }
 
 nav .header {
