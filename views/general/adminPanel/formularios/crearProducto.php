@@ -1,8 +1,8 @@
 
     <form class='admin-panel-form' action='index.php?controller=Producto&action=botonCrearProducto' method='POST'>
     <h2 class='h2-form'>Crear Producto</h2>
-        <label for='id_producto'>ID Producto</label>
-        <input type='text' id='' name='id_producto' required><br><br>
+        <!-- <label for='id_producto'>ID Producto</label>
+        <input type='text' id='' name='id_producto' required><br><br> -->
     
         <label for='nombre'>Nombre</label>
         <input type='text' id='' name='nombre' required><br><br>

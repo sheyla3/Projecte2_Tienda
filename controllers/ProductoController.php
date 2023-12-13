@@ -51,7 +51,7 @@ class ProductoController
         
         include('views/general/adminPanel/formularios/crearProducto.php');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id_producto = $_POST['id_producto'];
+            //$id_producto = $_POST['id_producto'];
             $nombre = $_POST['nombre'];
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
@@ -60,13 +60,16 @@ class ProductoController
             $categoria1 = $_POST['categoria'];
 
 
-            // $categoriaNombre = new Categoria($dbInstance ,$categoria1, null, null , null);
-            // $categoriasResult = $categoriaNombre->obtenerNombre();
-
-            // $Numproducto = new Producto($dbInstance ,null, null, null, null, null, null,null, null, null, null);
-            // $numeroRegistros = $Numproducto->obtenerNumeroProductos();
-            // $dosPrimerasLetrasCate = substr($categoriasResult, 0, 2); 
-            // $dosPrimerasLetrasProd = substr($nombre, 0, 2); 
+            $categoriaNombre = new Categoria($dbInstance, $categoria1, null, null, null);
+            $categoriasResult = $categoriaNombre->obtenerNombre();
+            
+            $Numproducto = new Producto($dbInstance, null, null, null, null, null, null, null, null, null, null);
+            $numeroRegistros = $Numproducto->obtenerNumeroProductos();
+            $dosPrimerasLetrasCate = substr($categoriasResult, 0, 2);
+            $dosPrimerasLetrasProd = substr($nombre, 0, 2);
+            
+            $id_producto = $dosPrimerasLetrasCate . ($numeroRegistros + 1) . "-" . $dosPrimerasLetrasProd;
+            
             
             
 
@@ -122,7 +125,7 @@ class ProductoController
             $dbInstance = $database->getDB();
             
             // Obtener los datos del formulario
-            $id_producto = $_POST['id_producto'];
+            $id_producto = $_GET['id_producto'];
             $nombre = $_POST['nombre'];
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
