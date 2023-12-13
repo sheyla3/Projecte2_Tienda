@@ -8,8 +8,8 @@ echo "
 
         <label for='genero'>Género:</label>
         <select id='genero' name='genero'>
-            <option value='hombre'>Hombre</option>
-            <option value='mujer'>Mujer</option>
+            <option value='Hombre'>Hombre</option>
+            <option value='Mujer'>Mujer</option>
         </select>
 
        
