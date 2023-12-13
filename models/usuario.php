@@ -27,7 +27,7 @@ class Usuario {
 	// Método para realizar el login
 	public function login() {
 
-	$email = $this->user;
+	$email = $this->email;
 	$password = $this->password;
 
     	$consulta = $this->db->prepare("SELECT * FROM usuarios WHERE correo = :email AND contrasena = :password");
