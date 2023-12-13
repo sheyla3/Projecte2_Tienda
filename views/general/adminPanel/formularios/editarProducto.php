@@ -35,6 +35,7 @@
     	<label for="referencia">Referencia</label>
     	<input type="text" id="" name="referencia" value="<?php echo $info[0]['referencia']; ?>"><br><br>
 
+		<a href="index.php?controller=Admin&action=botonVistaProducto" class='admin-panel-submit-link'>Volver atras</a>
     	<input class='admin-panel-submit-link' type="submit" value="Guardar Cambios">
 	</form>
 

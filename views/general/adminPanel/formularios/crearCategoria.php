@@ -15,6 +15,7 @@ echo "
        
 	    <input type='checkbox' id='estado' name='estado'>
 	    <label for='estado'>Estado</label><br>
+        <a href='index.php?controller=Admin&action=botonVistaCategoria' class='admin-panel-submit-link'>Volver atras</a>
 
         <input class='admin-panel-submit-link' type='submit' value='AÑADIR'>
 

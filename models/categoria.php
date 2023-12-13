@@ -87,7 +87,7 @@ class Categoria extends Database {
 	
 
 	public function obtenerIdNombreCategorias() {
-		$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias");
+		$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true");
 		$consulta->execute();
 		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 		return $resultado;

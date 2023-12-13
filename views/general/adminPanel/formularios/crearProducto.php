@@ -37,6 +37,7 @@
         <label for='imagen'>Imagen del producto</label><br><br>
 	    <input type='file' id='imagen' name='imagen'><br><br>
 
+        <a href="index.php?controller=Admin&action=botonVistaProducto" class='admin-panel-submit-link'>Volver atras</a>
         <input class='admin-panel-submit-link' type='submit' value='AÑADIR'>
 
 
