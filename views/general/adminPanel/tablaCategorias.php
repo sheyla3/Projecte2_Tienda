@@ -7,8 +7,7 @@ echo "
 		<div class='blue-line'></div>
 	</div>";
 
-	
-
+echo "<div class='table-container'>";
 echo "<table class='admin-panel-page-table'>
     	<tr>
         	<th>ID Categoria</th>
@@ -28,5 +27,6 @@ foreach ($catalogo as $categoria) {
     	</tr>";
 }
 echo "</table>
+</div>
 </div>";
 ?>

@@ -43,6 +43,7 @@ foreach ($catalogo as $producto) {
 	</tr>";
 }
 echo "</table>
+
 </div>";
 
 
