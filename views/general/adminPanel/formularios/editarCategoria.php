@@ -1,6 +1,6 @@
 
 	
-	<form class='admin-panel-form' action="index.php?controller=Admin&action=botonEditarCategoria&id_categoria=<?php echo $info[0]['id_categoria']; ?>" method="POST">
+	<form class='admin-panel-form' action="index.php?controller=Categoria&action=botonEditarCategoria&id_categoria=<?php echo $info[0]['id_categoria']; ?>" method="POST">
 	<h2 class="h2-form">Editar categoría</h2>
 		<?php
     	echo "<label for='nombre'>Nombre</label>

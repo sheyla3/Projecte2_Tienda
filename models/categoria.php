@@ -34,11 +34,14 @@ class Categoria extends Database {
 	}
 
 	public function obtenerNombre() {
-    	$consulta = $this->db->prepare("SELECT nombre FROM categorias");
-    	$consulta->execute();
-    	$resultado = $consulta->fetchAll();
-    	return $resultado;
+		$id = $this->id_categoria;
+		$consulta = $this->db->prepare("SELECT nombre FROM categorias WHERE id_categoria = ?");
+		$consulta->bindParam(1, $id);
+		$consulta->execute();
+		$resultado = $consulta->fetchColumn(); // Obtiene un solo valor
+		return $resultado;
 	}
+	
 
 	public function anadir() {
 		$nombre = $this->nombre;
@@ -89,10 +92,6 @@ class Categoria extends Database {
 		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 		return $resultado;
 	}
-	
-	
-	
-	
 
 	public function activar($id) {
     	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");

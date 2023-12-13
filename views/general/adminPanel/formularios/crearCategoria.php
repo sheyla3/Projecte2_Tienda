@@ -1,6 +1,6 @@
 <?php
 echo "
-    <form class='admin-panel-form' action='index.php?controller=Admin&action=botonCrearCategoria' method='POST'>
+    <form class='admin-panel-form' action='index.php?controller=Categoria&action=botonCrearCategoria' method='POST'>
         <h2 class='h2-form'>Crear Categoría</h2>    
 
         <label for='nombre'>Nombre</label>
@@ -8,8 +8,8 @@ echo "
 
         <label for='genero'>Género:</label>
         <select id='genero' name='genero'>
-            <option value='hombre'>Hombre</option>
-            <option value='mujer'>Mujer</option>
+            <option value='Hombre'>Hombre</option>
+            <option value='Mujer'>Mujer</option>
         </select>
 
        

@@ -1,20 +1,22 @@
 /****** HEADER *************************************************************************************************************/
 header,
 nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background: white;
-    border-bottom: 1px solid black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid black;
+  z-index: 999;
 }
 
 .logo {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 body {
-    margin-top: 70px;
+  padding-top: 70px;
+  padding-bottom: 250px;
 }
 
 nav .header {
@@ -118,7 +120,8 @@ nav .header {
 }
 
 .fila .categorias li a:hover {
-    color: #f2f2f2;
+    color: black;
+    font-weight: bolder;
 }
 
 .header .btn {
@@ -276,10 +279,15 @@ nav input {
 }
 
 /****** FOOTER *************************************************************************************************************/
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 .pie {
   background-color: black;
   padding-left: 1%;
-  padding-top: 50px;
+  padding-top: 50%;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -395,12 +403,9 @@ nav input {
 }
 
 /* LOGIN ADMIN */
-
 .background_admin_login {
-  background-image: url("../Projecte2_Tienda/views/img/fondo_admin_login.png");
-  background-repeat: no-repeat;
-  background-position: fixed;
-  background-position: center;
+  background-image: url('views/img/fondo_inicio.png');
+  background-size: cover;
 }
 
 .login-page {
@@ -588,7 +593,10 @@ body {
   width: 85%;
   float: right;
   align-items: center;
+
 }
+
+
 
 .admin-panel-title-container {
   padding-top: 20px;

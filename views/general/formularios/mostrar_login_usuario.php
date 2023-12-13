@@ -18,9 +18,8 @@
                 <a href="index.php?controller=usuario&action=mostrarLoginUsuario"> Olvidaste la contraseña? </a>
                 <input type="submit" class="button" value="Iniciar Sesión">
             </form>
-            <form action="index.php?controller=usuario&action=mostrarLoginUsuario">
-                <input type="submit" class="button" value="Crear cuenta" />
-            </form>
+            <form action="">
+            <a href="index.php?controller=usuario&action=crearUsuario" class="button">Crear cuenta</a>
         </div>
     </div>
 </body>

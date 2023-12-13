@@ -19,8 +19,8 @@ class Usuario {
 		$this->name = $name;
 		$this->lastname = $lastname;
 		$this->phone = $phone;
-		$this->address = $address
-		$this->photo = $photo
+		$this->address = $address;
+		$this->photo = $photo;
 	}
 
 
@@ -30,7 +30,7 @@ class Usuario {
 	$email = $this->user;
 	$password = $this->password;
 
-    	$consulta = $this->db->prepare("SELECT * FROM usuarios WHERE usuario = :email AND contrasena = :password");
+    	$consulta = $this->db->prepare("SELECT * FROM usuarios WHERE correo = :email AND contrasena = :password");
     	$consulta->bindParam(':email', $email);
     	$consulta->bindParam(':password', $password);
     	$consulta->execute();
@@ -42,4 +42,23 @@ class Usuario {
         	return false;
     	}
 	}
+
+	public function agregarUsuario() {
+        $consulta = $this->db->prepare("INSERT INTO usuarios (correo, contrasena, nombre, apellidos, telf, direccion, foto) VALUES (:email, :password, :name, :lastname, :phone, :address, :photo)");
+        
+        $consulta->bindParam(':email', $this->email);
+        $consulta->bindParam(':password', $this->password);
+        $consulta->bindParam(':name', $this->name);
+        $consulta->bindParam(':lastname', $this->lastname);
+        $consulta->bindParam(':phone', $this->phone);
+        $consulta->bindParam(':address', $this->address);
+        $consulta->bindParam(':photo', $this->photo);
+        
+        try {
+            $consulta->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

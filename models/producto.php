@@ -98,13 +98,13 @@ class Producto extends Database
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
+        public function obtenerNumeroProductos()
+    {
+        $consulta = $this->db->prepare("SELECT * FROM productos");
+        $consulta->execute();
+        $cantidad = $consulta->rowCount();
+        return $cantidad;
+    }
 
     public function editar() {
         try {
