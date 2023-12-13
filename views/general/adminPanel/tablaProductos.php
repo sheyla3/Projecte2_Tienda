@@ -28,20 +28,24 @@ echo "<table class='admin-panel-page-table'>
     	<th>Editar</th>
 	</tr>";
 
-foreach ($catalogo as $producto) {
-	echo "<tr>
-    	<td class='text'>" . $producto['id_producto'] . "</td>
-    	<td class='text'>" . $producto['nombre'] . "</td>
-    	<td class='text'>" . $producto['descripcion'] . "</td>
-    	<td class='text'>" . $producto['precio'] . "</td>
-    	<td class='text'>" . $producto['stock'] . "</td>
-    	<td class='text'>" . $producto['destacado'] . "</td>
-    	<td class='text'>" . $producto['id_categoria'] . "</td>
-    	<td class='text'>" . $producto['estado'] . "</td>
-    	<td class='text'>" . $producto['referencia'] . "</td>
-    	<td class='text'><a href='index.php?controller=Producto&action=botonEditarProducto&id_producto=" . $producto['id_producto'] . "'><img src='views/img/edit.svg' class='image_edit_icon'</a></td>
-	</tr>";
-}
+	foreach ($catalogo as $producto) {
+		$estado = $producto['estado'] == 1 ? 'Activado' : 'Desactivado';
+		$destacado = $producto['destacado'] == 1 ? 'SI' : 'NO';
+	
+		echo "<tr>
+			<td class='text'>" . $producto['id_producto'] . "</td>
+			<td class='text'>" . $producto['nombre'] . "</td>
+			<td class='text'>" . $producto['descripcion'] . "</td>
+			<td class='text'>" . $producto['precio'] . "</td>
+			<td class='text'>" . $producto['stock'] . "</td>
+			<td class='text'>" . $destacado . "</td>
+			<td class='text'>" . $producto['id_categoria'] . "</td>
+			<td class='text'>" . $estado . "</td>
+			<td class='text'>" . $producto['referencia'] . "</td>
+			<td class='text'><a href='index.php?controller=Producto&action=botonEditarProducto&id_producto=" . $producto['id_producto'] . "'><img src='views/img/edit.svg' class='image_edit_icon'></a></td>
+		</tr>";
+	}
+	
 echo "</table>
 
 </div>";

@@ -84,8 +84,8 @@ class Producto extends Database
     
                 $this->db->commit();
                 
-                echo "Nuevo producto y foto agregados correctamente";
-                echo "ID del último producto: " . $lastProductoId;
+
+                echo "Producto agregado correctamente";
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaProducto'>";
 
             } else {

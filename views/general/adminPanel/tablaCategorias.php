@@ -18,11 +18,12 @@ echo "<table class='admin-panel-page-table'>
     	</tr>";
 
 foreach ($catalogo as $categoria) {
+	$estado = $categoria['estado'] == 1 ? 'Activado' : 'Desactivado';
 	echo "<tr>
         	<td class='text'>" . $categoria['id_categoria'] . "</td>
         	<td class='text'>" . $categoria['nombre'] . "</td>
         	<td class='text'>" . $categoria['sexo'] . "</td>
-        	<td class='text'>" . $categoria['estado'] . "</td>
+        	<td class='text'>" . $estado . "</td>
 			<td class='text'><a href='index.php?controller=Categoria&action=botonEditarCategoria&id_categoria=" . $categoria['id_categoria'] . "'><img src='views/img/edit.svg' class='image_edit_icon'></a></td>
     	</tr>";
 }
