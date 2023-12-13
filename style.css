@@ -15,7 +15,6 @@ nav {
 }
 
 body {
-  padding-top: 70px;
   padding-bottom: 250px;
 }
 
@@ -591,7 +590,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 85%;
-  float: right;
   align-items: center;
 
 }
