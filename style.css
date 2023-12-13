@@ -533,12 +533,9 @@ body {
 }
 
 .admin-panel-add-link {
-  display: block;
-  float: right;
   background-color: #537FE7;
   color: black;
   padding: 8px;
-  margin-right: 5%;
   border-radius: 5px;
   text-decoration: none;
 }
@@ -801,3 +798,41 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"]{
 }
 
 /* FIN SLIDER */
+
+/* BUSCADOR */
+
+#Cbuscar {
+  border: 0;
+  font-size: 14px;
+  padding: 10px;
+  outline: 0;
+}
+
+.formCat {
+  font-family: "Roboto", sans-serif;
+  width: 200px; 
+  margin: 0 0 15px;
+  border-bottom: 2px #537FE7 solid;
+  font-size: 14px;
+}
+
+/* FIN BUSCADOR */
+
+/* LISTA MENU TITULO */
+
+.tituloMenu {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.tituloMenu > li {
+	display: inline-block;
+}
+
+.derecha {
+  float: right;
+  margin-left: 30px;
+}
+
+/* FIN LISTA MENU TITULO */

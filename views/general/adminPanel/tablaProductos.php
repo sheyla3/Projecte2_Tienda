@@ -2,8 +2,16 @@
 echo "
 <div class='admin-panel-content-container'>
 	<div class='admin-panel-title-container'>
-    	<h1 class='admin-panel-title'>Productos</h1>
-    	<a class='admin-panel-add-link' href='index.php?controller=Producto&action=botonCrearProducto'>Añadir producto</a><br>
+		<ul class='tituloMenu'>
+			<li><h1 class='admin-panel-title'>Productos</h1></li>
+			<li class='derecha'><a class='admin-panel-add-link' href='index.php?controller=Producto&action=botonCrearProducto'>Añadir producto</a></li>
+			<li class='derecha'>
+				<form action='' method='post' class='formCat'>
+					<label for='campo' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
+					<input type='text' id='Cbuscar' name='Cbuscar'>
+				</form>
+			</li>
+		</ul>
     	<div class='blue-line'></div>
 	</div>";
 
