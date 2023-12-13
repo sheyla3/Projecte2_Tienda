@@ -279,11 +279,16 @@ nav input {
 }
 
 /****** FOOTER *************************************************************************************************************/
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 .pie {
   background-color: black;
   padding-left: 1%;
-  padding-top: 50px;
-  position: fixed;
+  padding-top: 50%;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
