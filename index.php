@@ -47,11 +47,12 @@ session_start();
         echo "No existe el controlador";
     }
     
-    if ($_SESSION['role'] != 'admin'){
-        require_once "views/general/cabezera.html";
+    if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
+        require_once "views/general/adminPanel/cabezeraAdmin.html";
+        
     }else{
-        //require_once "views/general/adminPanel/cabezeraAdmin.html";
         require_once "views/general/cabezera.html";
+        //require_once "views/general/cabezera.html";
     }
 
     // require_once "views/general/pie.html";

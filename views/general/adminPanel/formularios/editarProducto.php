@@ -1,5 +1,5 @@
 
-	<form class='admin-panel-form' action="index.php?controller=Admin&action=botonEditarProducto&id_producto=<?php echo $info[0]['id_producto']; ?>" method="POST">
+	<form class='admin-panel-form' action="index.php?controller=Producto&action=botonEditarProducto&id_producto=<?php echo $info[0]['id_producto']; ?>" method="POST">
 	<h2 class="h2-form">Editar Producto</h2>	
 	<label for="id_producto">ID Producto</label>
     	<input type="text" id="" name="id_producto" value="<?php echo $info[0]['id_producto']; ?>" required><br><br>

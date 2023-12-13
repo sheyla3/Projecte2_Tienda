@@ -3,7 +3,7 @@ echo "
 <div class='admin-panel-content-container'>
 	<div class='admin-panel-title-container'>
     	<h1 class='admin-panel-title'>Productos</h1>
-    	<a class='admin-panel-add-link' href='index.php?controller=admin&action=botonCrearProducto'>Añadir producto</a><br>
+    	<a class='admin-panel-add-link' href='index.php?controller=Producto&action=botonCrearProducto'>Añadir producto</a><br>
     	<div class='blue-line'></div>
 	</div>";
 
@@ -39,7 +39,7 @@ foreach ($catalogo as $producto) {
     	<td class='text'>" . $producto['id_categoria'] . "</td>
     	<td class='text'>" . $producto['estado'] . "</td>
     	<td class='text'>" . $producto['referencia'] . "</td>
-    	<td class='text'><a href='index.php?controller=admin&action=botonEditarProducto&id_producto=" . $producto['id_producto'] . "'><img src='views/img/edit.svg' class='image_edit_icon'</a></td>
+    	<td class='text'><a href='index.php?controller=Producto&action=botonEditarProducto&id_producto=" . $producto['id_producto'] . "'><img src='views/img/edit.svg' class='image_edit_icon'</a></td>
 	</tr>";
 }
 echo "</table>

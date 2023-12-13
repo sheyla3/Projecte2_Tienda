@@ -1,6 +1,6 @@
 <?php
 echo "
-    <form class='admin-panel-form' action='index.php?controller=Admin&action=botonCrearCategoria' method='POST'>
+    <form class='admin-panel-form' action='index.php?controller=Categoria&action=botonCrearCategoria' method='POST'>
         <h2 class='h2-form'>Crear Categoría</h2>    
 
         <label for='nombre'>Nombre</label>
