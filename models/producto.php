@@ -135,11 +135,7 @@ class Producto extends Database
             echo "Error al editar el producto: " . $e->getMessage();
         }
     }
-    
-    
-    
-    
-    
+        
     
 
     public function activar($id){
@@ -157,6 +153,14 @@ class Producto extends Database
     public function obtenerInfo($id) {
         $consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria, estado, referencia FROM productos WHERE id_producto = :id");
         $consulta->bindValue(':id', $id);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        return $resultado;
+    }
+
+    public function obtenerFotos(){
+        $consulta = $this->db->prepare("SELECT img FROM fotos WHERE id_producto = :id");
+        $consulta->bindValue(':id', $this->id_producto);
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         return $resultado;

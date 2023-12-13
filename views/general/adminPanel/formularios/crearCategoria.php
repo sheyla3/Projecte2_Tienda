@@ -1,3 +1,4 @@
+<div class="editContanier">	
 <?php
 echo "
     <form class='admin-panel-form' action='index.php?controller=Categoria&action=botonCrearCategoria' method='POST'>
@@ -22,3 +23,4 @@ echo "
 
     </form>";
 ?>
+</div>

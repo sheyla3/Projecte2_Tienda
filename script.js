@@ -18,3 +18,8 @@ function buscarProducto() {
         	console.error('There was a problem with the fetch operation:', error);
     	});
 }
+
+function mostrarCampoImagen() {
+	var campoImagen = document.getElementById("campoImagen");
+	campoImagen.style.display = "block";
+}
