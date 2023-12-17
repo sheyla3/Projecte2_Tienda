@@ -15,14 +15,14 @@
     <div class="slideshow">
         <?php for ($s = 0; $s < $max; $s++) { ?>
             <div class="item-slide">
-                <img src="img/<?= $ids[$s]; ?>.jpg" alt="<?= $alt[$s]; ?>" />
+                <img src="views/img/<?= $ids[$s]; ?>.jpg" alt="<?= $alt[$s]; ?>" />
             </div>
         <?php } ?>
     </div>
     <div class="pagination">
         <?php for ($s = 0; $s < $max; $s++) { ?>
             <label class="pag-item" for="<?= $ids[$s]; ?>">
-                <img src="./img/<?= $ids[$s]; ?>.jpg" alt="<?= $alt[$s]; ?>" />
+                <img src="views/img/<?= $ids[$s]; ?>.jpg" alt="<?= $alt[$s]; ?>" />
             </label>
         <?php } ?>
     </div>

@@ -170,7 +170,7 @@ class Producto extends Database
     
     public function productoDestacado()
     {
-        $consulta = $this->db->prepare("SELECT * FROM productos WHERE destacado = 1");
+        $consulta = $this->db->prepare("SELECT * FROM productos WHERE destacado = t");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         return $resultado;
