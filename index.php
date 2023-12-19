@@ -28,7 +28,7 @@ session_start();
         $nombreController = $_GET['controller'] . "Controller";
     } else {
         //Controlador per dedecte
-        $nombreController = "PrincipalController";
+        $nombreController = "adminController";
     }
     if (class_exists($nombreController)) {
         $controlador = new $nombreController();
