@@ -49,31 +49,46 @@ class AdminController
 	}
 
     public function botonVistaProducto(){
-         
-        $database = new Database();
-        $dbInstance = $database->getDB();
-        require_once "views/general/adminPanel/menu.php";
-        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
-        $catalogo = $producto->obtenerProductos();
-        include('views/general/adminPanel/tablaProductos.php');
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            require_once "views/general/adminPanel/menu.php";
+            $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+            $catalogo = $producto->obtenerProductos();
+            include('views/general/adminPanel/tablaProductos.php');
+        }else{
+            echo("<p class='validado'>No estas validado</p>");
+        }
+
+        
     
     }
     public function botonVistaComanda(){
-        $database = new Database();
-        $dbInstance = $database->getDB();
-        require_once "views/general/adminPanel/menu.php";
-        $pedido = new Pedido($dbInstance,null,null,null,null,null,null);
-        $catalogo = $pedido->obtenerPedidos();
-        include('views/general/adminPanel/tablaComandes.php');
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            require_once "views/general/adminPanel/menu.php";
+            $pedido = new Pedido($dbInstance,null,null,null,null,null,null);
+            $catalogo = $pedido->obtenerPedidos();
+            include('views/general/adminPanel/tablaComandes.php');
+        }else{
+            echo("<p class='validado'>No estas validado</p>");
+        }
+       
      }
 
     public function botonVistaCategoria(){
-        $database = new Database();
-        $dbInstance = $database->getDB();
-        require_once "views/general/adminPanel/menu.php";
-        $categoria = new Categoria($dbInstance,null,null,null,null);
-        $catalogo = $categoria->obtenerCategorias();
-        require_once 'views/general/adminPanel/tablaCategorias.php';
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            require_once "views/general/adminPanel/menu.php";
+            $categoria = new Categoria($dbInstance,null,null,null,null);
+            $catalogo = $categoria->obtenerCategorias();
+            require_once 'views/general/adminPanel/tablaCategorias.php';
+        }else{
+            echo("<p class='validado'>No estas validado</p>");
+        }
+
         
     }
     public function mostrarLoginAdmin(){

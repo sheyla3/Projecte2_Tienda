@@ -176,13 +176,20 @@ class Producto extends Database
         return $resultado;
     }
 
-    public function productosCategoria($id)
-    {
-        $consulta = $this->db->prepare("SELECT * FROM productos WHERE fk_id_categoria = $id");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+    public function productosCategoria()
+{
+    $consulta = $this->db->prepare("SELECT p.id_producto, p.nombre, p.precio, f.img 
+                                    FROM productos p 
+                                    LEFT JOIN fotos f ON p.id_producto = f.id_producto 
+                                    WHERE p.id_categoria = :categoria");
+    $consulta->bindParam(':categoria', $this->categoria, PDO::PARAM_INT);
+    $consulta->execute();
+    $resultado = $consulta->fetchAll();
+    return $resultado;
+}
+
+
+
     public function productosGeneral()
     {
         $consulta = $this->db->prepare("SELECT * FROM productos");

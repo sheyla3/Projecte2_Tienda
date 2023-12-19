@@ -863,6 +863,31 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"]{
   display: flex;
   flex-direction: row;
 }
+/*cubos productos*/
+
+.rowCubosP{
+  display: flex;
+  flex-direction: row;
+
+  width: 85%;
+}
+
+.cuboP{
+  background-color: rebeccapurple;
+  margin: 5px;
+  height: 300px;
+  width: 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.letraP{
+  font-weight: bold;
+}
 
 /* GRID SEXO HOMBRE Y MUJER */
 .menu_sexos {

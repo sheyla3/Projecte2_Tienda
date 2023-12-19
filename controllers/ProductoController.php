@@ -230,6 +230,17 @@ class ProductoController
         }
 
     }
+
+    public function mostrarProductosPorCatgeoria(){
+
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $id_categoria = $_GET['id_categoria'];
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,$id_categoria,null,null,null);
+        $productos = $producto->productosCategoria();
+        include('views/general/paginaCategorias/productosPorCategoria.php');
+        
+    }
     
 
 
