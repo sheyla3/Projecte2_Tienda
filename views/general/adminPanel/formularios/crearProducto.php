@@ -23,7 +23,7 @@
         <select id="categoria" name="categoria">
         <?php
             foreach ($categorias as $categoria) {
-                echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}</option>";
+                echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}-{$categoria['sexo']}</option>";
             }
             ?>
         </select><br><br>

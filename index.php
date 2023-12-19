@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,20 +16,21 @@ session_start();
     <title>SRG</title>
 </head>
 
+
 <body>
-    
+   
     <script src="script.js"></script>
     <?php
    
     require_once "autoload.php";
     require_once "views/general/pie.php";
-    
-    
+   
+   
     if (isset($_GET['controller'])) {
         $nombreController = $_GET['controller'] . "Controller";
     } else {
         //Controlador per dedecte
-        $nombreController = "adminController";
+        $nombreController = "PrincipalController";
     }
     if (class_exists($nombreController)) {
         $controlador = new $nombreController();
@@ -36,24 +38,26 @@ session_start();
             $action = $_GET['action'];
         } else {
             $action = "mostrarPaginaPrincipal";
-            
+           
         }
         $controlador->$action();
     } else {
         echo "No existe el controlador";
     }
-    
+   
     if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
         require_once "views/general/adminPanel/cabezeraAdmin.html";
-        
+       
     }else{
         require_once "views/general/cabezera.php";
         //require_once "views/general/cabezera.html";
     }
 
+
     // require_once "views/general/pie.html";
     // require_once "views/general/wrapper.php";
     ?>
 </body>
+
 
 </html>
