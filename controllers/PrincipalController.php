@@ -10,7 +10,7 @@ class PrincipalController
         $database = new Database();
         $dbInstance = $database->getDB();
 
-        require_once "views/general/cabezera.php";
+        // require_once "views/general/cabezera.php";
         echo "<br><br>";
         echo "<br><br>";
         echo "<br><br>";

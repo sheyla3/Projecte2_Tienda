@@ -23,25 +23,19 @@ session_start();
     require_once "autoload.php";
     require_once "views/general/pie.php";
     
-   
-    
-    // require_once "views/general/menu.php";
-    // require_once "views/general/botonSubir.html";
-    
     
     if (isset($_GET['controller'])) {
         $nombreController = $_GET['controller'] . "Controller";
     } else {
         //Controlador per dedecte
         $nombreController = "adminController";
-
     }
     if (class_exists($nombreController)) {
         $controlador = new $nombreController();
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
         } else {
-            $action = "procesar_login";
+            $action = "mostrarPaginaPrincipal";
             
         }
         $controlador->$action();
