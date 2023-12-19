@@ -11,9 +11,9 @@ class PrincipalController
         $dbInstance = $database->getDB();
 
         // require_once "views/general/cabezera.php";
-        echo "<br><br>";
-        echo "<br><br>";
-        echo "<br><br>";
+        // echo "<br><br>";
+        // echo "<br><br>";
+        // echo "<br><br>";
 
         require_once "views/general/slider.php";
         require_once "views/general/menu_secundario.php";
