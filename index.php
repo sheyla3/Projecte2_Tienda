@@ -34,6 +34,7 @@ session_start();
     } else {
         //Controlador per dedecte
         $nombreController = "adminController";
+
     }
     if (class_exists($nombreController)) {
         $controlador = new $nombreController();
