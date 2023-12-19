@@ -284,20 +284,16 @@ html {
 }
 
 .pie {
-  background-color: black;
-  padding-left: 1%;
-  padding-top: 50%;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-
 }
 
 .pie {
-  padding: 50px 0;
+  padding: 10px 0;
   color: white;
   background-color: black;
 }
@@ -912,7 +908,6 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  margin-bottom: 5%;
 }
 
 .div1_sexos {
