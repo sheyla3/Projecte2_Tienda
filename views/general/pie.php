@@ -27,10 +27,10 @@
                 </div>
             </div>
             <div class="item social">
-                <a href="#"><img src="views/img/facebook.png" alt="Facebook" width="20" height="20"></a>
-                <a href="#"><img src="views/img/instagram.png" alt="Instagram" width="20" height="20"></a>
-                <a href="#"><img src="views/img/twitter.png" alt="Twitter" width="20" height="20"></a>
-                <a href="#"><img src="views/img/pintrest.png" alt="Pintrest" width="20" height="20"></a>
+                <a href="https://www.facebook.com/?locale=ca_ES"><img src="views/img/facebook.png" alt="Facebook" width="20" height="20"></a>
+                <a href="https://www.instagram.com/"><img src="views/img/instagram.png" alt="Instagram" width="20" height="20"></a>
+                <a href="https://twitter.com/?lang=ca"><img src="views/img/twitter.png" alt="Twitter" width="20" height="20"></a>
+                <a href="https://www.pinterest.com/"><img src="views/img/pintrest.png" alt="Pinterest" width="20" height="20"></a>
             </div>
             <div>
                 <p class="copyright">© 2023 SRG Todos los derechos reservados |<a class="linkAdminLogin"
