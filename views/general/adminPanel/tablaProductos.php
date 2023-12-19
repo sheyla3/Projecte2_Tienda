@@ -6,7 +6,7 @@ echo "
 			<li><h1 class='admin-panel-title'>Productos</h1></li>
 			<li class='derecha'><a class='admin-panel-add-link' href='index.php?controller=Producto&action=botonCrearProducto'>Añadir producto</a></li>
 			<li class='derecha'>
-				<form action='' method='post' class='formCat'>
+				<form action='' method='post' class='formProd buscador'>
 					<label for='campo' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
 					<input type='text' id='Cbuscar' name='Cbuscar'>
 				</form>
