@@ -56,6 +56,19 @@ nav .header {
   display: none;
 }
 
+.nav-links .drop-menu{
+  position: absolute;
+  background: #242526;
+  width: 180px;
+  line-height: 45px;
+  padding-left: 0;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+.nav-links li:hover .drop-menu,
 .nav-links li:hover .mega-box {
   transition: all 0.3s ease;
   top: 70px;
@@ -63,12 +76,16 @@ nav .header {
   visibility: visible;
 }
 
-.drop-menu li a {
-  width: 100%;
+.drop-menu li a{
   display: block;
   padding: 0 0 0 15px;
   font-weight: 400;
   border-radius: 0px;
+  color: white;
+}
+
+.drop-menu li a:hover{
+  color: black;
 }
 
 .mega-box {
@@ -191,7 +208,7 @@ nav .header {
     font-size: 20px;
   }
 
-  .nav-links .drop-menu {
+  .nav-links .drop-menu{
     position: static;
     opacity: 1;
     top: 65px;
@@ -204,12 +221,19 @@ nav .header {
     transition: all 0.3s ease;
   }
 
-  #showMega:checked~.mega-box {
+  #showDrop:checked ~ .drop-menu,
+  #showMega:checked~.mega-box,
+  #showMega2:checked~.mega-box {
     max-height: 100%;
   }
 
-  #showMega2:checked~.mega-box {
-    max-height: 100%;
+  .drop-menu li{
+    margin: 0;
+  }
+
+  .drop-menu li a{
+    border-radius: 5px;
+    font-size: 18px;
   }
 
   .nav-links .tipo {
