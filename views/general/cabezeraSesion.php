@@ -76,6 +76,7 @@
                         <li><a href="#">Carrito</a></li>
                         <li><a href="#">Mis compras</a></li>
                         <li><a href="#">Favoritos</a></li>
+                         <li><a href="#">Perfil</a></li>
                         <li><a href="#">Cerrar sesión</a></li>
                     </ul>
                 </li>
