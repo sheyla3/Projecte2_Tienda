@@ -35,42 +35,71 @@ class UsuarioController
 
 	public function crearUsuario() {
 		include('views/general/formularios/crear_usuario.php');
+	
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$email = trim($_POST['email']); // Eliminar espacios al inicio y final
+			$email = trim($_POST['email']);
 			$password = $_POST['password'];
 			$name = $_POST['name'];
 			$lastname = $_POST['lastname'];
 			$phone = $_POST['phone'];
 			$address = $_POST['address'];
-			$photo = $_POST['photo']; // Considera cómo manejar el archivo de imagen
 	
-			// Verificaciones de longitud y formato
-			if (strlen($name) > 50 || strlen($lastname) > 50 || strlen($phone) !== 9){
-				echo "Verifica que los datos sean correctos.";
-				return; // Detiene la ejecución si los datos no cumplen los requisitos
-			} elseif (!preg_match('/^\d+$/', $phone)){
-				echo "El teléfono debe tener 9 números.";
-				return; // Detiene la ejecución si los datos no cumplen los requisitos
-			} else{
-				// Instancia de la base de datos
+			// Validación de tipos de datos
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				echo "El formato del correo electrónico no es válido. ";
+			} elseif (!is_string($password) || strlen($password) < 6) {
+				echo "La contraseña debe ser una cadena de al menos 6 caracteres. ";
+			} elseif (!is_string($name) || !is_string($lastname) || !is_string($address)) {
+				echo "El nombre, apellido y dirección deben ser cadenas de texto. ";
+			} elseif (!is_numeric($phone) || strlen($phone) !== 9) {
+				echo "El teléfono debe ser un número de 9 dígitos. ";
+			} else {
+				// Verificación de la imagen (si se adjunta)
+				if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+					$photo = $_FILES['photo'];
+	
+					$allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+					$detectedType = exif_imagetype($photo['tmp_name']);
+					$isValidType = in_array($detectedType, $allowedTypes);
+	
+					if ($isValidType && $photo['size'] <= 5000000) { // Tamaño máximo de 5 MB
+						$targetDirectory = "./img/fotos_usuario";
+						$targetFile = $targetDirectory . basename($photo['name']);
+	
+						if (move_uploaded_file($photo['tmp_name'], $targetFile)) {
+							$photoPath = $targetFile;
+						} else {
+							echo "Error al subir la imagen. Por favor, inténtalo nuevamente.";
+							return;
+						}
+					} else {
+						echo "El archivo de imagen no es válido. Asegúrate de subir una imagen en formato PNG, JPEG o GIF, y que no exceda los 5MB.";
+						return;
+					}
+				} else {
+					// Si no se adjunta una imagen, asigna un valor predeterminado o deja vacío según tu lógica
+					$photoPath = ''; // Por ejemplo, asignar un valor predeterminado vacío
+				}
+	
+				// Instancia de la base de datos y creación de usuario
 				$database = new Database();
 				$dbInstance = $database->getDB();
-		
-				// Crea una nueva instancia de Usuario con los datos del formulario
-				$newUser = new Usuario($dbInstance, $email, $password, $name, $lastname, $phone, $address, $photo);
-				
-				// Intenta agregar el usuario a la base de datos
+	
+				$newUser = new Usuario($dbInstance, $email, $password, $name, $lastname, $phone, $address, $photoPath);
 				$isUserCreated = $newUser->agregarUsuario();
-
+	
 				if ($isUserCreated) {
 					header('Location: index.php?controller=Usuario&action=mostrarLoginUsuario');
-					exit; // Aseguramos que el código no siga ejecutándose después de redirigir
+					exit;
 				} else {
 					echo "Error al crear el usuario. Por favor, inténtalo nuevamente.";
 				}
 			}
 		}
 	}
+	
+	
+	
 	
 	
 
