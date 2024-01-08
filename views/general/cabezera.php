@@ -65,14 +65,18 @@
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20"
-                            height="20"></a>
+                    <a href="#" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
                     <label class="mobile-item">Carrito</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/usuario.png" alt="Iniciar sesión" width="20"
-                            height="20"></a>
+                    <a href="#" class="tipo"><img src="views/img/usuario.png" alt="Iniciar sesión" width="20" height="20"></a>
                     <label class="mobile-item">Usuario</label>
+                    <input type="checkbox" id="showDrop">
+                    <ul class="drop-menu">
+                        <li><a href="#">Iniciar sesión</a></li>
+                        <li><a href="#">Registrarse</a></li>
+                        <li><a href="#">Ayuda</a></li>
+                    </ul>
                 </li>
             </ul>
             <label for="menu-btn" class="btn menu-btn"><img src="views/img/menu_icono.png" alt="menu" width="20" height="20"></label>
