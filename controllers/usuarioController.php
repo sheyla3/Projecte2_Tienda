@@ -63,15 +63,24 @@ class UsuarioController
 					$isValidType = in_array($detectedType, $allowedTypes);
 	
 					if ($isValidType && $photo['size'] <= 5000000) { // Tamaño máximo de 5 MB
-						$targetDirectory = "./img/fotos_usuario";
-						$targetFile = $targetDirectory . basename($photo['name']);
-	
+						$targetDirectory = "./img/fotos_usuario/";
+						
+						// Obtener la fecha y hora actual
+						$currentDateTime = date('YmdHis');
+						
+						// Obtener la extensión del archivo original
+						$fileExtension = pathinfo($photo['name'], PATHINFO_EXTENSION);
+					
+						// Construir un nombre de archivo único con fecha y hora
+						$targetFile = $targetDirectory . 'user_photo_' . $currentDateTime . '.' . $fileExtension;
+					
 						if (move_uploaded_file($photo['tmp_name'], $targetFile)) {
 							$photoPath = $targetFile;
 						} else {
 							echo "Error al subir la imagen. Por favor, inténtalo nuevamente.";
 							return;
 						}
+					
 					} else {
 						echo "El archivo de imagen no es válido. Asegúrate de subir una imagen en formato PNG, JPEG o GIF, y que no exceda los 5MB.";
 						return;
