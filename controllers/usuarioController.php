@@ -28,8 +28,7 @@ class UsuarioController
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php'>";
             }
         } else {
-            // Si no es una solicitud POST, simplemente muestra el formulario de inicio de sesión
-            // include('views\general\formularios\mostrar_login.php'); // Reemplaza con la ruta correcta a tu vista
+            include('views\general\formularios\mostrar_login.php');
         }
     }
 
@@ -54,7 +53,7 @@ class UsuarioController
 			} elseif (!is_numeric($phone) || strlen($phone) !== 9) {
 				echo "El teléfono debe ser un número de 9 dígitos. ";
 			} else {
-				// Verificación de la imagen (si se adjunta)
+				// verificacion de la imagen si se mete
 				if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
 					$photo = $_FILES['photo'];
 	
@@ -62,38 +61,44 @@ class UsuarioController
 					$detectedType = exif_imagetype($photo['tmp_name']);
 					$isValidType = in_array($detectedType, $allowedTypes);
 	
-					if ($isValidType && $photo['size'] <= 5000000) { // Tamaño máximo de 5 MB
+					if ($isValidType && $photo['size'] <= 5000000) { // Tamaño máximo de 5 megas
 						$targetDirectory = "./img/fotos_usuario/";
-						
-						// Obtener la fecha y hora actual
+	
+						// Fecha y hora para el nombre de la foto
 						$currentDateTime = date('YmdHis');
-						
-						// Obtener la extensión del archivo original
+	
+						// Nombre de la foto original
 						$fileExtension = pathinfo($photo['name'], PATHINFO_EXTENSION);
-					
-						// Construir un nombre de archivo único con fecha y hora
+	
+						// Crea el nombre de la foto con la fecha, hora y nombre
 						$targetFile = $targetDirectory . 'user_photo_' . $currentDateTime . '.' . $fileExtension;
-					
+	
 						if (move_uploaded_file($photo['tmp_name'], $targetFile)) {
 							$photoPath = $targetFile;
 						} else {
 							echo "Error al subir la imagen. Por favor, inténtalo nuevamente.";
 							return;
 						}
-					
+	
 					} else {
 						echo "El archivo de imagen no es válido. Asegúrate de subir una imagen en formato PNG, JPEG o GIF, y que no exceda los 5MB.";
 						return;
 					}
 				} else {
-					// Si no se adjunta una imagen, asigna un valor predeterminado o deja vacío según tu lógica
-					$photoPath = ''; // Por ejemplo, asignar un valor predeterminado vacío
+					$photoPath = ''; // Deja el nombre de la foto vacío para subirlo a la BBDD (si no se agrega foto)
 				}
 	
-				// Instancia de la base de datos y creación de usuario
+				// Instancia de la base de datos
 				$database = new Database();
 				$dbInstance = $database->getDB();
 	
+				// Encriptar la contraseña
+				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+	
+				// Asignar el valor encriptado a la variable $password
+				$password = $hashedPassword;
+	
+				// Crear nuevo usuario
 				$newUser = new Usuario($dbInstance, $email, $password, $name, $lastname, $phone, $address, $photoPath);
 				$isUserCreated = $newUser->agregarUsuario();
 	
@@ -106,6 +111,7 @@ class UsuarioController
 			}
 		}
 	}
+	
 	
 	
 	
