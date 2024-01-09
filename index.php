@@ -26,7 +26,6 @@ session_start();
     require_once "autoload.php";
     require_once "views/general/pie.php";
    
-   
     if (isset($_GET['controller'])) {
         $nombreController = $_GET['controller'] . "Controller";
     } else {
@@ -42,15 +41,18 @@ session_start();
            
         }
         $controlador->$action();
+        
     } else {
         echo "No existe el controlador";
     }
-   
+    CategoriaController::RellenarMenu();
+
     if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
         require_once "views/general/adminPanel/cabezeraAdmin.html";
        
     }else{
         require_once "views/general/cabezera.php";
+       
         //require_once "views/general/cabezera.html";
     }
 
