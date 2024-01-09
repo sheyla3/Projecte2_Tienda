@@ -923,6 +923,19 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   flex-direction: row;
 }
 
+.rowCubosP {
+  display: flex;
+  padding: 10px;
+}
+
+.cuboP{
+  height: 170px;
+  width: 250px;
+  margin: 10px;
+  text-align: center;
+}
+
+
 /* GRID SEXO HOMBRE Y MUJER */
 .menu_sexos {
   display: grid;

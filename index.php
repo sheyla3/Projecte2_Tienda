@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>SRG</title>
 </head>
 
