@@ -63,4 +63,19 @@ class Usuario {
             return false;
         }
     }
+	public function getProfile($email){
+		try {
+			$consulta = $this->db->prepare("SELECT * FROM usuarios WHERE correo = :email");
+			$consulta->bindParam(':email', $email); // Asignar valor al marcador
+			$consulta->execute(); // Ejecutar la consulta con el valor asignado
+	
+			$datosUser = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			return $datosUser;
+		} catch (PDOException $e) {
+			// Manejo de excepciones, por ejemplo:
+			echo "Error al obtener el perfil del usuario: " . $e->getMessage();
+			return null;
+		}
+	}
+	
 }
