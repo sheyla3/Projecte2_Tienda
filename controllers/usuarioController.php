@@ -21,7 +21,7 @@ class UsuarioController
             if ($isUserValid) {
                 $_SESSION['email'] = $email;
                 $_SESSION['role'] = 'user';
-                header('Location: index.php');
+                header('Location: index.php?controller=usuario&action=mostrarPerfil');
                 exit;
             } else {
                 echo "Credenciales no válidas";
@@ -112,14 +112,15 @@ class UsuarioController
 		}
 	}
 	
-	
-	
-	
-	
-	
+	// FUNCIONES PARA MOSTRAR
 
     public function mostrarLoginUsuario(){
         include('views/general/formularios/mostrar_login_usuario.php');
     }
     
+	public function mostrarPerfil(){
+		$usuario = new Usuario($dbInstance = null, $email = null, $password = null, $name = null, $lastname = null, $phone = null, $address = null, $photoPath = null);
+        $datosUser = $usuario->getProfile($_SESSION['email']);
+		include('views/general/usuario/perfilUser.php');
+	}
 }
