@@ -26,22 +26,24 @@ class Usuario {
 
 	// Método para realizar el login
 	public function login() {
-
-	$email = $this->email;
-	$password = $this->password;
-
-    	$consulta = $this->db->prepare("SELECT * FROM usuarios WHERE correo = :email AND contrasena = :password");
-    	$consulta->bindParam(':email', $email);
-    	$consulta->bindParam(':password', $password);
-    	$consulta->execute();
-
-    	// Verifica si hay filas devueltas por la consulta
-    	if ($consulta->rowCount() > 0) {
-        	return true;
-    	} else {
-        	return false;
-    	}
+		$email = $this->email;
+		$password = $this->password;
+	
+		$consulta = $this->db->prepare("SELECT contrasena FROM usuarios WHERE correo = :email");
+		$consulta->bindParam(':email', $email);
+		$consulta->execute();
+	
+		$hashedPassword = $consulta->fetchColumn();
+	
+		if ($hashedPassword) {
+			if (password_verify($password, $hashedPassword)) {
+				return true;
+			}
+		}
+	
+		return false;
 	}
+	
 
 	public function agregarUsuario() {
         $consulta = $this->db->prepare("INSERT INTO usuarios (correo, contrasena, nombre, apellidos, telf, direccion, foto) VALUES (:email, :password, :name, :lastname, :phone, :address, :photo)");

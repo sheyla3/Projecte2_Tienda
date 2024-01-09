@@ -8,29 +8,32 @@ class UsuarioController
 {
 	
 	public function procesar_login() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $database = new Database();
-            $dbInstance = $database->getDB();
-
-            $user = new Usuario($dbInstance, $email, $password, null, null, null, null, null);
-            $isUserValid = $user->login();
-
-            if ($isUserValid) {
-                $_SESSION['email'] = $email;
-                $_SESSION['role'] = 'user';
-                header('Location: index.php?controller=usuario&action=mostrarPerfil');
-                exit;
-            } else {
-                echo "Credenciales no válidas";
-                echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php'>";
-            }
-        } else {
-            include('views\general\formularios\mostrar_login.php');
-        }
-    }
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$email = $_POST['email'];
+			$password = $_POST['password'];
+	
+			$database = new Database();
+			$dbInstance = $database->getDB();
+	
+			$user = new Usuario($dbInstance, $email, $password, null, null, null, null, null);
+			$isUserValid = $user->login();
+	
+			if ($isUserValid) {
+				session_start();
+	
+				$_SESSION['email'] = $email;
+				$_SESSION['role'] = 'user';
+				header('Location: index.php');
+				exit;
+			} else {
+				echo "Credenciales no válidas";
+				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=mostrarPerfil'>";
+			}
+		} else {
+			include('views\general\formularios\mostrar_login.php');
+		}
+	}
+	
 
 	public function crearUsuario() {
 		include('views/general/formularios/crear_usuario.php');
@@ -43,7 +46,7 @@ class UsuarioController
 			$phone = $_POST['phone'];
 			$address = $_POST['address'];
 	
-			// Validación de tipos de datos
+			// Valida el tipos de datos
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				echo "El formato del correo electrónico no es válido. ";
 			} elseif (!is_string($password) || strlen($password) < 6) {
@@ -61,10 +64,10 @@ class UsuarioController
 					$detectedType = exif_imagetype($photo['tmp_name']);
 					$isValidType = in_array($detectedType, $allowedTypes);
 	
-					if ($isValidType && $photo['size'] <= 5000000) { // Tamaño máximo de 5 megas
+					if ($isValidType && $photo['size'] <= 5000000) { // tamaño máximo de 5 megas
 						$targetDirectory = "./img/fotos_usuario/";
 	
-						// Fecha y hora para el nombre de la foto
+						// fecha y hora para el nombre de la foto
 						$currentDateTime = date('YmdHis');
 	
 						// Nombre de la foto original
