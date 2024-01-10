@@ -33,7 +33,7 @@
         	<?php
         	foreach ($categorias as $categoria) {
             	$selected = ($categoria['id_categoria'] == $info[0]['id_categoria']) ? 'selected' : '';
-            	echo "<option value='{$categoria['id_categoria']}' $selected>{$categoria['nombre']}</option>";
+            	echo "<option value='{$categoria['id_categoria']}' $selected>{$categoria['nombre']}-{$categoria['sexo']}</option>";
         	}
         	?>
     	</select>

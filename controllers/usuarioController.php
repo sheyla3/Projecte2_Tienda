@@ -25,7 +25,7 @@ class UsuarioController
 				exit;
 			} else {
 				echo "Credenciales no válidas";
-				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php'>";
+				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=mostrarPerfil'>";
 			}
 		} else {
 			include('views\general\formularios\mostrar_login.php');
@@ -113,9 +113,6 @@ class UsuarioController
 		}
 	}
 	
-	
-	
-
 	// FUNCIONES PARA MOSTRAR
 
     public function mostrarLoginUsuario(){
@@ -127,8 +124,4 @@ class UsuarioController
         $datosUser = $usuario->getProfile($_SESSION['email']);
 		include('views/general/usuario/perfilUser.php');
 	}
-    
 }
-
-
-?>

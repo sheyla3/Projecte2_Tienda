@@ -1,9 +1,6 @@
 <?php
-// require "models/producto.php";
-require "models/producto.php";
-require "models/categoria.php";
-require "models/pedido.php";
-require "models/admin.php";
+
+require_once "models/categoria.php";
 require_once "models/database.php";
 
 class CategoriaController
@@ -103,6 +100,29 @@ class CategoriaController
         $categorias = $categoria->obtenerIdNombreCategoriasHombre();
 
         require_once "views/general/paginaPrincipal/categortiasH.php";
+
+    }
+
+    public function MostrarCubosCategoriasMujer(){
+        $database = new Database();
+        $dbInstance = $database->getDB();
+
+        $categoria = new Categoria($dbInstance ,null, null, null , null);
+        $categorias = $categoria->obtenerIdNombreCategoriasMujer();
+
+        require_once "views/general/paginaPrincipal/categortiasM.php";
+
+    }
+
+    public static function RellenarMenu(){
+        $database = new Database();
+        $dbInstance = $database->getDB();
+
+        $categoria = new Categoria($dbInstance ,null, null, null , null);
+        $categoriasM = $categoria->obtenerIdNombreCategoriasMujer();
+        $categoriasH = $categoria->obtenerIdNombreCategoriasHombre();
+
+        require_once "views\general\cabezera.php";
 
     }
 
