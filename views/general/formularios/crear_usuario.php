@@ -18,7 +18,7 @@
             <input type="text" id="lastname" name="lastname" placeholder="Apellidos" required/>
             <input type="tel" id="phone" name="phone" placeholder="Teléfono" required/>
             <input type="text" id="address" name="address" placeholder="Dirección" required/>
-            <input type="file" id="photo" name="photo" accept="image/*"> <!-- Campo para subir foto -->
+            <input type="file" id="photo" name="photo" accept="image/*">
             <input type="submit" class="button" value="Crear Cuenta">
         </form>
         <a href="index.php?controller=usuario&action=mostrarLoginUsuario">Ya tienes cuenta? Inicia sesión</a>
