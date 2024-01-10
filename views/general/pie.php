@@ -36,8 +36,6 @@
                 <p class="copyright">© 2023 SRG Todos los derechos reservados |<a class="linkAdminLogin"
                         href="index.php?controller=admin&action=mostrarLoginAdmin"> Panel Administrador</a> |<a class="linkAdminLogin"
                         href="index.php?controller=usuario&action=mostrarLoginUsuario"> Login Usuario</a>
-                       <a href="index.php?controller=Categoria&action=MostrarCubosCategoriasHombre"> categorias hombre</a></p>
-
             </div>
 
     </div>

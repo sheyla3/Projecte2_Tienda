@@ -25,6 +25,7 @@ session_start();
    
     require_once "autoload.php";
     require_once "views/general/pie.php";
+    $_SESSION['seccion'] = "nada";
    
     if (isset($_GET['controller'])) {
         $nombreController = $_GET['controller'] . "Controller";

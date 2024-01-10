@@ -240,6 +240,10 @@ nav .header {
     display: none;
   }
 
+  .selected{
+    background-color: red;
+  }
+
   .nav-links .mobile-item {
     display: block;
     color: #f2f2f2;
@@ -928,11 +932,27 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   padding: 10px;
 }
 
+.letraP{
+  position: absolute;
+  bottom: 0px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.letraP a {
+  text-decoration: none;
+}
+
 .cuboP{
-  height: 170px;
-  width: 250px;
+  height: 550px;
+  width: 400px;
   margin: 10px;
   text-align: center;
+  background-position: center;
+  position: relative;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
 }
 
 

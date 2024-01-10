@@ -241,6 +241,18 @@ class ProductoController
         include('views/general/paginaCategorias/productosPorCategoria.php');
         
     }
+
+    
+    public function mostrarProducto(){
+
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $id_producto = $_GET['id_producto'];
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,$id_producto,null,null,null);
+        $productos = $producto->obtenerInfo();
+        include('views/general/paginaCategorias/productosPorCategoria.php');
+        
+    }
     
 
 

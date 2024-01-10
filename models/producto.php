@@ -150,9 +150,9 @@ class Producto extends Database
         echo $count." registros actualizados correctamente";
     } 
 
-    public function obtenerInfo($id) {
+    public function obtenerInfo() {
         $consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria, estado, referencia FROM productos WHERE id_producto = :id");
-        $consulta->bindValue(':id', $id);
+        $consulta->bindValue(':id', $this->id_producto);
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         return $resultado;

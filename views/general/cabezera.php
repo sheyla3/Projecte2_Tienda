@@ -11,10 +11,12 @@
             <ul class="nav-links">
                 <label for="close-btn" class="btn close-btn"><img src="views/img/cerrar_icono.png" alt="cerrar" width="20" height="20"></label>
                 <?php
+                $clase_seleccionadaM = ($_SESSION['seccion'] === "mujer") ? 'class="tipo selected"' : 'class="tipo"';
+                $clase_seleccionadaH = ($_SESSION['seccion'] === "hombre") ? 'class="tipo selected"' : 'class="tipo"';
                 // Verificar y mostrar las categorías de mujer si existen
                 if (isset($categoriasM)) {
                     echo '<li>';
-                    echo '<a href="#" class="tipo">Mujer</a>';
+                    echo '<a href="#" ' . $clase_seleccionadaM . '>Mujer</a>';
                     echo '<input type="checkbox" id="showMega">';
                     echo '<label for="showMega" class="mobile-item">Mujer</label>';
                     echo '<div class="mega-box">';
@@ -40,7 +42,7 @@
                 // Verificar y mostrar las categorías de hombre si existen
                 if (isset($categoriasH)) {
                     echo '<li>';
-                    echo '<a href="#" class="tipo">Hombre</a>';
+                    echo '<a href="#" ' . $clase_seleccionadaH . '>Hombre</a>';
                     echo '<input type="checkbox" id="showMega2">';
                     echo '<label for="showMega2" class="mobile-item">Hombre</label>';
                     echo '<div class="mega-box">';

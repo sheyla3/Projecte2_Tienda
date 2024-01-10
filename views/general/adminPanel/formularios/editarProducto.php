@@ -4,7 +4,7 @@
 	<div class="imagenes">
 		<?php
 			foreach ($fotos as $imagen) {
-				echo "<img src='" . $imagen['img'] . "' alt='Imagen'>";
+				echo "<img src='" . $imagen['img'] . "' alt='Imagen'  width='400' height='500'>";
 			}
 		?>
 	</div>
