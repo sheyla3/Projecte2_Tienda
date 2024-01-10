@@ -1,8 +1,6 @@
 <?php
-require "models/producto.php";
-require "models/categoria.php";
-require "models/pedido.php";
-require "models/admin.php";
+require_once "models/producto.php";
+require_once "models/categoria.php";
 require_once "models/database.php";
 
 class ProductoController
@@ -248,9 +246,19 @@ class ProductoController
         $database = new Database();
         $dbInstance = $database->getDB();
         $id_producto = $_GET['id_producto'];
-        $producto = new Producto($dbInstance,null,null,null,null,null,null,$id_producto,null,null,null);
+        $producto = new Producto($dbInstance,$id_producto,null,null,null,null,null,null,null,null,null);
         $productos = $producto->obtenerInfo();
-        include('views/general/paginaCategorias/productosPorCategoria.php');
+        include('views\general\paginaPrincipal\detallesProducto.php');
+        
+    }
+
+    public static function mostrarProductoDestacados(){
+
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $productos = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+        $productos = $productos->productoDestacado();
+        require_once "views\general\paginaCategorias\productosDestacados.php";
         
     }
     

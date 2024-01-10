@@ -1,6 +1,7 @@
 <div class="cubosCategorias">
 <?php
 $contador = 0;
+echo '<h3>Categorias Mujer</h3>';
 foreach ($categorias as $categoria) {
     if ($contador % 2 === 0) {
         echo '<div class="rowCubos">';

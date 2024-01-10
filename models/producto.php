@@ -151,12 +151,16 @@ class Producto extends Database
     } 
 
     public function obtenerInfo() {
-        $consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria, estado, referencia FROM productos WHERE id_producto = :id");
+        $consulta = $this->db->prepare("SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.stock, p.destacado, p.id_categoria, p.estado, p.referencia, f.img 
+                                        FROM productos p 
+                                        LEFT JOIN fotos f ON p.id_producto = f.id_producto 
+                                        WHERE p.id_producto = :id");
         $consulta->bindValue(':id', $this->id_producto);
         $consulta->execute();
-        $resultado = $consulta->fetchAll();
+        $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
+    
 
     public function obtenerFotos(){
         $consulta = $this->db->prepare("SELECT img FROM fotos WHERE id_producto = :id");
@@ -170,7 +174,7 @@ class Producto extends Database
     
     public function productoDestacado()
     {
-        $consulta = $this->db->prepare("SELECT * FROM productos WHERE destacado = t");
+        $consulta = $this->db->prepare("SELECT * FROM productos WHERE destacado = true");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         return $resultado;

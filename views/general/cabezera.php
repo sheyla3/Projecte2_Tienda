@@ -16,7 +16,7 @@
                 // Verificar y mostrar las categorías de mujer si existen
                 if (isset($categoriasM)) {
                     echo '<li>';
-                    echo '<a href="#" ' . $clase_seleccionadaM . '>Mujer</a>';
+                    echo '<a href="index.php?controller=Categoria&action=MostrarCubosCategoriasMujer" ' . $clase_seleccionadaM . '>Mujer</a>';
                     echo '<input type="checkbox" id="showMega">';
                     echo '<label for="showMega" class="mobile-item">Mujer</label>';
                     echo '<div class="mega-box">';
@@ -42,7 +42,7 @@
                 // Verificar y mostrar las categorías de hombre si existen
                 if (isset($categoriasH)) {
                     echo '<li>';
-                    echo '<a href="#" ' . $clase_seleccionadaH . '>Hombre</a>';
+                    echo '<a href="index.php?controller=Categoria&action=MostrarCubosCategoriasHombre" ' . $clase_seleccionadaH . '>Hombre</a>';
                     echo '<input type="checkbox" id="showMega2">';
                     echo '<label for="showMega2" class="mobile-item">Hombre</label>';
                     echo '<div class="mega-box">';

@@ -46,7 +46,12 @@ session_start();
     } else {
         echo "No existe el controlador";
     }
+    
     CategoriaController::RellenarMenu();
+    ProductoController::mostrarProductoDestacados();
+
+
+
 
     if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
         require_once "views/general/adminPanel/cabezeraAdmin.html";
