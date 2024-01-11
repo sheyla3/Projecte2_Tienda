@@ -25,7 +25,7 @@ class UsuarioController
 				exit;
 			} else {
 				echo "Credenciales no válidas";
-				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=mostrarPerfil'>";
+				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=m '>";
 			}
 		} else {
 			include('views\general\formularios\mostrar_login.php');
@@ -46,17 +46,26 @@ class UsuarioController
 	
 			// Valida el tipos de datos
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				$result = '<div style="position:absolute; top:10%; left: 41%; color:red;">El formato del correo electrónico no es válido. </div>';
-				echo $result;
+				$errorEmail = 'El formato del correo electrónico no es válido.';
+				$url = 'index.php?controller=Usuario&action=crearUsuario&errorEmail=' . urlencode($errorEmail);
+				echo "<meta http-equiv='refresh' content='0;URL=" . $url . "'>";
+				exit();
+				
 			} elseif (!is_string($password) || strlen($password) < 6) {
-				$result = '<div style="position:absolute; top:10%; left: 41%; color:red;">La contraseña debe ser una cadena de al menos 6 caracteres. </div>';
-				echo $result;
+				$errorPass = 'La contraseña debe ser una cadena de al menos 6 caracteres.';
+				$url = 'index.php?controller=Usuario&action=crearUsuario&errorPass=' . urlencode($errorPass);
+				echo "<meta http-equiv='refresh' content='0;URL=" . $url . "'>";
+				exit();
 			} elseif (!is_string($name) || !is_string($lastname) || !is_string($address)) {
-				$result = '<div style="position:absolute; top:10%; left: 41%; color:red;">El nombre, apellido y dirección deben ser cadenas de texto. </div>';
-				echo $result;
+				$errorTexto = 'El nombre, apellido y dirección deben ser cadenas de texto.';
+				$url = 'index.php?controller=Usuario&action=crearUsuario&errorTexto=' . urlencode($errorTexto);
+				echo "<meta http-equiv='refresh' content='0;URL=" . $url . "'>";
+				exit();
 			} elseif (!is_numeric($phone) || strlen($phone) !== 9) {
-				$result = '<div style="position:absolute; top:10%; left: 41%; color:red;">El teléfono debe ser un número de 9 dígitos. </div>';
-				echo $result;
+				$errorTel = 'El teléfono debe ser un número de 9 dígitos.';
+				$url = 'index.php?controller=Usuario&action=crearUsuario&errorTel=' . urlencode($errorTel);
+				echo "<meta http-equiv='refresh' content='0;URL=" . $url . "'>";
+				exit();
 			} else {
 				// verificacion de la imagen si se mete
 				if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
@@ -78,15 +87,17 @@ class UsuarioController
 						if (move_uploaded_file($photo['tmp_name'], $targetFile)) {
 							$photoPath = $targetFile;
 						} else {
-							$result = '<div style="position:absolute; top:10%; left: 41%; color:red;">Error al subir la imagen. Por favor, inténtalo nuevamente.</div>';
-							echo $result;
-							return;
+							$errorSubir = 'Error al subir la imagen. Vuelve a intentarlo.';
+							$url = 'index.php?controller=Usuario&action=crearUsuario&errorSubir=' . urlencode($errorSubir);
+							echo "<meta http-equiv='refresh' content='0;URL=" . $url . "'>";
+							exit();
 						}
 	
 					} else {
-						$result = '<div style="position:absolute; top:10%; left: 41%; color:red;">El archivo de imagen no es válido. Asegúrate de subir una imagen en formato PNG, JPEG o GIF, y que no exceda los 5MB.</div>';
-						echo $result;
-						return;
+						$errorValidez = 'El archivo de imagen no es válido. Asegúrate de subir una imagen en formato PNG, JPEG o GIF, y que no exceda los 5MB.';
+						$url = 'index.php?controller=Usuario&action=crearUsuario&errorSubir=' . urlencode($errorValidez);
+						echo "<meta http-equiv='refresh' content='0;URL=" . $url . "'>";
+						exit();
 					}
 				} else {
 					$photoPath = '';
@@ -118,7 +129,12 @@ class UsuarioController
     public function mostrarLoginUsuario(){
         include('views/general/formularios/mostrar_login_usuario.php');
     }
-    
+	
+    public function mostrarCrearUsuario(){
+		include('views/general/formularios/crear_usuario.php');
+	}
+
+
 	public function mostrarPerfil(){
 		$usuario = new Usuario($dbInstance = null, $email = null, $password = null, $name = null, $lastname = null, $phone = null, $address = null, $photoPath = null);
         $datosUser = $usuario->getProfile($_SESSION['email']);
