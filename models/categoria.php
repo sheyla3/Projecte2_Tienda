@@ -92,20 +92,107 @@ class Categoria extends Database {
 		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 		return $resultado;
 	}
-
-	public function obtenerIdNombreCategoriasHombre() {
-		$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Hombre'" );
-		$consulta->execute();
-		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-		return $resultado;
-	}
+	
+	// public function obtenerIdNombreCategoriasHombre() {
+	// 	$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Hombre'" );
+	// 	$consulta->execute();
+	// 	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+	// 	return $resultado;
+	// }
 
 	public function obtenerIdNombreCategoriasMujer() {
-		$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Mujer'");
+		$consulta = $this->db->prepare("
+			SELECT 
+				c.id_categoria, 
+				c.nombre, 
+				p.id_producto, 
+				COALESCE(f.img, '') AS primera_foto
+			FROM categorias c
+			LEFT JOIN productos p ON c.id_categoria = p.id_categoria
+			LEFT JOIN (
+				SELECT 
+					id_producto, 
+					img,
+					ROW_NUMBER() OVER (PARTITION BY id_producto ORDER BY id_foto) AS rn
+				FROM fotos
+			) f ON p.id_producto = f.id_producto AND f.rn = 1
+			WHERE c.estado = true AND c.sexo = 'Mujer'
+		");
 		$consulta->execute();
-		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-		return $resultado;
+		$categorias = $consulta->fetchAll(PDO::FETCH_ASSOC);
+	
+		$resultado = [];
+		foreach ($categorias as $categoria) {
+			$categoriaID = $categoria['id_categoria'];
+			if (!isset($resultado[$categoriaID])) {
+				$resultado[$categoriaID] = [
+					'id_categoria' => $categoriaID,
+					'nombre' => $categoria['nombre'],
+					'primera_foto' => $categoria['primera_foto'],
+					'productos' => []
+				];
+			}
+	
+			$resultado[$categoriaID]['productos'][] = [
+				'id_producto' => $categoria['id_producto'],
+				'primera_foto' => $categoria['primera_foto']
+			];
+		}
+	
+		return array_values($resultado);
 	}
+	
+	public function obtenerIdNombreCategoriasHombre() {
+		$consulta = $this->db->prepare("
+			SELECT 
+				c.id_categoria, 
+				c.nombre, 
+				p.id_producto, 
+				COALESCE(f.img, '') AS primera_foto
+			FROM categorias c
+			LEFT JOIN productos p ON c.id_categoria = p.id_categoria
+			LEFT JOIN (
+				SELECT 
+					id_producto, 
+					img,
+					ROW_NUMBER() OVER (PARTITION BY id_producto ORDER BY id_foto) AS rn
+				FROM fotos
+			) f ON p.id_producto = f.id_producto AND f.rn = 1
+			WHERE c.estado = true AND c.sexo = 'Hombre'
+		");
+		$consulta->execute();
+		$categorias = $consulta->fetchAll(PDO::FETCH_ASSOC);
+	
+		$resultado = [];
+		foreach ($categorias as $categoria) {
+			$categoriaID = $categoria['id_categoria'];
+			if (!isset($resultado[$categoriaID])) {
+				$resultado[$categoriaID] = [
+					'id_categoria' => $categoriaID,
+					'nombre' => $categoria['nombre'],
+					'primera_foto' => $categoria['primera_foto'],
+					'productos' => []
+				];
+			}
+	
+			$resultado[$categoriaID]['productos'][] = [
+				'id_producto' => $categoria['id_producto'],
+				'primera_foto' => $categoria['primera_foto']
+			];
+		}
+	
+		return array_values($resultado);
+	}
+	
+	
+	
+
+	// public function obtenerIdNombreCategoriasMujer() {
+	// 	$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Mujer'");
+	// 	$consulta->execute();
+	// 	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+	// 	return $resultado;
+	// }
 
 	public function activar($id) {
     	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");

@@ -7,8 +7,14 @@ foreach ($categorias as $categoria) {
         echo '<div class="rowCubos">';
     }
     echo '<a href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoria['id_categoria'] . '">';
-    echo '<div class="categoriaCubo">';
-    echo '<p class="cubo">'. $categoria['nombre'] . '</p>';
+    echo '<div class="categoriaCubo" style="background-image: url(' . (!empty($categoria['primera_foto']) ? '\'' . $categoria['primera_foto'] . '\'' : '') . ')">';
+    
+    if (empty($categoria['primera_foto'])) {
+        // Si no hay primera_foto, puedes agregar un mensaje o contenido alternativo
+        
+    }
+    
+    echo '<p class="cubo">' . $categoria['nombre'] . '</p>';
     echo '</div>';
     echo '</a>';
 
@@ -18,10 +24,5 @@ foreach ($categorias as $categoria) {
 
     $contador++;
 }
-
 ?>
 </div>
-
-
-<!-- $userAgent = $_SERVER['HTTP_USER_AGENT'];
-echo "User Agent: " . $userAgent; -->
