@@ -1056,8 +1056,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 }
 
 .tituloHombre, .tituloMujer{
-  text-align: center;
-  text-decoration: none;
+  display: none;
 }
 
 a {
