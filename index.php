@@ -48,7 +48,7 @@ session_start();
     }
     
     CategoriaController::RellenarMenu();
-    ProductoController::mostrarProductoDestacados();
+    
 
 
 

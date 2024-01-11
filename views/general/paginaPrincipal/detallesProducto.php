@@ -4,7 +4,7 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
 ?>
 
 <div class="Desktop1">
-    <img class="FotoZapato" src="<?php echo $producto['img']; ?>" />
+    <img class="FotoZapato" src="<?php echo $producto['img']; ?>" alt="<?php echo $producto['nombre']?>" />
     <div class="ZonaInfo">
         <div class="NombreProducto"><?php echo $producto['nombre']; ?></div>
         <div class="Precio"><?php echo $precioFormateado; ?></div>

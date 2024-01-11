@@ -1029,18 +1029,41 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 .div1_sexos {
   grid-area: 1 / 1 / 2 / 2;
-  background-color: #537FE7;
+  /* background-color: #537FE7; */
+  background-image: url(img/fotos/mujer.jpg);
   padding-top: 100px;
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
   text-align: center;
+  background-position: center;
+  position: relative;
+  background-size: 100% 180%;
+  height: 400px;
+  text-decoration: none;
 }
 
 .div2_sexos {
   grid-area: 1 / 2 / 2 / 3;
+  background-image: url(img/fotos/hombre.jpg);
   background-color: #242526;
   padding-top: 100px;
-  padding-bottom: 100px;
   text-align: center;
+  background-position: center;
+  position: relative;
+  background-size: 100% 180%;
+  height: 400px;
+  text-decoration: none;
 
 }
+
+.tituloHombre, .tituloMujer{
+  text-align: center;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  outline: none; 
+  color: black;
+}
+
 

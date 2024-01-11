@@ -173,12 +173,16 @@ class Producto extends Database
     
     
     public function productoDestacado()
-    {
-        $consulta = $this->db->prepare("SELECT * FROM productos WHERE destacado = true");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
+{
+    $consulta = $this->db->prepare("SELECT p.*, f.img 
+                                    FROM productos p 
+                                    LEFT JOIN fotos f ON p.id_producto = f.id_producto 
+                                    WHERE p.destacado = true");
+    $consulta->execute();
+    $resultado = $consulta->fetchAll();
+    return $resultado;
+}
+
 
     public function productosCategoria()
 {
