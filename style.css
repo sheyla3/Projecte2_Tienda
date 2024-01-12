@@ -56,7 +56,7 @@ nav .header {
   display: none;
 }
 
-.nav-links .drop-menu{
+.nav-links .drop-menu {
   position: absolute;
   background: #242526;
   width: 180px;
@@ -65,7 +65,7 @@ nav .header {
   top: 85px;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .nav-links li:hover .drop-menu,
@@ -76,7 +76,7 @@ nav .header {
   visibility: visible;
 }
 
-.drop-menu li a{
+.drop-menu li a {
   display: block;
   padding: 0 0 0 15px;
   font-weight: 400;
@@ -84,7 +84,7 @@ nav .header {
   color: white;
 }
 
-.drop-menu li a:hover{
+.drop-menu li a:hover {
   color: black;
 }
 
@@ -153,6 +153,174 @@ nav .header {
   top: 10px;
 }
 
+/* ESTILOS PAGINA USUARIO */
+
+.my-profile-title {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: 5%;
+  width: 55%;
+  height: 50px;
+  font-size: 30px;
+  color: #FBA00E;
+}
+
+.div1-user {
+  display: grid;
+  grid-template-columns: 4fr 4fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 22px;
+  grid-row-gap: 0px;
+  margin-bottom: 20%;
+}
+
+.subdiv1-user {
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: white;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  margin-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  
+}
+
+.subdiv1-user>div {
+  padding-left: 5%;
+  padding-top: 5%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+
+}
+
+.image-profile-dades {
+  padding-right: 5%;
+  display: flex;
+  align-items: center;
+}
+
+.subdiv2-user {
+  grid-area: 1 / 2 / 2 / 3;
+  background-color: white;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  width: 70%;
+}
+
+.profile-title-photo {
+  text-align: center;
+}
+
+.subdiv2-user>div {
+  width: 100%;
+  text-align: center;
+}
+
+.subdiv2-user>div>img {
+  border-radius: 20px;
+}
+
+.foto-input {
+  color: transparent;
+}
+
+.foto-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.foto-input::before {
+  content: 'Cambiar foto';
+  margin-left: 30%;
+  color: black;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+
+.foto-input:hover::before {
+  border-color: black;
+}
+
+.foto-input:active {
+  outline: 0;
+}
+
+.foto-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.user-profile-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-save-button {
+  background-color: transparent;
+  border: none;
+}
+
+.save-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.save-icon:hover {
+  opacity: 80%;
+}
+
+.pedidos-usuario-profile {
+  float: left;
+  width: 10%;
+  margin-left: 2%;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  text-decoration: none;
+  color: black;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+
+  --c: #FBA00E;
+  /* the border color */
+  --b: 4px;
+  /* the border thickness*/
+  --g: 5px;
+  /* the gap on hover */
+
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%, var(--c) 0;
+  background:
+    conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g)) var(--_i, 200%) 0 /200% var(--_i, var(--b)) no-repeat,
+    conic-gradient(at bottom var(--b) left var(--b), var(--_g)) 0 var(--_i, 200%)/var(--_i, var(--b)) 200% no-repeat;
+  transition: .3s, background-position .3s .3s;
+  cursor: pointer;
+}
+
+.pedidos-usuario-profile:hover {
+  border-radius: 15px;
+  --_i: 100%;
+  transition: .2s, background-size .2s .2s;
+}
+
 @media screen and (max-width: 970px) {
   .header .btn {
     display: block;
@@ -208,7 +376,7 @@ nav .header {
     font-size: 20px;
   }
 
-  .nav-links .drop-menu{
+  .nav-links .drop-menu {
     position: static;
     opacity: 1;
     top: 65px;
@@ -221,17 +389,17 @@ nav .header {
     transition: all 0.3s ease;
   }
 
-  #showDrop:checked ~ .drop-menu,
+  #showDrop:checked~.drop-menu,
   #showMega:checked~.mega-box,
   #showMega2:checked~.mega-box {
     max-height: 100%;
   }
 
-  .drop-menu li{
+  .drop-menu li {
     margin: 0;
   }
 
-  .drop-menu li a{
+  .drop-menu li a {
     border-radius: 5px;
     font-size: 18px;
   }
@@ -240,7 +408,7 @@ nav .header {
     display: none;
   }
 
-  .selected{
+  .selected {
     background-color: red;
   }
 
@@ -930,7 +1098,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   flex-direction: row;
 }
 
-.cubo{
+.cubo {
   text-align: center;
   position: absolute;
   bottom: 0;
@@ -944,7 +1112,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   padding: 10px;
 }
 
-.letraP{
+.letraP {
   position: absolute;
   bottom: 0px;
   font-weight: bold;
@@ -955,7 +1123,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   text-decoration: none;
 }
 
-.cuboP{
+.cuboP {
   height: 550px;
   width: 400px;
   margin: 10px;
@@ -969,14 +1137,14 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 /*pagina individual*/
 
-.FotoZapato{
+.FotoZapato {
   width: 400px;
   height: 600px;
   padding: 30px;
   transform: scale(0.9);
 }
 
-.ZonaInfo{
+.ZonaInfo {
   width: 500px;
   padding-left: 50px;
   justify-content: center;
@@ -984,19 +1152,19 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   flex-direction: column;
 }
 
-.Desktop1{
+.Desktop1 {
   display: flex;
   flex-direction: row;
   padding-top: 80px;
   justify-content: center;
 }
 
-.NombreProducto{
+.NombreProducto {
   font-weight: bold;
   font-size: 35px;
 }
 
-.botonAñadir{
+.botonAñadir {
   width: 123px;
   background-color: black;
   color: white;
@@ -1005,17 +1173,17 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   border-radius: 20px;
 }
 
-#cantidad{
+#cantidad {
   width: 45px;
-  
+
 }
 
-.Precio{
+.Precio {
   padding-top: 15px;
   font-size: 20px;
 }
 
-.contenedorCant{
+.contenedorCant {
   display: flex;
   flex-direction: row;
   padding-bottom: 15px;
@@ -1027,9 +1195,10 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   width: 350px;
 }
 
-#labelCantidad{
+#labelCantidad {
   padding-top: 2px;
 }
+
 /* GRID SEXO HOMBRE Y MUJER */
 .menu_sexos {
   display: grid;
@@ -1067,14 +1236,13 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 }
 
-.tituloHombre, .tituloMujer{
+.tituloHombre,
+.tituloMujer {
   text-align: center;
 }
 
 a {
   text-decoration: none;
-  outline: none; 
+  outline: none;
   color: black;
 }
-
-

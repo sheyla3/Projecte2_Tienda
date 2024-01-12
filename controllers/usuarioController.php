@@ -21,11 +21,11 @@ class UsuarioController
 	
 				$_SESSION['email'] = $email;
 				$_SESSION['role'] = 'user';
-				header('Location: index.php');
+				header('Location: index.php?controller=usuario&action=mostrarPerfil');
 				exit;
 			} else {
 				echo "Credenciales no válidas";
-				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=m '>";
+				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=mostrarLoginUsuario '>";
 			}
 		} else {
 			include('views\general\formularios\mostrar_login.php');
@@ -136,8 +136,12 @@ class UsuarioController
 
 
 	public function mostrarPerfil(){
-		$usuario = new Usuario($dbInstance = null, $email = null, $password = null, $name = null, $lastname = null, $phone = null, $address = null, $photoPath = null);
-        $datosUser = $usuario->getProfile($_SESSION['email']);
+		$database = new Database();
+		$dbInstance = $database->getDB();
+
+		$newUser = new Usuario($dbInstance, $_SESSION['email'], null, null, null, null, null, null);
+        $datosUser = $newUser->getProfile($_SESSION['email']);
+		
 		include('views/general/usuario/perfilUser.php');
 	}
 }

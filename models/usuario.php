@@ -65,7 +65,7 @@ class Usuario {
     }
 	public function getProfile($email){
 		try {
-			$consulta = $this->db->prepare("SELECT * FROM usuarios WHERE correo = :email");
+			$consulta = $this->db->prepare("SELECT correo, nombre, apellidos, telf, direccion, foto FROM usuarios WHERE correo = :email");
 			$consulta->bindParam(':email', $email); // Asignar valor al marcador
 			$consulta->execute(); // Ejecutar la consulta con el valor asignado
 	
