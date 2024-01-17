@@ -220,6 +220,24 @@ class Categoria extends Database {
     	return $resultado;
 	}
 
+	
+	public function buscador($nom) {
+		$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias WHERE nombre ILIKE '%' || :nombre || '%'");
+		$consulta->bindParam(':nombre', $nom);
+	
+		error_log('Consulta SQL ejecutada: ' . $consulta->queryString);
+	
+		$consulta->execute();
+		$resultado = $consulta->fetchAll();
+	
+		// Añade un mensaje de depuración para ver los resultados
+		error_log('Resultados de la consulta: ' . print_r($resultado, true));
+	
+		return $resultado;
+	}
+	
+		
+
 	public function CategoriasGeneral() {
     	$consulta = $this->db->prepare("SELECT * FROM categorias");
     	$consulta->execute();

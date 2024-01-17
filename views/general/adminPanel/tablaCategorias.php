@@ -1,21 +1,22 @@
 <?php
 echo "
 <div class='admin-panel-content-container'>
-	<div class='admin-panel-title-container'>
-		<ul class='tituloMenu'>
-		<li><h1 class='admin-panel-title'>Categorías</h1></li>
-		<li class='derecha'><a class='admin-panel-add-link' href='index.php?controller=Categoria&action=botonCrearCategoria'>Añadir categoría</a></li>
-		<li class='derecha'>
-			<form action='' method='post' class='formCat buscador'>
-				<label for='campo' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
-				<input type='text' id='Cbuscar' name='Cbuscar'>
-			</form>
-		</li>
-		</ul>
-		<div class='blue-line'></div>
-	</div>";
+<div class='admin-panel-title-container'>
+<ul class='tituloMenu'>
+	<li><h1 class='admin-panel-title'>Categorías</h1></li>
+	<li class='derecha'><a class='admin-panel-add-link' href=''>Añadir categoría</a></li>
+	<li class='derecha'>
+		<form action='' method='post' class='formCat buscador'>
+			<label for='Cbuscar' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
+			<input type='text' id='Cbuscar' name='Cbuscar'>
+		</form>
+		<div id='resultados-busqueda'></div>
+	</li>
+</ul>
+<div class='blue-line'></div>
+</div>";
 
-echo "<div class='table-container'>";
+echo "<div class='table-container' id='tabla-categorias'>";
 echo "<table class='admin-panel-page-table'>
     	<tr>
         	<th>ID Categoria</th>
@@ -36,6 +37,7 @@ foreach ($catalogo as $categoria) {
     	</tr>";
 }
 echo "</table>
+
 </div>
 </div>";
 ?>

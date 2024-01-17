@@ -1,23 +1,60 @@
-function buscarProducto() {
-	let filtro = document.getElementById('query').value;
+$(document).ready(function () {
 
-	// Realizar una solicitud AJAX utilizando fetch
-	fetch('index.php?controller=ProductoController&action=buscarproductos&filtro=' + filtro)
-    	.then(response => {
-        	if (!response.ok) {
-            	throw new Error('Network response was not ok');
-        	}
-        	return response.json();
-    	})
-    	.then(data => {
-        	// Manejar la respuesta obtenida
-        	console.log(data); // Por ejemplo, muestra los datos en la consola
-    	})
-    	.catch(error => {
-        	// Manejar errores de la solicitud
-        	console.error('There was a problem with the fetch operation:', error);
-    	});
-}
+	function obtenerTablaCompleta() {
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=Categoria&action=CrearTablaCompletaCategoria',
+            dataType: 'html',
+            success: function (htmlTablaCompleta) {
+                // Actualizar el contenido de la tabla con la tabla completa
+                $('#tabla-categorias').html(htmlTablaCompleta);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX para obtener la tabla completa:', textStatus, errorThrown);
+            }
+        });
+    }
+
+
+    // Función para manejar la búsqueda
+    function buscarCategorias(busqueda) {
+        console.log('Buscando categorías con:', busqueda);
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=Categoria&action=buscarCategoria',
+            data: { busqueda: busqueda },
+            dataType: 'html', // Esperamos HTML como respuesta
+            success: function (htmlTabla) {
+                try {
+                     // Si la búsqueda está en blanco, guarda los resultados completos
+					 if (busqueda.length === 0) {
+                        // Llamada a la función para obtener la tabla completa
+                        obtenerTablaCompleta();
+                    } else {
+                        // Actualizar el contenido de la tabla con los resultados
+                        $('#tabla-categorias').html(htmlTabla);
+                    }
+                } catch (error) {
+                    console.error('Error al procesar la respuesta del servidor:', error);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+            }
+        });
+    }
+
+	    // Evento cuando se escribe en el campo de búsqueda
+		$('#Cbuscar').on('input', function () {
+			var busqueda = $(this).val().trim();
+			if (busqueda.length > 0) {
+				buscarCategorias(busqueda);
+			} else {
+				obtenerTablaCompleta();
+			}
+		});
+});
+
 
 function mostrarCampoImagen() {
 	var campoImagen = document.getElementById("campoImagen");

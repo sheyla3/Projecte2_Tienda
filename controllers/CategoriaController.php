@@ -92,6 +92,122 @@ class CategoriaController
         }
     }
 
+// public function buscarCategoria()
+// {
+//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//         $busqueda = $_POST['busqueda'];
+
+//         // Llama a la función de búsqueda en el modelo
+//         $database = new Database();
+//         $dbInstance = $database->getDB();
+//         $categoria = new Categoria($dbInstance, null, null, null, null);
+//         $resultados = $categoria->buscador($busqueda);
+
+//         try {
+//             // Establece la cabecera Content-Type a application/json
+//           //  header('Content-Type: application/json');
+
+//             // Imprime el JSON
+//             ob_clean();
+//             echo json_encode(['success' => true, 'data' => $resultados]);
+            
+//             exit;
+//         } catch (Exception $e) {
+//             // Manejar errores
+//             http_response_code(500); // Internal Server Error
+//          //   echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+//          //   echo json_decode("hola");
+//             exit;
+//         }
+//     }
+// }
+
+public function CrearTablaCompletaCategoria()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Llama a la función de búsqueda en el modelo
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $categoria = new Categoria($dbInstance,null,null,null,null);
+        $resultados = $categoria->obtenerCategorias();
+
+        try {
+            ob_clean();
+            // Genera el HTML para toda la tabla
+            $htmlTabla = self::generarHTMLTablaCategorias($resultados);
+
+            // Imprime el HTML
+            echo $htmlTabla;
+            exit;
+        } catch (Exception $e) {
+            // Manejar errores
+            http_response_code(500); // Internal Server Error
+            exit;
+        }
+    }
+}
+
+public function buscarCategoria()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $busqueda = $_POST['busqueda'];
+
+        // Llama a la función de búsqueda en el modelo
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $categoria = new Categoria($dbInstance, null, null, null, null);
+        $resultados = $categoria->buscador($busqueda);
+
+        try {
+            ob_clean();
+            // Genera el HTML para toda la tabla
+            $htmlTabla = self::generarHTMLTablaCategorias($resultados);
+
+            // Imprime el HTML
+            echo $htmlTabla;
+            exit;
+        } catch (Exception $e) {
+            // Manejar errores
+            http_response_code(500); // Internal Server Error
+            exit;
+        }
+    }
+}
+
+// Función para generar el HTML de toda la tabla de categorías
+function generarHTMLTablaCategorias($categorias)
+{
+    $htmlGenerado = "<table class='admin-panel-page-table'>
+        <tr>
+            <th>ID Categoria</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Estado</th>
+            <th>Editar</th>
+        </tr>";
+
+    foreach ($categorias as $categoria) {
+        $estado = $categoria['estado'] == 1 ? 'Activado' : 'Desactivado';
+        $htmlGenerado .= "<tr>
+                <td class='text'>" . $categoria['id_categoria'] . "</td>
+                <td class='text'>" . $categoria['nombre'] . "</td>
+                <td class='text'>" . $categoria['sexo'] . "</td>
+                <td class='text'>" . $estado . "</td>
+                <td class='text'><a href='index.php?controller=Categoria&action=botonEditarCategoria&id_categoria=" . $categoria['id_categoria'] . "'><img src='views/img/edit.svg' class='image_edit_icon'></a></td>
+            </tr>";
+    }
+
+    $htmlGenerado .= "</table>";
+
+    // Retorna el HTML generado
+    return $htmlGenerado;
+}
+
+
+
+    
+
     public function MostrarCubosCategoriasHombre(){
         $database = new Database();
         $dbInstance = $database->getDB();

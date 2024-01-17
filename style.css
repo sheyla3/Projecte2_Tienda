@@ -19,7 +19,7 @@ body {
 }
 
 nav .header {
-  position: relative;
+  /* position: relative; */
   max-width: 1300px;
   padding: 0px 30px;
   height: 70px;
@@ -473,6 +473,11 @@ nav input {
   display: none;
 }
 
+#resultados-busqueda{
+  background-color: #537fe7;
+  color: white;
+}
+
 /****** FOOTER *************************************************************************************************************/
 html {
   min-height: 100%;
@@ -907,7 +912,7 @@ body {
 }
 
 .item-slide {
-  position: relative;
+  /* position: relative; */
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -1216,7 +1221,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   /* padding-bottom: 100px; */
   text-align: center;
   background-position: center;
-  position: relative;
+  /* position: relative; */
   background-size: 100% 180%;
   height: 400px;
   text-decoration: none;
@@ -1229,7 +1234,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   padding-top: 100px;
   text-align: center;
   background-position: center;
-  position: relative;
+  /* position: relative; */
   background-size: 100% 180%;
   height: 400px;
   text-decoration: none;
