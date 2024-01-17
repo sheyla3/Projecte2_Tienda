@@ -56,6 +56,9 @@ session_start();
     if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
         require_once "views/general/adminPanel/cabezeraAdmin.html";
        
+    }elseif (isset($_SESSION['email']) && $_SESSION['role'] == 'user'){
+        require_once "views/general/cabezeraSesion.php";
+        
     }else{
         require_once "views/general/cabezera.php";
        
