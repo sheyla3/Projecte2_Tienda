@@ -21,23 +21,99 @@ class ProductoController
         }
     }
 
-    public function buscarproductos($filtro)
-    {
-        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
-            // Acceso a la base de datos y búsqueda de productos
-            $database = new Database();
-            $dbInstance = $database->getDB();
-            $producto = new Producto($dbInstance, null, null, null, null, null, null, null, null, null);
-            $resultados = $producto->buscarproductos($filtro);
+
     
-            // Devolver resultados como JSON
-            header('Content-Type: application/json');
-            echo json_encode($resultados);
-            exit(); // Terminar la ejecución para evitar cualquier otra salida
-        } else {
-            // Manejar caso en que el usuario no sea un administrador o no haya sesión activa
+public function CrearTablaCompletaP()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Llama a la función de búsqueda en el modelo
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+        $resultados = $producto->obtenerProductos();
+
+        try {
+            ob_clean();
+            // Genera el HTML para toda la tabla
+            $htmlTabla = self::generarHTMLTablaCategorias($resultados);
+
+            // Imprime el HTML
+            echo $htmlTabla;
+            exit;
+        } catch (Exception $e) {
+            // Manejar errores
+            http_response_code(500); // Internal Server Error
+            exit;
         }
     }
+}
+
+    public function buscarP()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $busqueda = $_POST['busqueda'];
+
+        // Llama a la función de búsqueda en el modelo
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+        $resultados = $producto->buscador($busqueda);
+
+        try {
+            ob_clean();
+            // Genera el HTML para toda la tabla
+            $htmlTabla = self::generarHTMLTablaCategorias($resultados);
+
+            // Imprime el HTML
+            echo $htmlTabla;
+            exit;
+        } catch (Exception $e) {
+            // Manejar errores
+            http_response_code(500); // Internal Server Error
+            exit;
+        }
+    }
+}
+
+function generarHTMLTablaCategorias($categorias)
+{
+    $htmlGenerado = "<table class='admin-panel-page-table'>
+        <tr>
+            <th>ID Producto</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Destacado?</th>
+            <th>ID Categoria</th>
+            <th>Estado</th>
+            <th>Referencia</th>
+            <th>Editar</th>
+        </tr>";
+
+    foreach ($categorias as $producto) {
+        $estado = $producto['estado'] == 1 ? 'Activado' : 'Desactivado';
+		$destacado = $producto['destacado'] == 1 ? 'SI' : 'NO';
+        $htmlGenerado .= "<tr>
+                <td class='text'>" . $producto['id_producto'] . "</td>
+                <td class='text'>" . $producto['nombre'] . "</td>
+                <td class='text'>" . $producto['descripcion'] . "</td>
+                <td class='text'>" . $producto['precio'] . "</td>
+                <td class='text'>" . $producto['stock'] . "</td>
+                <td class='text'>" . $destacado . "</td>
+                <td class='text'>" . $producto['id_categoria'] . "</td>
+                <td class='text'>" . $estado . "</td>
+                <td class='text'>" . $producto['referencia'] . "</td>
+                <td class='text'><a href='index.php?controller=Producto&action=botonEditarProducto&id_producto=" . $producto['id_producto'] . "'><img src='views/img/edit.svg' class='image_edit_icon'></a></td>
+            </tr>";
+    }
+
+    $htmlGenerado .= "</table>";
+
+    // Retorna el HTML generado
+    return $htmlGenerado;
+}
 
     public function botonCrearProducto(){
         $database = new Database();

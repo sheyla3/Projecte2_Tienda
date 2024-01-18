@@ -1035,7 +1035,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 /* BUSCADOR */
 
-#Cbuscar {
+#Cbuscar #Pbuscar {
   border: 0;
   font-size: 16px;
   padding: 0.5%;

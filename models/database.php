@@ -8,11 +8,7 @@ class Database{
         $servername = "localhost";
         $dbname= "srg";
         $username = "postgres";
-<<<<<<< HEAD
         $password = "123";
-=======
-        $password = "postgre";
->>>>>>> a69982e6c2471b40fcbbf372f89bcf849ac52295
 
         try{
         //Creem una nova connexió instancinat l'objecte PDO

@@ -106,6 +106,22 @@ class Producto extends Database
         return $cantidad;
     }
 
+    public function buscador($nom) {
+        $consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria, estado, referencia  FROM productos WHERE nombre ILIKE '%' || :nombre || '%'");
+        $consulta->bindParam(':nombre', $nom, PDO::PARAM_STR);
+    
+        error_log('Consulta SQL ejecutada: ' . $consulta->queryString);
+    
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+    
+        // Añade un mensaje de depuración para ver los resultados
+        error_log('Resultados de la consulta: ' . print_r($resultado, true));
+    
+        return $resultado;
+    }
+    
+
     public function editar() {
         try {
             $this->db->beginTransaction();
