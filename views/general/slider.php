@@ -1,12 +1,11 @@
 <div class="slider">
     <?php
-    $ids = array(1, 2, 3, 4, 5);
+    $ids = array(1, 2, 3, 4);
     $alt = array(
         "Slide 1",
         "Slide 2",
         "Slide 3",
-        "Slide 4",
-        "Slide 5"
+        "Slide 4"
     );
     $max = count($ids);
     for ($s = 0; $s < $max; $s++) { ?>

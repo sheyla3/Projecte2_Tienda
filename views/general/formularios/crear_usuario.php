@@ -61,7 +61,7 @@
                 ?>
                 <input type="submit" class="button" value="Crear Cuenta">
             </form>
-            <a href="index.php?controller=usuario&action=mostrarLoginUsuario">Ya tienes cuenta? Inicia sesión</a>
+            <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="button-register">¿Ya tienes cuenta? Inicia sesión</a>
         </div>
     </div>
 </body>

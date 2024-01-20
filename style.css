@@ -647,13 +647,38 @@ html {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  border-radius: 10px;
+  margin-top: 10%;
+  
+}
+
+.button-register {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+}
+  
+.button-register:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: #537FE7;
+  transition: right .5s;
+}
+
+.button-register:hover:after {
+  right: 0;
 }
 
 .form .button:hover,
 .form .button:active,
 .form .button:focus {
   background: black;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .form .message {
@@ -894,6 +919,7 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  padding-top: 5%;
 }
 
 .slider img {
@@ -1225,6 +1251,8 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   background-size: 100% 180%;
   height: 400px;
   text-decoration: none;
+  transform: scale(var(--escala, 1));
+  transition: transform 0.25s;
 }
 
 .div2_sexos {
@@ -1238,7 +1266,14 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   background-size: 100% 180%;
   height: 400px;
   text-decoration: none;
+  transform: scale(var(--escala, 1));
+  transition: transform 0.25s;
 
+}
+
+.div1_sexos:hover, .div2_sexos:hover{
+  --escala: 0.95;
+  cursor:pointer;
 }
 
 .tituloHombre,

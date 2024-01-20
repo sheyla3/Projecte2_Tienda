@@ -62,13 +62,7 @@ session_start();
         
     }else{
         require_once "views/general/cabezera.php";
-       
-        //require_once "views/general/cabezera.html";
     }
-
-
-    // require_once "views/general/pie.html";
-    // require_once "views/general/wrapper.php";
     ?>
 </body>
 

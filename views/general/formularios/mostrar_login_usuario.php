@@ -15,11 +15,10 @@
             <form class="login-form" action="index.php?controller=Usuario&action=procesar_login" method="POST"> 
                 <input type="text" id="email" name="email" placeholder="Correo" required/>
                 <input type="password" placeholder="Contraseña" id="password" name="password" required/>
-                <a href="index.php?controller=usuario&action=mostrarLoginUsuario"> Olvidaste la contraseña? </a>
+                <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="button-register">¿Olvidaste la contraseña?</a>
                 <input type="submit" class="button" value="Iniciar Sesión">
             </form>
-            <form action="">
-            <a href="index.php?controller=usuario&action=crearUsuario" class="button">Crear cuenta</a>
+            <a href="index.php?controller=usuario&action=crearUsuario" class="button-register">¿No estás registrado? Regístrate</a>
         </div>
     </div>
 </body>
