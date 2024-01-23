@@ -78,7 +78,6 @@
                     <label class="mobile-item">Usuario</label>
                     <input type="checkbox" id="showDrop">
                     <ul class="drop-menu">
-                        <li><a href="#">Carrito</a></li>
                         <li><a href="#">Mis compras</a></li>
                         <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
