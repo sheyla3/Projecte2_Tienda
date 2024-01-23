@@ -134,6 +134,9 @@ class UsuarioController
 		include('views/general/formularios/crear_usuario.php');
 	}
 
+	public function editarFoto(){
+        include('views/general/formularios/mostrar_edit_photo.php');
+    }
 
 	public function mostrarPerfil(){
 		$database = new Database();

@@ -20,6 +20,7 @@ echo "<div class='div1-user'>
         <br><br>
         <div><img src='" . $datosUser[0]['foto'] . "' alt='Foto de perfil' width='500px'></div>
         <br>
+        <div><button role='button'><a href='index.php?controller=Usuario&action=editarFoto'>Editar Fotografia</a></button></div>
         </div>
     </div>";
 

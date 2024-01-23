@@ -4,10 +4,10 @@ echo "
 <div class='admin-panel-title-container'>
 <ul class='tituloMenu'>
 	<li><h1 class='admin-panel-title'>Categorías</h1></li>
-	<li class='derecha'><a class='admin-panel-add-link' href=''>Añadir categoría</a></li>
+	<li class='derecha'><a class='admin-panel-add-link' href='index.php?controller=Categoria&action=botonCrearCategoria'>Añadir categoría</a></li>
 	<li class='derecha'>
 		<form action='' method='post' class='formCat buscador'>
-			<label for='Cbuscar' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
+			<label for='Cbuscar' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscador' width='20' height='20'></label>
 			<input type='text' id='Cbuscar' name='Cbuscar'>
 		</form>
 		<div id='resultados-busqueda'></div>
@@ -33,7 +33,7 @@ foreach ($catalogo as $categoria) {
         	<td class='text'>" . $categoria['nombre'] . "</td>
         	<td class='text'>" . $categoria['sexo'] . "</td>
         	<td class='text'>" . $estado . "</td>
-			<td class='text'><a href='index.php?controller=Categoria&action=botonEditarCategoria&id_categoria=" . $categoria['id_categoria'] . "'><img src='views/img/edit.svg' class='image_edit_icon'></a></td>
+			<td class='text'><a href='index.php?controller=Categoria&action=botonEditarCategoria&id_categoria=" . $categoria['id_categoria'] . "'><img src='views/img/edit.svg' class='image_edit_icon' alt='Boton editar'></a></td>
     	</tr>";
 }
 echo "</table>
