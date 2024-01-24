@@ -1061,8 +1061,8 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 /* BUSCADOR */
 
-#Cbuscar #Pbuscar {
-  border: 0;
+#Cbuscar, #Pbuscar {
+  border: none !important;
   font-size: 16px;
   padding: 0.5%;
   outline: 0;
@@ -1164,6 +1164,11 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   background-size: 100% 100%;
   display: flex;
   justify-content: center;
+}
+
+.cuboP:hover{
+  --escala: 0.95;
+  cursor: pointer;
 }
 
 /*pagina individual*/

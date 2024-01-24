@@ -1,5 +1,24 @@
 $(document).ready(function () {
 
+    //funcion obtener datos cesta
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     function obtenerTablaCompletaP() {
         $.ajax({
             type: 'POST',
@@ -87,6 +106,7 @@ $(document).ready(function () {
                 console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
             }
         });
+
     }
 
 	    //Evento cuando se escribe en el campo de búsqueda
