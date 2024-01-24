@@ -11,9 +11,7 @@ echo "
         <select id='genero' name='genero'>
             <option value='Hombre'>Hombre</option>
             <option value='Mujer'>Mujer</option>
-        </select>
-
-	    <label for='estado'>Estado</label><br>
+        </select><br>
         <a href='index.php?controller=Admin&action=botonVistaCategoria' class='admin-panel-submit-link'>Volver atras</a>
 
         <input class='admin-panel-submit-link' type='submit' value='AÑADIR'>
