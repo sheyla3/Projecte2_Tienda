@@ -83,10 +83,8 @@ class Producto extends Database
                 $consultaFotos->execute();
     
                 $this->db->commit();
-                
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?controller=Admin&action=botonVistaProducto'>";
 
-                echo "Producto agregado correctamente";
-                echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaProducto'>";
 
             } else {
                 $this->db->rollBack();

@@ -10,7 +10,7 @@ class PrincipalController
         $database = new Database();
         $dbInstance = $database->getDB();
 
-        // require_once "views/general/slider.php";
+        require_once "views/general/slider.php";
         require_once "views/general/menu_secundario.php";        
     }
 }

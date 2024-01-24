@@ -22,7 +22,7 @@ class UsuarioController
 
 				$_SESSION['email'] = $email;
 				$_SESSION['role'] = 'user';
-				header('Location: index.php?controller=usuario&action=mostrarPerfil');
+				header('Location: index.php');
 				exit;
 			} else {
 				echo "Credenciales no válidas";
