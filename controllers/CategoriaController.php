@@ -66,17 +66,17 @@ class CategoriaController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'];
             $genero = $_POST['genero'];
-            
-
+            $estado = true;
+/*
             if (isset($_POST['estado'])) {
                 // El checkbox está marcado
                 // Realiza alguna acción si está marcado
-                $estado = true; // O asigna el valor que necesites para 'true'
+                 // O asigna el valor que necesites para 'true'
             } else {
                 // El checkbox no está marcado
                 // Realiza alguna acción si no está marcado
                 $estado = false; // O asigna el valor que necesites para 'false'
-            }
+            }*/
 
             $database = new Database();
             $dbInstance = $database->getDB();
