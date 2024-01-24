@@ -1,5 +1,4 @@
-
-    <div class="pie">
+<div class="pie">
             <div class="columna">
                 <div class="item">
                     <h3>Servicios</h3>
@@ -34,8 +33,7 @@
             </div>
             <div>
                 <p class="copyright">© 2023 SRG Todos los derechos reservados |<a class="linkAdminLogin"
-                        href="index.php?controller=admin&action=mostrarLoginAdmin"> Panel Administrador</a> |<a class="linkAdminLogin"
-                        href="index.php?controller=usuario&action=mostrarLoginUsuario"> Login Usuario</a>
+                        href="index.php?controller=admin&action=mostrarLoginAdmin"> Panel Administrador</a>
             </div>
 
     </div>
