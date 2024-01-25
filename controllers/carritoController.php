@@ -18,34 +18,37 @@ public function obetenerCarrito()
 
 public function añadirAlCarrito()
 {
-    session_start(); // Asegúrate de haber iniciado la sesión antes de acceder a $_SESSION
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Verifica si la variable de sesión existe
        
         $correo = $_SESSION['email'];
-        $id_producto = $_POST['id_producto'];
-        $cantidad = $_POST['cantidad'];
-        $precio = $_POST['precio'];
+        $id_producto = $_POST['d_id_producto'];
+        $cantidad = $_POST['d_cantidad'];
+        $precio = $_POST['d_precio'];
+  
 
         if (isset($_SESSION['email'])) {
             $database = new Database();
             $dbInstance = $database->getDB();
-            $carrito = new Carrito($dbInstance, null, $_SESSION['email'], $id_producto, $cantidad, $precio);
+            $carrito = new Carrito($dbInstance, null, $correo, $id_producto, $cantidad, $precio);
             $funciona = $carrito->anadirProductoAlCarrito();
-    
+
             if ($funciona) {
-                $datos_producto = [
-                    'correo' => $correo,
-                    'id_producto' => $id_producto,
-                    'cantidad' => $cantidad,
-                    'precio' => $precio
-                ];
-               // echo json_encode(['success' => true, 'message' => 'Producto añadido al carrito', 'producto' => $datos_producto]);
-                header('Location: index.php');
+
+                // $datos_producto = [
+                //     'correo' => $correo,
+                //     'id_producto' => $id_producto,
+                //     'cantidad' => $cantidad,
+                //     'precio' => $precio,
+                // ];
+                
+                // echo json_encode(['success' => true, 'message' => 'Producto añadido al carrito', 'producto' => $datos_producto]);
+               
             } else {
+
                 // Manejar el caso en el que no se pueda añadir el producto al carrito
-              //  echo json_encode(['success' => false, 'message' => 'Error al añadir el producto al carrito']);
+                // echo json_encode(['success' => false, 'message' => 'Error al añadir el producto al carrito']);
                 echo "Error al añadir el producto al carrito";
             }
         }
