@@ -238,3 +238,13 @@ function mostrarCampoImagen() {
 	var campoImagen = document.getElementById("campoImagen");
 	campoImagen.style.display = "block";
 }
+
+
+function mostrarEnviarCorreo() {
+    document.getElementById('overlay').style.display = 'flex';
+}
+
+
+function ocultarEnviarCorreo() {
+    document.getElementById('overlay').style.display = 'none';
+}
