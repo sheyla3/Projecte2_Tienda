@@ -32,12 +32,10 @@ class AdminController
 				header('Location: index.php?controller=categoria&action=mostrarProductos');
                 //exit;
         	} else {
-            	// En caso de credenciales incorrectas, puedes redirigir de nuevo al formulario
-            	// de inicio de sesión con un mensaje de error
-               // header('Location: index.php?controller=Login&action=mostrarFormularioLogin&error=1');
-            	//exit;
+            	// En caso de credenciales incorrectas, puedes redirigir de nuevo al formulario de inicio de sesión con un mensaje de error
+                echo "<br><br><br><br>";
                 echo("Credenciales no válidas");
-                echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php'>";
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=admin&action=mostrarLoginAdmin'>";
         	}
     	}else{
             // Si no es una solicitud POST, simplemente muestra el formulario de inicio de sesión

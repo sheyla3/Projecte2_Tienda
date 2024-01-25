@@ -6,9 +6,9 @@
         if ($contador % 4 === 0) {
             echo '<div class="rowCubosP">';
         }
-        echo '<a href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
+        echo '<a class="prodDestacado" href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
         echo '<div class="cuboP" style="background-image: url(\'' . $producto['img'] . '\')" alt="' . $producto['nombre'] . '">';
-        echo '<p class="letraP">'. $producto['nombre'] . ' '. $producto['precio'].'€</p>';
+        echo '<p class="letraP">'. $producto['nombre'] . ' - '. $producto['precio'].'€</p>';
         echo '</div>';
         echo '</a>';
 

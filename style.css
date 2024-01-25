@@ -197,6 +197,25 @@ nav .header {
 
 }
 
+.subdiv1-user-edit {
+  grid-area: 1 / 1 / 1 / 1;
+  background-color: white;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  margin-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.input-decoration {
+  border: none;
+  border-bottom: #537FE7 2px solid;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .image-profile-dades {
   padding-right: 5%;
   display: flex;
@@ -213,6 +232,19 @@ nav .header {
   padding-bottom: 5%;
   height: 100%;
   width: 70%;
+}
+
+.subdiv2-user-photo {
+  grid-area: 1 / 2 / 2 / 3;
+  background-color: white;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  width: 70%;
+  text-align: center;
 }
 
 .profile-title-photo {
@@ -1284,6 +1316,15 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   cursor:pointer;
 }
 
+.prodDestacado {
+  transform: scale(var(--escala, 1));
+  transition: transform 0.25s;
+}
+
+.prodDestacado:hover {
+  --escala: 0.95;
+  cursor:pointer;
+}
 .tituloHombre,
 .tituloMujer {
   text-align: center;

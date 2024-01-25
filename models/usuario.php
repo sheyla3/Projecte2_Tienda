@@ -77,5 +77,36 @@ class Usuario {
 			return null;
 		}
 	}
+
+	public function editFoto(){
+		try {
+			$consulta = $this->db->prepare("UPDATE usuarios SET foto = :photo WHERE correo = :email");
+            return $consulta;
+        } catch (PDOException $e) {
+            echo "Error al preparar la consulta: " . $e->getMessage();
+            return null;
+        }
+	}
+	
+
+
+	public function updateProfile($nombre, $apellidos, $direccion, $telefono) {
+		try {
+			$consulta = $this->db->prepare("UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, direccion = :direccion, telf = :telefono WHERE correo = :email");
+			
+			$consulta->bindParam(':nombre', $nombre);
+			$consulta->bindParam(':apellidos', $apellidos);
+			$consulta->bindParam(':direccion', $direccion);
+			$consulta->bindParam(':telefono', $telefono);
+			$consulta->bindParam(':email', $this->email);
+	
+			$consulta->execute();
+			
+			return true;
+		} catch (PDOException $e) {
+			echo "Error al actualizar el perfil: " . $e->getMessage();
+			return false;
+		}
+	}
 	
 }
