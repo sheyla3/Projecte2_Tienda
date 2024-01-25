@@ -70,7 +70,7 @@
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
+                    <a href="index.php?controller=carrito&action=mostrarCarrito" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
                     <label class="mobile-item">Carrito</label>
                 </li>
                 <li>

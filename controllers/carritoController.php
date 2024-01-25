@@ -48,6 +48,12 @@ public function añadirAlCarrito()
     }
 }
 
+
+
+public function mostrarCarrito(){
+    include('views/general/usuario/carrito.php');
+
+}
 }
 
 

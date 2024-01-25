@@ -12,6 +12,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="cesta.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -22,6 +23,7 @@ session_start();
 <body>
    
     <script src="script.js"></script>
+    <script src="cesta.js"></script>
     <?php
    
     require_once "autoload.php";
@@ -58,7 +60,8 @@ session_start();
         require_once "views/general/adminPanel/cabezeraAdmin.html";
        
     }elseif (isset($_SESSION['email']) && $_SESSION['role'] == 'user'){
-        require_once "views/general/cabezeraSesion.php";
+        CategoriaController::RellenarMenuValidado();
+
         
     }else{
         require_once "views/general/cabezera.php";

@@ -242,6 +242,18 @@ function generarHTMLTablaCategorias($categorias)
 
     }
 
+    public static function RellenarMenuValidado(){
+        $database = new Database();
+        $dbInstance = $database->getDB();
+
+        $categoria = new Categoria($dbInstance ,null, null, null , null);
+        $categoriasM = $categoria->obtenerIdNombreCategoriasMujer();
+        $categoriasH = $categoria->obtenerIdNombreCategoriasHombre();
+
+        require_once "views\general\cabezeraSesion.php";
+
+    }
+
    
 
 }
