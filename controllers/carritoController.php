@@ -18,48 +18,42 @@ public function obetenerCarrito()
 
 public function añadirAlCarrito()
 {
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Verifica si la variable de sesión existe
-       
+    if (isset($_SESSION['email'])) {
+        // Recibir los datos del formulario
+        $id_producto = isset($_POST['id_producto']) ? $_POST['id_producto'] : null;
+        $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : null;
+        $precio = isset($_POST['precio']) ? $_POST['precio'] : null;
         $correo = $_SESSION['email'];
-        $id_producto = $_POST['d_id_producto'];
-        $cantidad = $_POST['d_cantidad'];
-        $precio = $_POST['d_precio'];
-  
 
-        if (isset($_SESSION['email'])) {
+        error_log("ID Producto: " . $id_producto . ", Cantidad: " . $cantidad . ", Precio: " . $precio);
+
+        if ($correo !== null && $id_producto !== null && $cantidad !== null && $precio !== null) {
+            // Si todos los datos están presentes, realizar las operaciones necesarias
             $database = new Database();
             $dbInstance = $database->getDB();
             $carrito = new Carrito($dbInstance, null, $correo, $id_producto, $cantidad, $precio);
             $funciona = $carrito->anadirProductoAlCarrito();
 
             if ($funciona) {
-
-                // $datos_producto = [
-                //     'correo' => $correo,
-                //     'id_producto' => $id_producto,
-                //     'cantidad' => $cantidad,
-                //     'precio' => $precio,
-                // ];
-                
-                // echo json_encode(['success' => true, 'message' => 'Producto añadido al carrito', 'producto' => $datos_producto]);
                
             } else {
-
                 // Manejar el caso en el que no se pueda añadir el producto al carrito
-                // echo json_encode(['success' => false, 'message' => 'Error al añadir el producto al carrito']);
-                echo "Error al añadir el producto al carrito";
             }
+        } else {
+            // Manejar el caso en el que falta algún dato
         }
+    } else {
+        echo("no data");
+        // Manejar el caso en el que no haya una sesión de usuario activa
+    }
+}
 
-    } 
 }
 
 
 
 
-}
+
 
 
 
