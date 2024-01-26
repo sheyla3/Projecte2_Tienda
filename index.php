@@ -27,6 +27,7 @@ session_start();
     <?php
    
     require_once "autoload.php";
+    require_once "views/general/botonSubir.php";
     require_once "views/general/pie.php";
     $_SESSION['seccion'] = "nada";
    

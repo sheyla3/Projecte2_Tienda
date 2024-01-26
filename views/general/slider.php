@@ -1,4 +1,4 @@
-<div class="slider">
+<div class="slider1">
     <?php
     $ids = array(1, 2, 3, 4);
     $alt = array(
