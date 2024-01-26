@@ -6,7 +6,11 @@
             echo '<div class="rowCubosP">';
         }
         echo '<a href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
-        echo '<div class="cuboP" style="background-image: url(\'' . $producto['img'] . '\')" alt='.$producto['nombre'].'>'; 
+        if ( $producto['stock'] == 0 ) {
+            echo '<div class="cuboP" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(\'' . $producto['img'] . '\')" alt='.$producto['nombre'].'>'; 
+        } else {
+            echo '<div class="cuboP" style="background-image: url(\'' . $producto['img'] . '\')" alt='.$producto['nombre'].'>'; 
+        }
         echo '<p class="letraP">'. $producto['nombre'] . ' '. $producto['precio'].'€</p>';
         echo '</div>';
         echo '</a>';
