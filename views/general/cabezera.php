@@ -70,8 +70,8 @@
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
-                    <label class="mobile-item">Carrito</label>
+                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
+                    <label  id="botonCarrito" class="mobile-item">Carrito</label>
                 </li>
                 <li>
                     <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/usuario.png" alt="Iniciar sesión" width="20" height="20"></a>

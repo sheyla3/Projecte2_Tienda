@@ -1336,7 +1336,9 @@ a {
   color: black;
 }
 
-
+#botonCarrito1{
+  margin-top: 200px;
+}
 /* producto pop pop */
 
 .popup input {

@@ -13,12 +13,14 @@ $(document).ready(function () {
             this.productos = [];
         }
     
-        agregarProducto(id_producto, cantidad, precio) {
+        agregarProducto(id_producto, cantidad, precio, nombre, img) {
             // Agregar el nuevo producto al array de productos
             this.productos.push({
                 id_producto: id_producto,
                 cantidad: cantidad,
-                precio: precio
+                precio: precio,
+                nombre: nombre,
+                img: img
             });
         }
     
@@ -39,9 +41,45 @@ $(document).ready(function () {
             // Llama a la función al hacer clic en el botón
             agregarAlCarrito();
         });
-    }else{
-        console.log(" ");
     }
+
+    var botonCarrito = document.querySelector('#botonCarrito1');
+    if (botonCarrito) {
+        botonCarrito.addEventListener('click', function () {
+            
+            var datos = leerLocalStorage();
+    
+            $.ajax({
+                url: 'index.php?controller=carrito&action=recibirLocalCarrito',
+                type: 'POST',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({ carrito: datos }),
+                success: function (data) {
+                    // Maneja la respuesta del servidor
+                    if (data.success) {
+                        console.log(data.datos);
+                        //window.location.href = 'views/general/usuario/carrito.php';
+                        // Descomentar esta línea para redirigir a la página de carrito
+                        $('#tabla-carrito').html(data.info);
+                  
+                    } else {
+                        console.error('Error en la solicitud:', data.message);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Maneja el error
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    console.error('Estado de la respuesta:', xhr.status);
+                    console.error('Respuesta del servidor:', xhr.responseText);
+                }
+            });
+        });
+    }
+    
+    
+    
+    
+    
 
     
     
@@ -51,6 +89,8 @@ $(document).ready(function () {
         var cantidad = document.querySelector('[name="d_cantidad"]').value;
         var precio = document.querySelector('[name="d_precio"]').value;
         var correo = document.querySelector('[name="d_correo"]').value;
+        var img = document.querySelector('[name="d_img"]').value;
+        var nombre = document.querySelector('[name="d_nombre"]').value;
 
         if(correo){
             const usuario1 = new Usuario(correo);
@@ -65,7 +105,7 @@ $(document).ready(function () {
         //crear carrito con objecto usuario
         const carritoDelUsuario = new Carrito(usuario1);
 
-        carritoDelUsuario.agregarProducto(id_producto,cantidad,precio);
+        carritoDelUsuario.agregarProducto(id_producto,cantidad,precio,nombre,img);
 
         guardarEnLocalStorage(carritoDelUsuario);
         

@@ -55,6 +55,8 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
             </div>
             <input type="hidden" name="d_id_producto" value="<?php echo $producto['id_producto']; ?>">
             <input type="hidden" name="d_precio" value="<?php echo $producto['precio']; ?>">
+            <input type="hidden" name="d_nombre" value="<?php echo $producto['nombre']; ?>">
+            <input type="hidden" name="d_img" value="<?php echo $producto['img']; ?>">
             <input type="hidden" name="d_correo" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
             <!-- Cambios en el botón: agregamos onclick -->
             <button type="button" class="d_botonAñadir">Añadir a la cesta</button>
