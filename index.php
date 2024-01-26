@@ -20,11 +20,10 @@ session_start();
 
 
 <body>
-   
-    <script src="script.js"></script>
     <?php
    
     require_once "autoload.php";
+    require_once "views/general/botonSubir.php";
     require_once "views/general/pie.php";
     $_SESSION['seccion'] = "nada";
    

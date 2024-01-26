@@ -9,7 +9,7 @@
             <input type="radio" name="slider" id="menu-btn">
             <input type="radio" name="slider" id="close-btn">
             <ul class="nav-links">
-                <label for="close-btn" class="btn close-btn"><img src="views/img/cerrar_icono.png" alt="cerrar" width="20" height="20"></label>
+                <label for="close-btn" class="btn close-btn"><img src="views/img/close-sesion.svg" alt="cerrar" width="20" height="20"></label>
                 <?php
                 $clase_seleccionadaM = ($_SESSION['seccion'] === "mujer") ? 'class="tipo selected"' : 'class="tipo"';
                 $clase_seleccionadaH = ($_SESSION['seccion'] === "hombre") ? 'class="tipo selected"' : 'class="tipo"';

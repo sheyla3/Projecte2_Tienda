@@ -8,6 +8,7 @@ nav {
   background: white;
   border-bottom: 1px solid black;
   z-index: 999;
+  padding-top: 1%;
 }
 
 .logo {
@@ -16,6 +17,7 @@ nav {
 
 body {
   padding-bottom: 250px;
+  scroll-behavior: smooth;
 }
 
 nav .header {
@@ -185,7 +187,7 @@ nav .header {
   margin-left: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
-  
+
 }
 
 .subdiv1-user>div {
@@ -505,7 +507,7 @@ nav input {
   display: none;
 }
 
-#resultados-busqueda{
+#resultados-busqueda {
   background-color: #537fe7;
   color: white;
 }
@@ -681,7 +683,7 @@ html {
   cursor: pointer;
   border-radius: 10px;
   margin-top: 10%;
-  
+
 }
 
 .button-register {
@@ -690,7 +692,7 @@ html {
   display: inline-block;
   text-decoration: none;
 }
-  
+
 .button-register:after {
   content: "";
   position: absolute;
@@ -942,6 +944,35 @@ body {
   color: #537FE7;
 }
 
+/* BOTON GO UP PAGE */
+
+#go-up-botonSubir {
+  display: none;
+  padding: 20px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  border-radius: 15px;
+  background: #537FE7;
+  opacity: 0.6;
+  height: 20px;
+  width: 20px;
+  scroll-behavior: smooth;
+}
+
+#go-up-botonSubir > img {
+  height: 20px;
+  width: 20px;
+}
+
+#go-up-botonSubir:hover {
+  opacity: 1;
+}
+
 /* SLIDER AUTOMATICO */
 
 .slider {
@@ -1093,7 +1124,8 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 /* BUSCADOR */
 
-#Cbuscar, #Pbuscar {
+#Cbuscar,
+#Pbuscar {
   border: none !important;
   font-size: 16px;
   padding: 0.5%;
@@ -1198,7 +1230,7 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
   justify-content: center;
 }
 
-.cuboP:hover{
+.cuboP:hover {
   --escala: 0.95;
   cursor: pointer;
 }
@@ -1311,9 +1343,10 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 }
 
-.div1_sexos:hover, .div2_sexos:hover{
+.div1_sexos:hover,
+.div2_sexos:hover {
   --escala: 0.95;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .prodDestacado {
@@ -1323,8 +1356,9 @@ input[id="5"]:checked~.pagination .pag-item[for="5"] {
 
 .prodDestacado:hover {
   --escala: 0.95;
-  cursor:pointer;
+  cursor: pointer;
 }
+
 .tituloHombre,
 .tituloMujer {
   text-align: center;
