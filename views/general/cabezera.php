@@ -5,11 +5,10 @@
 <header>
     <nav>
         <div class="header">
-            <div class="logo"><a href='index.php'><img src="views/img/logo.png" alt="SRG" width="200" height="70"></div>
+            <div class="logo"><a href='index.php'><img src="views/img/logo.png" alt="SRG" width="200" height="70"></a></div>
             <input type="radio" name="slider" id="menu-btn">
             <input type="radio" name="slider" id="close-btn">
             <ul class="nav-links">
-                <label for="close-btn" class="btn close-btn"><img src="views/img/close-sesion.svg" alt="cerrar" width="20" height="20"></label>
                 <?php
                 $clase_seleccionadaM = ($_SESSION['seccion'] === "mujer") ? 'class="tipo selected"' : 'class="tipo"';
                 $clase_seleccionadaH = ($_SESSION['seccion'] === "hombre") ? 'class="tipo selected"' : 'class="tipo"';
@@ -66,15 +65,15 @@
                 }
                 ?>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/lupa.png" alt="Buscar" width="20" height="20"></a>
+                    <a href="#" class="tipo"><img src="views/img/magnifier.svg" alt="Buscar" width="20" height="20"></a>
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
+                    <a href="#" class="tipo"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>
                     <label class="mobile-item">Carrito</label>
                 </li>
                 <li>
-                    <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/usuario.png" alt="Iniciar sesión" width="20" height="20"></a>
+                    <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/user.svg" alt="Iniciar sesión" width="25" height="25"></a>
                     <label class="mobile-item">Usuario</label>
                     <input type="checkbox" id="showDrop">
                     <ul class="drop-menu">

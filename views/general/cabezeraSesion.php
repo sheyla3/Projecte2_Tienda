@@ -66,11 +66,11 @@
                 }
                 ?>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/lupa.png" alt="Buscar" width="20" height="20"></a>
+                    <a href="#" class="tipo"><img src="views/img/magnifier.svg" alt="Buscar" width="20" height="20"></a>
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
+                    <a href="#" class="tipo"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>
                     <label class="mobile-item">Carrito</label>
                 </li>
                 <li>
