@@ -43,6 +43,17 @@ $(document).ready(function () {
         });
     }
 
+    window.onload = function() {
+        // Obtener la cadena de búsqueda de la URL
+        var queryString = new URL(window.location.href).search;
+      
+        // Verificar si estamos en la URL específica
+        if (queryString === "?carrito&action=entrar") {
+          // Ejecutar la función solo para la URL específica
+          console.log("adios");
+        }
+      };
+
     var botonCarrito = document.querySelector('#botonCarrito1');
     if (botonCarrito) {
         botonCarrito.addEventListener('click', function () {
@@ -76,6 +87,8 @@ $(document).ready(function () {
         });
     }
     
+
+
     
     
     

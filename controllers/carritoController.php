@@ -8,6 +8,7 @@ class CarritoController
 
 public function obetenerCarrito()
 {
+    $correo = $_SESSION['email'];
     $database = new Database();
     $dbInstance = $database->getDB();
     $carrito = new Carrito($dbInstance,null,$correo,null,null,null,null);
@@ -51,36 +52,23 @@ public function añadirAlCarrito()
 }
 
 
-// public function mostrarCarrito() {
-//     ob_clean();
-//     header('Content-Type: application/json');
-
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         // Decodificar datos JSON
-//             ob_clean();
-//             $carritoData = json_decode(file_get_contents('php://input'), true);
-            
-//             require_once 'views\general\usuario\carrito.php';
-        
-//     } else {
-//         echo json_encode(['success' => false, 'message' => 'Error en la solicitud']);
-//     }
-// }
-
 public function recibirLocalCarrito() {
     ob_clean();
     header('Content-Type: application/json');
-
-
+   
+    // if (isset($_SESSION['email'])) {
+    //     $datosBase = $this->obtenerCarrito(); // Corregido el nombre de la función
+    // }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Decodificar datos JSON
         $carritoData = json_decode(file_get_contents('php://input'), true);
+        // $htmlGenerado = self::crearHTMLcarrito($carritoData);
         $htmlGenerado = self::crearHTMLcarrito($carritoData);
+        // $datosBase = $this->obtenerCarrito();
 
         // Puedes realizar alguna lógica de procesamiento si es necesario
         // Devolver éxito
-        echo json_encode(['success' => true, 'info' => $htmlGenerado , 'datos' => $carritoData]);
+        echo json_encode(['success' => true, 'info' => $htmlGenerado , 'datos' => 'pepe']);
 
         exit;
     } else {
@@ -97,7 +85,22 @@ public function entrar(){
 
 
 
+
 public function crearHTMLcarrito($datos) {
+    $productosCombinados = [];
+    if (isset($_SESSION['email'])) {
+        $correo = $_SESSION['email'];
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $carrito = new Carrito($dbInstance,null,$correo,null,null,null,null);
+        $datosBase  = $carrito->obtenerProductosEnCarrito();
+        $productosCombinados = self::combinarProductos($datos, $datosBase);
+    } else {
+        // Si no hay sesión de usuario, solo combinar los productos del carrito
+        $productosCombinados = self::combinarProductos($datos);
+    }
+
+
     $htmlGenerado = '<table border="1">
                         <thead>
                             <tr>
@@ -110,19 +113,18 @@ public function crearHTMLcarrito($datos) {
                         </thead>
                         <tbody>';
 
-    // Verificar si hay datos de productos en el carrito
-    if (isset($datos['carrito'][0]['productos']) && is_array($datos['carrito'][0]['productos'])) {
-        // Recorrer cada producto y agregar una fila a la tabla
-        foreach ($datos['carrito'][0]['productos'] as $producto) {
-            $htmlGenerado .= '<tr>
-                                <td>holaa</td>
-                                <td>' . $producto['id_producto'] . '</td>
-                                <td>' . $producto['cantidad'] . '</td>
-                                <td>' . $producto['precio'] . '</td>
-                                <td>' . $producto['nombre'] . '</td>
-                                <td><img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '" width="50" height="50"></td>
-                            </tr>';
-        }
+    // Combinar productos de ambos conjuntos de datos
+   
+
+    // Recorrer cada producto y agregar una fila a la tabla
+    foreach ($productosCombinados as $producto) {
+        $htmlGenerado .= '<tr>
+                            <td>' . $producto['id_producto'] . '</td>
+                            <td>' . $producto['cantidad'] . '</td>
+                            <td>' . $producto['precio'] . '</td>
+                            <td>' . $producto['nombre'] . '</td>
+                            <td><img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '" width="50" height="50"></td>
+                        </tr>';
     }
 
     $htmlGenerado .= '</tbody></table>';
@@ -133,8 +135,33 @@ public function crearHTMLcarrito($datos) {
 
 
 
+public function combinarProductos($productosCarrito, $productosBase = null) {
+    $productosCombinados = [];
 
+    // Agregar productos de datosBase
+    if ($productosBase !== null && is_array($productosBase)) {
+        // Agregar cada producto de datosBase
+        foreach ($productosBase as $producto) {
+            $productosCombinados[$producto['id_producto']] = $producto;
+        }
+    }
 
+    // Agregar productos del carrito
+    if (isset($productosCarrito['carrito']) && is_array($productosCarrito['carrito'])) {
+        foreach ($productosCarrito['carrito'] as $carrito) {
+            if (isset($carrito['productos']) && is_array($carrito['productos'])) {
+                foreach ($carrito['productos'] as $producto) {
+                    // Verificar si ya existe un producto con el mismo id
+                    if (!isset($productosCombinados[$producto['id_producto']])) {
+                        $productosCombinados[$producto['id_producto']] = $producto;
+                    }
+                }
+            }
+        }
+    }
+
+    return array_values($productosCombinados);
+}
 
 
 
