@@ -16,6 +16,38 @@ public function obetenerCarrito()
 
 }
 
+public function modificarAccion() {
+    ob_clean();
+    header('Content-Type: application/json');
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Obtener datos del cuerpo de la solicitud
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        // Verificar si se recibieron los datos esperados
+        if (isset($data['id_producto']) && isset($data['accion'])) {
+            $id_producto = $data['id_producto'];
+            $accion = $data['accion'];
+
+            // Resto de la lógica para obtener el correo y la instancia de la base de datos
+            $correo = $_SESSION['email'];
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            $carrito = new Carrito($dbInstance, null, $correo, $id_producto, null, null, null);
+
+            // Llamar a la función para actualizar el producto en el carrito
+            $resultados = $carrito->actualizarProductoEnCarrito($accion);
+
+            // Puedes devolver una respuesta JSON indicando el resultado de la operación
+            echo json_encode(['success' => $resultados]);
+        } else {
+            // Datos incompletos en la solicitud
+            echo json_encode(['success' => false, 'message' => 'Datos incompletos en la solicitud']);
+        }
+    }
+}
+
+
 
 public function añadirAlCarrito()
 {
@@ -68,7 +100,7 @@ public function recibirLocalCarrito() {
 
         // Puedes realizar alguna lógica de procesamiento si es necesario
         // Devolver éxito
-        echo json_encode(['success' => true, 'info' => $htmlGenerado , 'datos' => 'pepe']);
+        echo json_encode(['success' => true, 'info' => $htmlGenerado]);
 
         exit;
     } else {

@@ -20,7 +20,6 @@
              success: function (data) {
                  // Maneja la respuesta del servidor
                  if (data.success) {
-                     console.log("datos base", data.datos);
                      //window.location.href = 'views/general/usuario/carrito.php';
                      // Descomentar esta línea para redirigir a la página de carrito
                      $('#tabla-carrito').html(data.info);
@@ -74,28 +73,27 @@
 
 
     function manejarAccion(idProducto, accion) {
-        console.log(idProducto,accion);
-        console.log(leerLocalStorage());
         editarProductoEnLocalStorage(idProducto,accion);
-        console.log(leerLocalStorage());
-        datosCarrito();
+        
+        //TODO haer que se guarde tambien los canvios en la base de datos
         // // Realizar una solicitud AJAX para manejar la acción
-        // fetch('index.php?controller=carrito&action=recibirLocalCarrito', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ id_producto: idProducto, accion: accion }),
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     // Actualizar la cantidad en la interfaz
-        //     var nuevaCantidad = data.nuevaCantidad;
-        //     actualizarCantidadEnInterfaz(idProducto, nuevaCantidad);
-        // })
-        // .catch((error) => {
-        //     console.error('Error:', error);
-        // });
+        fetch('index.php?controller=carrito&action=modificarAccion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id_producto: idProducto, accion: accion }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Actualizar la cantidad en la interfaz
+            var nuevaCantidad = data.nuevaCantidad;
+            actualizarCantidadEnInterfaz(idProducto, nuevaCantidad);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+        datosCarrito();
     }
 
 
