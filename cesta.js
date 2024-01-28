@@ -175,4 +175,7 @@ $(document).ready(function () {
         localStorage.setItem('miLocalStorage', JSON.stringify(arrayDeCarritos));
     }
 
+
+    
+
 })

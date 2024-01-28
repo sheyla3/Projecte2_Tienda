@@ -121,11 +121,15 @@ public function crearHTMLcarrito($datos) {
         $htmlGenerado .= '<tr>
                             <td>' . $producto['id_producto'] . '</td>
                             <td>' . $producto['cantidad'] . '</td>
-                            <td>' . $producto['precio'] . '</td>
+                            <td>' . $producto['precio'] * $producto['cantidad'] . '</td>
                             <td>' . $producto['nombre'] . '</td>
                             <td><img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '" width="50" height="50"></td>
+                            <td><button class="btn-subir" data-id="' . $producto['id_producto'] . '">Subir</button></td>
+                            <td><button class="btn-bajar" data-id="' . $producto['id_producto'] . '">Bajar</button></td>
+                            <td><button class="btn-eliminar" data-id="' . $producto['id_producto'] . '">Eliminar</button></td>
                         </tr>';
     }
+    
 
     $htmlGenerado .= '</tbody></table>';
 
