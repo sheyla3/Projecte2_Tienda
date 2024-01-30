@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<h2 style="text-align:center; margin-top:100px">Destacados</h2>
+<h2 style="text-align:center; margin-top:50px; margin-bottom: -75px;">Destacados</h2>
 <div class="cubosCategorias slider">
     <?php foreach ($productos as $producto): ?>
         <a class="prodDestacado" href="index.php?controller=Producto&action=mostrarProducto&id_producto=<?= $producto['id_producto'] ?>">
@@ -23,24 +23,30 @@
         $(document).ready(function(){
             $('.slider').slick({
                 autoplay: true,
-                autoplaySpeed: 100, // Cambia esta velocidad según tus preferencias
+                autoplaySpeed: 1000, // Cambia esta velocidad según tus preferencias
                 dots: true,
                 infinite: true,
                 speed: 2000,
                 slidesToShow: 3, // Ajusta la cantidad de productos mostrados a la vez
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                responsive: [
+                {
+                    breakpoint: 1300, // Tablet
+                    settings: {
+                        slidesToShow: 2,
+                        speed: 2000,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 767, // Mobile
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                }
+            ]
             });
         });
     </script>
 </body>
-
-
-<!-- <div class="cubosCategorias">
-    <h3>Destacados</h3>
-    
-        echo '<a class="prodDestacado" href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
-        echo '<div class="cuboP" style="background-image: url(\'' . $producto['img'] . '\')" alt="' . $producto['nombre'] . '">';
-        echo '<p class="letraP">'. $producto['nombre'] . ' - '. $producto['precio'].'€</p>';
-        echo '</div>';
-        echo '</a>';y
-</div> -->

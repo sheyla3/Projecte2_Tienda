@@ -69,7 +69,7 @@
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
+                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>
                     <label  id="botonCarrito" class="mobile-item">Carrito</label>
                 </li>
                 <li>

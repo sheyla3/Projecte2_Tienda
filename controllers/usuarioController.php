@@ -230,6 +230,10 @@ class UsuarioController
 		include('views/general/usuario/perfilUser.php');
 	}
 
+	public function mostrarPedidos(){
+		
+	}
+
 	public function mostrarEditarPerfil()
 	{
 		// Verifica si el usuario está autenticado (puedes ajustar esto según tu lógica de autenticación)

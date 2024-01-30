@@ -70,8 +70,8 @@
                     <label class="mobile-item">Buscar</label>
                 </li>
                 <li>
-                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><img src="views/img/carrito.png" alt="Carrito" width="20" height="20"></a>
-                    <label  id="botonCarrito" class="mobile-item">Carrito</label>
+                    <a href="#" class="tipo"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>
+                    <label class="mobile-item">Carrito</label>
                 </li>
                 <li>
                     <a href="#" class="tipo"><img src="views/img/usuario.png" alt="Iniciar sesión" width="20" height="20"></a>
@@ -81,6 +81,7 @@
                         <li><a href="#">Mis compras</a></li>
                         <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
+                        <li><a href="index.php?controller=usuario&action=mostrarPedidos">Mis Pedidos</a></li>
                         <li><a href="././sortir.php">Cerrar sesión</a></li>
                     </ul>
                 </li>
