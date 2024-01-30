@@ -11,6 +11,7 @@
     function datosCarrito(){
          
          var datos = leerLocalStorage();
+
      
          $.ajax({
              url: 'index.php?controller=carrito&action=recibirLocalCarrito',
@@ -52,13 +53,21 @@
         btnSubir.forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var idProducto = this.getAttribute('data-id');
-                manejarAccion(idProducto, 'subir');
+                var stock = this.getAttribute('data-stock');
+                var cant = this.getAttribute('data-cant');
+                if(cant === stock){
+                    console.log("No mas disponible")
+                }else{
+                    manejarAccion(idProducto, 'subir');
+                }
+                
             });
         });
 
         btnBajar.forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var idProducto = this.getAttribute('data-id');
+                var stock = this.getAttribute('data-stock');
                 manejarAccion(idProducto, 'bajar');
             });
         });
@@ -91,7 +100,7 @@
             actualizarCantidadEnInterfaz(idProducto, nuevaCantidad);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            //console.error('Error:', error);
         });
         datosCarrito();
     }

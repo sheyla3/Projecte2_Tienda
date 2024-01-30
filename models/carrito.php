@@ -60,7 +60,7 @@ public function obtenerProductosEnCarrito() {
     try {
         // Consulta que combina información de carrito, productos y fotos
         $consulta = $this->db->prepare("
-            SELECT c.id_producto, c.cantidad, p.nombre, p.precio, f.img
+            SELECT c.id_producto, c.cantidad, p.nombre, p.precio, p.stock, f.img
             FROM carrito c
             JOIN productos p ON c.id_producto = p.id_producto
             JOIN fotos f ON p.id_producto = f.id_producto

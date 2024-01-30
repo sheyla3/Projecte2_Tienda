@@ -132,40 +132,61 @@ public function crearHTMLcarrito($datos) {
         $productosCombinados = self::combinarProductos($datos);
     }
 
+    $precioTotal = 0;
+    $htmlGenerado = '<div class="carrito1">
 
-    $htmlGenerado = '<table border="1">
-                        <thead>
-                            <tr>
-                                <th>ID Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio</th>
-                                <th>Nombre</th>
-                                <th>Imagen</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
+                        <tbody>
+                        <div class="generalCarrito">';
 
-    // Combinar productos de ambos conjuntos de datos
-   
-
-    // Recorrer cada producto y agregar una fila a la tabla
     foreach ($productosCombinados as $producto) {
-        $htmlGenerado .= '<tr>
-                            <td>' . $producto['id_producto'] . '</td>
-                            <td>' . $producto['cantidad'] . '</td>
-                            <td>' . $producto['precio'] * $producto['cantidad'] . '</td>
-                            <td>' . $producto['nombre'] . '</td>
-                            <td><img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '" width="50" height="50"></td>
-                            <td><button class="btn-subir" data-id="' . $producto['id_producto'] . '">Subir</button></td>
-                            <td><button class="btn-bajar" data-id="' . $producto['id_producto'] . '">Bajar</button></td>
-                            <td><button class="btn-eliminar" data-id="' . $producto['id_producto'] . '">Eliminar</button></td>
-                        </tr>';
+        $subtotal = $producto['precio'] * $producto['cantidad'];
+        $precioTotal += $subtotal; 
+        $htmlGenerado .= '<div class="carritoContanier">
+                                <div class="carritoimg">
+                                    <img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '"  data-stock="'. $producto['stock'].'">
+                                </div>
+                                <div>
+                                    <p>' . $producto['nombre'] . '</p>
+                                    <p>' . $producto['precio'] * $producto['cantidad']  . '</p>
+                                    
+                                    <div class="menuPrecio">
+                                        <p>' . $producto['cantidad'] . '</p>
+                                        <button class="btn-subir" data-cant="' . $producto['cantidad'] . '" data-id="' . $producto['id_producto'] . '" data-stock="'. $producto['stock'].'"></button>
+                                        <button class="btn-bajar" data-id="' . $producto['id_producto'] . '"></button>
+                                        <button class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>
+                                    </div>
+                                    
+                                
+                                </div>
+                        </div>
+                    </div>';
     }
+
+    
     
 
-    $htmlGenerado .= '</tbody></table>';
+    $htmlGenerado .= '
+    
+        <div class="precioContanier">
+        
+            <h3>Resumen</h3>
+            <p>Total'.$precioTotal.' </p>
 
-    return $htmlGenerado;
+        </div>
+    
+    
+    </div>';
+
+    $htmlNoP = '<h3>Sin productos</h3>';
+
+    if($productosCombinados){
+        return $htmlGenerado;
+    }else{
+
+        return $htmlNoP;
+    }
+
+    
 }
 
 
