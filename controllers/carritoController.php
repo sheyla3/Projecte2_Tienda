@@ -114,18 +114,14 @@ public function entrar(){
     include 'views\general\usuario\carrito.php';
 }
 
-
-
-
-
 public function crearHTMLcarrito($datos) {
     $productosCombinados = [];
     if (isset($_SESSION['email'])) {
         $correo = $_SESSION['email'];
         $database = new Database();
         $dbInstance = $database->getDB();
-        $carrito = new Carrito($dbInstance,null,$correo,null,null,null,null);
-        $datosBase  = $carrito->obtenerProductosEnCarrito();
+        $carrito = new Carrito($dbInstance, null, $correo, null, null, null, null);
+        $datosBase = $carrito->obtenerProductosEnCarrito();
         $productosCombinados = self::combinarProductos($datos, $datosBase);
     } else {
         // Si no hay sesión de usuario, solo combinar los productos del carrito
@@ -134,60 +130,49 @@ public function crearHTMLcarrito($datos) {
 
     $precioTotal = 0;
     $htmlGenerado = '<div class="carrito1">
-
-                        <tbody>
                         <div class="generalCarrito">';
 
     foreach ($productosCombinados as $producto) {
         $subtotal = $producto['precio'] * $producto['cantidad'];
-        $precioTotal += $subtotal; 
+        $precioTotal += $subtotal;
+
         $htmlGenerado .= '<div class="carritoContanier">
-                                <div class="carritoimg">
-                                    <img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '"  data-stock="'. $producto['stock'].'">
+                            <div class="carritoimg">
+                                <img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '" data-stock="' . $producto['stock'] . '">
+                            </div>
+                            <div>
+                                <p>' . $producto['nombre'] . '</p>
+                                <p>' . $producto['precio'] * $producto['cantidad'] . '</p>
+                                <div class="menuPrecio">
+                                    <p>' . $producto['cantidad'] . '</p>
+                                    <input type="checkbox" class="producto-seleccionado" name="productos_seleccionados[' . $producto['id_producto'] . '][seleccionado]" value="' . $producto['id_producto'] . '">
+                                    <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][cantidad]" value="' . $producto['cantidad'] . '">
+                                    <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][precio]" value="' . $producto['precio'] . '">
+                                    <button type="button" class="btn-subir" data-cant="' . $producto['cantidad'] . '" data-id="' . $producto['id_producto'] . '" data-stock="' . $producto['stock'] . '"></button>
+                                    <button type="button" class="btn-bajar" data-id="' . $producto['id_producto'] . '"></button>
+                                    <button type="button" class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>
                                 </div>
-                                <div>
-                                    <p>' . $producto['nombre'] . '</p>
-                                    <p>' . $producto['precio'] * $producto['cantidad']  . '</p>
-                                    
-                                    <div class="menuPrecio">
-                                        <p>' . $producto['cantidad'] . '</p>
-                                        <button class="btn-subir" data-cant="' . $producto['cantidad'] . '" data-id="' . $producto['id_producto'] . '" data-stock="'. $producto['stock'].'"></button>
-                                        <button class="btn-bajar" data-id="' . $producto['id_producto'] . '"></button>
-                                        <button class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>
-                                    </div>
-                                    
-                                
-                                </div>
-                        </div>
-                    </div>';
+                            </div>
+                        </div>';
     }
 
-    
-    
-
-    $htmlGenerado .= '
-    
-        <div class="precioContanier">
-        
-            <h3>Resumen</h3>
-            <p>Total'.$precioTotal.' </p>
-
-        </div>
-    
-    
-    </div>';
+    $htmlGenerado .= '<div class="precioContanier">
+                            <h3>Resumen</h3>
+                            <p>Total' . $precioTotal . ' </p>
+                            <button type="button" onclick="comprarProductos()">Comprar Productos</button>
+                        </div>
+                    </div>';
 
     $htmlNoP = '<h3>Sin productos</h3>';
 
-    if($productosCombinados){
+    if ($productosCombinados) {
         return $htmlGenerado;
-    }else{
-
+    } else {
         return $htmlNoP;
     }
-
-    
 }
+
+
 
 
 

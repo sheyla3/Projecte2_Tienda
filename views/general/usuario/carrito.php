@@ -6,8 +6,36 @@
             
             datosCarrito();
         });
+        function comprarProductos() {
+            var productosSeleccionados = document.querySelectorAll('.producto-seleccionado:checked');
+            var datosProductos = [];
 
-        
+            productosSeleccionados.forEach(function(producto) {
+                var idProducto = producto.value;
+                var cantidad = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][cantidad]"]').value;
+                var precio = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][precio]"]').value;
+
+                datosProductos.push({
+                    id_producto: idProducto,
+                    cantidad: cantidad,
+                    precio: precio
+                });
+        });
+
+        // Puedes enviar los datos al servidor usando AJAX o hacer lo que necesites con ellos.
+        console.log(datosProductos);
+    }
+
+    function enviarFormulario() {
+        var checkboxes = document.querySelectorAll('.producto-seleccionado:checked');
+        var form = document.getElementById('formProductos');
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.removeAttribute('name'); // Eliminar el nombre para que no se envíe en el formulario
+        });
+
+        form.submit();
+    } 
     function datosCarrito(){
          
          var datos = leerLocalStorage();
