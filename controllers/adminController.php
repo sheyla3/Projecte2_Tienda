@@ -61,6 +61,23 @@ class AdminController
         
     
     }
+
+    public function botonVistaCanvas(){
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            require_once "views/general/adminPanel/menu.php";
+            include('views/general/adminPanel/firma.html');
+            echo '<script src="./scriptDibujar.js"></script>';
+
+        }else{
+            echo("<p class='validado'>No estas validado</p>");
+        }
+
+        
+    
+    }
+
     public function botonVistaComanda(){
         if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
             $database = new Database();
@@ -87,10 +104,45 @@ class AdminController
             echo("<p class='validado'>No estas validado</p>");
         }
 
-        
+       
     }
     public function mostrarLoginAdmin(){
         include('views/general/formularios/mostrar_login.php');
     }
+
+    public function guardarFirma(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
+            $imageName = $_POST['imageName'];
+            $imageData = $_POST['imageData'];
+            $adminEmail = $_SESSION['email'];
+    
+            // Adjust the path to the "firmas" folder
+            $imgFolder = './views/img/firmas/';
+            $filePath = $imgFolder . $imageName;
+    
+            $imageData = str_replace('data:image/png;base64,', '', $imageData);
+            $imageData = base64_decode($imageData);
+    
+            // Create the "firmas" folder if it doesn't exist
+            if (!file_exists($imgFolder)) {
+                mkdir($imgFolder, 0777, true);
+            }
+    
+            file_put_contents($filePath, $imageData);
+    
+            require_once "models/database.php";
+    
+            $database = new Database();
+            $pdo = $database->getDB();
+    
+            $stmt = $pdo->prepare('UPDATE admin SET firma = ? WHERE email = ?');
+            $stmt->execute([$filePath, $adminEmail]);
+    
+            http_response_code(200);
+        } else {
+            http_response_code(400);
+        }
+    }
+    
     
 }
