@@ -17,27 +17,39 @@ class Carrito extends Database {
         $this->precio = $precio;
 	}
 
+// hacer esto en la base de datos para evitar duplicados 
+//     ALTER TABLE carrito
+// ADD CONSTRAINT uk_correo_id_producto UNIQUE (correo, id_producto);
 
-public function anadirProductoAlCarrito() {
-    try {
-        $consulta = $this->db->prepare("INSERT INTO carrito (correo, id_producto, cantidad, precio) VALUES (?, ?, ?, ?)");
-        $consulta->bindParam(1, $this->correo);
-        $consulta->bindParam(2, $this->id_producto);
-        $consulta->bindParam(3, $this->cantidad);
-        $consulta->bindParam(4, $this->precio);
 
-        $consulta->execute();
-        $last_id = $this->db->lastInsertId();
-        echo "Nuevo producto agregado al carrito correctamente";
-        echo "ID del último producto en el carrito: " . $last_id;
-        // Puedes redirigir o hacer otras acciones después de agregar el producto al carrito
-        return true;
-    } catch (PDOException $e) {
-        // Captura la excepción y muestra el mensaje de error
-        echo "Error al agregar el producto al carrito: " . $e->getMessage();
-        return null;
+    public function anadirProductoAlCarrito() {
+        try {
+            $consulta = $this->db->prepare("
+                INSERT INTO carrito (correo, id_producto, cantidad, precio)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT (correo, id_producto) DO UPDATE
+                SET cantidad = EXCLUDED.cantidad, precio = EXCLUDED.precio
+            ");
+    
+            $consulta->bindParam(1, $this->correo);
+            $consulta->bindParam(2, $this->id_producto);
+            $consulta->bindParam(3, $this->cantidad);
+            $consulta->bindParam(4, $this->precio);
+    
+            $consulta->execute();
+            $last_id = $this->db->lastInsertId();
+            echo "Nuevo producto agregado al carrito correctamente";
+            echo "ID del último producto en el carrito: " . $last_id;
+            // Puedes redirigir o hacer otras acciones después de agregar el producto al carrito
+            return true;
+        } catch (PDOException $e) {
+            // Captura la excepción y muestra el mensaje de error
+            echo "Error al agregar el producto al carrito: " . $e->getMessage();
+            return null;
+        }
     }
-}
+    
+    
 
 
 // public function obtenerProductosEnCarrito() {
@@ -60,7 +72,7 @@ public function obtenerProductosEnCarrito() {
     try {
         // Consulta que combina información de carrito, productos y fotos
         $consulta = $this->db->prepare("
-            SELECT c.id_producto, c.cantidad, p.nombre, p.precio, f.img
+            SELECT c.id_producto, c.cantidad, p.nombre, p.precio, p.stock, f.img
             FROM carrito c
             JOIN productos p ON c.id_producto = p.id_producto
             JOIN fotos f ON p.id_producto = f.id_producto

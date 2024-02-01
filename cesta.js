@@ -13,14 +13,16 @@ $(document).ready(function () {
             this.productos = [];
         }
     
-        agregarProducto(id_producto, cantidad, precio, nombre, img) {
+        agregarProducto(id_producto, cantidad, precio, nombre, img, stock) {
             // Agregar el nuevo producto al array de productos
             this.productos.push({
                 id_producto: id_producto,
                 cantidad: cantidad,
                 precio: precio,
                 nombre: nombre,
-                img: img
+                img: img,
+                stock: stock,
+
             });
         }
     
@@ -68,7 +70,6 @@ $(document).ready(function () {
                 success: function (data) {
                     // Maneja la respuesta del servidor
                     if (data.success) {
-                        console.log(data.datos);
                         //window.location.href = 'views/general/usuario/carrito.php';
                         // Descomentar esta línea para redirigir a la página de carrito
                         $('#tabla-carrito').html(data.info);
@@ -85,16 +86,7 @@ $(document).ready(function () {
                 }
             });
         });
-    }
-    
-
-
-    
-    
-    
-    
-
-    
+    }  
     
     function agregarAlCarrito() {
         // Acceder a los valores del formulario actual
@@ -104,6 +96,8 @@ $(document).ready(function () {
         var correo = document.querySelector('[name="d_correo"]').value;
         var img = document.querySelector('[name="d_img"]').value;
         var nombre = document.querySelector('[name="d_nombre"]').value;
+        var stock = document.querySelector('[name="d_stock"]').value;
+      
 
         if(correo){
             const usuario1 = new Usuario(correo);
@@ -118,7 +112,7 @@ $(document).ready(function () {
         //crear carrito con objecto usuario
         const carritoDelUsuario = new Carrito(usuario1);
 
-        carritoDelUsuario.agregarProducto(id_producto,cantidad,precio,nombre,img);
+        carritoDelUsuario.agregarProducto(id_producto,cantidad,precio,nombre,img,stock);
 
         guardarEnLocalStorage(carritoDelUsuario);
         
