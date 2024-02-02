@@ -827,6 +827,34 @@ body {
   opacity: 1;
 }
 
+#go-up-botonBajar {
+  display: none;
+  padding: 20px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  border-radius: 15px;
+  background: #537FE7;
+  opacity: 0.6;
+  height: 20px;
+  width: 20px;
+  scroll-behavior: smooth;
+}
+
+#go-up-botonBajar>img {
+  height: 20px;
+  width: 20px;
+}
+
+#go-up-botonBajar:hover {
+  opacity: 1;
+}
+
+
 /* SLIDER AUTOMATICO */
 
 .slider1 {
@@ -1195,7 +1223,9 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transform: scale(var(--escala, 1));
   transition: transform 0.25s;
   align-items: center;
-  padding-left: 50px;
+  margin: auto;
+  background-position: center;
+  width: 50%;
 
 }
 
