@@ -21,33 +21,65 @@ class Carrito extends Database {
 //     ALTER TABLE carrito
 // ADD CONSTRAINT uk_correo_id_producto UNIQUE (correo, id_producto);
 
+public function anadirProductoAlCarrito() {
+    try {
+        // Verificar si ya existe un registro para el mismo producto y usuario no comprado
+        $verificarConsulta = $this->db->prepare("
+            SELECT id_producto
+            FROM carrito
+            WHERE correo = ? AND id_producto = ? AND comprado = false
+        ");
+        
+        $verificarConsulta->bindParam(1, $this->correo);
+        $verificarConsulta->bindParam(2, $this->id_producto);
+        $verificarConsulta->execute();
 
-    public function anadirProductoAlCarrito() {
-        try {
+        $registroExistente = $verificarConsulta->fetch(PDO::FETCH_ASSOC);
+
+        if ($registroExistente) {
+            // Ya existe un registro no comprado, entonces actualizar cantidad y precio
             $consulta = $this->db->prepare("
+                UPDATE carrito
+                SET cantidad = cantidad + ?, precio = ?
+                WHERE correo = ? AND id_producto = ? AND comprado = false
+            ");
+
+            $consulta->bindParam(1, $this->cantidad);
+            $consulta->bindParam(2, $this->precio);
+            $consulta->bindParam(3, $this->correo);
+            $consulta->bindParam(4, $this->id_producto);
+
+            $consulta->execute();
+
+            echo "Producto actualizado en el carrito correctamente";
+        } else {
+            // No existe un registro no comprado, entonces insertar
+            $nuevaConsulta = $this->db->prepare("
                 INSERT INTO carrito (correo, id_producto, cantidad, precio)
                 VALUES (?, ?, ?, ?)
-                ON CONFLICT (correo, id_producto) DO UPDATE
-                SET cantidad = EXCLUDED.cantidad, precio = EXCLUDED.precio
             ");
-    
-            $consulta->bindParam(1, $this->correo);
-            $consulta->bindParam(2, $this->id_producto);
-            $consulta->bindParam(3, $this->cantidad);
-            $consulta->bindParam(4, $this->precio);
-    
-            $consulta->execute();
+
+            $nuevaConsulta->bindParam(1, $this->correo);
+            $nuevaConsulta->bindParam(2, $this->id_producto);
+            $nuevaConsulta->bindParam(3, $this->cantidad);
+            $nuevaConsulta->bindParam(4, $this->precio);
+
+            $nuevaConsulta->execute();
+
             $last_id = $this->db->lastInsertId();
             echo "Nuevo producto agregado al carrito correctamente";
             echo "ID del último producto en el carrito: " . $last_id;
-            // Puedes redirigir o hacer otras acciones después de agregar el producto al carrito
-            return true;
-        } catch (PDOException $e) {
-            // Captura la excepción y muestra el mensaje de error
-            echo "Error al agregar el producto al carrito: " . $e->getMessage();
-            return null;
         }
+
+        return true;
+    } catch (PDOException $e) {
+        // Captura la excepción y muestra el mensaje de error
+        echo "Error al agregar el producto al carrito: " . $e->getMessage();
+        return null;
     }
+}
+
+
     
     
 
@@ -76,7 +108,7 @@ public function obtenerProductosEnCarrito() {
             FROM carrito c
             JOIN productos p ON c.id_producto = p.id_producto
             JOIN fotos f ON p.id_producto = f.id_producto
-            WHERE c.correo = ?
+            WHERE c.correo = ? AND c.comprado = false
         ");
         $consulta->bindParam(1, $this->correo);
         $consulta->execute();
@@ -89,6 +121,7 @@ public function obtenerProductosEnCarrito() {
         return null;
     }
 }
+
 
 
 public function actualizarProductoEnCarrito($accion) {

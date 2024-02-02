@@ -20,4 +20,19 @@ class PedidoController
             // adminIncorrecte();
         }
     }
+
+    public function añadirPedido(){
+        ob_clean();
+        header('Content-Type: application/json');
+        $correo = $_SESSION['email'];
+        $datosProductos = json_decode(file_get_contents('php://input'), true);
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $pedido = new Pedido($dbInstance, null,$correo, null, null, null);
+        $pedidos = $pedido->crearNuevoPedido();
+        echo json_encode(['success' => true]);
+        exit;
+
+
+    }
 }

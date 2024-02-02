@@ -7,10 +7,10 @@
             datosCarrito();
         });
         function comprarProductos() {
-            var productosSeleccionados = document.querySelectorAll('.producto-seleccionado:checked');
+            var productosSeleccionados = document.querySelectorAll('.producto-seleccionado');
             var datosProductos = [];
 
-            productosSeleccionados.forEach(function(producto) {
+            productosSeleccionados.forEach(function (producto) {
                 var idProducto = producto.value;
                 var cantidad = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][cantidad]"]').value;
                 var precio = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][precio]"]').value;
@@ -20,11 +20,35 @@
                     cantidad: cantidad,
                     precio: precio
                 });
-        });
+            });
 
-        // Puedes enviar los datos al servidor usando AJAX o hacer lo que necesites con ellos.
-        console.log(datosProductos);
-    }
+            // Puedes enviar los datos al servidor usando AJAX o hacer lo que necesites con ellos.
+            console.log(datosProductos);
+            $.ajax({
+                url: 'index.php?controller=Pedido&action=añadirPedido',
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: { carrito: JSON.stringify(datosProductos) },
+                success: function (data) {
+                    // Maneja la respuesta del servidor
+                    if (data.success) {
+                        console.log("bien");
+                        limpiarLocalStorage();
+                        datosCarrito();
+
+                    } else {
+                        console.error('Error en la solicitud:', data.message);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Maneja el error
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    console.error('Estado de la respuesta:', xhr.status);
+                    console.error('Respuesta del servidor:', xhr.responseText);
+                }
+            });
+        }
+
 
     function enviarFormulario() {
         var checkboxes = document.querySelectorAll('.producto-seleccionado:checked');
@@ -71,6 +95,11 @@
         var localStorageValue = localStorage.getItem('miLocalStorage');
         return localStorageValue ? JSON.parse(localStorageValue) : [];
     }
+    function limpiarLocalStorage() {
+        localStorage.removeItem('miLocalStorage');
+        console.log('LocalStorage limpiada');
+    }
+
     function agregarEventosBotones() {
         // Obtener todos los botones de subir, bajar y eliminar
         var btnSubir = document.querySelectorAll('.btn-subir');
