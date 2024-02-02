@@ -230,10 +230,6 @@ class UsuarioController
 		include('views/general/usuario/perfilUser.php');
 	}
 
-	public function mostrarPedidos(){
-		
-	}
-
 	public function mostrarEditarPerfil()
 	{
 		// Verifica si el usuario está autenticado (puedes ajustar esto según tu lógica de autenticación)
@@ -291,5 +287,14 @@ class UsuarioController
 		}
 	}
 
+	public function mostrarPedidos() {
+        // Asegúrate de tener una sesión activa
+        if (isset($_SESSION['email'])) {
+            $perfilController = new UsuarioController();
+            $perfilController->mostrarPedidos();
+        } else {
+            echo "Debes iniciar sesión para ver tus pedidos.";
+        }
+    }
 }
 

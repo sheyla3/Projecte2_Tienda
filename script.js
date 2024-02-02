@@ -253,12 +253,20 @@ window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
 
 	const topUpButton = document.getElementById("go-up-botonSubir");
+    const topDownButton = document.getElementById("go-up-botonBajar");
+
 
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 	topUpButton.setAttribute('style', 'display: block');
   } else {
 	topUpButton.setAttribute('style', 'display: none');
   }
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+	topDownButton.setAttribute('style', 'display: block');
+  } else {
+	topDownButton.setAttribute('style', 'display: none');
+  }
+
 }
 
 // When the user clicks on the button, scroll to the top of the document
@@ -266,6 +274,11 @@ function topFunction() {
 	document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+// function bottomFunction() {
+// 	document.body.scrollHeight = 1;
+//   document.documentElement.scrollHeight = 1;
+// }
 
 function mostrarEnviarCorreo() {
     document.getElementById('overlay').style.display = 'flex';

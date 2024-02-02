@@ -69,6 +69,34 @@ class Pedido extends Database
     // 	$resultado = $consulta->fetchAll();
     // 	return $resultado;
 	// }
+
+	function obtenerPedidosUsuario($correo) {
+		global $conexion;
+	
+		// Consulta SQL para obtener los pedidos de un usuario específico
+		$consulta = "SELECT id_carrito, id_producto, cantidad, preciototal, estado FROM pedidos WHERE correo = :correo";
+	
+		// Preparar la consulta
+		$stmt = pg_prepare($conexion, "consulta_pedidos", $consulta);
+	
+		// Asignar valores a los parámetros
+		pg_execute($conexion, "consulta_pedidos", array(":correo" => $correo));
+	
+		// Verificar si la ejecución fue exitosa
+		if ($stmt) {
+			$pedidos = array();
+	
+			// Obtener los resultados como un array asociativo
+			while ($fila = pg_fetch_assoc($stmt)) {
+				$pedidos[] = $fila;
+			}
+	
+			return $pedidos;
+		} else {
+			// Manejar errores de la consulta (aquí puedes mejorar el manejo de errores según tus necesidades)
+			die("Error en la consulta: " . pg_last_error($conexion));
+		}
+	}
 }
 
 
