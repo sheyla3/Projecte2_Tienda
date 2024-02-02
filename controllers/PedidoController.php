@@ -1,6 +1,7 @@
 <?php
 // require "models/producto.php";
 require "models/pedido.php";
+require "models/carrito.php";
 
 class PedidoController
 {
@@ -51,6 +52,20 @@ class PedidoController
         }
     }
 
+    // public function añadirPedido(){
+    //     ob_clean();
+    //     header('Content-Type: application/json');
+    //     $correo = $_SESSION['email'];
+    //     $datosProductos = json_decode(file_get_contents('php://input'), true);
+    //     $database = new Database();
+    //     $dbInstance = $database->getDB();
+    //     $pedido = new Pedido($dbInstance, null,$correo, null, null, null);
+    //     $pedidos = $pedido->crearNuevoPedido();
+    //     echo json_encode(['success' => true]);
+    //     exit;
+
+
+    // }
     public function añadirPedido(){
         ob_clean();
         header('Content-Type: application/json');
@@ -58,11 +73,27 @@ class PedidoController
         $datosProductos = json_decode(file_get_contents('php://input'), true);
         $database = new Database();
         $dbInstance = $database->getDB();
-        $pedido = new Pedido($dbInstance, null,$correo, null, null, null);
+       
+       // Iterar sobre los datos de productos y añadir al carrito
+       foreach ($datosProductos['carrito'] as $producto) {
+            $id_producto = $producto['id_producto'];
+            $cantidad = $producto['cantidad'];
+            $precio = $producto['precio'];
+            $nombre = $producto['nombre'];
+            $img = $producto['img'];
+    
+            $carrito = new Carrito($dbInstance, null, $correo, $id_producto, $cantidad, $precio);
+            $funciona = $carrito->anadirProductoAlCarrito();
+            
+            // Puedes hacer algo con $funciona si lo necesitas
+        }
+    
+        // Llamar a la función para crear el pedido
+        $pedido = new Pedido($dbInstance, null, $correo, null, null, null);
         $pedidos = $pedido->crearNuevoPedido();
-        echo json_encode(['success' => true]);
+        
+        echo json_encode(['success' => true, 'info' => $datosProductos]);
         exit;
-
-
     }
+    
 }

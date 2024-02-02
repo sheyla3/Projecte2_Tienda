@@ -148,6 +148,8 @@ public function crearHTMLcarrito($datos) {
                                     <input type="checkbox" class="producto-seleccionado" name="productos_seleccionados[' . $producto['id_producto'] . '][seleccionado]" value="' . $producto['id_producto'] . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][cantidad]" value="' . $producto['cantidad'] . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][precio]" value="' . $producto['precio'] . '">
+                                    <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][nombre]" value="' . htmlspecialchars($producto['nombre']) . '">
+                                    <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][img]" value="' . htmlspecialchars($producto['img']) . '">
                                     <button type="button" class="btn-subir" data-cant="' . $producto['cantidad'] . '" data-id="' . $producto['id_producto'] . '" data-stock="' . $producto['stock'] . '"></button>
                                     <button type="button" class="btn-bajar" data-id="' . $producto['id_producto'] . '"></button>
                                     <button type="button" class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>

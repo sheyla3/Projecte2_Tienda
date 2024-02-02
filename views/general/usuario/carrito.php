@@ -10,41 +10,47 @@
             var productosSeleccionados = document.querySelectorAll('.producto-seleccionado');
             var datosProductos = [];
 
-            productosSeleccionados.forEach(function (producto) {
-                var idProducto = producto.value;
-                var cantidad = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][cantidad]"]').value;
-                var precio = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][precio]"]').value;
+            productosSeleccionados.forEach(function(producto) {
+            var idProducto = producto.value;
+            var cantidad = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][cantidad]"]').value;
+            var precio = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][precio]"]').value;
+            var nombre = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][nombre]"]').value;
+            var img = document.querySelector('input[name="productos_seleccionados[' + idProducto + '][img]"]').value;
 
-                datosProductos.push({
-                    id_producto: idProducto,
-                    cantidad: cantidad,
-                    precio: precio
-                });
+            datosProductos.push({
+                id_producto: idProducto,
+                cantidad: cantidad,
+                precio: precio,
+                nombre: nombre,
+                img: img
             });
+        });
+
 
             // Puedes enviar los datos al servidor usando AJAX o hacer lo que necesites con ellos.
             console.log(datosProductos);
             $.ajax({
                 url: 'index.php?controller=Pedido&action=añadirPedido',
                 type: 'POST',
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: { carrito: JSON.stringify(datosProductos) },
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({ carrito: datosProductos }),
                 success: function (data) {
                     // Maneja la respuesta del servidor
                     if (data.success) {
-                        console.log("bien");
+                        console.log("data");
                         limpiarLocalStorage();
                         datosCarrito();
 
                     } else {
-                        console.error('Error en la solicitud:', data.message);
+                        limpiarLocalStorage();
+                        datosCarrito();
+                        
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     // Maneja el error
-                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
-                    console.error('Estado de la respuesta:', xhr.status);
-                    console.error('Respuesta del servidor:', xhr.responseText);
+                    limpiarLocalStorage();
+                    datosCarrito();
                 }
             });
         }
