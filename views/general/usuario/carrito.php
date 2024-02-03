@@ -69,7 +69,6 @@
     function datosCarrito(){
          
          var datos = leerLocalStorage();
-
      
          $.ajax({
              url: 'index.php?controller=carrito&action=recibirLocalCarrito',

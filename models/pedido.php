@@ -89,6 +89,24 @@ class Pedido extends Database
             $consultaCarrito->bindParam(2, $this->correo);
             $consultaCarrito->execute();
 
+            // Obtener productos en el carrito para restar stock
+            $consultaProductosCarrito = $this->db->prepare("SELECT id_producto, cantidad FROM carrito WHERE id_pedido = ?");
+            $consultaProductosCarrito->bindParam(1, $idPedido);
+            $consultaProductosCarrito->execute();
+            $productosCarrito = $consultaProductosCarrito->fetchAll(PDO::FETCH_ASSOC);
+
+            // Actualizar el stock de productos
+            foreach ($productosCarrito as $producto) {
+                $idProducto = $producto['id_producto'];
+                $cantidadEnCarrito = $producto['cantidad'];
+
+                // Restar la cantidad en el carrito del stock de productos
+                $consultaRestarStock = $this->db->prepare("UPDATE productos SET stock = stock - ? WHERE id_producto = ?");
+                $consultaRestarStock->bindParam(1, $cantidadEnCarrito);
+                $consultaRestarStock->bindParam(2, $idProducto);
+                $consultaRestarStock->execute();
+            }
+
             return true; // Éxito
         } catch (PDOException $e) {
             // Capturar la excepción y mostrar el mensaje de error
