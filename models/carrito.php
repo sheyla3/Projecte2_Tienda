@@ -39,10 +39,10 @@ public function anadirProductoAlCarrito() {
         if ($registroExistente) {
             // Ya existe un registro no comprado, entonces actualizar cantidad y precio
             $consulta = $this->db->prepare("
-                UPDATE carrito
-                SET cantidad = cantidad + ?, precio = ?
-                WHERE correo = ? AND id_producto = ? AND comprado = false
-            ");
+            UPDATE carrito
+            SET cantidad = ?, precio = ?
+            WHERE correo = ? AND id_producto = ? AND comprado = false
+        ");
 
             $consulta->bindParam(1, $this->cantidad);
             $consulta->bindParam(2, $this->precio);
