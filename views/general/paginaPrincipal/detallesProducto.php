@@ -5,57 +5,6 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
 
 
 ?>
-<style>
-    input {
-        border: none;
-        border-bottom: 2px solid #537FE7;
-        width: 80%;
-        margin-bottom: 10px;
-        font-size: 16px;
-    }
-    /* Estilos para el pop-up */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-    }
-
-
-    .popup {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        max-width: 400px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-
-    .close-btn {
-        margin-top: 10px;
-        cursor: pointer;
-        padding-left: 350px;
-    }
-
-
-    .btnEnv {
-        background: #537FE7;
-        border: 0;
-        padding: 10px;
-        color: white;
-        font-size: 16px;
-        width: 80%;
-        font-weight: bold;
-        border-radius: 20px;
-    }
-</style>
 
 
 <div class="Desktop1">
@@ -112,7 +61,7 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
             <input type="hidden" name="d_stock" value="<?php echo $producto['stock']; ?>">
             <input type="hidden" name="d_correo" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
             <!-- Cambios en el botón: agregamos onclick -->
-            <button type="button" class="d_botonAñadir">Añadir a la cesta</button>
+            <button type="button" class="d_botonAñadir"></button>
         </form>
         <?php }?>
         <div class="Descripcion"><?php echo $producto['descripcion']; ?>

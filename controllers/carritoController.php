@@ -130,7 +130,7 @@ public function crearHTMLcarrito($datos) {
 
     $precioTotal = 0;
     $htmlGenerado = '<div class="carrito1">
-                        <div class="generalCarrito">';
+                        <div class="generalCarrito carritoContanier">';
 
     foreach ($productosCombinados as $producto) {
         $subtotal = $producto['precio'] * $producto['cantidad'];
@@ -155,10 +155,12 @@ public function crearHTMLcarrito($datos) {
                                     <button type="button" class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>
                                 </div>
                             </div>
-                        </div>';
+                       
+                    </div>';
     }
 
-    $htmlGenerado .= '<div class="precioContanier">
+    $htmlGenerado .= ' </div>
+    <div class="precioContanier">
                             <h3>Resumen</h3>
                             <p>Total' . $precioTotal . ' </p>
                             <button type="button" onclick="comprarProductos()">Comprar Productos</button>

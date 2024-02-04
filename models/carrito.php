@@ -17,9 +17,7 @@ class Carrito extends Database {
         $this->precio = $precio;
 	}
 
-// hacer esto en la base de datos para evitar duplicados 
-//     ALTER TABLE carrito
-// ADD CONSTRAINT uk_correo_id_producto UNIQUE (correo, id_producto);
+
 
 public function anadirProductoAlCarrito() {
     try {

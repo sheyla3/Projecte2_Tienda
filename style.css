@@ -1115,7 +1115,6 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 }
 
 .ZonaInfo {
-  width: 500px;
   padding-left: 50px;
   justify-content: center;
   display: flex;
@@ -1162,7 +1161,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .Descripcion {
   padding-top: 15px;
-  width: 350px;
+  width: 400px;
 }
 
 #labelCantidad {
@@ -1737,6 +1736,7 @@ Dots
 /*carrito*/
 .carrito1{
   font-size: 18px;
+  display: flex;
 }
 
 .generalCarrito{
@@ -1757,7 +1757,6 @@ Dots
 
 .carritoContanier{
   display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
@@ -1778,6 +1777,15 @@ Dots
 .menuPrecio{
   display: flex;
   align-items: center;
+}
+
+.d_botonAñadir{
+  height: 25px;
+  width: 25px;
+  background-image: url(img/iconos/bolsa-de-la-compra.png);
+  background-size: cover;
+  background-color: transparent;
+  border: none;
 }
 
 .btn-subir{
@@ -1805,4 +1813,79 @@ Dots
   background-size: cover;
   background-color: transparent;
   border: none;
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid #537FE7;
+  width: 80%;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+/* Estilos para el pop-up */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.close-btn {
+  margin-top: 10px;
+  cursor: pointer;
+  padding-left: 350px;
+}
+
+
+.btnEnv {
+  background: #537FE7;
+  border: 0;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+  width: 80%;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+/*carrito y detalle movil*/
+@media only screen and (max-width: 767px) {
+  .precioContanier {
+    padding-left: 21px;
+  }
+  .Desktop1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 300px;
+  }
+  .Descripcion {
+    padding-top: 15px;
+    width: 300px;
+  }
+
+  .FotoZapato {
+    width: 340px;
+    height: 459px;
+    padding: 30px;
+    transform: scale(0.9);
+  }
 }
