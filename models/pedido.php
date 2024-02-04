@@ -67,36 +67,6 @@ class Pedido extends Database
     // 	$resultado = $consulta->fetchAll();
     // 	return $resultado;
 	// }
-	public function mostrarPedidos() {
-        // Obtener la información de los pedidos del usuario actual desde la base de datos
-        $id_usuario = $_SESSION['id_usuario'];  // Asegúrate de tener una sesión activa
-
-        $pedidos = obtenerPedidosUsuario($id_usuario);
-
-        // Verificar si hay pedidos
-        if (empty($pedidos)) {
-            echo "No tienes pedidos realizados.";
-        } else {
-            // Mostrar los pedidos en forma de tabla
-            echo "<table border='1'>
-                    <tr>
-                        <th>ID Pedido</th>
-                        <th>Fecha Pedido</th>
-                        <!-- Agrega más columnas según tus necesidades -->
-                    </tr>";
-
-            foreach ($pedidos as $pedido) {
-                echo "<tr>
-                        <td>{$pedido['id_pedido']}</td>
-                        <td>{$pedido['fecha_pedido']}</td>
-                        <!-- Agrega más celdas según tus necesidades -->
-                      </tr>";
-            }
-
-            echo "</table>";
-        }
-    }
-
 	public function crearNuevoPedido()
     {
         try {
@@ -143,6 +113,14 @@ class Pedido extends Database
             echo "Error al crear el pedido: " . $e->getMessage();
             return false; // Fracaso
         }
+    }
+
+	public function obtenerPedidosUsuario($correo) {
+        $consulta = $this->db->prepare( "SELECT * FROM pedidos WHERE correo = '$correo'");
+		$consulta->execute();
+    	$resultado = $consulta->fetchAll();
+    	return $resultado;
+
     }
 }
 
