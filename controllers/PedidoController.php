@@ -2,12 +2,11 @@
 // require "models/producto.php";
 require "models/pedido.php";
 require "models/carrito.php";
-
 class PedidoController
 {
     public function mostrarProductos()
     {
-        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
             // require_once "views/adminPanel/menu.php";
             $database = new Database();
             $dbInstance = $database->getDB();
@@ -16,84 +15,91 @@ class PedidoController
             $catalogo = $pedido->obtenerPedidos();
             require_once "views/general/adminPanel/tablaComandes.php";
 
-        }
-        else{
+        } else {
             // adminIncorrecte();
         }
     }
-
-    public function mostrarPedidos() {
-        // Obtener la información de los pedidos del usuario actual desde la base de datos
-        $id_usuario = $_SESSION['id_usuario'];  // Asegúrate de tener una sesión activa
-
-        $pedidos = obtenerPedidosUsuario($id_usuario);
-
-        // Verificar si hay pedidos
-        if (empty($pedidos)) {
-            echo "No tienes pedidos realizados.";
-        } else {
-            // Mostrar los pedidos en forma de tabla
-            echo "<table border='1'>
-                    <tr>
-                        <th>ID Pedido</th>
-                        <th>Fecha Pedido</th>
-                        <!-- Agrega más columnas según tus necesidades -->
-                    </tr>";
-
-            foreach ($pedidos as $pedido) {
-                echo "<tr>
-                        <td>{$pedido['id_pedido']}</td>
-                        <td>{$pedido['fecha_pedido']}</td>
-                        <!-- Agrega más celdas según tus necesidades -->
-                      </tr>";
-            }
-
-            echo "</table>";
-        }
-    }
-
-    // public function añadirPedido(){
-    //     ob_clean();
-    //     header('Content-Type: application/json');
-    //     $correo = $_SESSION['email'];
-    //     $datosProductos = json_decode(file_get_contents('php://input'), true);
-    //     $database = new Database();
-    //     $dbInstance = $database->getDB();
-    //     $pedido = new Pedido($dbInstance, null,$correo, null, null, null);
-    //     $pedidos = $pedido->crearNuevoPedido();
-    //     echo json_encode(['success' => true]);
-    //     exit;
-
-
-    // }
-    public function añadirPedido(){
+    public function añadirPedido()
+    {
         ob_clean();
         header('Content-Type: application/json');
         $correo = $_SESSION['email'];
         $datosProductos = json_decode(file_get_contents('php://input'), true);
         $database = new Database();
         $dbInstance = $database->getDB();
-       
-       // Iterar sobre los datos de productos y añadir al carrito
-       foreach ($datosProductos['carrito'] as $producto) {
+
+        // Iterar sobre los datos de productos y añadir al carrito
+        foreach ($datosProductos['carrito'] as $producto) {
             $id_producto = $producto['id_producto'];
             $cantidad = $producto['cantidad'];
             $precio = $producto['precio'];
             $nombre = $producto['nombre'];
             $img = $producto['img'];
-    
+
             $carrito = new Carrito($dbInstance, null, $correo, $id_producto, $cantidad, $precio);
             $funciona = $carrito->anadirProductoAlCarrito();
-            
+
             // Puedes hacer algo con $funciona si lo necesitas
         }
-    
+
         // Llamar a la función para crear el pedido
         $pedido = new Pedido($dbInstance, null, $correo, null, null, null);
         $pedidos = $pedido->crearNuevoPedido();
-        
+
         echo json_encode(['success' => true, 'info' => $datosProductos]);
         exit;
     }
-    
+
+    public static function listarPedidosUsuario()
+    {
+        // Obtener el email del usuario desde la sesión
+        $email = $_SESSION['email'];
+
+        // Crear una instancia de PedidoModel
+        $pedidoModel = new Pedido(null, null, null, null, null, null);
+
+        // Llamar al método no estático
+        $pedidos = $pedidoModel->obtenerPedidosUsuario($email);
+
+        // Verificar si $pedidos es un array
+        if (is_array($pedidos)) {
+            // Renderizar la vista con los datos de los pedidos
+            include 'views/general/usuario/pedidosUser.php';
+        } else {
+            // Manejar el caso en que la consulta falla
+            echo "Error al obtener los pedidos.";
+        }
+    }
+
+    public function verPedido() {
+        // Verificar si se proporciona un ID de pedido válido en la URL
+        if (isset($_GET['id_pedido'])) {
+            $idPedido = $_GET['id_pedido'];
+
+            // Obtener el pedido correspondiente del modelo (supongamos que tienes un método en tu modelo)
+            $pedidoModel = new Pedido(null, null, null, null, null, null);
+            $pedido = $pedidoModel->getPedidoById($idPedido);
+
+            // Mostrar la vista con el formulario para cambiar el estado del pedido
+            include('views/general/adminPanel/formularios/verPedido.php');  // Ajusta la ruta según tu estructura
+        } else {
+            // Manejar el caso en el que no se proporciona un ID de pedido válido
+            echo "Error: ID de pedido no válido.";
+        }
+    }
+
+    public function procesarActualizacionEstado() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $pedidoId = $_POST['id_pedido'];
+            $nuevoEstado = $_POST['estado'];
+            $pedidoModel = new Pedido(null, null, null, null, null, null);
+            $pedidoModel->actualizarEstado($pedidoId, $nuevoEstado);
+
+            echo 'Estado actualizado con exito';
+            echo '<meta http-equiv="refresh" content="2;url=index.php?controller=pedido&action=mostrarProductos">';
+            exit();
+        } else {
+            echo "Acceso no válido";
+        }
+    }
 }
