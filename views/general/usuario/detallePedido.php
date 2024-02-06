@@ -1,3 +1,4 @@
+<br><br><br>
 <h2>Detalles del Pedido</h2>
 
 <table>

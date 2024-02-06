@@ -1,55 +1,47 @@
-
 <?php
 
+require("vendor/setasign/fpdf/fpdf.php");
 
-require("vendor/setasign/fpdf/fpdf.php"); //Ten cuidado
-
-
-class PDF extends FPDF{
-    //Formato del pdf que no se cambia
-
-
-    //Adaptarlo para que coja lo de la tabla
-    public function Cabezera(){ //Poner datos de la empresa
-        $this->SetFont("Arial","B",20); //B-negrita
-        $this->Cell(60); //movernos a la derecha
-        $this->Cell(70,10,"SRG",1,0,"C"); //Ejemplo de titulo
-        $this->Ln(20);//salto de linea
-
-
-
-
-        //Thead de la tabla
-        $this->Cell(90,10,"foto",1,0,"C",0); //ancho,alto,texto bbdd,borde,salto de linea,alineado, relleno
-        $this->Cell(90,10,"nombre",1,0,"C",0);
-        $this->Cell(90,10,"precio",1,1,"C",0);//este tiene salto de linea
+class PDF extends FPDF
+{
+    // Método para la cabecera del PDF
+    public function Header()
+    {
+        // Puedes personalizar la cabecera aquí si lo deseas
+        // Por ejemplo, agregar un logo o datos de la empresa
     }
 
+    // Método para el contenido del PDF
+    public function Content()
+    {
+        // Establecer la fuente y el tamaño del texto
+        $this->SetFont('Arial', 'B', 16);
 
-    public function Footer() {
-        $this->SetY(-15); // 1,5cm del fianl
-        $this->SetFont("Arial","I",10);
-        $this->Cell(0,10,utf8_decode("Página ").$this->PageNo().'/{nb]',0,0,"C"); //paginas numeradas
+        // Agregar el texto "Hola Mundo"
+        $this->Cell(40, 10, '¡Hola Mundo!', 0, 1); // El último argumento 1 indica que se agrega un salto de línea después del texto
+    }
+
+    // Método para el pie de página del PDF
+    public function Footer()
+    {
+        // Configurar posición y fuente del pie de página
+        $this->SetY(-15);
+        $this->SetFont("Arial", "I", 10);
+
+        // Agregar número de página
+        $this->Cell(0, 10, utf8_decode("Página ") . $this->PageNo() . '/{nb}', 0, 0, "C");
     }
 }
-//Lo que se cambia
+
+// Crear instancia de la clase PDF
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont("Arial","B",18);
 
+// Llamar al método Content para agregar el contenido al PDF
+$pdf->Content();
 
+// Generar el PDF
 $pdf->Output();
 
-
-
-
-/*
-Si tienes unproblema con esta linea @set_magic_quotes_runtime(0);
-Pon esto --> @ini_set('magic_quotes_runtime', 0);
-p en esta otra linea --> if (get_magic_quotes_runtime())
-pon esto --> if (ini_get('magic_quotes_runtime'))
-
-
-*/
 ?>
