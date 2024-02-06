@@ -212,10 +212,42 @@ nav .header {
   padding-bottom: 5%;
 }
 
+.div-user-edit {
+  margin: auto;
+  width: 40%;
+}
+
+.div-edit-user {
+  margin: auto;
+}
+
+.input-edit-user {
+  margin: auto;
+  padding-right: 5%;
+}
+
+.table-pedidos{
+  text-align: center;
+  margin: auto;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  width: 80%;
+  height: 100%;
+  margin-left: 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.table-pedidos-thead {
+  border-bottom: 2px solid #537FE7;
+}
+
 .input-decoration {
   border: none;
   border-bottom: #537FE7 2px solid;
   font-family: Arial, Helvetica, sans-serif;
+  margin-left: 5%;
+  padding-left: 5%;
 }
 
 .image-profile-dades {
@@ -245,7 +277,7 @@ nav .header {
   padding-top: 5%;
   padding-bottom: 5%;
   height: 100%;
-  width: 70%;
+  width: 40%;
   text-align: center;
 }
 
@@ -377,8 +409,6 @@ html {
   left: 0;
   bottom: 0;
   width: 100%;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
 }
 
 .pie {
@@ -430,6 +460,7 @@ html {
 
 .pie .item.text {
   margin-bottom: 36px;
+
 }
 
 @media (max-width:767px) {
@@ -785,21 +816,28 @@ body {
   color: #537FE7;
 }
 
-.admin-panel-submit-link {
+.admin-panel-submit-link, button.admin-panel-submit-link, a.admin-panel-submit-link {
   background-color: #537FE7;
   color: black;
-  font-weight: bold;
-  margin-top: 20px;
-  padding: 8px;
+  font-weight: bolder;
+  font-size: large;
+  padding: 9px;
   margin-right: 5%;
   border-radius: 5px;
   text-decoration: none;
   border: none;
+  width: 30%;
+  text-align: center;
 }
 
 .admin-panel-submit-link:hover {
   background-color: #1F1F1F;
   color: #537FE7;
+}
+
+.edit-user-buttons {
+  justify-content: center;
+  align-items: center;
 }
 
 input#estado {
@@ -1325,7 +1363,7 @@ a {
 }
 
 .slick-slide {
-  
+
   float: left;
 
   height: 100%;
@@ -1371,6 +1409,7 @@ a {
 .slick-slide {
   width: 100%;
 }
+
 /* Slider */
 .slick-loading .slick-list {
   background: #fff url('./ajax-loader.gif') center center no-repeat;
@@ -1480,8 +1519,7 @@ a {
   content: '←';
 }
 
-Dots
-.slick-dotted.slick-slider {
+Dots .slick-dotted.slick-slider {
   margin-bottom: 30px;
 }
 
@@ -1569,9 +1607,12 @@ Dots
   color: black;
 }
 
-.slick-prev, .slick-arrow {
-  display: none !important;;
+.slick-prev,
+.slick-arrow {
+  display: none !important;
+  ;
 }
+
 /* DISEÑO RESPONSIVE PARA MOVIL */
 
 @media screen and (max-width: 970px) {
@@ -1585,7 +1626,7 @@ Dots
     max-width: 350px;
     top: 0;
     left: -100%;
-    background: #3A3B3C;
+    background: #537FE7;
     display: block;
     padding: 50px 10px;
     line-height: 50px;
@@ -1678,7 +1719,7 @@ Dots
   }
 
   .nav-links .mobile-item:hover {
-    background: #537EF7;
+    background: #3A3B3C;
   }
 
   .mega-box {
@@ -1742,17 +1783,17 @@ Dots
 }
 
 /*carrito*/
-.carrito1{
+.carrito1 {
   font-size: 18px;
   display: flex;
 }
 
-.generalCarrito{
+.generalCarrito {
   display: flex;
   flex-direction: column;
 }
 
-#botonCarrito1{
+#botonCarrito1 {
   margin-top: 200px;
 }
 
@@ -1763,31 +1804,31 @@ Dots
   justify-content: center;
 }
 
-.carritoContanier{
+.carritoContanier {
   display: flex;
   justify-content: center;
 }
 
-.carritoimg{
+.carritoimg {
   width: 145px;
   height: 145px;
 }
 
-.precioContanier{
+.precioContanier {
   padding-left: 70px;
 }
 
-.carritoContanier img{
+.carritoContanier img {
   width: 100%;
   height: 100%;
 }
 
-.menuPrecio{
+.menuPrecio {
   display: flex;
   align-items: center;
 }
 
-.d_botonAñadir{
+.d_botonAñadir {
   height: 25px;
   width: 25px;
   background-image: url(img/iconos/bolsa-de-la-compra.png);
@@ -1796,7 +1837,7 @@ Dots
   border: none;
 }
 
-.btn-subir{
+.btn-subir {
   height: 25px;
   width: 25px;
   background-image: url(img/iconos/icons8-más-30.png);
@@ -1805,7 +1846,7 @@ Dots
   border: none;
 }
 
-.btn-bajar{
+.btn-bajar {
   height: 25px;
   width: 25px;
   background-image: url(img/iconos/icons8-menos-30.png);
@@ -1814,7 +1855,7 @@ Dots
   border: none;
 }
 
-.btn-eliminar{
+.btn-eliminar {
   height: 25px;
   width: 25px;
   background-image: url(img/iconos/icons8-papelera-24.png);
@@ -1830,6 +1871,7 @@ input {
   margin-bottom: 10px;
   font-size: 16px;
 }
+
 /* Estilos para el pop-up */
 .overlay {
   display: none;
@@ -1878,13 +1920,15 @@ input {
   .precioContanier {
     padding-left: 21px;
   }
-  .Desktop1{
+
+  .Desktop1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-bottom: 300px;
   }
+
   .Descripcion {
     padding-top: 15px;
     width: 300px;
