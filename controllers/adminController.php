@@ -78,6 +78,22 @@ class AdminController
     
     }
 
+    public function botonVistaGrafica(){
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            header('Location: views/general/adminPanel/grafica/grafica.html');
+            /*
+            require_once "views/general/adminPanel/menu.php";
+            include('views/general/adminPanel/grafica/grafica.html');
+            */
+
+        }else{
+            echo("<p class='validado'>No estas validado</p>");
+        }
+
+    }
+
     public function botonVistaComanda(){
         if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
             $database = new Database();
@@ -143,6 +159,8 @@ class AdminController
             http_response_code(400);
         }
     }
+
+    
     
     
 }
