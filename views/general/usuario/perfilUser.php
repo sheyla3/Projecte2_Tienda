@@ -16,15 +16,15 @@ echo "<div class='div1-user'>
             <br>
             <div><img src='views/img/phone.svg' width='30px' height='30px' class='image-profile-dades'><h3>Teléfono: &nbsp</h3>" . $datosUser[0]['telf'] . "</div>
             <br>
-            <div><a class='admin-panel-submit-link' href='index.php?controller=usuario&action=mostrarEditarPerfil&email=" . $datosUser[0]['correo'] . "'>Editar Datos</a></div>
+            <div class='user-profile-row'><a role='button' class='admin-panel-submit-link' href='index.php?controller=usuario&action=mostrarEditarPerfil&email=" . $datosUser[0]['correo'] . "'>Editar Datos</a></div>
         </div>
 
         <div class='subdiv2-user'>
             <h2 class='profile-title-photo'>Foto de perfil</h2>
             <br><br>
-            <div><img src='" . $datosUser[0]['foto'] ."' alt='Foto de perfil' width='500px'></div>
+            <div><img src='" . $datosUser[0]['foto'] ."' alt='Foto de perfil' width='80%'></div>
             <br>
-            <div class='user-profile-row'><a class='admin-panel-submit-link' href='index.php?controller=usuario&action=mostrarFormUserPhoto&email=" . $datosUser[0]['correo'] . "'>Cambiar foto</a>
+            <div class='user-profile-row'><a role='button' class='admin-panel-submit-link' href='index.php?controller=usuario&action=mostrarFormUserPhoto&email=" . $datosUser[0]['correo'] . "'>Cambiar Imagen</a></div>
         </div>
     </div>";
 echo "

@@ -54,8 +54,13 @@ session_start();
     
     CategoriaController::RellenarMenu();
     
+    // require __DIR__.'/vendor/autoload.php';
 
+    // use Spipu\Html2Pdf\Html2Pdf;
 
+    // $html2pdf = new Html2Pdf();
+    // $html2pdf->writeHTML('<h1>HelloWorld</h1>');
+    // $html2pdf->output("pdfGenerado.pdf");
 
 
     if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin'){
@@ -63,8 +68,6 @@ session_start();
        
     }elseif (isset($_SESSION['email']) && $_SESSION['role'] == 'user'){
         CategoriaController::RellenarMenuValidado();
-
-        
     }else{
         require_once "views/general/cabezera.php";
     }

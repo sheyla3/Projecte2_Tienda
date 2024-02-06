@@ -1,19 +1,19 @@
-<br>
 <br><br><br>
-
-<h2>Tus Pedidos</h2>
+<h2 class='my-profile-title'>Tus Pedidos</h2>
+<div class='blue-line'></div>
+<br>
 
     <!-- Verificar que $pedidos no sea false antes de intentar iterar -->
-    <table border="1">
-        <thead>
+    <table class="table-pedidos">
+        <thead >
             <tr>
-                <th>ID Pedido</th>
-                <th>Correo</th>
-                <th>Estado</th>
-                <th>Fecha Pedido</th>
-                <th>Fecha Envio</th>
-                <th>Factura</th>
-                <!-- Agrega más columnas según tu estructura de datos -->
+                <th class="table-pedidos-thead">ID Pedido</th>
+                <th class="table-pedidos-thead">Correo</th>
+                <th class="table-pedidos-thead">Estado</th>
+                <th class="table-pedidos-thead">Fecha Pedido</th>
+                <th class="table-pedidos-thead">Fecha Envio</th>
+                <th class="table-pedidos-thead">Factura</th>
+                <th class="table-pedidos-thead">Detalles del pedido</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,8 @@
                     <td><?php echo $pedido['estado']; ?></td>
                     <td><?php echo $pedido['fechapedido']; ?></td>
                     <td><?php echo $pedido['fechaenvio']; ?></td>
-                    <td><a href="index.php?controller=pedido&action=downloadInvoices&id_pedido=' . $pedido['id_pedido'] . '">Descargar Factura</a></td>
+                    <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedidoPDF&id_pedido=". $pedido['id_pedido'] ."'><img src='views/img/factura.svg' width='30px' height='30px'></a></td>"; ?>
+                    <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedido&id_pedido=". $pedido['id_pedido'] ."'><img src='views/img/detail.svg' width='30px' height='30px'></a></td>"; ?>
                 </tr>
                 <?php } ?>
         </tbody>

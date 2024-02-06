@@ -12,7 +12,6 @@
         }
     ],
     "require": {
-        "tecnickcom/tcpdf": "^6.6",
-        "mpdf/mpdf": "^6.1"
+        "setasign/fpdf": "1.8"
     }
 }

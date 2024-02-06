@@ -71,7 +71,8 @@ class PedidoController
         }
     }
 
-    public function verPedido() {
+    public function verPedido()
+    {
         // Verificar si se proporciona un ID de pedido válido en la URL
         if (isset($_GET['id_pedido'])) {
             $idPedido = $_GET['id_pedido'];
@@ -88,7 +89,8 @@ class PedidoController
         }
     }
 
-    public function procesarActualizacionEstado() {
+    public function procesarActualizacionEstado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pedidoId = $_POST['id_pedido'];
             $nuevoEstado = $_POST['estado'];
@@ -102,4 +104,54 @@ class PedidoController
             echo "Acceso no válido";
         }
     }
+
+    public function verDetallesPedido()
+    {
+        if (isset($_GET['id_pedido'])) {
+            $id_pedido = $_GET['id_pedido'];
+
+            $database = new Database();
+            $dbInstance = $database->getDB();
+
+            $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
+            $detallesPedido = $pedidomodel->obtenerPedidoPorId($id_pedido);
+
+            $this->mostrarDetallesPedido($detallesPedido);
+        } else {
+            // Manejo de error: el ID del pedido no se proporcionó
+            echo "Error: ID del pedido no especificado";
+        }
+    }
+
+    public function verDetallesPedidoPDF()
+    {
+        ob_clean();
+        if (isset($_GET['id_pedido'])) {
+            $id_pedido = $_GET['id_pedido'];
+
+            $database = new Database();
+            $dbInstance = $database->getDB();
+
+            $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
+            $detallesPedido = $pedidomodel->obtenerPedidoPorId($id_pedido);
+
+            $this->mostrarPDFpedido($detallesPedido);
+        } else {
+            // Manejo de error: el ID del pedido no se proporcionó
+            echo "Error: ID del pedido no especificado";
+        }
+    }
+
+    public function mostrarDetallesPedido($detallesPedido)
+    {
+        // Incluye la vista para mostrar los detalles del pedido
+        include("views/general/usuario/detallePedido.php");
+    }
+
+    public function mostrarPDFpedido($detallesPedido){
+
+
+        include("views/general/usuario/facturaPDF.php");
+    }
+
 }
