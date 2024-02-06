@@ -74,11 +74,10 @@
                     <label class="mobile-item">Carrito</label>
                 </li>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/usuario.png" alt="Iniciar sesión" width="20" height="20"></a>
+                    <a href="index.php?controller=usuario&action=mostrarPerfil" class="tipo"><img src="views/img/usuario.svg" alt="Iniciar sesión" width="20" height="20"></a>
                     <label class="mobile-item">Usuario</label>
                     <input type="checkbox" id="showDrop">
                     <ul class="drop-menu">
-                        <li><a href="#">Mis compras</a></li>
                         <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
                         <li><a href="index.php?controller=pedido&action=listarPedidosUsuario">Mis Pedidos</a></li>
@@ -89,4 +88,7 @@
             <label for="menu-btn" class="btn menu-btn"><img src="views/img/menu_icono.png" alt="menu" width="20" height="20"></label>
         </div>
     </nav>
+
 </header>
+
+

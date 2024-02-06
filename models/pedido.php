@@ -212,4 +212,31 @@ class Pedido extends Database
         }
     }
 
+    public function obtenerPedidoPorId($id_pedido) {
+        $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id_pedido', $id_pedido);
+        $stmt->execute();
+
+        // Obtener los detalles del pedido como un array asociativo
+        $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Obtener los detalles del carrito asociados con el pedido
+        $pedido['id_carrito'] = $this->obtenerDetallesCarritoPorPedido($id_pedido);
+
+        return $pedido;
+    }
+
+    public function obtenerDetallesCarritoPorPedido($id_pedido)
+{
+    $query = "SELECT correo, id_producto, cantidad, precio, id_pedido FROM carrito WHERE id_pedido = :id_pedido";
+    $stmt = $this->db->prepare($query);
+    $stmt->bindParam(':id_pedido', $id_pedido);
+    $stmt->execute();
+
+    // Obtener los detalles del carrito como un array asociativo
+    $detallesCarrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $detallesCarrito;
+}
 }

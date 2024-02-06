@@ -1,4 +1,8 @@
 /vendor/
 composer.json
 database.php
+<<<<<<< HEAD
 composer.lock
+=======
+composer.lock
+>>>>>>> 86bd5e328d375506c7df3d2c4ef4982fc90927d3
