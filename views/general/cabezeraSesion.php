@@ -81,7 +81,7 @@
                         <li><a href="#">Mis compras</a></li>
                         <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
-                        <li><a href="index.php?controller=usuario&action=mostrarPedidos">Mis Pedidos</a></li>
+                        <li><a href="index.php?controller=pedido&action=listarPedidosUsuario">Mis Pedidos</a></li>
                         <li><a href="././sortir.php">Cerrar sesión</a></li>
                     </ul>
                 </li>

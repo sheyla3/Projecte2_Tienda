@@ -286,15 +286,4 @@ class UsuarioController
 			echo "Acceso no permitido.";
 		}
 	}
-
-	public function mostrarPedidos() {
-        // Asegúrate de tener una sesión activa
-        if (isset($_SESSION['email'])) {
-            $perfilController = new UsuarioController();
-            $perfilController->mostrarPedidos();
-        } else {
-            echo "Debes iniciar sesión para ver tus pedidos.";
-        }
-    }
 }
-

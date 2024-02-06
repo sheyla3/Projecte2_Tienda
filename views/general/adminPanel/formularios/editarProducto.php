@@ -1,5 +1,5 @@
 
-	
+<br><br>
 <div class="editContanier">	
 	<div class="imagenes">
 		<?php
@@ -48,7 +48,7 @@
         <div id="campoImagen" style="display: none;">
             <input type="file" name="imagen">
         </div>
-
+		<br><br>
 		<a href="index.php?controller=Admin&action=botonVistaProducto" class='admin-panel-submit-link'>Volver atras</a>
     	<input class='admin-panel-submit-link' type="submit" value="Guardar Cambios">
 	</form>

@@ -21,6 +21,7 @@ echo "<table class='admin-panel-page-table'>
         <th>Estado</th>
         <th>Fecha del pedido</th>
         <th>Fecha del envío</th>
+        <th>Cambiar Estado</th>
     </tr>";
 
 foreach ($catalogo as $pedido) {
@@ -30,8 +31,8 @@ foreach ($catalogo as $pedido) {
         <td class='text'>" . $pedido['estado'] . "</td>
         <td class='text'>" . $pedido['fechapedido'] . "</td>
         <td class='text'>" . $pedido['fechaenvio'] . "</td>
+        <td class='text'><a href='index.php?controller=pedido&action=verPedido&id_pedido=". $pedido['id_pedido']."'><img src='views/img/edit.svg' class='image_edit_icon'></a></a></td>
     </tr>";
 }
 echo "</table>
         </div>";
-?>
