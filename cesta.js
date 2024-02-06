@@ -34,7 +34,6 @@ $(document).ready(function () {
 
     // carrito
 
-        // Espera a que se cargue el DOM antes de registrar el evento de clic
     var botonAñadir = document.querySelector('.d_botonAñadir');
 
     if (botonAñadir) {
@@ -70,8 +69,6 @@ $(document).ready(function () {
                 success: function (data) {
                     // Maneja la respuesta del servidor
                     if (data.success) {
-                        //window.location.href = 'views/general/usuario/carrito.php';
-                        // Descomentar esta línea para redirigir a la página de carrito
                         $('#tabla-carrito').html(data.info);
                   
                     } else {
