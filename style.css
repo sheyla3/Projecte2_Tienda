@@ -1940,4 +1940,8 @@ input {
     padding: 30px;
     transform: scale(0.9);
   }
+
+  .slideshow {
+    margin-top: 15%;
+  }
 }
