@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    // $(".botonAñadir").click(function() {
+    //     console.log("hola");
+    //     $(this).addClass("clicked");
+    //   });
     // // objectos classes
     // class Usuario {
     //     constructor(email) {

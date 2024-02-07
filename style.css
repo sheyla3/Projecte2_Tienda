@@ -1201,7 +1201,6 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 .contenedorCant {
   display: flex;
   flex-direction: row;
-  padding-bottom: 15px;
   padding-top: 15px;
 }
 
@@ -1212,6 +1211,11 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 #labelCantidad {
   padding-top: 2px;
+}
+
+.formularioCarrito{
+  display: flex;
+  align-items: center;
 }
 
 /* GRID SEXO HOMBRE Y MUJER */
@@ -1812,6 +1816,9 @@ Dots .slick-dotted.slick-slider {
 .carritoimg {
   width: 145px;
   height: 145px;
+  flex-shrink: 0;
+  margin: 20px;
+
 }
 
 .precioContanier {
@@ -1835,6 +1842,7 @@ Dots .slick-dotted.slick-slider {
   background-size: cover;
   background-color: transparent;
   border: none;
+  margin-left: 25px;
 }
 
 .btn-subir {
@@ -1913,6 +1921,39 @@ input {
   width: 80%;
   font-weight: bold;
   border-radius: 20px;
+}
+.d_botonAñadir{
+  padding: 15px;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
+}
+.d_botonAñadir:hover{
+  background-color: #8ecffe;
+  --escala: 0.95;
+  cursor: pointer;
+  border-radius: 10%;
+  transition: 0.25s;
+  transform: scale(1.7);
+}
+
+.btn-subir:hover,.btn-bajar:hover,.btn-borrar:hover{
+  background-color: #8ecffe;
+  --escala: 0.95;
+  cursor: pointer;
+  border-radius: 10%;
+  transition: 0.25s;
+  transform: scale(1.2);
+}
+
+
+.btn-subir,.btn-bajar,.btn-borrar{
+  margin: 10px;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
+}
+
+.campoPrecio{
+  margin: 20px;
 }
 
 /*carrito y detalle movil*/

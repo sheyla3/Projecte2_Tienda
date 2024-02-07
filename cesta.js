@@ -40,7 +40,18 @@ $(document).ready(function () {
         // Verifica si el botón existe para evitar errores
         botonAñadir.addEventListener('click', function () {
             // Llama a la función al hacer clic en el botón
-            agregarAlCarrito();
+            var cantidad = document.querySelector('[name="d_cantidad"]').value;
+            if(cantidad>0){
+                Swal.fire({
+                    title: '¡Producto añadido al carrito!',
+                    text: '¡Has añadido el producto al carrito con éxito!',
+                    icon: 'success', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
+                    confirmButtonText: 'Entendido'
+                  });
+                this.classList.add("clicked");
+                agregarAlCarrito();
+            }
+            
         });
     }
 
