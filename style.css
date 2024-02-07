@@ -524,7 +524,7 @@ html {
 }
 
 .login-page {
-  width: 360px;
+  width: 100%;
   padding: 8% 0 0;
   margin: auto;
 }
@@ -1091,9 +1091,6 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 
 .categoriaCubo {
-  width: fit-content;
-  /* El ancho será igual al de su contenido */
-  height: fit-content;
   padding: 1px;
   width: 900px;
   height: 600px;
@@ -1707,10 +1704,6 @@ Dots .slick-dotted.slick-slider {
     display: none;
   }
 
-  .selected {
-    background-color: red;
-  }
-
   .nav-links .mobile-item {
     display: block;
     color: #f2f2f2;
@@ -1981,4 +1974,34 @@ input {
     padding: 30px;
     transform: scale(0.9);
   }
+
+  .slideshow {
+    margin-top: 15%;
+  }
+
+  .cubosCategorias {
+    margin-bottom: 15%;
+  }
+
+  .rowCubos {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .categoriaCubo {
+    padding: 1px;
+    width: auto;
+    height: 500px;
+    background-size: 90% 100%;
+    margin-bottom: 5%;
+  }
+
+  /* Inicio sesion*/
+  .form{
+    max-width: 70%;
+    margin: 20% auto 50%;
+    padding: 10%;
+  }
+  
 }
