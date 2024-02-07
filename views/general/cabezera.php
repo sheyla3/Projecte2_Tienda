@@ -16,7 +16,7 @@
                 // Verificar y mostrar las categorías de mujer si existen
                 if (isset($categoriasM)) {
                     $totalCategorias = count($categoriasM); // Obtener el total de categorías
-                    $columnas =1; // Número de columnas deseadas
+                    $columnas = 2; // Número de columnas deseadas
                     $elementosPorColumna = ceil($totalCategorias / $columnas);  // Calcular el número de elementos por columna
                     $elementosImpresos = 0;  // Contador para rastrear el número actual de elementos impresos
                 
@@ -54,6 +54,7 @@
                     echo '</div>'; 
                     echo '</li>';
                 }
+                
                 // Verificar y mostrar las categorías de hombre si existen
                 if (isset($categoriasH)) {
                     $totalCategorias = count($categoriasH); // Obtener el total de categorías
