@@ -34,14 +34,24 @@ $(document).ready(function () {
 
     // carrito
 
-        // Espera a que se cargue el DOM antes de registrar el evento de clic
     var botonAñadir = document.querySelector('.d_botonAñadir');
 
     if (botonAñadir) {
         // Verifica si el botón existe para evitar errores
         botonAñadir.addEventListener('click', function () {
             // Llama a la función al hacer clic en el botón
-            agregarAlCarrito();
+            var cantidad = document.querySelector('[name="d_cantidad"]').value;
+            if(cantidad>0){
+                Swal.fire({
+                    title: '¡Producto añadido al carrito!',
+                    text: '¡Has añadido el producto al carrito con éxito!',
+                    icon: 'success', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
+                    confirmButtonText: 'Entendido'
+                  });
+                this.classList.add("clicked");
+                agregarAlCarrito();
+            }
+            
         });
     }
 
@@ -70,8 +80,6 @@ $(document).ready(function () {
                 success: function (data) {
                     // Maneja la respuesta del servidor
                     if (data.success) {
-                        //window.location.href = 'views/general/usuario/carrito.php';
-                        // Descomentar esta línea para redirigir a la página de carrito
                         $('#tabla-carrito').html(data.info);
                   
                     } else {

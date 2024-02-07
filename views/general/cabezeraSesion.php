@@ -15,6 +15,11 @@
                 $clase_seleccionadaH = ($_SESSION['seccion'] === "hombre") ? 'class="tipo selected"' : 'class="tipo"';
                 // Verificar y mostrar las categorías de mujer si existen
                 if (isset($categoriasM)) {
+                    $totalCategorias = count($categoriasM); // Obtener el total de categorías
+                    $columnas = 2; // Número de columnas deseadas
+                    $elementosPorColumna = ceil($totalCategorias / $columnas);  // Calcular el número de elementos por columna
+                    $elementosImpresos = 0;  // Contador para rastrear el número actual de elementos impresos
+                
                     echo '<li>';
                     echo '<a href="index.php?controller=Categoria&action=MostrarCubosCategoriasMujer" ' . $clase_seleccionadaM . '>Mujer</a>';
                     echo '<input type="checkbox" id="showMega">';
@@ -26,21 +31,37 @@
                     echo '</div>';
                     echo '<div class="fila">';
                     echo '<ul class="categorias">';
-
-                    // Mostrar las categorías de mujer
+                
+                    // Iterar sobre las categorías de mujer
                     foreach ($categoriasM as $categoriaM) {
+                        // Verificar si se debe cerrar y abrir una nueva fila y lista de categorías
+                        if ($elementosImpresos > 0 && $elementosImpresos % $elementosPorColumna == 0) {
+                            echo '</ul>'; // Cerrar la lista de categorías
+                            echo '</div>'; // Cerrar la fila
+                            echo '<div class="fila">'; // Abrir una nueva fila
+                            echo '<ul class="categorias">'; // Abrir una nueva lista de categorías
+                        }
+                
+                        // Imprimir el contenido de la categoría
                         echo '<li><a href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoriaM['id_categoria'] . '">' . $categoriaM['nombre'] . '</a></li>';
+                
+                        $elementosImpresos++;
                     }
-
-                    echo '</ul>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                
+                    echo '</ul>'; 
+                    echo '</div>'; 
+                    echo '</div>'; 
+                    echo '</div>'; 
                     echo '</li>';
                 }
 
                 // Verificar y mostrar las categorías de hombre si existen
                 if (isset($categoriasH)) {
+                    $totalCategorias = count($categoriasH); // Obtener el total de categorías
+                    $columnas = 2; // Número de columnas deseadas
+                    $elementosPorColumna = ceil($totalCategorias / $columnas);  // Calcular el número de elementos por columna
+                    $elementosImpresos = 0;  // Contador para rastrear el número actual de elementos impresos
+
                     echo '<li>';
                     echo '<a href="index.php?controller=Categoria&action=MostrarCubosCategoriasHombre" ' . $clase_seleccionadaH . '>Hombre</a>';
                     echo '<input type="checkbox" id="showMega2">';
@@ -52,12 +73,23 @@
                     echo '</div>';
                     echo '<div class="fila">';
                     echo '<ul class="categorias">';
-
-                    // Mostrar las categorías de hombre
+                    
+                    // Iterar sobre las categorías de mujer
                     foreach ($categoriasH as $categoriaH) {
+                        // Verificar si se debe cerrar y abrir una nueva fila y lista de categorías
+                        if ($elementosImpresos > 0 && $elementosImpresos % $elementosPorColumna == 0) {
+                            echo '</ul>'; // Cerrar la lista de categorías
+                            echo '</div>'; // Cerrar la fila
+                            echo '<div class="fila">'; // Abrir una nueva fila
+                            echo '<ul class="categorias">'; // Abrir una nueva lista de categorías
+                        }
+                
+                        // Imprimir el contenido de la categoría
                         echo '<li><a href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoriaH['id_categoria'] . '">' . $categoriaH['nombre'] . '</a></li>';
+                
+                        $elementosImpresos++;
                     }
-
+                    
                     echo '</ul>';
                     echo '</div>';
                     echo '</div>';

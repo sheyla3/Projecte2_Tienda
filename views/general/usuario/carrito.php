@@ -25,9 +25,6 @@
                 img: img
             });
         });
-
-
-            // Puedes enviar los datos al servidor usando AJAX o hacer lo que necesites con ellos.
             console.log(datosProductos);
             $.ajax({
                 url: 'index.php?controller=Pedido&action=añadirPedido',
@@ -78,8 +75,6 @@
              success: function (data) {
                  // Maneja la respuesta del servidor
                  if (data.success) {
-                     //window.location.href = 'views/general/usuario/carrito.php';
-                     // Descomentar esta línea para redirigir a la página de carrito
                      $('#tabla-carrito').html(data.info);
                     agregarEventosBotones();
                
@@ -145,8 +140,6 @@
 
     function manejarAccion(idProducto, accion) {
         editarProductoEnLocalStorage(idProducto,accion);
-        
-        //TODO haer que se guarde tambien los canvios en la base de datos
         // // Realizar una solicitud AJAX para manejar la acción
         fetch('index.php?controller=carrito&action=modificarAccion', {
             method: 'POST',
@@ -162,7 +155,6 @@
             actualizarCantidadEnInterfaz(idProducto, nuevaCantidad);
         })
         .catch((error) => {
-            //console.error('Error:', error);
         });
         datosCarrito();
     }
@@ -203,8 +195,6 @@
 
                     // Actualizar el localStorage con los nuevos datos
                     localStorage.setItem('miLocalStorage', JSON.stringify(datosLocalStorage));
-
-                    // Terminar la búsqueda una vez que se realiza la acción
                     return;
                 }
             }

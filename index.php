@@ -14,6 +14,7 @@ session_start();
     <script src="script.js"></script>
     <script src="cesta.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>SRG</title>

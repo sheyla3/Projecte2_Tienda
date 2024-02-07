@@ -1,16 +1,4 @@
 {
-    "name": "gebea/projecte2_tienda",
-    "autoload": {
-        "psr-4": {
-            "Gebea\\Projecte2Tienda\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "yeeriis",
-            "email": "gebeal2002@gmail.com"
-        }
-    ],
     "require": {
         "setasign/fpdf": "1.8"
     }
