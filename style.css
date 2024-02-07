@@ -1095,7 +1095,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 900px;
   height: 600px;
   background-color: #dfdfdf;
-  border: 1px solid;
+  margin: 15px;
+  /* border: 1px solid; */
   background-position: bottom;
   position: relative;
   background-size: 91% 180%;
