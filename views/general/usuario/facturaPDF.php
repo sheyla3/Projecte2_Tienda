@@ -1,47 +1,61 @@
 <?php
 
 require("vendor/setasign/fpdf/fpdf.php");
+// require_once 'vendor/autoload.php'; // Carga el autoloader de Composer
 
-class PDF extends FPDF
-{
-    // Método para la cabecera del PDF
-    public function Header()
-    {
-        // Puedes personalizar la cabecera aquí si lo deseas
-        // Por ejemplo, agregar un logo o datos de la empresa
+use Fpdf\Fpdf;
+
+// Crea una clase extendida de FPDF
+class PDF extends FPDF {
+    // Cabecera
+    function Header() {
+        // Logo
+        $this->Image('logo.png',10,6,30);
+        // Arial bold 15
+        $this->SetFont('Arial','B',15);
+        // Movernos a la derecha
+        $this->Cell(80);
+        // Título
+        $this->Cell(30,10,'Factura de Pedido',0,0,'C');
+        // Salto de línea
+        $this->Ln(20);
     }
 
-    // Método para el contenido del PDF
-    public function Content()
-    {
-        // Establecer la fuente y el tamaño del texto
-        $this->SetFont('Arial', 'B', 16);
-
-        // Agregar el texto "Hola Mundo"
-        $this->Cell(40, 10, '¡Hola Mundo!', 0, 1); // El último argumento 1 indica que se agrega un salto de línea después del texto
-    }
-
-    // Método para el pie de página del PDF
-    public function Footer()
-    {
-        // Configurar posición y fuente del pie de página
+    // Pie de página
+    function Footer() {
+        // Posición: a 1,5 cm del final
         $this->SetY(-15);
-        $this->SetFont("Arial", "I", 10);
-
-        // Agregar número de página
-        $this->Cell(0, 10, utf8_decode("Página ") . $this->PageNo() . '/{nb}', 0, 0, "C");
+        // Arial italic 8
+        $this->SetFont('Arial','I',8);
+        // Número de página
+        $this->Cell(0,10,'Página '.$this->PageNo().'/{nb}',0,0,'C');
     }
 }
 
-// Crear instancia de la clase PDF
+// Crear nuevo objeto PDF
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-// Llamar al método Content para agregar el contenido al PDF
-$pdf->Content();
+// Configurar fuente y tamaño de texto para el contenido
+$pdf->SetFont('Arial','',12);
 
-// Generar el PDF
+// Aquí obtendrías los datos del pedido de la base de datos
+$pedido_id = $_GET['pedido_id']; // Supongamos que pasas el ID del pedido a través de la URL
+// Realiza la consulta a la base de datos para obtener los detalles del pedido
+// Puedes hacerlo usando PDO, mysqli u otra extensión de base de datos en PHP
+
+// Ejemplo de cómo podrías mostrar los detalles del pedido
+$pdf->Cell(0, 10, 'Detalles del Pedido #' . $pedido_id, 0, 1);
+$pdf->Cell(0, 10, 'Fecha del Pedido: ' . date('Y-m-d'), 0, 1);
+$pdf->Cell(0, 10, 'Datos del Cliente:', 0, 1);
+// Aquí agregarías los detalles del cliente obtenidos de la base de datos
+
+$pdf->Cell(0, 10, 'Datos del Producto:', 0, 1);
+// Aquí agregarías los detalles del producto obtenidos de la base de datos
+
+$pdf->Cell(0, 10, 'Datos de la Empresa:', 0, 1);
+// Aquí agregarías los detalles de la empresa obtenidos de la base de datos
+
+// Generar el PDF y enviarlo al navegador
 $pdf->Output();
-
-?>

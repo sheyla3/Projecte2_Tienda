@@ -51,7 +51,7 @@ nav .header {
 }
 
 .nav-links li a:hover {
-  background: #C0EEF2;
+  background: #537FE7;
 }
 
 .nav-links .mobile-item {
@@ -1626,7 +1626,7 @@ Dots .slick-dotted.slick-slider {
     max-width: 350px;
     top: 0;
     left: -100%;
-    background: #537FE7;
+    background: black;
     display: block;
     padding: 50px 10px;
     line-height: 50px;
@@ -1634,6 +1634,7 @@ Dots .slick-dotted.slick-slider {
     box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
     transition: all 0.3s ease;
     border-radius: 10px;
+    z-index: 2;
   }
 
   /* custom scroll bar */
