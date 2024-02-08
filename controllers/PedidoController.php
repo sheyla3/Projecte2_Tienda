@@ -2,6 +2,8 @@
 // require "models/producto.php";
 require "models/pedido.php";
 require "models/carrito.php";
+require "models/admin.php";
+require "models/usuario.php";
 class PedidoController
 {
     public function mostrarProductos()
@@ -128,15 +130,18 @@ class PedidoController
         ob_clean();
         if (isset($_GET['id_pedido'])) {
             $id_pedido = $_GET['id_pedido'];
+            $email = $_SESSION['email'];
 
             $database = new Database();
             $dbInstance = $database->getDB();
-
+            $admin = new Admin($dbInstance, null, null, null);
+        	$datosE = $admin->datosEmpresa();
             $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
             $detallesPedido = $pedidomodel->obtenerPedidoPorId($id_pedido);
             $detallesProducto = $pedidomodel->obtenerDetallesCarritoPorPedido($id_pedido);
-
-            $this->mostrarPDFpedido($detallesPedido,$detallesProducto);
+            $usuario = new Usuario($dbInstance, $email, null, null, null, null, null, null);
+		    $datosUser = $usuario->getProfile($email);
+            $this->mostrarPDFpedido($detallesPedido,$detallesProducto,$datosE,$datosUser);
         } else {
             // Manejo de error: el ID del pedido no se proporcionó
             echo "Error: ID del pedido no especificado";
@@ -149,7 +154,7 @@ class PedidoController
         include("views/general/usuario/detallePedido.php");
     }
 
-    public function mostrarPDFpedido($pedido,$productos_carrito){
+    public function mostrarPDFpedido($pedido,$productos_carrito,$datosE,$datosUser){
 
         include("views/general/usuario/facturaPDF.php");
     }

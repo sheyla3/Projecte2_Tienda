@@ -126,6 +126,7 @@ class AdminController
         include('views/general/formularios/mostrar_login.php');
     }
 
+
     public function guardarFirma(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
             $imageName = $_POST['imageName'];
