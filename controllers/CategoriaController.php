@@ -17,7 +17,7 @@ class CategoriaController
 
         }
         else{
-            adminIncorrecte();
+            //adminIncorrecte();
         }
     }
 

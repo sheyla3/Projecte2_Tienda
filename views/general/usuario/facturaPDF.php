@@ -1,9 +1,7 @@
 <?php
 
-require("vendor/setasign/fpdf/fpdf.php");
+require("../../../vendor/setasign/fpdf/fpdf.php");
 // require_once 'vendor/autoload.php'; // Carga el autoloader de Composer
-
-use Fpdf\Fpdf;
 
 // Crea una clase extendida de FPDF
 class PDF extends FPDF {
