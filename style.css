@@ -228,6 +228,10 @@ nav .header {
   padding-right: 5%;
 }
 
+.pedidoCon {
+  overflow-x:auto;
+}
+
 .table-pedidos{
   text-align: center;
   margin: auto;
@@ -2143,4 +2147,14 @@ input {
     text-align: center !important;
   }
 
+  /* Pedidos */
+  .pedidoCon {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .table-pedidos {
+    margin-left: 0;
+    width: 100%;
+  }
 }
