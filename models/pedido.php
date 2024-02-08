@@ -184,7 +184,8 @@ class Pedido extends Database
         }
     }
 
-    public function actualizarEstado($pedidoId, $nuevoEstado) {
+    public function actualizarEstado($pedidoId, $nuevoEstado)
+    {
         // Lógica para actualizar el estado del pedido en la base de datos
         try {
             $database = new Database();
@@ -195,7 +196,7 @@ class Pedido extends Database
 
             $consulta = "UPDATE pedidos SET estado = :estado, fechaenvio = :fechaenvio WHERE id_pedido = :id_pedido";
             $stmt = $this->db->prepare($consulta);
-            
+
             $stmt->bindParam(':id_pedido', $pedidoId, PDO::PARAM_INT);
             $stmt->bindParam(':estado', $nuevoEstado, PDO::PARAM_STR);
             $stmt->bindParam(':fechaenvio', $fechaEnvio, PDO::PARAM_STR);
@@ -212,31 +213,43 @@ class Pedido extends Database
         }
     }
 
-    public function obtenerPedidoPorId($id_pedido) {
-        $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
+    public function obtenerPedidoPorId($id_pedido)
+    {
+        try {
+            $database = new Database();
+            $this->db = $database->getDB();
+
+            $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':id_pedido', $id_pedido);
+            $stmt->execute();
+
+            // Obtener los detalles del pedido como un array asociativo
+            $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Obtener los detalles del carrito asociados con el pedido
+            $pedido['id_carrito'] = $this->obtenerDetallesCarritoPorPedido($id_pedido);
+
+            return $pedido;
+
+        } catch (PDOException $e) {
+            echo "Error al obtener el pedido: " . $e->getMessage();
+        } finally {
+            $pdo = null;
+        }
+
+    }
+
+    public function obtenerDetallesCarritoPorPedido($id_pedido)
+    {
+        $query = "SELECT correo, id_producto, cantidad, precio, id_pedido FROM carrito WHERE id_pedido = :id_pedido";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_pedido', $id_pedido);
         $stmt->execute();
 
-        // Obtener los detalles del pedido como un array asociativo
-        $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Obtener los detalles del carrito como un array asociativo
+        $detallesCarrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Obtener los detalles del carrito asociados con el pedido
-        $pedido['id_carrito'] = $this->obtenerDetallesCarritoPorPedido($id_pedido);
-
-        return $pedido;
+        return $detallesCarrito;
     }
-
-    public function obtenerDetallesCarritoPorPedido($id_pedido)
-{
-    $query = "SELECT correo, id_producto, cantidad, precio, id_pedido FROM carrito WHERE id_pedido = :id_pedido";
-    $stmt = $this->db->prepare($query);
-    $stmt->bindParam(':id_pedido', $id_pedido);
-    $stmt->execute();
-
-    // Obtener los detalles del carrito como un array asociativo
-    $detallesCarrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $detallesCarrito;
-}
 }

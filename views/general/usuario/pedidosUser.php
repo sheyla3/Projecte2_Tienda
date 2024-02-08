@@ -8,7 +8,6 @@
         <thead >
             <tr>
                 <th class="table-pedidos-thead">ID Pedido</th>
-                <th class="table-pedidos-thead">Correo</th>
                 <th class="table-pedidos-thead">Estado</th>
                 <th class="table-pedidos-thead">Fecha Pedido</th>
                 <th class="table-pedidos-thead">Fecha Envio</th>
@@ -20,7 +19,6 @@
             <?php foreach ($pedidos as $pedido){?>
                 <tr>
                     <td><?php echo $pedido['id_pedido']; ?></td>
-                    <td><?php echo $pedido['correo']; ?></td>
                     <td><?php echo $pedido['estado']; ?></td>
                     <td><?php echo $pedido['fechapedido']; ?></td>
                     <td><?php echo $pedido['fechaenvio']; ?></td>

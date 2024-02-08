@@ -9,14 +9,14 @@
             <input type="radio" name="slider" id="menu-btn">
             <input type="radio" name="slider" id="close-btn">
             <ul class="nav-links">
-            <label for="close-btn" class="btn close-btn"><img src="views/img/cerrar_icono.png" alt="cerrar" width="20" height="20"></label>
+                <label for="close-btn" class="btn close-btn"><img src="views/img/close-sesion.svg" alt="cerrar" width="20" height="20"></label>
                 <?php
                 $clase_seleccionadaM = ($_SESSION['seccion'] === "mujer") ? 'class="tipo selected"' : 'class="tipo"';
                 $clase_seleccionadaH = ($_SESSION['seccion'] === "hombre") ? 'class="tipo selected"' : 'class="tipo"';
                 // Verificar y mostrar las categorías de mujer si existen
                 if (isset($categoriasM)) {
                     $totalCategorias = count($categoriasM); // Obtener el total de categorías
-                    $columnas =1; // Número de columnas deseadas
+                    $columnas = 2; // Número de columnas deseadas
                     $elementosPorColumna = ceil($totalCategorias / $columnas);  // Calcular el número de elementos por columna
                     $elementosImpresos = 0;  // Contador para rastrear el número actual de elementos impresos
                 
@@ -54,6 +54,7 @@
                     echo '</div>'; 
                     echo '</li>';
                 }
+                
                 // Verificar y mostrar las categorías de hombre si existen
                 if (isset($categoriasH)) {
                     $totalCategorias = count($categoriasH); // Obtener el total de categorías
