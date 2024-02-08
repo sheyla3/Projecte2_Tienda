@@ -4,6 +4,7 @@
 <br>
 
     <!-- Verificar que $pedidos no sea false antes de intentar iterar -->
+<div class="pedidoCon">
     <table class="table-pedidos">
         <thead >
             <tr>
@@ -28,3 +29,4 @@
                 <?php } ?>
         </tbody>
     </table>
+</div>
