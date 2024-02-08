@@ -19,9 +19,20 @@ class PDF extends FPDF {
         $this->Ln(20);
     }
 
-    // Pie de página
-    function Footer() {
-        // Posición: a 1,5 cm del final
+    // Método para el contenido del PDF
+    public function Content()
+    {
+        // Establecer la fuente y el tamaño del texto
+        $this->SetFont('Arial', 'B', 16);
+
+        // Agregar el texto "Hola Mundo"
+        $this->Cell(40, 10,'¡Hola Mundo!', 0, 1); // El último argumento 1 indica que se agrega un salto de línea después del texto
+    }
+
+    // Método para el pie de página del PDF
+    public function Footer()
+    {
+        // Configurar posición y fuente del pie de página
         $this->SetY(-15);
         // Arial italic 8
         $this->SetFont('Arial','I',8);
