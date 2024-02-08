@@ -2,9 +2,6 @@
 // require "models/producto.php";
 require "models/pedido.php";
 require "models/carrito.php";
-require "models/usuario.php";
-require "models/producto.php";
-
 class PedidoController
 {
     public function mostrarProductos()
@@ -117,7 +114,7 @@ class PedidoController
             $dbInstance = $database->getDB();
 
             $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
-            $detallesPedido = $pedidomodel->obtenerPedidoPorId($id_pedido);
+            $detallesPedido = $pedidomodel->obtenerDetallesCarritoPorPedido($id_pedido);
 
             $this->mostrarDetallesPedido($detallesPedido);
         } else {
@@ -137,8 +134,9 @@ class PedidoController
 
             $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
             $detallesPedido = $pedidomodel->obtenerPedidoPorId($id_pedido);
+            $detallesProducto = $pedidomodel->obtenerDetallesCarritoPorPedido($id_pedido);
 
-            $this->mostrarPDFpedido($detallesPedido);
+            $this->mostrarPDFpedido($detallesPedido,$detallesProducto);
         } else {
             // Manejo de error: el ID del pedido no se proporcionó
             echo "Error: ID del pedido no especificado";
@@ -151,33 +149,7 @@ class PedidoController
         include("views/general/usuario/detallePedido.php");
     }
 
-    public function mostrarPDFpedido($detallesPedido){
-        $pedidoModel = new Pedido(null, null, null, null, null, null);
-        $clienteModel = new Usuario(null, null, null, null, null, null, null, null);
-        $productoModel = new Producto(null, null, null, null, null, null, null, null, null, null, null);
-        $carritoModel = new Carrito(null, null, null, null, null, null);
-
-        $pedido = $pedidoModel->obtenerPedidoPorId($detallesPedido);
-        $cliente = $clienteModel->getProfile($pedido['correo']);
-        $productos_carrito = $pedidoModel->obtenerDetallesCarritoPorPedido($detallesPedido);
-
-
-        $pdf = new FPDF();
-        $pdf->AliasNbPages();
-        $pdf->AddPage();
-        $pdf->SetFont('Arial','',12);
-
-        $pdf->Cell(0, 10, 'Detalles del Pedido: ' . print_r($pedido, true), 0, 1);
-        $pdf->Cell(0, 10, 'Detalles del Cliente: ' . print_r($cliente, true), 0, 1);
-
-        $pdf->Cell(0, 10, 'Productos del Carrito:', 0, 1);
-        foreach ($productos_carrito as $producto) {
-            // Obtener detalles del producto
-            $detalles_producto = $productoModel->obtenerInfo($producto['id_producto']);
-            $pdf->Cell(0, 10, 'Nombre: ' . $detalles_producto['nombre'] . ', Cantidad: ' . $producto['cantidad'] . ', Precio: ' . $producto['precio'], 0, 1);
-        }
-
-        $pdf->Output();
+    public function mostrarPDFpedido($pedido,$productos_carrito){
 
         include("views/general/usuario/facturaPDF.php");
     }

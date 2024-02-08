@@ -145,44 +145,44 @@ class Pedido extends Database
         }
     }
 
-    public function getPedidoById($idPedido)
-    {
-        try {
-            $database = new Database();
-            $this->db = $database->getDB();
+    // public function getPedidoById($idPedido)
+    // {
+    //     try {
+    //         $database = new Database();
+    //         $this->db = $database->getDB();
 
-            if ($this->db !== null) {
-                $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
-                $stmt = $this->db->prepare($query);
+    //         if ($this->db !== null) {
+    //             $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
+    //             $stmt = $this->db->prepare($query);
 
-                // Ligando el parámetro
-                $stmt->bindParam(':id_pedido', $idPedido, PDO::PARAM_INT);
+    //             // Ligando el parámetro
+    //             $stmt->bindParam(':id_pedido', $idPedido, PDO::PARAM_INT);
 
-                // Ejecutar la consulta
-                $stmt->execute();
+    //             // Ejecutar la consulta
+    //             $stmt->execute();
 
-                // Obtener el resultado
-                $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    //             // Obtener el resultado
+    //             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                return $resultado;
+    //             return $resultado;
 
-            } else {
-                // Manejo de error si la conexión no está disponible
-                echo "Error: La conexión a la base de datos no está disponible.";
-                return false;
-            }
-        } catch (PDOException $e) {
-            // Manejar el error de la consulta
-            echo "Error en la consulta: " . $e->getMessage();
-            return false;
+    //         } else {
+    //             // Manejo de error si la conexión no está disponible
+    //             echo "Error: La conexión a la base de datos no está disponible.";
+    //             return false;
+    //         }
+    //     } catch (PDOException $e) {
+    //         // Manejar el error de la consulta
+    //         echo "Error en la consulta: " . $e->getMessage();
+    //         return false;
 
-        } finally {
-            // Asegurar que la conexión se cierre independientemente de lo que suceda
-            if ($this->db !== null) {
-                $this->db = null;
-            }
-        }
-    }
+    //     } finally {
+    //         // Asegurar que la conexión se cierre independientemente de lo que suceda
+    //         if ($this->db !== null) {
+    //             $this->db = null;
+    //         }
+    //     }
+    // }
 
     public function actualizarEstado($pedidoId, $nuevoEstado)
     {
@@ -216,9 +216,6 @@ class Pedido extends Database
     public function obtenerPedidoPorId($id_pedido)
     {
         try {
-            $database = new Database();
-            $this->db = $database->getDB();
-
             $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':id_pedido', $id_pedido);
@@ -228,7 +225,6 @@ class Pedido extends Database
             $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // Obtener los detalles del carrito asociados con el pedido
-            $pedido['id_carrito'] = $this->obtenerDetallesCarritoPorPedido($id_pedido);
 
             return $pedido;
 
@@ -242,7 +238,7 @@ class Pedido extends Database
 
     public function obtenerDetallesCarritoPorPedido($id_pedido)
     {
-        $query = "SELECT correo, id_producto, cantidad, precio, id_pedido FROM carrito WHERE id_pedido = :id_pedido";
+        $query = "SELECT * FROM carrito WHERE id_pedido = :id_pedido";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_pedido', $id_pedido);
         $stmt->execute();
@@ -252,4 +248,7 @@ class Pedido extends Database
 
         return $detallesCarrito;
     }
+
+
+
 }

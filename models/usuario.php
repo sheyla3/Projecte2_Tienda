@@ -64,6 +64,8 @@ class Usuario {
         }
     }
 	public function getProfile($email){
+		$database = new Database();
+        $this->db = $database->getDB();
 		try {
 			$consulta = $this->db->prepare("SELECT correo, nombre, apellidos, telf, direccion, foto FROM usuarios WHERE correo = :email");
 			$consulta->bindParam(':email', $email); // Asignar valor al marcador

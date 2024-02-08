@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($detallesPedido['id_carrito'] as $detalleProducto) : ?>
+        <?php foreach ($detallesPedido as $detalleProducto) : ?>
             <tr>
                 <td><?php echo $detalleProducto['correo']; ?></td>
                 <td><?php echo $detalleProducto['id_producto']; ?></td>
