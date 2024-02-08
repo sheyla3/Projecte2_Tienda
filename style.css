@@ -1,3 +1,6 @@
+* {
+  outline: none;
+}
 /****** HEADER *************************************************************************************************************/
 header,
 nav {
@@ -177,7 +180,7 @@ nav .header {
 .subdiv1-user {
   grid-area: 1 / 1 / 2 / 2;
   background-color: white;
-  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.466);
   border-radius: 20px;
   width: 100%;
   margin: auto;
@@ -191,7 +194,7 @@ nav .header {
 .subdiv1-user>div {
   padding-left: 5%;
   padding-top: 5%;
-  width: 70%;
+  width: 80%;
   display: flex;
   align-items: center;
 
@@ -213,6 +216,7 @@ nav .header {
 .div-user-edit {
   margin: auto;
   width: 40%;
+  padding-bottom: 5%;
 }
 
 .div-edit-user {
@@ -257,7 +261,7 @@ nav .header {
 .subdiv2-user {
   grid-area: 1 / 2 / 2 / 3;
   background-color: white;
-  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.466);
   border-radius: 20px;
   margin: auto;
   padding-top: 5%;
@@ -2078,5 +2082,65 @@ input {
     margin: 20% auto 50%;
     padding: 10%;
   }
-  
+
+  /* Editar perfil */
+  .div1-user {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 25%;
+  }
+ 
+  .subdiv1-user {
+    margin-left: 0;
+    margin-bottom: 5%;
+  }
+
+  .subdiv1-user h3 {
+    display: none;
+  }
+
+  .subdiv2-user {
+    margin-bottom: 5%;
+    width: 100%;
+  }
+
+  .admin-panel-submit-link, button.admin-panel-submit-link, a.admin-panel-submit-link {
+    width: 70%;
+    margin-bottom: 5%;
+  }
+
+  .ser-profile-row {
+    justify-content: end;
+  }
+
+  .subdiv1-user > div {
+    width: 93%;
+}
+
+  /* cambiar foto*/
+  .subdiv2-user-photo {
+    width: 100%;
+  }
+
+  /* Editar perfil*/
+  .div-user-edit {
+    width: 100%;
+    padding-bottom: 20%;
+  }
+
+  .input-decoration {
+    margin-left: 0;
+  }
+
+  .image-profile-dades {
+    padding-right: 3%;
+  }
+
+  .edit-user-buttons {
+    display: block !important;
+    width: 100%;
+    text-align: center !important;
+  }
+
 }
