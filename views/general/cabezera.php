@@ -106,14 +106,32 @@
                     <label  id="botonCarrito" class="mobile-item">Carrito</label>
                 </li>
                 <li>
-                    <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/user.svg" alt="Iniciar sesión" width="25" height="25"></a>
-                    <label class="mobile-item">Usuario</label>
+                    <?php 
+                    if (isset($_SESSION['email']) && $_SESSION['role'] == 'user'){
+                    ?>
+                    <a href="index.php?controller=usuario&action=mostrarPerfil" class="tipo"><img src="views/img/usuario.svg" alt="Iniciar sesión" width="20" height="20"></a>
                     <input type="checkbox" id="showDrop">
+                    <label for="showDrop" class="mobile-item">Usuario</label>
+                    <ul class="drop-menu">
+                        <li><a href="#">Favoritos</a></li>
+                        <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
+                        <li><a href="index.php?controller=pedido&action=listarPedidosUsuario">Mis Pedidos</a></li>
+                        <li><a href="././sortir.php">Cerrar sesión</a></li>
+                    </ul>
+                    <?php 
+                    }else{
+                    ?>
+                    <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/user.svg" alt="Iniciar sesión" width="25" height="25"></a>
+                    <input type="checkbox" id="showDrop">
+                    <label for="showDrop" class="mobile-item">Usuario</label>
                     <ul class="drop-menu">
                         <li><a href="index.php?controller=usuario&action=mostrarLoginUsuario">Iniciar sesión</a></li>
                         <li><a href="index.php?controller=usuario&action=crearUsuario">Registrarse</a></li>
                         <li><a href="#">Ayuda</a></li>
                     </ul>
+                    <?php 
+                    }
+                    ?>
                 </li>
             </ul>
             <label for="menu-btn" class="btn menu-btn"><img src="views/img/menu_icono.png" alt="menu" width="20" height="20"></label>

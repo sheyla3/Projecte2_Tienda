@@ -7,8 +7,7 @@ nav {
   width: 100%;
   background: white;
   border-bottom: 1px solid black;
-  z-index: 999;
-  padding-top: 1%;
+  z-index: 99;
 }
 
 .logo {
@@ -51,7 +50,7 @@ nav .header {
 }
 
 .nav-links li a:hover {
-  background: #537FE7;
+  background: #c0eef2;
 }
 
 .nav-links .mobile-item {
@@ -63,7 +62,7 @@ nav .header {
   background: #242526;
   width: 180px;
   line-height: 45px;
-  padding-left: 0;
+  padding: 0;
   top: 85px;
   opacity: 0;
   visibility: hidden;
@@ -82,7 +81,7 @@ nav .header {
   display: block;
   padding: 0 0 0 15px;
   font-weight: 400;
-  border-radius: 0px;
+  border-radius: 5px;
   color: white;
 }
 
@@ -93,9 +92,8 @@ nav .header {
 .mega-box {
   position: absolute;
   left: 0;
-  width: 100%;
+  width: 90%;
   padding: 0 30px;
-  top: 85px;
   opacity: 0;
   visibility: hidden;
 }
@@ -110,12 +108,12 @@ nav .header {
 }
 
 .mega-box .contenido .fila {
-  width: calc(25% - 30px);
+  width: calc(30% - 60px);
   line-height: 45px;
 }
 
 .contenido .fila img {
-  width: 100%;
+  width: 95%;
   height: 100%;
   object-fit: cover;
 }
@@ -785,7 +783,6 @@ body {
 }
 
 .admin-menu-bar-item:visited {
-
   color: #537FE7;
 }
 
@@ -1633,18 +1630,17 @@ Dots .slick-dotted.slick-slider {
   .header .nav-links {
     position: fixed;
     height: 100vh;
+    width: 100%;
     max-width: 350px;
-    top: 0;
+    top: 5%;
     left: -100%;
-    background: black;
+    background: #537FE7;
     display: block;
     padding: 50px 10px;
     line-height: 50px;
     overflow-y: auto;
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
     transition: all 0.3s ease;
-    border-radius: 10px;
-    z-index: 2;
   }
 
   /* custom scroll bar */
@@ -1660,7 +1656,7 @@ Dots .slick-dotted.slick-slider {
     background: #3A3B3C;
   }
 
-  #menu-btn:checked~.nav-links {
+  #menu-btn:checked ~ .nav-links {
     left: 0%;
   }
 
@@ -1687,7 +1683,6 @@ Dots .slick-dotted.slick-slider {
     opacity: 1;
     top: 65px;
     visibility: visible;
-    padding-left: 20px;
     width: 100%;
     max-height: 0px;
     overflow: hidden;
