@@ -1089,6 +1089,12 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 }
 
+.categoriaCubo:hover{
+  --escala: 0.95;
+  cursor: pointer;
+  transition: 0.25s;
+  transform: scale(0.9);
+}
 
 .categoriaCubo {
   padding: 1px;
@@ -1100,6 +1106,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   background-position: bottom;
   position: relative;
   background-size: 91% 180%;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
 }
 
 .rowCubos {
@@ -1817,6 +1825,15 @@ Dots .slick-dotted.slick-slider {
 
 .precioContanier {
   padding-left: 70px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.precio-text-cont{
+  display: flex;
+  flex-direction: row;
+  margin-right: 5px;
 }
 
 .carritoContanier img {
@@ -1827,6 +1844,7 @@ Dots .slick-dotted.slick-slider {
 .menuPrecio {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .d_botonAñadir {
@@ -1866,6 +1884,19 @@ Dots .slick-dotted.slick-slider {
   border: none;
 }
 
+.boton-comprar {
+  background-color: #8ecffe;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+}
+
+#precio-cont{
+  font-weight: bold;
+}
+
 input {
   border: none;
   border-bottom: 2px solid #537FE7;
@@ -1888,6 +1919,16 @@ input {
   z-index: 1;
 }
 
+.menuPrecio{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botones-cont{
+  display: flex;
+  align-items: center;
+}
 
 .popup {
   background-color: #fff;
@@ -1930,7 +1971,7 @@ input {
   transform: scale(1.7);
 }
 
-.btn-subir:hover,.btn-bajar:hover,.btn-borrar:hover{
+.btn-subir:hover,.btn-bajar:hover,.btn-eliminar:hover{
   background-color: #8ecffe;
   --escala: 0.95;
   cursor: pointer;
@@ -1940,7 +1981,7 @@ input {
 }
 
 
-.btn-subir,.btn-bajar,.btn-borrar{
+.btn-subir,.btn-bajar,.btn-eliminar{
   margin: 10px;
   transform: scale(var(--escala, 1));
   transition: 0.25s;
@@ -1950,10 +1991,21 @@ input {
   margin: 20px;
 }
 
+#text-precio{
+  margin-right: 10px;
+}
+
 /*carrito y detalle movil*/
 @media only screen and (max-width: 767px) {
   .precioContanier {
     padding-left: 21px;
+  }
+  .carritoContanier {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 90px;
   }
 
   .Desktop1 {
@@ -1996,6 +2048,32 @@ input {
     height: 500px;
     background-size: 90% 100%;
     margin-bottom: 5%;
+  }
+  .carrito1 {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cont-nombre-producto{
+    display: flex;
+    flex-direction: column;
+  }
+  .botones-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .menuPrecio{
+    flex-direction: column;
+  }
+  .carritoimg{
+    width: 226px;
+    height: 266px;
+
+  }
+  .campoPrecio{
+    text-align: center;
   }
 
   /* Inicio sesion*/

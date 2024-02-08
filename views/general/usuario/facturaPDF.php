@@ -18,7 +18,7 @@ class PDF extends FPDF
         $this->SetFont('Arial', 'B', 16);
 
         // Agregar el texto "Hola Mundo"
-        $this->Cell(40, 10, '¡Hola Mundo!', 0, 1); // El último argumento 1 indica que se agrega un salto de línea después del texto
+        $this->Cell(40, 10,'¡Hola Mundo!', 0, 1); // El último argumento 1 indica que se agrega un salto de línea después del texto
     }
 
     // Método para el pie de página del PDF

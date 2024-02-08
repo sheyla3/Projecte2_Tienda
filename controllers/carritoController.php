@@ -141,18 +141,23 @@ public function crearHTMLcarrito($datos) {
                                 <img src="' . $producto['img'] . '" alt="' . $producto['nombre'] . '" data-stock="' . $producto['stock'] . '">
                             </div>
                             <div>
-                                <p class="campoPrecio">' . $producto['nombre'] . '</p>
-                                <p class="campoPrecio">Precio: ' . $producto['precio'] * $producto['cantidad'] . '€</p>
+                            
                                 <div class="menuPrecio">
+                                    <div class="cont-nombre-producto">
+                                        <p class="campoPrecio">' . $producto['nombre'] . '</p>
+                                        <p class="campoPrecio">Precio: ' . $producto['precio'] * $producto['cantidad'] . '€</p>
+                                    </div>
                                     <input type="hidden" class="producto-seleccionado" name="productos_seleccionados[' . $producto['id_producto'] . '][seleccionado]" value="' . $producto['id_producto'] . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][cantidad]" value="' . $producto['cantidad'] . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][precio]" value="' . $producto['precio'] . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][nombre]" value="' . htmlspecialchars($producto['nombre']) . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][img]" value="' . htmlspecialchars($producto['img']) . '">
-                                    <button type="button" class="btn-subir" data-cant="' . $producto['cantidad'] . '" data-id="' . $producto['id_producto'] . '" data-stock="' . $producto['stock'] . '"></button>
-                                    <p>' . $producto['cantidad'] . '</p>
-                                    <button type="button" class="btn-bajar" data-id="' . $producto['id_producto'] . '"></button>
-                                    <button type="button" class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>
+                                    <div class="botones-cont">
+                                        <button type="button" class="btn-subir" data-cant="' . $producto['cantidad'] . '" data-id="' . $producto['id_producto'] . '" data-stock="' . $producto['stock'] . '"></button>
+                                        <p>' . $producto['cantidad'] . '</p>
+                                        <button type="button" class="btn-bajar" data-id="' . $producto['id_producto'] . '"></button>
+                                        <button type="button" class="btn-eliminar" data-id="' . $producto['id_producto'] . '"></button>
+                                    </div>
                                 </div>
                             </div>
                        
@@ -162,8 +167,10 @@ public function crearHTMLcarrito($datos) {
     $htmlGenerado .= ' </div>
     <div class="precioContanier">
                             <h3>Resumen</h3>
-                            <p>Total ' . $precioTotal . ' €</p>
-                            <button type="button" onclick="comprarProductos()">Comprar Productos</button>
+                            <div class="precio-text-cont"> <p id="text-precio">Total (Impuestos incluidos)</p>
+                            <p id="precio-cont"> ' . $precioTotal . ' €</p></div>
+                           
+                            <button type="button" class="boton-comprar" onclick="comprarProductos()">Comprar Productos</button>
                         </div>
                     </div>';
 
