@@ -62,7 +62,7 @@ nav .header {
   background: #242526;
   width: 180px;
   line-height: 45px;
-  padding: 10px;
+  padding: 0;
   top: 85px;
   opacity: 0;
   visibility: hidden;
@@ -113,7 +113,7 @@ nav .header {
 }
 
 .contenido .fila img {
-  width: 100%;
+  width: 95%;
   height: 100%;
   object-fit: cover;
 }
@@ -1704,7 +1704,7 @@ Dots .slick-dotted.slick-slider {
     border-radius: 5px;
     font-size: 18px;
   }
-  
+
   .nav-links .tipo {
     display: none;
   }
