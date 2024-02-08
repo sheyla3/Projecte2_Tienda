@@ -107,8 +107,8 @@
                 </li>
                 <li>
                     <a href="index.php?controller=usuario&action=mostrarPerfil" class="tipo"><img src="views/img/usuario.svg" alt="Iniciar sesión" width="20" height="20"></a>
-                    <label class="mobile-item">Usuario</label>
                     <input type="checkbox" id="showDrop">
+                    <label for="showDrop" class="mobile-item">Usuario</label>
                     <ul class="drop-menu">
                         <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
