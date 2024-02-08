@@ -152,8 +152,8 @@ class AdminController
             $database = new Database();
             $pdo = $database->getDB();
     
-            $stmt = $pdo->prepare('UPDATE admin SET firma = ? WHERE email = ?');
-            $stmt->execute([$filePath, $adminEmail]);
+            $stmt = $pdo->prepare('UPDATE admin SET firma = ? WHERE usuario = "admin"');
+            $stmt->execute([$filePath]);
     
             http_response_code(200);
         } else {

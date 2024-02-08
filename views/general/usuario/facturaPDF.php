@@ -11,12 +11,14 @@ class PDF extends FPDF
     }
 
     // Método para el contenido del PDF
-    public function Content($pedido, $productos_carrito, $datosE, $datosUser)
+    public function Content($pedido, $productos_carrito, $datosE, $datosUser, $firma)
     {
         // Establecer la fuente y el tamaño del texto
         $this->SetFont('Arial', '', 9);
 
         $imagenPath = $datosE[0]['logo'];
+
+        $firma = $firma[0]['firma'];
 
         // Obtener la posición actual
         $x = $this->GetX();
@@ -25,21 +27,32 @@ class PDF extends FPDF
         // Mostrar la imagen en la posición actual
         $this->Image($imagenPath, $x, $y, 50, 0, 'PNG'); 
         $this->Ln(18); // Salto de línea
-
+        $this->SetFont('Arial', 'B', 9);
         $this->Cell(0, 4, '' . $datosE[0]['nombre'], 0, 1);
+        $this->SetFont('Arial', '', 9);
         $this->Cell(0, 4, '' . $datosE[0]['direccion'], 0, 1);
         $this->Cell(0, 4, '' . $datosE[0]['cif'], 0, 1);
         $this->Cell(0, 4, '' . $datosE[0]['telf'], 0, 1);
         $this->Ln(10); // Salto de línea
+        $this->SetFont('Arial', 'B', 9);
         $this->Cell(0, 4, 'Cliente', 0, 1);
+        $this->SetFont('Arial', '', 9);
         $this->Cell(6, 4, $datosUser[0]['correo'], 0, 1);
-        $this->Cell(6, 4, $datosUser[0]['nombre'] . $datosUser[0]['apellidos'] , 0, 1);
+        $this->Cell(6, 4, $datosUser[0]['nombre'] .' ' . $datosUser[0]['apellidos'] , 0, 1);
+        $this->Cell(6, 4, $datosUser[0]['telf'], 0, 1);
+
+        $this->Ln(10);
+        $this->SetFont('Arial', 'B', 9);
+        $this->Cell(6, 4, 'Direccion', 0, 1);
+        $this->SetFont('Arial', '', 9);
+        $this->Cell(6, 4, $datosUser[0]['direccion'], 0, 1);
         //$this->Cell(0, 10, 'Fecha del Pedido: ' . $pedido['fechapedido'], 0, 1);
         // Aquí agregarías más detalles del pedido según tus necesidades
 
         // Salto de línea
         $this->Ln(10);
         $this->SetLeftMargin(10);
+        $this->SetFont('Arial', 'B', 9);
         $this->Cell(0, 4, 'Fecha: ' . $pedido['fechapedido'], 0, 1);
 
 
@@ -66,7 +79,7 @@ class PDF extends FPDF
 
         $fill = false;
 
-        $this->SetFont('Arial', 'B', 9);
+        $this->SetFont('Arial', '', 9);
         foreach ($productos_carrito as $producto) {
             $total = $producto['precio'] * $producto['cantidad'];
             // Alternar entre los colores de fondo
@@ -77,14 +90,18 @@ class PDF extends FPDF
             }
 
             // Dibujar la fila de la tabla con el color de fondo correspondiente
+            $this->SetFont('Arial', 'B', 9);
             $this->Cell(70, 10, $producto['id_producto'], 0, 0, 'C', $fill);
             $this->Cell(40, 10, $producto['cantidad'], 0, 0, 'C', $fill);
-            $this->Cell(40, 10, $producto['precio'], 0, 0, 'C', $fill);
-            $this->Cell(40, 10, $total, 0, 1, 'C', $fill);
+            $this->Cell(40, 10, $producto['precio'] . '$', 0, 0, 'C', $fill);
+            $this->Cell(40, 10, $total. '$', 0, 1, 'C', $fill);
 
             // Cambiar el valor de la variable $fill para alternar entre los colores
             $fill = !$fill;
         }
+        $this->SetFont('Arial', 'B', 9);
+
+        $this->Image($firma, $x, 170, 50, 0, 'PNG'); 
        
 
     }        
@@ -106,7 +123,7 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 // Llamar al método Content para agregar el contenido al PDF
-$pdf->Content($pedido, $productos_carrito, $datosE, $datosUser);
+$pdf->Content($pedido, $productos_carrito, $datosE, $datosUser, $firma);
 
 // Generar el PDF
 $pdf->Output();

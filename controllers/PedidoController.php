@@ -136,12 +136,13 @@ class PedidoController
             $dbInstance = $database->getDB();
             $admin = new Admin($dbInstance, null, null, null);
         	$datosE = $admin->datosEmpresa();
+            $firma = $admin->firma();
             $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
             $detallesPedido = $pedidomodel->obtenerPedidoPorId($id_pedido);
             $detallesProducto = $pedidomodel->obtenerDetallesCarritoPorPedido($id_pedido);
             $usuario = new Usuario($dbInstance, $email, null, null, null, null, null, null);
 		    $datosUser = $usuario->getProfile($email);
-            $this->mostrarPDFpedido($detallesPedido,$detallesProducto,$datosE,$datosUser);
+            $this->mostrarPDFpedido($detallesPedido,$detallesProducto,$datosE,$datosUser,$firma);
         } else {
             // Manejo de error: el ID del pedido no se proporcionó
             echo "Error: ID del pedido no especificado";
@@ -154,7 +155,7 @@ class PedidoController
         include("views/general/usuario/detallePedido.php");
     }
 
-    public function mostrarPDFpedido($pedido,$productos_carrito,$datosE,$datosUser){
+    public function mostrarPDFpedido($pedido,$productos_carrito,$datosE,$datosUser,$firma){
 
         include("views/general/usuario/facturaPDF.php");
     }

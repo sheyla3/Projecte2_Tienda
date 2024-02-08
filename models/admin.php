@@ -47,6 +47,18 @@ class Admin {
         return $datos;
     }
 
+	public function firma()
+    {
+        $query = "SELECT firma FROM admin";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        // Obtener los detalles del carrito como un array asociativo
+        $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $datos;
+    }
+
 
 
 }
