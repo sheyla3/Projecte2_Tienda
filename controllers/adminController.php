@@ -126,6 +126,7 @@ class AdminController
         include('views/general/formularios/mostrar_login.php');
     }
 
+
     public function guardarFirma(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
             $imageName = $_POST['imageName'];
@@ -149,8 +150,8 @@ class AdminController
             $database = new Database();
             $pdo = $database->getDB();
     
-            $stmt = $pdo->prepare('UPDATE admin SET firma = ? WHERE email = ?');
-            $stmt->execute([$filePath, $adminEmail]);
+            $stmt = $pdo->prepare('UPDATE admin SET firma = ? WHERE usuario = "admin"');
+            $stmt->execute([$filePath]);
     
             http_response_code(200);
         } else {
