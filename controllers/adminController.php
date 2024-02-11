@@ -82,7 +82,7 @@ class AdminController
         if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
             $database = new Database();
             $dbInstance = $database->getDB();
-            header('Location: views/general/adminPanel/grafica/grafica.html');
+            header('Location: ./grafica/grafica.html');
             /*
             require_once "views/general/adminPanel/menu.php";
             include('views/general/adminPanel/grafica/grafica.html');
@@ -132,14 +132,12 @@ class AdminController
             $imageData = $_POST['imageData'];
             $adminEmail = $_SESSION['email'];
     
-            // Adjust the path to the "firmas" folder
             $imgFolder = './views/img/firmas/';
             $filePath = $imgFolder . $imageName;
     
             $imageData = str_replace('data:image/png;base64,', '', $imageData);
             $imageData = base64_decode($imageData);
     
-            // Create the "firmas" folder if it doesn't exist
             if (!file_exists($imgFolder)) {
                 mkdir($imgFolder, 0777, true);
             }
@@ -159,7 +157,7 @@ class AdminController
             http_response_code(400);
         }
     }
-
+    
     
     
     
