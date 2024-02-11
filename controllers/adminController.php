@@ -159,7 +159,20 @@ class AdminController
         }
     }
     
+    public function obtenerProductosMasVendidos() {
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        
+        $query = "SELECT id_producto, SUM(cantidad) as totalCantidad FROM carrito WHERE comprado = true GROUP BY id_producto ORDER BY totalCantidad DESC LIMIT 5";
     
+        $statement = $dbInstance->prepare($query);
+        $statement->execute();
+    
+        $productosMasVendidos = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        header('Content-Type: application/json');
+        echo json_encode($productosMasVendidos);
+    }
     
     
 }
