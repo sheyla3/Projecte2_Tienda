@@ -9,10 +9,10 @@
             echo $errorSubir;
         } ?>
 
-        <form action="index.php?controller=usuario&action=editPhoto&email=<?php echo $datosUser[0]['correo']; ?>"
+        <form aria-label='Formulario' action="index.php?controller=usuario&action=editPhoto&email=<?php echo $datosUser[0]['correo']; ?>"
             method="post" enctype="multipart/form-data">
             <label for="nuevaFoto">Selecciona una nueva foto:</label><br><br>
-            <input type="file" name="nuevaFoto" id="nuevaFoto" required accept="image/*">
+            <input type="file" aria-label='Campo de texto' name="nuevaFoto" id="nuevaFoto" required accept="image/*">
             <br>
             <br>
             <button role="button" class='admin-panel-submit-link' type="submit" value="Actualizar Foto">Actualizar Imagen</button>

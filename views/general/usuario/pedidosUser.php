@@ -3,10 +3,10 @@
 <div class='blue-line'></div>
 <br>
 
-    <!-- Verificar que $pedidos no sea false antes de intentar iterar -->
+<!-- Verificar que $pedidos no sea false antes de intentar iterar -->
 <div class="pedidoCon">
-    <table class="table-pedidos">
-        <thead >
+    <table class="table-pedidos" aria-label='Tabla'>
+        <thead>
             <tr>
                 <th class="table-pedidos-thead">ID Pedido</th>
                 <th class="table-pedidos-thead">Estado</th>
@@ -17,16 +17,24 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($pedidos as $pedido){?>
+            <?php foreach ($pedidos as $pedido) { ?>
                 <tr>
-                    <td><?php echo $pedido['id_pedido']; ?></td>
-                    <td><?php echo $pedido['estado']; ?></td>
-                    <td><?php echo $pedido['fechapedido']; ?></td>
-                    <td><?php echo $pedido['fechaenvio']; ?></td>
-                    <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedidoPDF&id_pedido=". $pedido['id_pedido'] ."'><img src='views/img/factura.svg' width='30px' height='30px'></a></td>"; ?>
-                    <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedido&id_pedido=". $pedido['id_pedido'] ."'><img src='views/img/detail.svg' width='30px' height='30px'></a></td>"; ?>
+                    <td>
+                        <?php echo $pedido['id_pedido']; ?>
+                    </td>
+                    <td>
+                        <?php echo $pedido['estado']; ?>
+                    </td>
+                    <td>
+                        <?php echo $pedido['fechapedido']; ?>
+                    </td>
+                    <td>
+                        <?php echo $pedido['fechaenvio']; ?>
+                    </td>
+                    <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedidoPDF&id_pedido=" . $pedido['id_pedido'] . "'><img src='views/img/factura.svg' width='30px' height='30px'></a></td>"; ?>
+                    <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedido&id_pedido=" . $pedido['id_pedido'] . "'><img src='views/img/detail.svg' width='30px' height='30px'></a></td>"; ?>
                 </tr>
-                <?php } ?>
+            <?php } ?>
         </tbody>
     </table>
 </div>

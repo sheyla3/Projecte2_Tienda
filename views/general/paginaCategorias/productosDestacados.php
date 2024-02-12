@@ -7,7 +7,7 @@
 <h2 style="text-align:center; margin-top:50px; margin-bottom: -75px;">Destacados</h2>
 <div class="cubosCategorias slider">
     <?php foreach ($productos as $producto): ?>
-        <a class="prodDestacado" href="index.php?controller=Producto&action=mostrarProducto&id_producto=<?= $producto['id_producto'] ?>">
+        <a aria-label='Link' class="prodDestacado" href="index.php?controller=Producto&action=mostrarProducto&id_producto=<?= $producto['id_producto'] ?>">
             <div class="cuboP" style="background-image: url('<?= $producto['img'] ?>')" alt="<?= $producto['nombre'] ?>">
                 <p class="letraP"><?= $producto['nombre'] ?> - <?= $producto['precio'] ?>€</p>
             </div>
