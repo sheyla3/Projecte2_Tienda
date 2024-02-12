@@ -1,8 +1,6 @@
 <div class="editContanier">	
     <form class='admin-panel-form' action='index.php?controller=Producto&action=botonCrearProducto' method='POST' enctype="multipart/form-data">
     <h2 class='h2-form'>Crear Producto</h2>
-        <!-- <label for='id_producto'>ID Producto</label>
-        <input type='text' id='' name='id_producto' required><br><br> -->
     
         <label for='nombre'>Nombre</label>
         <input type='text' id='' name='nombre' required><br><br>
@@ -38,7 +36,7 @@
 	    <input type='file' id='imagen' name='imagen'><br><br>
 
         <a href="index.php?controller=Admin&action=botonVistaProducto" class='admin-panel-submit-link'>Volver atras</a>
-        <input class='admin-panel-submit-link' type='submit' value='AÑADIR'>
+        <input aria-label='añadir' class='admin-panel-submit-link' type='submit' value='AÑADIR'>
 
 
     </form>

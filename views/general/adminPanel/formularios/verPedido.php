@@ -11,5 +11,5 @@
         <option value="Completado" <?php echo ($pedido['estado'] == 'completado') ? 'selected' : ''; ?>>Completado
         </option>
     </select>
-    <button type="submit">Actualizar Estado</button>
+    <button aria-label='Actualizar estado' type="submit">Actualizar Estado</button>
 </form>

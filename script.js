@@ -292,3 +292,9 @@ function mostrarEnviarCorreo() {
 function ocultarEnviarCorreo() {
     document.getElementById('overlay').style.display = 'none';
 }
+
+// Función para retroceder pagina
+
+function retroceder() {
+    window.history.back();
+}

@@ -835,9 +835,24 @@ body {
   text-align: center;
 }
 
-.admin-panel-submit-link:hover {
+.admin-panel-submit-link:hover, .admin-panel-back-link:hover {
   background-color: #1F1F1F;
   color: #537FE7;
+  cursor: pointer;
+}
+
+.admin-panel-back-link {
+  background-color: #537FE7;
+  color: black;
+  font-weight: bolder;
+  font-size: large;
+  padding: 9px;
+  margin-right: 5%;
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+  width: 10%;
+  text-align: center;
 }
 
 .edit-user-buttons {

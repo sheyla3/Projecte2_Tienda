@@ -55,7 +55,9 @@ class AdminController
             $catalogo = $producto->obtenerProductos();
             include('views/general/adminPanel/tablaProductos.php');
         }else{
+                
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
         }
 
         
@@ -67,7 +69,7 @@ class AdminController
             $database = new Database();
             $dbInstance = $database->getDB();
             require_once "views/general/adminPanel/menu.php";
-            include('views/general/adminPanel/firma.html');
+            include('views/general/adminPanel/firma.php');
             echo '<script src="./scriptDibujar.js"></script>';
 
         }else{
@@ -90,6 +92,8 @@ class AdminController
 
         }else{
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+
         }
 
     }
@@ -104,6 +108,8 @@ class AdminController
             include('views/general/adminPanel/tablaComandes.php');
         }else{
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+
         }
        
      }
@@ -118,6 +124,8 @@ class AdminController
             require_once 'views/general/adminPanel/tablaCategorias.php';
         }else{
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+
         }
 
        
