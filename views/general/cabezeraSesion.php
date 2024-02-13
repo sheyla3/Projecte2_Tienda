@@ -103,7 +103,7 @@
                 </li>
                 <li>
                     <a href="index.php?controller=carrito&action=entrar" class="tipo"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>
-                    <label class="mobile-item">Carrito</label>
+                    <label class="mobile-item"><a href="index.php?controller=carrito&action=entrar">Carrito</a></label>
                 </li>
                 <li>
                     <a href="index.php?controller=usuario&action=mostrarPerfil" class="tipo"><img src="views/img/usuario.svg" alt="Iniciar sesión" width="20" height="20"></a>
