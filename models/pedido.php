@@ -174,6 +174,8 @@ class Pedido extends Database
             $stmt->bindParam(':id_pedido', $id_pedido);
             $stmt->execute();
 
+            
+
             // Obtener los detalles del pedido como un array asociativo
             $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -195,6 +197,18 @@ class Pedido extends Database
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_pedido', $id_pedido);
         $stmt->execute();
+
+        $query2 = "SELECT productos.nombre, productos.descripcion, carrito.id_producto, carrito.cantidad, productos.precio, (carrito.cantidad * productos.precio) AS precio_total, fotos.img as imagen
+                  FROM carrito
+                  INNER JOIN productos ON carrito.id_producto = productos.id_producto
+                  INNER JOIN fotos ON productos.id_producto = fotos.id_producto
+                  WHERE carrito.id_pedido = :id_pedido";
+
+
+            // Ejecuta la consulta preparada con los parámetros proporcionados
+            $stmt = Database::getDB()->prepare($query2);
+            $stmt->bindParam(':id_pedido', $id_pedido);
+            $stmt->execute();
 
         // Obtener los detalles del carrito como un array asociativo
         $detallesCarrito = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -14,7 +14,7 @@ echo "
         </select><br>
         <a href='index.php?controller=Admin&action=botonVistaCategoria' class='admin-panel-submit-link'>Volver atras</a>
 
-        <input class='admin-panel-submit-link' type='submit' value='AÑADIR'>
+        <input aria-label='añadir' class='admin-panel-submit-link' type='submit' value='AÑADIR'>
 
 
     </form>";

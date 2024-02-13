@@ -55,7 +55,9 @@ class AdminController
             $catalogo = $producto->obtenerProductos();
             include('views/general/adminPanel/tablaProductos.php');
         }else{
+                
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
         }
 
         
@@ -67,7 +69,7 @@ class AdminController
             $database = new Database();
             $dbInstance = $database->getDB();
             require_once "views/general/adminPanel/menu.php";
-            include('views/general/adminPanel/firma.html');
+            include('views/general/adminPanel/firma.php');
             echo '<script src="./scriptDibujar.js"></script>';
 
         }else{
@@ -82,7 +84,7 @@ class AdminController
         if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
             $database = new Database();
             $dbInstance = $database->getDB();
-            header('Location: views/general/adminPanel/grafica/grafica.html');
+            header('Location: ./grafica/grafica.html');
             /*
             require_once "views/general/adminPanel/menu.php";
             include('views/general/adminPanel/grafica/grafica.html');
@@ -90,6 +92,8 @@ class AdminController
 
         }else{
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+
         }
 
     }
@@ -104,6 +108,8 @@ class AdminController
             include('views/general/adminPanel/tablaComandes.php');
         }else{
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+
         }
        
      }
@@ -118,6 +124,8 @@ class AdminController
             require_once 'views/general/adminPanel/tablaCategorias.php';
         }else{
             echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+
         }
 
        
@@ -133,14 +141,12 @@ class AdminController
             $imageData = $_POST['imageData'];
             $adminEmail = $_SESSION['email'];
     
-            // Adjust the path to the "firmas" folder
             $imgFolder = './views/img/firmas/';
             $filePath = $imgFolder . $imageName;
     
             $imageData = str_replace('data:image/png;base64,', '', $imageData);
             $imageData = base64_decode($imageData);
     
-            // Create the "firmas" folder if it doesn't exist
             if (!file_exists($imgFolder)) {
                 mkdir($imgFolder, 0777, true);
             }
@@ -160,8 +166,21 @@ class AdminController
             http_response_code(400);
         }
     }
-
     
+    public function obtenerProductosMasVendidos() {
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        
+        $query = "SELECT id_producto, SUM(cantidad) as totalCantidad FROM carrito WHERE comprado = true GROUP BY id_producto ORDER BY totalCantidad DESC LIMIT 5";
+    
+        $statement = $dbInstance->prepare($query);
+        $statement->execute();
+    
+        $productosMasVendidos = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        header('Content-Type: application/json');
+        echo json_encode($productosMasVendidos);
+    }
     
     
 }

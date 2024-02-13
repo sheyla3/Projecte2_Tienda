@@ -20,10 +20,10 @@
 
     $estadoChecked = ($info[0]['estado'] == 1) ? 'checked' : ''; // Verificar y marcar checkbox
     echo "<label for='estado'>Estado (Check para Activar):</label>";
-    echo "<input type='checkbox' id='estado' name='estado' $estadoChecked>";
+    echo "<input role='checkbox' type='checkbox' id='estado' name='estado' $estadoChecked>";
     
     echo "<br><br>";
     echo "<a href='index.php?controller=Admin&action=botonVistaCategoria' class='admin-panel-submit-link'>Volver atras</a>";
-    echo "<input class='admin-panel-submit-link' type='submit' value='Editar'>";
+    echo "<input aria-label='editar' class='admin-panel-submit-link' type='submit' value='Editar'>";
     ?>
 </form>
