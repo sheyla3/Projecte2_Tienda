@@ -49,8 +49,8 @@
             <input type="file" name="imagen">
         </div>
 		<br><br>
-		<a href="index.php?controller=Admin&action=botonVistaProducto" class='admin-panel-submit-link'>Volver atras</a>
-    	<input class='admin-panel-submit-link' type="submit" value="Guardar Cambios">
+		<a role='link' href="index.php?controller=Admin&action=botonVistaProducto" class='admin-panel-submit-link'>Volver atras</a>
+    	<input aria-label="Guardar cambios" class='admin-panel-submit-link' type="submit" value="Guardar Cambios">
 	</form>
 </div>
 

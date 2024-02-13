@@ -12,10 +12,10 @@
     <div class="login-page">
         <div class="form">
         <h2>Iniciar Sesión Administrador</h2>
-            <form class="login-form" action="index.php?controller=Admin&action=procesar_login" method="POST">
-                <input type="text" id="email" name="email" placeholder="usuario" required/>
-                <input type="password" placeholder="contraseña" id="password" name="password" required/>
-                <input type="submit" class="button" value="Iniciar Sesión">
+            <form aria-label="formulario" class="login-form" action="index.php?controller=Admin&action=procesar_login" method="POST">
+                <input aria-label="campo de texto" type="text" id="email" name="email" placeholder="usuario" required/>
+                <input aria-label="campo de texto" type="password" placeholder="contraseña" id="password" name="password" required/>
+                <input aria-label="Botón" type="submit" class="button" value="Iniciar Sesión">
             </form>
         </div>
     </div>

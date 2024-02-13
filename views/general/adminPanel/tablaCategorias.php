@@ -6,7 +6,7 @@ echo "
 	<li><h1 class='admin-panel-title'>Categorías</h1></li>
 	<li class='derecha'><a class='admin-panel-add-link' href='index.php?controller=Categoria&action=botonCrearCategoria'>Añadir categoría</a></li>
 	<li class='derecha'>
-		<form action='' method='post' class='formCat buscador'>
+		<form action='' aria-label='formulario' method='post' class='formCat buscador'>
 			<label for='Cbuscar' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscador' width='20' height='20'></label>
 			<input type='text' id='Cbuscar' name='Cbuscar'>
 		</form>
@@ -17,7 +17,7 @@ echo "
 </div>";
 
 echo "<div class='table-container' id='tabla-categorias'>";
-echo "<table class='admin-panel-page-table'>
+echo "<table class='admin-panel-page-table' aria-label='tabla'>
     	<tr>
         	<th>ID Categoria</th>
         	<th>Nombre</th>
@@ -40,4 +40,3 @@ echo "</table>
 
 </div>
 </div>";
-?>

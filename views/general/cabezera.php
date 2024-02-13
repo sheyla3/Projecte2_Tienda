@@ -121,13 +121,13 @@
                     <?php 
                     }else{
                     ?>
-                    <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/user.svg" alt="Iniciar sesión" width="25" height="25"></a>
+                    <a href="index.php?controller=usuario&action=mostrarLoginUsuario" class="tipo"><img src="views/img/user.svg" alt="Iniciar sesión" width="20" height="20"></a>
                     <input type="checkbox" id="showDrop">
                     <label for="showDrop" class="mobile-item">Usuario</label>
                     <ul class="drop-menu">
                         <li><a href="index.php?controller=usuario&action=mostrarLoginUsuario">Iniciar sesión</a></li>
                         <li><a href="index.php?controller=usuario&action=crearUsuario">Registrarse</a></li>
-                        <li><a href="#">Ayuda</a></li>
+                        <!-- <li><a href="#">Ayuda</a></li> -->
                     </ul>
                     <?php 
                     }

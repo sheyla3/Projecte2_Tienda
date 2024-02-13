@@ -19,8 +19,8 @@ class Admin {
 	// Método para realizar el login
 	public function login() {
 
-	$email = $this->user;
-	$password = $this->password;
+		$email = $this->user;
+		$password = $this->password;
 
     	$consulta = $this->db->prepare("SELECT * FROM admin WHERE usuario = :email AND contrasena = :password");
     	$consulta->bindParam(':email', $email);
@@ -34,4 +34,31 @@ class Admin {
         	return false;
     	}
 	}
+
+	public function datosEmpresa()
+    {
+        $query = "SELECT * FROM empresa";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        // Obtener los detalles del carrito como un array asociativo
+        $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $datos;
+    }
+
+	public function firma()
+    {
+        $query = "SELECT firma FROM admin";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        // Obtener los detalles del carrito como un array asociativo
+        $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $datos;
+    }
+
+
+
 }
