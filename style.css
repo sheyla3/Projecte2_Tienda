@@ -229,7 +229,8 @@ nav .header {
 }
 
 .pedidoCon {
-  overflow-x:auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .table-pedidos{
@@ -2156,5 +2157,9 @@ input {
   .table-pedidos {
     margin-left: 0;
     width: 100%;
+  }
+
+  .table-pedidos .id {
+    text-emphasis: none;
   }
 }
