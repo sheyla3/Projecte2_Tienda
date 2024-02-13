@@ -2178,3 +2178,163 @@ input {
     text-emphasis: none;
   }
 }
+
+/* Responsive tablet*/
+@media only screen and (max-width: 1024px) {
+  .precioContanier {
+    padding-left: 21px;
+  }
+  .carritoContanier {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 90px;
+  }
+
+  .Desktop1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 300px;
+  }
+
+  .Descripcion {
+    padding-top: 15px;
+    width: 300px;
+  }
+
+  .FotoZapato {
+    width: 340px;
+    height: 459px;
+    padding: 30px;
+    transform: scale(0.9);
+  }
+
+  .slideshow {
+    margin-top: 15%;
+  }
+
+  .cubosCategorias {
+    margin-bottom: 15%;
+  }
+
+  .rowCubos {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .categoriaCubo {
+    padding: 1px;
+    width: auto;
+    height: 500px;
+    background-size: 90% 100%;
+    margin-bottom: 5%;
+  }
+  .carrito1 {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cont-nombre-producto{
+    display: flex;
+    flex-direction: column;
+  }
+  .botones-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .menuPrecio{
+    flex-direction: column;
+  }
+  .carritoimg{
+    width: 226px;
+    height: 266px;
+
+  }
+  .campoPrecio{
+    text-align: center;
+  }
+
+  /* Inicio sesion*/
+  .form{
+    max-width: 70%;
+    margin: 20% auto 50%;
+    padding: 10%;
+  }
+
+  /* Editar perfil */
+  .div1-user {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 25%;
+  }
+ 
+  .subdiv1-user {
+    margin-left: 0;
+    margin-bottom: 5%;
+  }
+
+  .subdiv2-user {
+    margin-bottom: 5%;
+    width: 100%;
+  }
+
+  .admin-panel-submit-link, button.admin-panel-submit-link, a.admin-panel-submit-link {
+    width: 70%;
+    margin-bottom: 5%;
+  }
+
+  .ser-profile-row {
+    justify-content: end;
+  }
+
+  .subdiv1-user > div {
+    width: 93%;
+}
+
+  /* cambiar foto*/
+  .subdiv2-user-photo {
+    width: 100%;
+  }
+
+  /* Editar perfil*/
+  .div-user-edit {
+    width: 100%;
+    padding-bottom: 20%;
+  }
+
+  .input-decoration {
+    margin-left: 0;
+  }
+
+  .image-profile-dades {
+    padding-right: 3%;
+  }
+
+  .edit-user-buttons {
+    display: block !important;
+    width: 100%;
+    text-align: center !important;
+  }
+
+  /* Pedidos */
+  .pedidoCon {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .table-pedidos {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .table-pedidos .id {
+    text-emphasis: none;
+  }
+}
