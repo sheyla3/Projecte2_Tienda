@@ -64,14 +64,6 @@ class Pedido extends Database
         return $resultado;
     }
 
-    // public function obtenerBusquedaGeneral($filtro, $contenido) {
-    // 	$contenido = "%$contenido%";
-    // 	$consulta = $this->db->prepare("SELECT Pedido.id_Pedido, Pedido.nombre, Pedido.estado, Pedido.sexo FROM producto WHERE $filtro LIKE ?");
-    // 	$consulta->bindParam(1, $contenido);
-    // 	$consulta->execute();
-    // 	$resultado = $consulta->fetchAll();
-    // 	return $resultado;
-    // }
     public function crearNuevoPedido()
     {
         try {
@@ -144,45 +136,6 @@ class Pedido extends Database
             return false;
         }
     }
-
-    // public function getPedidoById($idPedido)
-    // {
-    //     try {
-    //         $database = new Database();
-    //         $this->db = $database->getDB();
-
-    //         if ($this->db !== null) {
-    //             $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
-    //             $stmt = $this->db->prepare($query);
-
-    //             // Ligando el parámetro
-    //             $stmt->bindParam(':id_pedido', $idPedido, PDO::PARAM_INT);
-
-    //             // Ejecutar la consulta
-    //             $stmt->execute();
-
-    //             // Obtener el resultado
-    //             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //             return $resultado;
-
-    //         } else {
-    //             // Manejo de error si la conexión no está disponible
-    //             echo "Error: La conexión a la base de datos no está disponible.";
-    //             return false;
-    //         }
-    //     } catch (PDOException $e) {
-    //         // Manejar el error de la consulta
-    //         echo "Error en la consulta: " . $e->getMessage();
-    //         return false;
-
-    //     } finally {
-    //         // Asegurar que la conexión se cierre independientemente de lo que suceda
-    //         if ($this->db !== null) {
-    //             $this->db = null;
-    //         }
-    //     }
-    // }
 
     public function actualizarEstado($pedidoId, $nuevoEstado)
     {

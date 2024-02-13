@@ -93,12 +93,6 @@ class Categoria extends Database {
 		return $resultado;
 	}
 	
-	// public function obtenerIdNombreCategoriasHombre() {
-	// 	$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Hombre'" );
-	// 	$consulta->execute();
-	// 	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-	// 	return $resultado;
-	// }
 
 	public function obtenerIdNombreCategoriasMujer() {
 		$consulta = $this->db->prepare("
@@ -184,16 +178,6 @@ class Categoria extends Database {
 		return array_values($resultado);
 	}
 	
-	
-	
-
-	// public function obtenerIdNombreCategoriasMujer() {
-	// 	$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Mujer'");
-	// 	$consulta->execute();
-	// 	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-	// 	return $resultado;
-	// }
-
 	public function activar($id) {
     	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");
     	$consulta->bindParam(1, $id);
