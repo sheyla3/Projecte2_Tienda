@@ -1668,6 +1668,7 @@ Dots .slick-dotted.slick-slider {
   width: 300px;
   display: flex;
   flex-direction: column;
+
 }
 
 .precio-text-cont {
@@ -1854,7 +1855,7 @@ input {
     width: 100%;
     max-width: 350px;
     top: 5%;
-    left: -100%;
+    left: -107%;
     background: #537FE7;
     display: block;
     padding: 50px 10px;
@@ -2016,6 +2017,7 @@ input {
 @media only screen and (max-width: 767px) {
   .precioContanier {
     padding-left: 21px;
+    margin-bottom: 200px;
   }
 
   .carritoContanier {
@@ -2213,14 +2215,6 @@ input {
     padding-bottom: 90px;
   }
 
-  .Desktop1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 300px;
-  }
-
   .Descripcion {
     padding-top: 15px;
     width: 300px;
@@ -2366,6 +2360,24 @@ input {
   .table-pedidos .id {
     text-emphasis: none;
   }
+
+  .FotoZapato {
+    width: 340px;
+    height: 459px;
+    padding: 30px;
+    transform: scale(1);
+}
+.ZonaInfo{
+  transform: scale(1.4);
+  padding-top: 30px;
+}
+.Desktop1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 300px;
+}
 }
 
 /* pie */
