@@ -77,11 +77,13 @@ class PedidoController
     {
         // Verificar si se proporciona un ID de pedido válido en la URL
         if (isset($_GET['id_pedido'])) {
+            $database = new Database();
+            $dbInstance = $database->getDB();
             $idPedido = $_GET['id_pedido'];
 
             // Obtener el pedido correspondiente del modelo (supongamos que tienes un método en tu modelo)
-            $pedidoModel = new Pedido(null, null, null, null, null, null);
-            $pedido = $pedidoModel->getPedidoById($idPedido);
+            $pedidoModel = new Pedido($dbInstance, null, null, null, null, null);
+            $pedido = $pedidoModel->obtenerPedidoPorId($idPedido);
 
             // Mostrar la vista con el formulario para cambiar el estado del pedido
             include('views/general/adminPanel/formularios/verPedido.php');  // Ajusta la ruta según tu estructura

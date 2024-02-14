@@ -175,7 +175,7 @@ public function crearHTMLcarrito($datos) {
 if(isset($_SESSION['email'])) {
     $htmlGenerado .= '<button type="button" class="boton-comprar" onclick="comprarProductos()">Comprar Productos</button>';
 } else {
-    $htmlGenerado .= '<a href="index.php?controller=usuario&action=mostrarLoginUsuario">Login</a>';
+    $htmlGenerado .= '<a class="boton-comprar" href="index.php?controller=usuario&action=mostrarLoginUsuario">Validate para comprar</a>';
 }
 
 $htmlGenerado .= '</div>

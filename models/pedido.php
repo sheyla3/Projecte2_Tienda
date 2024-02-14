@@ -170,6 +170,7 @@ class Pedido extends Database
     public function obtenerPedidoPorId($id_pedido)
     {
         try {
+            
             $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':id_pedido', $id_pedido);
