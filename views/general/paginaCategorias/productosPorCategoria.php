@@ -5,7 +5,7 @@
         if ($contador % 4 === 0) {
             echo '<div class="rowCubosP">';
         }
-        echo '<a href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
+        echo '<a aria-label="Link" href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
         if ( $producto['stock'] == 0 ) {
             echo '<div class="cuboP" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(\'' . $producto['img'] . '\')" alt='.$producto['nombre'].'>'; 
         } else {

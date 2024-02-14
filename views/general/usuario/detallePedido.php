@@ -14,7 +14,7 @@
 
 <div class="pedidoCon">
 
-    <table class="table-pedidos">
+    <table class="table-pedidos" aria-label='Tabla'>
         <thead>
             <tr>
                 <th class="table-pedidos-thead">Nombre del Producto</th>

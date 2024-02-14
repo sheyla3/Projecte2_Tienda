@@ -1,17 +1,39 @@
 <?php
 require_once("database.php");
 
+/**
+ * Clase para gestionar los usuarios del sistema.
+ */
 class Usuario {
+	/** @var string El correo electrónico del usuario. */
 	private $email;
+	/** @var string La contraseña del usuario. */
 	private $password;
+	/** @var string El nombre del usuario. */
 	private $name;
+	/** @var string Los apellidos del usuario. */
 	private $lastname;
+	/** @var string El teléfono del usuario. */
 	private $phone;
+	/** @var string La dirección del usuario. */
 	private $address;
+	/** @var string La foto del usuario. */
 	private $photo;
-	protected $db; // Debes tener la instancia de la base de datos aquí o pasarlo por el constructor
+	/** @var PDO La instancia de la base de datos. */
+	protected $db;
 
-	// Constructor, donde se inicializan propiedades u objetos necesarios
+	/**
+	 * Constructor de la clase Usuario.
+	 *
+	 * @param PDO $db La instancia de la base de datos.
+	 * @param string $email El correo electrónico del usuario.
+	 * @param string $password La contraseña del usuario.
+	 * @param string $name El nombre del usuario.
+	 * @param string $lastname Los apellidos del usuario.
+	 * @param string $phone El teléfono del usuario.
+	 * @param string $address La dirección del usuario.
+	 * @param string $photo La foto del usuario.
+	 */
 	public function __construct($db, $email, $password, $name, $lastname, $phone, $address, $photo) {
     	$this->db = $db;
 		$this->email = $email;
@@ -23,8 +45,11 @@ class Usuario {
 		$this->photo = $photo;
 	}
 
-
-	// Método para realizar el login
+	/**
+	 * Método para realizar el login.
+	 *
+	 * @return bool True si el login es exitoso, False en caso contrario.
+	 */
 	public function login() {
 		$email = $this->email;
 		$password = $this->password;
@@ -43,8 +68,12 @@ class Usuario {
 	
 		return false;
 	}
-	
 
+	/**
+	 * Método para agregar un nuevo usuario.
+	 *
+	 * @return bool True si se agregó correctamente, False en caso contrario.
+	 */
 	public function agregarUsuario() {
         $consulta = $this->db->prepare("INSERT INTO usuarios (correo, contrasena, nombre, apellidos, telf, direccion, foto) VALUES (:email, :password, :name, :lastname, :phone, :address, :photo)");
         
@@ -63,6 +92,13 @@ class Usuario {
             return false;
         }
     }
+
+	/**
+	 * Método para obtener el perfil de un usuario.
+	 *
+	 * @param string $email El correo electrónico del usuario.
+	 * @return array|null Los datos del usuario si se encontraron, Null si no se encontró ningún usuario o ocurrió un error.
+	 */
 	public function getProfile($email){
 		$database = new Database();
         $this->db = $database->getDB();
@@ -80,6 +116,11 @@ class Usuario {
 		}
 	}
 
+	/**
+	 * Método para editar la foto de perfil de un usuario.
+	 *
+	 * @return PDOStatement|null La consulta preparada si se pudo preparar correctamente, Null en caso contrario.
+	 */
 	public function editFoto(){
 		try {
 			$consulta = $this->db->prepare("UPDATE usuarios SET foto = :photo WHERE correo = :email");
@@ -90,8 +131,15 @@ class Usuario {
         }
 	}
 	
-
-
+	/**
+	 * Método para actualizar el perfil de un usuario.
+	 *
+	 * @param string $nombre El nuevo nombre del usuario.
+	 * @param string $apellidos Los nuevos apellidos del usuario.
+	 * @param string $direccion La nueva dirección del usuario.
+	 * @param string $telefono El nuevo teléfono del usuario.
+	 * @return bool True si se actualizó correctamente, False en caso contrario.
+	 */
 	public function updateProfile($nombre, $apellidos, $direccion, $telefono) {
 		try {
 			$consulta = $this->db->prepare("UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, direccion = :direccion, telf = :telefono WHERE correo = :email");
@@ -110,5 +158,4 @@ class Usuario {
 			return false;
 		}
 	}
-	
 }
