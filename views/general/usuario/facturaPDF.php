@@ -1,5 +1,5 @@
 <?php
-require("C:/Windows/System32/vendor/setasign/fpdf/fpdf.php");
+require("vendor/setasign/fpdf/fpdf.php");
 
 class PDF extends FPDF
 {
@@ -16,7 +16,7 @@ class PDF extends FPDF
         // Establecer la fuente y el tamaño del texto
         $this->SetFont('Arial', '', 9);
 
-        // $imagenPath = $datosE[0]['logo'];
+        $imagenPath = $datosE[0]['logo'];
 
         $firma = $firma[0]['firma'];
 
@@ -25,7 +25,7 @@ class PDF extends FPDF
         $y = $this->GetY();
 
         // Mostrar la imagen en la posición actual
-        // $this->Image($imagenPath, $x, $y, 50, 0, 'PNG'); 
+        $this->Image($imagenPath, $x, $y, 50, 0, 'PNG'); 
         $this->Ln(18); // Salto de línea
         $this->SetFont('Arial', 'B', 9);
         $this->Cell(0, 4, '' . $datosE[0]['nombre'], 0, 1);
@@ -101,7 +101,7 @@ class PDF extends FPDF
         }
         $this->SetFont('Arial', 'B', 9);
 
-        // $this->Image($firma, $x, 170, 50, 0, 'PNG'); 
+        $this->Image($firma, $x, 170, 50, 0, 'PNG'); 
        
 
     }        
