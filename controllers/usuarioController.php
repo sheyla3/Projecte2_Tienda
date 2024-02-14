@@ -25,7 +25,8 @@ class UsuarioController
 				header('Location: index.php');
 				exit;
 			} else {
-				echo "Credenciales no válidas";
+				echo "<br><br><br><br>";
+				echo "<h1 class='error_val'>Credenciales no válidas</h1>";
 				echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php?controller=usuario&action=mostrarLoginUsuario '>";
 			}
 		} else {

@@ -165,14 +165,21 @@ public function crearHTMLcarrito($datos) {
     }
 
     $htmlGenerado .= ' </div>
-    <div class="precioContanier">
-                            <h3>Resumen</h3>
-                            <div class="precio-text-cont"> <p id="text-precio">Total (Impuestos incluidos)</p>
-                            <p id="precio-cont"> ' . $precioTotal . ' €</p></div>
-                           
-                            <button type="button" class="boton-comprar" onclick="comprarProductos()">Comprar Productos</button>
-                        </div>
-                    </div>';
+<div class="precioContanier">
+    <h3>Resumen</h3>
+    <div class="precio-text-cont"> 
+        <p id="text-precio">Total (Impuestos incluidos)</p>
+        <p id="precio-cont"> ' . $precioTotal . ' €</p>
+    </div>';
+
+if(isset($_SESSION['email'])) {
+    $htmlGenerado .= '<button type="button" class="boton-comprar" onclick="comprarProductos()">Comprar Productos</button>';
+} else {
+    $htmlGenerado .= '<a class="boton-comprar" href="index.php?controller=usuario&action=mostrarLoginUsuario">Validate para comprar</a>';
+}
+
+$htmlGenerado .= '</div>
+</div>';
 
     $htmlNoP = '<h3>Sin productos</h3>';
 

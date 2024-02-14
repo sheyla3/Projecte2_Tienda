@@ -16,7 +16,7 @@ class Categoria extends Database {
 		$this->sexo = $genero;
 	}
 
-	public function buscarCategoria($filtro) {
+	/*public function buscarCategoria($filtro) {
     	$filtro = "%$filtro%";
     	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias WHERE nombre LIKE ? OR estado LIKE ?");
     	$consulta->bindParam(1, $filtro);
@@ -24,7 +24,7 @@ class Categoria extends Database {
     	$consulta->execute();
     	$resultado = $consulta->fetchAll();
     	return $resultado;
-	}
+	}*/
 
 	public function obtenerCategorias() {
     	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias");
@@ -60,8 +60,8 @@ class Categoria extends Database {
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaCategoria'>";
 			return true;
 		} catch (PDOException $e) {
-			// Captura la excepción y muestra el mensaje de error
-			echo "Error al agregar la categoría: " . $e->getMessage();
+			
+
 			return null;
 		}
 	}
@@ -93,12 +93,6 @@ class Categoria extends Database {
 		return $resultado;
 	}
 	
-	// public function obtenerIdNombreCategoriasHombre() {
-	// 	$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Hombre'" );
-	// 	$consulta->execute();
-	// 	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-	// 	return $resultado;
-	// }
 
 	public function obtenerIdNombreCategoriasMujer() {
 		$consulta = $this->db->prepare("
@@ -146,7 +140,8 @@ class Categoria extends Database {
 		$consulta = $this->db->prepare("
 			SELECT 
 				c.id_categoria, 
-				c.nombre, 
+				c.nombre,
+				c.estado, 
 				p.id_producto, 
 				COALESCE(f.img, '') AS primera_foto
 			FROM categorias c
@@ -183,17 +178,7 @@ class Categoria extends Database {
 	
 		return array_values($resultado);
 	}
-	
-	
-	
-
-	// public function obtenerIdNombreCategoriasMujer() {
-	// 	$consulta = $this->db->prepare("SELECT id_categoria, nombre FROM categorias WHERE estado = true and sexo = 'Mujer'");
-	// 	$consulta->execute();
-	// 	$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-	// 	return $resultado;
-	// }
-
+	/*
 	public function activar($id) {
     	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");
     	$consulta->bindParam(1, $id);
@@ -208,7 +193,7 @@ class Categoria extends Database {
 
     	$count = $consulta->execute();
     	echo $count . " registros actualizados correctamente";
-	}
+	}*/
 
 	public function obtenerInfo() {
 		$id = $this->id_categoria;
@@ -217,7 +202,7 @@ class Categoria extends Database {
     	$consulta->bindParam(1, $id);
     	$consulta->execute();
     	$resultado = $consulta->fetchAll();
-    	return $resultado;
+      	return $resultado;
 	}
 
 	
@@ -235,9 +220,7 @@ class Categoria extends Database {
 	
 		return $resultado;
 	}
-	
-		
-
+	/*
 	public function CategoriasGeneral() {
     	$consulta = $this->db->prepare("SELECT * FROM categorias");
     	$consulta->execute();
@@ -252,7 +235,7 @@ class Categoria extends Database {
     	$consulta->execute();
     	$resultado = $consulta->fetchAll();
     	return $resultado;
-	}
+	}*/
 }
 
 

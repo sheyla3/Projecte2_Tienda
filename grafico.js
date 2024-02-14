@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('graficoProductos');
     const ctx = canvas.getContext('2d');
-
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'getData.php', true);
-
+    xhr.open('GET', 'graficaPruebas/getData.php', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
             const productosMasVendidos = JSON.parse(xhr.responseText);
-
             const colores = ['#ff5733', '#33ff57', '#5733ff', '#ff33ab', '#33a9ff'];
             const barraAncho = 80;
             const maxAltura = 300;

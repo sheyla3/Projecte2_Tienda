@@ -200,7 +200,7 @@ class Producto extends Database
 
     public function productosCategoria()
 {
-    $consulta = $this->db->prepare("SELECT p.id_producto, p.nombre, p.precio, f.img, p.stock 
+    $consulta = $this->db->prepare("SELECT p.id_producto, p.nombre, p.precio, f.img, p.stock, p.estado 
                                     FROM productos p 
                                     LEFT JOIN fotos f ON p.id_producto = f.id_producto 
                                     WHERE p.id_categoria = :categoria");
