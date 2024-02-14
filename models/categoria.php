@@ -16,7 +16,7 @@ class Categoria extends Database {
 		$this->sexo = $genero;
 	}
 
-	public function buscarCategoria($filtro) {
+	/*public function buscarCategoria($filtro) {
     	$filtro = "%$filtro%";
     	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias WHERE nombre LIKE ? OR estado LIKE ?");
     	$consulta->bindParam(1, $filtro);
@@ -24,7 +24,7 @@ class Categoria extends Database {
     	$consulta->execute();
     	$resultado = $consulta->fetchAll();
     	return $resultado;
-	}
+	}*/
 
 	public function obtenerCategorias() {
     	$consulta = $this->db->prepare("SELECT id_categoria, nombre, estado, sexo FROM categorias");
@@ -177,7 +177,7 @@ class Categoria extends Database {
 	
 		return array_values($resultado);
 	}
-	
+	/*
 	public function activar($id) {
     	$consulta = $this->db->prepare("UPDATE categorias SET estado = 1 WHERE id_categoria = ?");
     	$consulta->bindParam(1, $id);
@@ -192,7 +192,7 @@ class Categoria extends Database {
 
     	$count = $consulta->execute();
     	echo $count . " registros actualizados correctamente";
-	}
+	}*/
 
 	public function obtenerInfo() {
 		$id = $this->id_categoria;
@@ -201,7 +201,7 @@ class Categoria extends Database {
     	$consulta->bindParam(1, $id);
     	$consulta->execute();
     	$resultado = $consulta->fetchAll();
-    	return $resultado;
+      	return $resultado;
 	}
 
 	
@@ -219,9 +219,7 @@ class Categoria extends Database {
 	
 		return $resultado;
 	}
-	
-		
-
+	/*
 	public function CategoriasGeneral() {
     	$consulta = $this->db->prepare("SELECT * FROM categorias");
     	$consulta->execute();
@@ -236,7 +234,7 @@ class Categoria extends Database {
     	$consulta->execute();
     	$resultado = $consulta->fetchAll();
     	return $resultado;
-	}
+	}*/
 }
 
 

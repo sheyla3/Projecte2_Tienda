@@ -64,6 +64,7 @@ nav .header {
 .nav-links .drop-menu {
   position: absolute;
   background: #242526;
+  max-width: 100%;
   width: 15%;
   right: 15%;
   line-height: 45px;
@@ -2218,7 +2219,6 @@ input {
 /* Responsive tablet*/
 @media only screen and (max-width: 1024px) {
   .nav-links .drop-menu {
-    width: 20%;
     right: 3%;
   }
 
