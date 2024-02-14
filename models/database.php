@@ -14,7 +14,7 @@ class Database{
         $servername = "localhost";
         $dbname= "srg";
         $username = "postgres";
-        $password = "admin1234";
+        $password = "postgre";
 
         try{
             // Crear una nueva conexión instanciando el objeto PDO
