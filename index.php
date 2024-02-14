@@ -13,6 +13,8 @@ session_start();
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="cesta.js"></script>
+    <script src="scriptDibujar.js"></script>
+    <script src="grafico.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">

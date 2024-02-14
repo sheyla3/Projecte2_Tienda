@@ -70,7 +70,6 @@ class AdminController
             $dbInstance = $database->getDB();
             require_once "views/general/adminPanel/menu.php";
             include('views/general/adminPanel/firma.php');
-            echo '<script src="./scriptDibujar.js"></script>';
 
         }else{
             echo("<p class='validado'>No estas validado</p>");
@@ -78,24 +77,6 @@ class AdminController
 
         
     
-    }
-
-    public function botonVistaGrafica(){
-        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
-            $database = new Database();
-            $dbInstance = $database->getDB();
-            header('Location: ./grafica/grafica.html');
-            /*
-            require_once "views/general/adminPanel/menu.php";
-            include('views/general/adminPanel/grafica/grafica.html');
-            */
-
-        }else{
-            echo("<p class='validado'>No estas validado</p>");
-            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
-
-        }
-
     }
 
     public function botonVistaComanda(){
@@ -141,7 +122,7 @@ class AdminController
             $imageData = $_POST['imageData'];
             $adminEmail = $_SESSION['email'];
     
-            $imgFolder = './views/img/firmas/';
+            $imgFolder = 'projecte2_tienda/views/img/firmas/';
             $filePath = $imgFolder . $imageName;
     
             $imageData = str_replace('data:image/png;base64,', '', $imageData);
@@ -153,13 +134,13 @@ class AdminController
     
             file_put_contents($filePath, $imageData);
     
-            require_once "models/database.php";
-    
+            // Guardar en la base de datos
             $database = new Database();
-            $pdo = $database->getDB();
-    
-            $stmt = $pdo->prepare('UPDATE admin SET firma = ? WHERE usuario = "admin"');
-            $stmt->execute([$filePath]);
+            $dbInstance = $database->getDB();
+
+            $admin = new Admin($dbInstance, null, $adminEmail, null, null);
+
+            $admin->actualizarFirma($filePath);
     
             http_response_code(200);
         } else {
@@ -167,20 +148,30 @@ class AdminController
         }
     }
     
+    
     public function obtenerProductosMasVendidos() {
+        
         $database = new Database();
         $dbInstance = $database->getDB();
         
-        $query = "SELECT id_producto, SUM(cantidad) as totalCantidad FROM carrito WHERE comprado = true GROUP BY id_producto ORDER BY totalCantidad DESC LIMIT 5";
-    
-        $statement = $dbInstance->prepare($query);
-        $statement->execute();
-    
-        $productosMasVendidos = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+        $admin = new Admin($dbInstance, null, null, null);
+        $productosMasVendidos = $admin->productosMasComprados();
+        
         header('Content-Type: application/json');
         echo json_encode($productosMasVendidos);
+
     }
     
+    public function botonVistaGrafica(){
+        if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+            require_once "views/general/adminPanel/menu.php";
+            include('views/general/adminPanel/grafica.html');
+            
+        }else{
+                
+            echo("<p class='validado'>No estas validado</p>");
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=principal&action=mostrarPaginaPrincipal'>";
+        } 
+    }
     
 }
