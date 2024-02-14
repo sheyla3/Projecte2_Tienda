@@ -98,7 +98,7 @@ class Admin {
 
 	public function actualizarFirma($filePath)
     {
-		$query = "UPDATE admin SET firma = :rutaFirma WHERE email = :emailAdmin";
+		$query = "UPDATE admin SET firma = :rutaFirma WHERE usuario = :emailAdmin";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindParam(':rutaFirma', $filePath);
 		$stmt->bindParam(':emailAdmin', $this->email);
