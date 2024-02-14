@@ -15,7 +15,7 @@ echo "
     	<div class='blue-line'></div>
 	</div>";
 
-echo "<div class='table-container' id='tabla-p'>";
+echo "<div class='table-container tabla_prod' id='tabla-p'>";
 echo "<table class='admin-panel-page-table' aria-label='tabla'>
 	<tr>
     	<th>ID Producto</th>

@@ -34,7 +34,7 @@ class AdminController
         	} else {
             	// En caso de credenciales incorrectas, puedes redirigir de nuevo al formulario de inicio de sesión con un mensaje de error
                 echo "<br><br><br><br>";
-                echo("Credenciales no válidas");
+                echo("<h1 class='error_val'>Credenciales no válidas</h1>");
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=admin&action=mostrarLoginAdmin'>";
         	}
     	}else{
