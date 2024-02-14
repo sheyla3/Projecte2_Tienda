@@ -1091,7 +1091,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   flex-direction: column;
   padding-top: 100px;
   padding-bottom: 100px;
-
+  width: 100%;
 }
 
 .categoriaCubo:hover {
@@ -1132,6 +1132,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 .rowCubosP {
   display: flex;
   padding: 10px;
+  flex-direction: row;
 }
 
 .letraP {
@@ -1842,6 +1843,14 @@ input {
   margin-right: 10px;
 }
 
+.error_val {
+  text-align: center;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  color: maroon;
+}
+
 /* DISEÑO RESPONSIVE PARA MOVIL */
 
 @media screen and (max-width: 970px) {
@@ -1849,6 +1858,25 @@ input {
     display: block;
   }
 
+  /*Responsive categorias*/
+  .cuboP {
+    height: 450px;
+    width: 350px;
+    margin: 10px;
+    text-align: center;
+    background-position: center;
+    position: relative;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .rowCubosP {
+    display: block;
+    position: relative;
+
+  }
+  /*Acaba aqui*/
   .header .nav-links {
     position: fixed;
     height: 100vh;

@@ -82,4 +82,29 @@ class Admin {
 
         return $datos;
     }
+
+
+	public function productosMasComprados()
+	{
+		$query = "SELECT id_producto, SUM(cantidad) as totalCantidad FROM carrito WHERE comprado = true GROUP BY id_producto ORDER BY totalCantidad DESC LIMIT 5";
+
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+
+		$productosMasVendidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $productosMasVendidos;
+	}
+
+	public function actualizarFirma($filePath)
+    {
+		$query = "UPDATE admin SET firma = :rutaFirma WHERE email = :emailAdmin";
+		$stmt = $this->db->prepare($query);
+		$stmt->bindParam(':rutaFirma', $filePath);
+		$stmt->bindParam(':emailAdmin', $this->email);
+		$stmt->execute();
+		
+    }
+
+
 }
