@@ -19,7 +19,7 @@ class Pedido extends Database
         $this->fechapedido = $fechapedido;
         $this->fechaenvio = $fechaenvio;
     }
-
+/*
     public function buscarPedido($filtro)
     {
         $filtro = "%$filtro%";
@@ -29,7 +29,7 @@ class Pedido extends Database
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         return $resultado;
-    }
+    }*/
 
     public function obtenerPedidos()
     {
@@ -38,7 +38,7 @@ class Pedido extends Database
         $resultado = $consulta->fetchAll();
         return $resultado;
     }
-
+/*
     public function obtenerCorreo()
     {
         $consulta = $this->db->prepare("SELECT correo FROM pedidos");
@@ -63,6 +63,7 @@ class Pedido extends Database
         $resultado = $consulta->fetchAll();
         return $resultado;
     }
+*/
 
     public function crearNuevoPedido()
     {
@@ -169,6 +170,7 @@ class Pedido extends Database
     public function obtenerPedidoPorId($id_pedido)
     {
         try {
+            
             $query = "SELECT * FROM pedidos WHERE id_pedido = :id_pedido";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':id_pedido', $id_pedido);

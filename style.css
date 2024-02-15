@@ -64,6 +64,7 @@ nav .header {
 .nav-links .drop-menu {
   position: absolute;
   background: #242526;
+  max-width: 100%;
   width: 15%;
   right: 15%;
   line-height: 45px;
@@ -1156,11 +1157,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   background-size: 100% 100%;
   display: flex;
   justify-content: center;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
 }
 
 .cuboP:hover {
   --escala: 0.95;
   cursor: pointer;
+  transition: 0.25s;
+  transform: scale(0.9);
 }
 
 /*pagina individual*/
@@ -1669,6 +1674,7 @@ Dots .slick-dotted.slick-slider {
   width: 300px;
   display: flex;
   flex-direction: column;
+
 }
 
 .precio-text-cont {
@@ -1732,6 +1738,10 @@ Dots .slick-dotted.slick-slider {
   border-radius: 10px;
   width: 100%;
   font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 14px;
 }
 
 #precio-cont {
@@ -1883,7 +1893,7 @@ input {
     width: 100%;
     max-width: 350px;
     top: 5%;
-    left: -100%;
+    left: -107%;
     background: #537FE7;
     display: block;
     padding: 50px 10px;
@@ -2045,6 +2055,7 @@ input {
 @media only screen and (max-width: 767px) {
   .precioContanier {
     padding-left: 21px;
+    margin-bottom: 200px;
   }
 
   .carritoContanier {
@@ -2217,7 +2228,6 @@ input {
 /* Responsive tablet*/
 @media only screen and (max-width: 1024px) {
   .nav-links .drop-menu {
-    width: 20%;
     right: 3%;
   }
 
@@ -2240,14 +2250,6 @@ input {
     justify-content: center;
     align-items: center;
     padding-bottom: 90px;
-  }
-
-  .Desktop1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 300px;
   }
 
   .Descripcion {
@@ -2416,10 +2418,23 @@ input {
     text-emphasis: none;
   }
 
-  .tabla_prod {
-    width: 100%;
-    overflow: scroll;
-  }
+  .FotoZapato {
+    width: 340px;
+    height: 459px;
+    padding: 30px;
+    transform: scale(1);
+}
+.ZonaInfo{
+  transform: scale(1.4);
+  padding-top: 30px;
+}
+.Desktop1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 300px;
+}
 }
 
 /* pie */

@@ -1,4 +1,9 @@
 /vendor/
 composer.json
-database.php
 composer.lock
+img/Pi1-Bo.jpg
+img/Pi2-Bo.jpg
+img/fotos_usuario/user_photo_20240214123356.jpg
+models/database.php
+models/database.php
+views/general/usuario/facturaPDF.php
