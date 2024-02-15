@@ -14,8 +14,6 @@
         </a>
     <?php endforeach; ?>
 </div>
-    <!-- Tu contenido HTML anterior -->
-
     <!-- Agrega estos scripts para activar el slider con Slick Carousel -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -33,7 +31,7 @@
                 {
                     breakpoint: 1300, // Tablet
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 1,
                         speed: 2000,
                         slidesToScroll: 1,
                     }
@@ -42,6 +40,7 @@
                     breakpoint: 767, // Mobile
                     settings: {
                         slidesToShow: 1,
+                        
                         slidesToScroll: 1,
                     }
                 }

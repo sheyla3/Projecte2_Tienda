@@ -1175,6 +1175,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   height: 550px;
   width: 400px;
   margin: 10px;
+  margin: auto;
   text-align: center;
   background-position: center;
   position: relative;
@@ -1898,9 +1899,9 @@ input {
 
   /*Responsive categorias*/
   .cuboP {
-    height: 450px;
-    width: 350px;
-    margin: 10px;
+    height: 350px;
+    width: 250px;
+    
     text-align: center;
     background-position: center;
     position: relative;
@@ -2286,7 +2287,7 @@ input {
 }
 
 /* Responsive tablet*/
-@media only screen and (max-width: 1024px) and (min-width: 970px) {
+@media screen and (max-width: 1024px) and (min-width: 970px) {
   .nav-links .drop-menu {
     right: 3%;
   }
@@ -2302,6 +2303,26 @@ input {
 
   .precioContanier {
     padding-left: 21px;
+  }
+
+  .menu_sexos{
+    margin-top: 5%;
+  }
+
+  .slider1 {
+    margin-top: 5%;
+  }
+
+  .div1_sexos {
+    margin: auto;
+    height: 60%;
+    width: 60%;
+  }
+
+  div.div2_sexos {
+    margin: auto;
+    height: 60%;
+    width: 60%;
   }
 
   .carritoContanier {
