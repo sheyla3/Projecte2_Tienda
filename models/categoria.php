@@ -60,8 +60,8 @@ class Categoria extends Database {
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='2;URL=index.php?controller=Admin&action=botonVistaCategoria'>";
 			return true;
 		} catch (PDOException $e) {
-			// Captura la excepción y muestra el mensaje de error
-			echo "Error al agregar la categoría: " . $e->getMessage();
+			
+
 			return null;
 		}
 	}
@@ -140,7 +140,8 @@ class Categoria extends Database {
 		$consulta = $this->db->prepare("
 			SELECT 
 				c.id_categoria, 
-				c.nombre, 
+				c.nombre,
+				c.estado, 
 				p.id_producto, 
 				COALESCE(f.img, '') AS primera_foto
 			FROM categorias c

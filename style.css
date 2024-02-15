@@ -1157,11 +1157,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   background-size: 100% 100%;
   display: flex;
   justify-content: center;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
 }
 
 .cuboP:hover {
   --escala: 0.95;
   cursor: pointer;
+  transition: 0.25s;
+  transform: scale(0.9);
 }
 
 /*pagina individual*/

@@ -87,6 +87,8 @@ class CategoriaController
             if($funciona){
                 header('Location: index.php?controller=Admin&action=botonVistaCategoria');
             }else{
+                echo "<script type='text/javascript'>alert('Error: Categoria existente');</script>";
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php?controller=Categoria&action=botonCrearCategoria'>";
 
             }
         }
