@@ -1868,6 +1868,7 @@ input {
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
+    background-color: red !important;
   }
 
   .rowCubosP {
@@ -2314,6 +2315,26 @@ input {
   .campoPrecio {
     text-align: center;
   }
+
+  /*Responsive categorias*/
+  .cuboP {
+    height: 450px;
+    width: 350px;
+    margin: 10px;
+    text-align: center;
+    background-position: center;
+    position: relative;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+  }
+  
+  .rowCubosP {
+    display: block;
+    position: relative;
+  }
+  /*Acaba aqui*/
 
   /* Inicio sesion*/
   .form {
