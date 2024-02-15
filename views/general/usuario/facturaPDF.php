@@ -99,9 +99,20 @@ class PDF extends FPDF
             // Cambiar el valor de la variable $fill para alternar entre los colores
             $fill = !$fill;
         }
-        $this->SetFont('Arial', 'B', 9);
+        // Establece la posición actual como (x, y)
+            $posX = $this->GetX();
+            $posY = $this->GetY();
 
-        $this->Image($firma, $x, 170, 50, 0, 'PNG'); 
+            // Mueve la posición hacia la derecha para la imagen
+            $this->SetX($posX);
+
+            // Muestra el texto y la imagen en la misma celda
+            $this->Cell(40, 05, 'Firma administrador: ', 0, 0, 'L', false);
+            $this->Image($firma, $posX, $posY + 05, 50, 0, 'PNG'); // Ajusta la posición horizontal (40) según tus necesidades
+
+            // Restaura la posición actual a la que estaba antes de mostrar el texto e imagen
+            $this->SetXY($posX, $posY);
+
        
 
     }        

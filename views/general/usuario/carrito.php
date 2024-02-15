@@ -8,7 +8,7 @@
         });
         function comprarProductos() {
             Swal.fire({
-                    title: '¡CoMpra realizada!',
+                    title: '¡Compra realizada!',
                     text: '¡Has comprado los productos del carrito con éxito!',
                     icon: 'success', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
                     confirmButtonText: 'Entendido'

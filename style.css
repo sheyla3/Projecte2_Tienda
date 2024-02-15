@@ -1056,7 +1056,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .buscador {
   font-family: "Roboto", sans-serif;
-  width: 110%;
+  /* width: 110%; */
   margin: 0 0 15px;
   border-bottom: 2px #537FE7 solid;
   font-size: 16px;
@@ -1093,6 +1093,10 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   padding-top: 100px;
   padding-bottom: 100px;
   width: 100%;
+}
+
+#tabla-pg{
+  padding-top: 5px !important;
 }
 
 .categoriaCubo:hover {
@@ -1867,6 +1871,11 @@ input {
     display: block;
   }
 
+  .ZonaInfo{
+    transform: scale(1.1) !important;
+    padding-top: 30px;
+  }
+
   /*Responsive categorias*/
   .cuboP {
     height: 450px;
@@ -2433,4 +2442,8 @@ input {
     text-align: center;
     margin-top: 20px;
   }
+}
+
+.contBPG{
+  padding-top: 100px;
 }

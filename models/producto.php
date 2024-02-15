@@ -118,6 +118,31 @@ class Producto extends Database
     
         return $resultado;
     }
+
+    public function productosBuscador($nombre)
+    {
+        // Inicializamos la consulta base
+        $sql = "SELECT p.id_producto, p.nombre, p.precio, f.img, p.stock, p.estado 
+                FROM productos p 
+                LEFT JOIN fotos f ON p.id_producto = f.id_producto";
+        
+        // Si se proporciona un nombre, agregamos la condición WHERE
+        if ($nombre !== null) {
+            $sql .= " WHERE p.nombre ILIKE '%' || :nombre || '%'";
+        }
+
+        $consulta = $this->db->prepare($sql);
+
+        // Si se proporciona un nombre, vinculamos el parámetro
+        if ($nombre !== null) {
+            $consulta->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        }
+
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        return $resultado;
+    }
+
     
 
     public function editar() {
@@ -211,16 +236,19 @@ class Producto extends Database
 }
 
 
+public function productosGN()
+{
+    $consulta = $this->db->prepare("SELECT p.id_producto, p.nombre, p.precio, f.img, p.stock, p.estado 
+                                    FROM productos p 
+                                    LEFT JOIN fotos f ON p.id_producto = f.id_producto");
+    $consulta->execute();
+    $resultado = $consulta->fetchAll();
+    return $resultado;
+}
 
-    public function productosGeneral()
-    {
-        $consulta = $this->db->prepare("SELECT * FROM productos");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
 
-    public function obtenerBusquedaGeneral($filtro, $contenido)
+
+public function obtenerBusquedaGeneral($filtro, $contenido)
 {
 	$consulta = $this->db->prepare("SELECT producto.id_producto, producto.fk_id_categoria, producto.referencia, producto.nombre, producto.descripcion, producto.stock, producto.precio, producto.imagen, producto.destacado, producto.estado FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE $filtro LIKE :contenido");
 	$consulta->bindValue(':contenido', '%' . $contenido . '%');
@@ -228,6 +256,15 @@ class Producto extends Database
 	$resultado = $consulta->fetchAll();
 	return $resultado;
 }
+
+public function productosGeneral()
+{
+    $consulta = $this->db->prepare("SELECT * FROM productos");
+    $consulta->execute();
+    $resultado = $consulta->fetchAll();
+    return $resultado;
+}
+
 
 
 
