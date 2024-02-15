@@ -1,5 +1,5 @@
 <div class="contBPG">   
-     <form action='' aria-label='formulario' method='post' class='formCat buscador'>
+     <form action='' aria-label='formulario' method='post' class='formCat buscador buscadorPG'>
         <label for='PGbuscar' name='PGbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
         <input type='text' id='PGbuscar' name='PGbuscar'>
 </div>
