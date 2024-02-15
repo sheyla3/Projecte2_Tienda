@@ -2094,6 +2094,7 @@ input {
 
   .letraP{
     bottom: -12px !important;
+    font-weight:normal;
   }
 
   .rowCubosP{
