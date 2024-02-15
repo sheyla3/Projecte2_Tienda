@@ -1,9 +1,11 @@
-<div class="cubosCategorias">
-    <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioBajo&id_categoria=<?php echo $id_categoria; ?>">
-        <img src="" alt="icono" style="margin-right: 10px;">
-        Productos por precio bajo
-    </a>
-    <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioAlto&id_categoria=<?php echo $id_categoria; ?>">Productos por precio alto</a>
+<div class="contBPG">   
+     <form action='' aria-label='formulario' method='post' class='formCat buscador buscadorPG'>
+        <label for='PGbuscar' name='PGbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
+        <input type='text' id='PGbuscar' name='PGbuscar'>
+</div>
+<div class="cubosCategorias" id="tabla-pg">
+
+	</form>
     <?php
     $contador = 0;
     foreach ($productos as $producto) {

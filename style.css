@@ -230,11 +230,6 @@ nav .header {
   padding-right: 5%;
 }
 
-.pedidoCon {
-  overflow-x: auto;
-  overflow-y: auto;
-}
-
 .table-pedidos {
   text-align: center;
   margin: auto;
@@ -1056,7 +1051,6 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .buscador {
   font-family: "Roboto", sans-serif;
-  width: 110%;
   margin: 0 0 15px;
   border-bottom: 2px #537FE7 solid;
   font-size: 16px;
@@ -1095,6 +1089,10 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 100%;
 }
 
+#tabla-pg{
+  padding-top: 5px !important;
+}
+
 .categoriaCubo:hover {
   --escala: 0.95;
   cursor: pointer;
@@ -1107,8 +1105,6 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 900px;
   height: 600px;
   background-color: #dfdfdf;
-  margin: 15px;
-  /* border: 1px solid; */
   background-position: bottom;
   position: relative;
   background-size: 91% 180%;
@@ -1116,9 +1112,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
+.rowCubosA {
+  width: 100%;
+  margin: 5px;
+}
+
 .rowCubos {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .cubo {
@@ -1128,6 +1130,10 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   left: 0;
   right: 0;
   font-size: 40px;
+}
+
+.rowCubosP a{
+  width: 100%;
 }
 
 .rowCubosP {
@@ -1147,6 +1153,24 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   text-decoration: none;
 }
 
+.cuboPG{
+  height: 550px !important;
+  width: 365px !important;
+  margin: 5px;
+  text-align: center;
+  background-position: center;
+  position: relative;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
+}
+
+.buscadorPG{
+  border: none;
+}
+
 .cuboP {
   height: 550px;
   width: 400px;
@@ -1161,7 +1185,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
-.cuboP:hover {
+.cuboP:hover,.cuboPG:hover {
   --escala: 0.95;
   cursor: pointer;
   transition: 0.25s;
@@ -1862,9 +1886,14 @@ input {
 
 /* DISEÑO RESPONSIVE PARA MOVIL */
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 700px) {
   .header .btn {
     display: block;
+  }
+
+  .ZonaInfo{
+    transform: scale(1.1) !important;
+    padding-top: 30px;
   }
 
   /*Responsive categorias*/
@@ -1878,7 +1907,6 @@ input {
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
-    background-color: red !important;
   }
 
   .rowCubosP {
@@ -2049,6 +2077,37 @@ input {
     width: 5px;
     height: 5px;
   }
+  .cuboPG{
+    height: 200PX !important;
+    width: 143PX !important;
+    margin: 10px;
+    text-align: center;
+    background-position: center;
+    position: relative;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    transform: scale(var(--escala, 1));
+    transition: 0.25s;
+    margin-bottom: -12PX;
+  }
+
+  .letraP{
+    bottom: -12px !important;
+  }
+
+  .rowCubosP{
+    display: flex !important;
+    flex-direction: row !important;
+  }
+
+  .cubosCategorias {
+    padding-top: 5px !important;
+  }
+  .cubosCategorias {
+    margin-top: 20% !important;
+    
+  }
 }
 
 /*carrito y detalle movil*/
@@ -2091,7 +2150,7 @@ input {
   }
 
   .cubosCategorias {
-    margin-bottom: 15%;
+    margin-bottom: 25%;
   }
 
   .rowCubos {
@@ -2213,6 +2272,7 @@ input {
   .pedidoCon {
     margin-left: 0;
     width: 100%;
+    padding-bottom: 60%;
   }
 
   .table-pedidos {
@@ -2226,7 +2286,7 @@ input {
 }
 
 /* Responsive tablet*/
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) and (min-width: 970px) {
   .nav-links .drop-menu {
     right: 3%;
   }
@@ -2254,7 +2314,7 @@ input {
 
   .Descripcion {
     padding-top: 15px;
-    width: 300px;
+    width: 100%;
   }
 
   .FotoZapato {
@@ -2317,7 +2377,7 @@ input {
   .campoPrecio {
     text-align: center;
   }
-
+  
   /*Responsive categorias*/
   .cuboP {
     height: 450px;
@@ -2329,7 +2389,6 @@ input {
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
-    background-color: blue;
   }
   
   .rowCubosP {
@@ -2407,15 +2466,12 @@ input {
   .pedidoCon {
     margin-left: 0;
     width: 100%;
+    padding-bottom: 60%;
   }
 
   .table-pedidos {
     margin-left: 0;
     width: 100%;
-  }
-
-  .table-pedidos .id {
-    text-emphasis: none;
   }
 
   .FotoZapato {
@@ -2435,6 +2491,7 @@ input {
   align-items: center;
   padding-bottom: 300px;
 }
+
 }
 
 /* pie */
@@ -2454,4 +2511,8 @@ input {
     text-align: center;
     margin-top: 20px;
   }
+}
+
+.contBPG{
+  padding-top: 100px;
 }

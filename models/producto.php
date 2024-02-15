@@ -99,6 +99,32 @@ class Producto extends Database
         return $resultado;
     }
 
+    public function productosBuscador($nombre)
+    {
+        // Inicializamos la consulta base
+        $sql = "SELECT p.id_producto, p.nombre, p.precio, f.img, p.stock, p.estado 
+                FROM productos p 
+                LEFT JOIN fotos f ON p.id_producto = f.id_producto";
+        
+        // Si se proporciona un nombre, agregamos la condición WHERE
+        if ($nombre !== null) {
+            $sql .= " WHERE p.nombre ILIKE '%' || :nombre || '%'";
+        }
+
+        $consulta = $this->db->prepare($sql);
+
+        // Si se proporciona un nombre, vinculamos el parámetro
+        if ($nombre !== null) {
+            $consulta->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        }
+
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        return $resultado;
+    }
+
+    
+
     public function editar()
     {
         try {
@@ -176,53 +202,46 @@ class Producto extends Database
         return $resultado;
     }
 
-/*    
-    public function getCantidad()
-    {
-        return $this->stock;
-    }
-
-    public function setCantidad($stock)
-    {
-        $this->stock = $stock;
-        return $this;
-    }
-
-    public function buscarproductos($filtro)
-    {
-	    $consulta = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, stock, destacado, id_categoria AS fk_id_categoria, estado, referencia FROM productos WHERE nombre LIKE '%$filtro%' OR referencia LIKE '%$filtro%'");
-	    $consulta->execute();
-	    $resultado = $consulta->fetchAll();
-	    return $resultado;
-    }
-
-    public function activar($id){
-        $consulta = $this->db->prepare("UPDATE producto SET estado = 1 WHERE id_producto LIKE '$id'");
-        $count =$consulta->execute();
-        echo $count." registros actualizados correctamente";
-    } 
-
-    public function desactivar($id){
-        $consulta = $this->db->prepare("UPDATE productos SET estado = 0 WHERE id_producto LIKE '$id'");
-        $count =$consulta->execute() ;
-        echo $count." registros actualizados correctamente";
-    } 
-
-    public function productosGeneral()
-    {
-        $consulta = $this->db->prepare("SELECT * FROM productos");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
-
-    public function obtenerBusquedaGeneral($filtro, $contenido)
-    {
-        $consulta = $this->db->prepare("SELECT producto.id_producto, producto.fk_id_categoria, producto.referencia, producto.nombre, producto.descripcion, producto.stock, producto.precio, producto.imagen, producto.destacado, producto.estado FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE $filtro LIKE :contenido");
-        $consulta->bindValue(':contenido', '%' . $contenido . '%');
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        return $resultado;
-    }
-*/
+    public function productosGN()
+{
+    $consulta = $this->db->prepare("SELECT p.id_producto, p.nombre, p.precio, f.img, p.stock, p.estado 
+                                    FROM productos p 
+                                    LEFT JOIN fotos f ON p.id_producto = f.id_producto");
+    $consulta->execute();
+    $resultado = $consulta->fetchAll();
+    return $resultado;
 }
+
+public function obtenerBusquedaGeneral($filtro, $contenido)
+{
+	$consulta = $this->db->prepare("SELECT producto.id_producto, producto.fk_id_categoria, producto.referencia, producto.nombre, producto.descripcion, producto.stock, producto.precio, producto.imagen, producto.destacado, producto.estado FROM producto INNER JOIN categorias ON producto.fk_id_categoria = categorias.id_categoria WHERE $filtro LIKE :contenido");
+	$consulta->bindValue(':contenido', '%' . $contenido . '%');
+	$consulta->execute();
+	$resultado = $consulta->fetchAll();
+	return $resultado;
+}
+}
+
+//     public function getCantidad()
+//     {
+//         return $this->stock;
+//     }
+
+
+
+
+
+
+
+// public function productosGeneral()
+// {
+//     $consulta = $this->db->prepare("SELECT * FROM productos");
+//     $consulta->execute();
+//     $resultado = $consulta->fetchAll();
+//     return $resultado;
+// }
+
+
+
+
+    

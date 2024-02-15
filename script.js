@@ -223,6 +223,51 @@ $(document).ready(function () {
 
     }
 
+    // busqueda general
+    function obtenerTablaCompletaPG() {
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=Producto&action=CrearTablaCompletaPG',
+            dataType: 'html',
+            success: function (htmlTablaCompleta) {
+                // Actualizar el contenido de la tabla con la tabla completa
+                $('#tabla-pg').html(htmlTablaCompleta);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX para obtener la tabla completa:', textStatus, errorThrown);
+            }
+        });
+    }
+
+
+    function buscarProductosGP(busqueda) {
+        console.log('Buscando producctos con:', busqueda);
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=Producto&action=buscarGP',
+            data: { busqueda: busqueda },
+            dataType: 'html', // Esperamos HTML como respuesta
+            success: function (htmlTabla) {
+                try {
+                     // Si la búsqueda está en blanco, guarda los resultados completos
+					 if (busqueda.length === 0) {
+                        // Llamada a la función para obtener la tabla completa
+                        obtenerTablaCompletaPG();
+                    } else {
+                        // Actualizar el contenido de la tabla con los resultados
+                        $('#tabla-pg').html(htmlTabla);
+                    }
+                } catch (error) {
+                    console.error('Error al procesar la respuesta del servidor:', error);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+            }
+        });
+    }
+
+
 	    //Evento cuando se escribe en el campo de búsqueda
 		$('#Cbuscar').on('input', function () {
 			var busqueda = $(this).val().trim();
@@ -234,12 +279,22 @@ $(document).ready(function () {
 		});
 
         $('#Pbuscar').on('input', function () {
-            console.log("hola");
 			var busqueda = $(this).val().trim();
 			if (busqueda.length > 0) {
 				buscarProductos(busqueda);
 			} else {
 				obtenerTablaCompletaP();
+			}
+		});
+
+            //Evento cuando se escribe en el campo de búsqueda
+		$('#PGbuscar').on('input', function () {
+			var busqueda = $(this).val().trim();
+			if (busqueda.length > 0) {
+                //console.log("busqueda", busqueda)
+				buscarProductosGP(busqueda);
+			} else {
+				obtenerTablaCompletaPG();
 			}
 		});
 });

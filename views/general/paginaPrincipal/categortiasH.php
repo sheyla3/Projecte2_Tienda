@@ -6,7 +6,7 @@
         if ($contador % 2 === 0) {
             echo '<div class="rowCubos">';
         }
-        echo '<a aria-label="Link" href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoria['id_categoria'] . '">';
+        echo '<a class="rowCubosA" aria-label="Link" href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoria['id_categoria'] . '">';
         echo '<div class="categoriaCubo" style="background-image: url(' . (!empty($categoria['primera_foto']) ? '\'' . $categoria['primera_foto'] . '\'' : '') . ')">';
 
         if (empty($categoria['primera_foto'])) {

@@ -98,8 +98,8 @@
                 }
                 ?>
                 <li>
-                    <a href="#" class="tipo"><img src="views/img/magnifier.svg" alt="Buscar" width="20" height="20"></a>
-                    <label class="mobile-item">Buscar</label>
+                    <a href="index.php?controller=Producto&action=mostrarProductosG" class="tipo"><img src="views/img/magnifier.svg" alt="Buscar" width="20" height="20"></a>
+                    <label class="mobile-item"><a class="aMobil" href="index.php?controller=Producto&action=mostrarProductosG" class="tipo">Buscar</a></label>
                 </li>
                 <li>
                     <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>

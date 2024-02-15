@@ -21,8 +21,97 @@ class ProductoController
         }
     }
 
+//buscador general
+public function buscarGP()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $busqueda = $_POST['busqueda'];
 
+        // Llama a la función de búsqueda en el modelo
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+        $resultados = $producto->productosBuscador($busqueda);
+
+        try {
+            ob_clean();
+            // Genera el HTML para toda la tabla
+            $htmlTabla = self::generarHTMLCubosProductos($resultados);
+
+            // Imprime el HTML
+            echo $htmlTabla;
+            exit;
+        } catch (Exception $e) {
+            // Manejar errores
+            http_response_code(500); // Internal Server Error
+            exit;
+        }
+    }
+}
+
+public function CrearTablaCompletaPG()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Llama a la función de búsqueda en el modelo
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+        $resultados = $producto->productosGN();
+
+        try {
+            ob_clean();
+            // Genera el HTML para toda la tabla
+            $htmlTabla = self::generarHTMLCubosProductos($resultados);
+
+            // Imprime el HTML
+            echo $htmlTabla;
+            exit;
+        } catch (Exception $e) {
+            // Manejar errores
+            http_response_code(500); // Internal Server Error
+            exit;
+        }
+    }
+}
+
+function generarHTMLCubosProductos($productos)
+{
+    $htmlGenerado = "<div class='cubosCategorias'>";
+    $contador = 0;
+    foreach ($productos as $producto) {
+        if ($producto['estado']) {
+            if ($contador % 2 === 0) {
+                $htmlGenerado .= '<div class="rowCubosP">';
+            }
+            $htmlGenerado .= '<a aria-label="Link" href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
+            if ($producto['stock'] == 0) {
+                $htmlGenerado .= '<div class="cuboPG" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(\'' . $producto['img'] . '\')" alt=' . $producto['nombre'] . '>';
+            } else {
+                $htmlGenerado .= '<div class="cuboPG" style="background-image: url(\'' . $producto['img'] . '\')" alt=' . $producto['nombre'] . '>';
+            }
+            $htmlGenerado .= '<p class="letraP">' . $producto['nombre'] . ' ' . $producto['precio'] . '€</p>';
+            $htmlGenerado .= '</div>';
+            $htmlGenerado .= '</a>';
     
+            $contador++;
+        }
+        
+        if ($contador % 2 === 0 || $contador === count($productos)) {
+            $htmlGenerado .= '</div>'; // Cerrar la fila si el contador es múltiplo de 4 o si es el último producto
+        }
+    }
+    if ($contador == 0) {
+        $htmlGenerado .= "Sin productos";
+    }
+    $htmlGenerado .= "</div>";
+
+    // Retorna el HTML generado
+    return $htmlGenerado;
+}
+
+
+//buscador admin
 public function CrearTablaCompletaP()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -313,6 +402,16 @@ function generarHTMLTablaCategorias($categorias)
         $producto = new Producto($dbInstance,null,null,null,null,null,null,$id_categoria,null,null,null);
         $productos = $producto->productosCategoria();
         include('views/general/paginaCategorias/productosPorCategoria.php');
+        
+    }
+
+    public function mostrarProductosG(){
+
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $producto = new Producto($dbInstance,null,null,null,null,null,null,null,null,null,null);
+        $productos = $producto->productosGN();
+        include('views/general/paginaPrincipal/productosG.php');
         
     }
 
