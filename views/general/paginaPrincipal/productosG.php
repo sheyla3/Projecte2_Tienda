@@ -10,7 +10,7 @@
     $contador = 0;
     foreach ($productos as $producto) {
         if ($producto['estado']){
-            if ($contador % 4 === 0) {
+            if ($contador % 2 === 0) {
                 echo '<div class="rowCubosP">';
             }
             echo '<a aria-label="Link" href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
@@ -27,7 +27,7 @@
         }
         
 
-        if ($contador % 4 === 0 || $contador === count($productos)) {
+        if ($contador % 2 === 0 || $contador === count($productos)) {
             echo '</div>'; // Cerrar la fila si el contador es múltiplo de 4 o si es el último producto
         }
     }

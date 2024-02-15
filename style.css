@@ -1160,8 +1160,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 }
 
 .cuboPG{
-  height: 550px;
-  width: 365px;
+  height: 550px !important;
+  width: 365px !important;
   margin: 5px;
   text-align: center;
   background-position: center;
@@ -1888,7 +1888,7 @@ input {
 
 /* DISEÑO RESPONSIVE PARA MOVIL */
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 700px) {
   .header .btn {
     display: block;
   }
@@ -2081,8 +2081,8 @@ input {
     height: 5px;
   }
   .cuboPG{
-    height: 200PX;
-    width: 190PX;
+    height: 200PX !important;
+    width: 143PX !important;
     margin: 10px;
     text-align: center;
     background-position: center;
@@ -2092,6 +2092,24 @@ input {
     justify-content: center;
     transform: scale(var(--escala, 1));
     transition: 0.25s;
+    margin-bottom: -12PX;
+  }
+
+  .letraP{
+    bottom: -12px !important;
+  }
+
+  .rowCubosP{
+    display: flex !important;
+    flex-direction: row !important;
+  }
+
+  .cubosCategorias {
+    padding-top: 5px !important;
+  }
+  .cubosCategorias {
+    margin-top: 20% !important;
+    
   }
 }
 
@@ -2135,7 +2153,7 @@ input {
   }
 
   .cubosCategorias {
-    margin-bottom: 15%;
+    margin-bottom: 25%;
   }
 
   .rowCubos {
@@ -2270,7 +2288,7 @@ input {
 }
 
 /* Responsive tablet*/
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) and (min-width: 970px) {
   .nav-links .drop-menu {
     right: 3%;
   }
@@ -2298,7 +2316,7 @@ input {
 
   .Descripcion {
     padding-top: 15px;
-    width: 300px;
+    width: 100%;
   }
 
   .FotoZapato {
@@ -2479,6 +2497,7 @@ input {
   align-items: center;
   padding-bottom: 300px;
 }
+
 }
 
 /* pie */

@@ -81,14 +81,14 @@ function generarHTMLCubosProductos($productos)
     $contador = 0;
     foreach ($productos as $producto) {
         if ($producto['estado']) {
-            if ($contador % 4 === 0) {
+            if ($contador % 2 === 0) {
                 $htmlGenerado .= '<div class="rowCubosP">';
             }
             $htmlGenerado .= '<a aria-label="Link" href="index.php?controller=Producto&action=mostrarProducto&id_producto=' . $producto['id_producto'] . '">';
             if ($producto['stock'] == 0) {
-                $htmlGenerado .= '<div class="cuboP" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(\'' . $producto['img'] . '\')" alt=' . $producto['nombre'] . '>';
+                $htmlGenerado .= '<div class="cuboPG" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(\'' . $producto['img'] . '\')" alt=' . $producto['nombre'] . '>';
             } else {
-                $htmlGenerado .= '<div class="cuboP" style="background-image: url(\'' . $producto['img'] . '\')" alt=' . $producto['nombre'] . '>';
+                $htmlGenerado .= '<div class="cuboPG" style="background-image: url(\'' . $producto['img'] . '\')" alt=' . $producto['nombre'] . '>';
             }
             $htmlGenerado .= '<p class="letraP">' . $producto['nombre'] . ' ' . $producto['precio'] . '€</p>';
             $htmlGenerado .= '</div>';
@@ -97,7 +97,7 @@ function generarHTMLCubosProductos($productos)
             $contador++;
         }
         
-        if ($contador % 4 === 0 || $contador === count($productos)) {
+        if ($contador % 2 === 0 || $contador === count($productos)) {
             $htmlGenerado .= '</div>'; // Cerrar la fila si el contador es múltiplo de 4 o si es el último producto
         }
     }
