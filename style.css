@@ -1108,7 +1108,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .categoriaCubo {
   padding: 1px;
-  width: 900px;
+  width: 727px;
   height: 600px;
   background-color: #dfdfdf;
   margin: 15px;
@@ -1151,6 +1151,20 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   text-decoration: none;
 }
 
+.cuboPG{
+  height: 550px;
+  width: 400px;
+  margin: 10px;
+  text-align: center;
+  background-position: center;
+  position: relative;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  transform: scale(var(--escala, 1));
+  transition: 0.25s;
+}
+
 .cuboP {
   height: 550px;
   width: 400px;
@@ -1165,7 +1179,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
-.cuboP:hover {
+.cuboP:hover,.cuboPG:hover {
   --escala: 0.95;
   cursor: pointer;
   transition: 0.25s;
@@ -2057,6 +2071,19 @@ input {
   .pag-item {
     width: 5px;
     height: 5px;
+  }
+  .cuboPG{
+    height: 200PX;
+    width: 190PX;
+    margin: 10px;
+    text-align: center;
+    background-position: center;
+    position: relative;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    transform: scale(var(--escala, 1));
+    transition: 0.25s;
   }
 }
 
