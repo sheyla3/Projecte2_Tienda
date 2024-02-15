@@ -316,7 +316,34 @@ function generarHTMLTablaCategorias($categorias)
         
     }
 
-    
+    public function mostrarProductosPorPrecioBajo(){
+
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $id_categoria = $_GET['id_categoria'];
+        $producto = new Producto($dbInstance, null, null, null, null, null, null, $id_categoria, null, null, null);
+        $productos = $producto->productosCategoria();
+        usort($productos, function ($a, $b) {
+            return $a['precio'] - $b['precio'];
+        });
+        include('views/general/paginaCategorias/productosPorCategoria.php');
+        
+    }
+
+    public function mostrarProductosPorPrecioAlto(){
+
+        $database = new Database();
+        $dbInstance = $database->getDB();
+        $id_categoria = $_GET['id_categoria'];
+        $producto = new Producto($dbInstance, null, null, null, null, null, null, $id_categoria, null, null, null);
+        $productos = $producto->productosCategoria();
+        usort($productos, function ($a, $b) {
+            return $b['precio'] - $a['precio']; // Cambiado para ordenar de más alto a más bajo
+        });
+        include('views/general/paginaCategorias/productosPorCategoria.php');
+        
+    }
+
     public function mostrarProducto(){
 
         $database = new Database();
