@@ -8,12 +8,18 @@
         canvas {
             border: 1px solid #ccc;
             background-color: white;
+            margin-bottom: 20px;
         }
     </style>
-    <script src="./././grafico.js" defer></script>
+    <script src="./././jsGraficas/grafico.js" defer></script>
+    <script src="./././jsGraficas/graficoMujer.js" defer></script> <!-- Agregado el nuevo script para el segundo canvas -->
 </head>
 <body>
     <h1>Estadísticas de Productos Más Vendidos</h1>
+    <h2>Para Hombre</h2>
     <canvas id="graficoProductos" width="500" height="300"></canvas>
+    
+    <h2>Para Mujer</h2>
+    <canvas id="graficoProductosMujer" width="500" height="300"></canvas>
 </body>
 </html>

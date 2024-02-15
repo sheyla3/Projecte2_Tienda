@@ -158,7 +158,7 @@ class AdminController
         $productosMasVendidos = $admin->productosMasComprados();
         
         header('Content-Type: application/json');
-        echo json_encode($productosMasVendidos);
+        echo json_encode(['success' => true, 'info' => $productosMasVendidos]);
 
     }
     
