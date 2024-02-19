@@ -22,6 +22,8 @@ class UsuarioController
 
 				$_SESSION['email'] = $email;
 				$_SESSION['role'] = 'user';
+				$_SESSION['foto'];
+				
 				header('Location: index.php');
 				exit;
 			} else {
