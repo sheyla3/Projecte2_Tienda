@@ -832,7 +832,7 @@ a.admin-panel-submit-link {
   border-radius: 5px;
   text-decoration: none;
   border: none;
-  width: 10%;
+  width: 100px;
   text-align: center;
 }
 
@@ -1915,6 +1915,10 @@ input {
     justify-content: center;
   }
 
+  .esconder-descripcion {
+    display: none;
+  }
+
   .rowCubosP {
     display: block;
     position: relative;
@@ -2290,8 +2294,23 @@ input {
   .table-pedidos .id {
     text-emphasis: none;
   }
-}
+}@media screen and (min-width: 700px) and (max-width: 969px){
+  .div1_sexos {
+    margin: auto;
+    height: 80%;
+    width: 100%;
+  }
 
+  .div2_sexos {
+    margin: auto;
+    height: 80%;
+    width: 100%;
+  }
+
+  .titulo-cubosCategorias {
+    padding-top: 10%;
+  }
+}
 /* Responsive tablet*/
 @media screen and (max-width: 1024px) and (min-width: 970px) {
   .nav-links .drop-menu {
@@ -2321,14 +2340,18 @@ input {
 
   .div1_sexos {
     margin: auto;
-    height: 60%;
-    width: 60%;
+    height: 100%;
+    width: 100%;
   }
 
-  div.div2_sexos {
+  .div2_sexos {
     margin: auto;
-    height: 60%;
-    width: 60%;
+    height: 100%;
+    width: 100%;
+  }
+
+  .titulo-cubosCategorias {
+    padding-top: 10%;
   }
 
   .carritoContanier {

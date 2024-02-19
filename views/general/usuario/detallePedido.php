@@ -18,12 +18,12 @@
         <thead>
             <tr>
                 <th class="table-pedidos-thead">Nombre del Producto</th>
-                <th class="table-pedidos-thead">Descripción</th>
-                <th class="table-pedidos-thead">ID Producto</th>
+                <th class="table-pedidos-thead esconder-descripcion">Descripción</th>
+                <th class="table-pedidos-thead esconder-descripcion">ID Producto</th>
                 <th class="table-pedidos-thead">Cantidad</th>
-                <th class="table-pedidos-thead">Precio</th>
+                <th class="table-pedidos-thead">Precio Unitario</th>
                 <th class="table-pedidos-thead">Precio Total</th>
-                <th class="table-pedidos-thead">Imagen</th>
+                <th class="table-pedidos-thead esconder-descripcion">Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -32,10 +32,10 @@
                     <td>
                         <?php echo $detalleProducto['nombre']; ?>
                     </td>
-                    <td>
+                    <td class="esconder-descripcion">
                         <?php echo $detalleProducto['descripcion']; ?>
                     </td>
-                    <td>
+                    <td class="esconder-descripcion">
                         <?php echo $detalleProducto['id_producto']; ?>
                     </td>
                     <td>
@@ -47,7 +47,7 @@
                     <td>
                         <?php echo $detalleProducto['precio_total']; ?>
                     </td>
-                    <td><img src="<?php echo $detalleProducto['imagen']; ?>" alt="<?php echo $detalleProducto['nombre']; ?>"
+                    <td class="esconder-descripcion"><img src="<?php echo $detalleProducto['imagen']; ?>" alt="<?php echo $detalleProducto['nombre']; ?>"
                             width='20%' margin='auto'></td>
                 </tr>
             <?php endforeach; ?>
