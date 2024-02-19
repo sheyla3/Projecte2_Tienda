@@ -46,7 +46,7 @@ class PDF extends FPDF
         $this->Cell(6, 4, 'Direccion', 0, 1);
         $this->SetFont('Arial', '', 9);
         $this->Cell(6, 4, $datosUser[0]['direccion'], 0, 1);
-        //$this->Cell(0, 10, 'Fecha del Pedido: ' . $pedido['fechapedido'], 0, 1);
+        $this->Cell(0, 10, 'Fecha del Pedido: ' . $pedido['fechapedido'], 0, 1);
         // Aquí agregarías más detalles del pedido según tus necesidades
 
         // Salto de línea

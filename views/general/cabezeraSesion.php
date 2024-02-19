@@ -121,7 +121,6 @@
                     <input type="checkbox" id="showDrop">
                     <label for="showDrop" class="mobile-item">Usuario</label>
                     <ul class="drop-menu">
-                        <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
                         <li><a href="index.php?controller=pedido&action=listarPedidosUsuario">Mis Pedidos</a></li>
                         <li><a href="././sortir.php">Cerrar sesión</a></li>
