@@ -1,9 +1,15 @@
 <div class="cubosCategorias cubosCat">
-    <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioBajo&id_categoria=<?php echo $id_categoria; ?>">
-        <img src="../../img/filtro.svg" alt="filtro" style="margin-right: 10px;">
-        Productos por precio bajo
-    </a>
-    <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioAlto&id_categoria=<?php echo $id_categoria; ?>">Productos por precio alto</a>
+    <div id="filtroCategoria">
+        <img src="././img/iconos/icono-filtro.svg" alt="filtro" id="imagenFiltro">
+        <h3 id="textoFiltro">Filtrar productos:</h3>
+    </div>
+    <select onchange="window.location.href=this.value" id="selectCategoria">
+        <option value="">Seleccionar...</option>
+        <option value="index.php?controller=Producto&action=mostrarProductosPorPrecioBajo&id_categoria=<?php echo $id_categoria; ?>">Productos por precio bajo</option>
+        <option value="index.php?controller=Producto&action=mostrarProductosPorPrecioAlto&id_categoria=<?php echo $id_categoria; ?>">Productos por precio alto</option>
+    </select>
+
+
     <?php
     $contador = 0;
     foreach ($productos as $producto) {
