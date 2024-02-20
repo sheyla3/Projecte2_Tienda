@@ -1172,8 +1172,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 }
 
 .cuboP {
-  height: 550px;
-  width: 400px;
+  height: 450px;
+  width: 300px;
   margin: 10px;
   margin: auto;
   text-align: center;
