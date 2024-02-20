@@ -9,22 +9,29 @@
         <input type='text' id='' name='precio' placeholder="Precio" required><br><br>
 
         <input type='text' id='' name='stock' placeholder="Stock" required><br><br>
+        <div class="formgroup">
+            <div class="destgroup">
+                <label id="labelDestacado" for='destacado'>Destacado?</label>
+                <div class="formgroup">
+                    <input type='checkbox' id='' name='destacado' >
+                </div>
+                <div class="formgroup">
+                    <select id="categoria" name="categoria">
+                    <?php
+                        foreach ($categorias as $categoria) {
+                            echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}-{$categoria['sexo']}</option>";
+                        }
+                        ?>
+                    </select></div>
+                </div>
+                <div class="estadoGrorup">
+                    <label for='estado' id='labelestado'>Estado</label>
+                    <input type='checkbox' id='checkestado' name='estado' checked >
+                </div>
 
-        <label for='destacado'>Destacado? (Desactivado por defecto)</label>
-        <input type='checkbox' id='' name='destacado' ><br><br>
 
-        <p>Categoria Asignada</p>
-        <select id="categoria" name="categoria">
-        <?php
-            foreach ($categorias as $categoria) {
-                echo "<option value='{$categoria['id_categoria']}'>{$categoria['nombre']}-{$categoria['sexo']}</option>";
-            }
-            ?>
-        </select><br><br>
-
-        <label for='estado'>Estado (Activado por defecto)</label>
-        <input type='checkbox' id='' name='estado' checked ><br><br>
-
+        </div>
+       
         <input type='text' id='' name='referencia' placeholder="Referencia" ><br><br>
 
         <label for='imagen'>Imagen del producto</label><br><br>

@@ -5,10 +5,6 @@ echo "
         <ul class='tituloMenu'>
             <li><h1 class='admin-panel-title'>Pedidos</h1></li>
             <li class='derecha'>
-                <form action='' aria-label='formulario' method='post' class='formCom buscador'>
-                    <label for='campo' name='Cbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
-                    <input type='text' id='Cbuscar' name='Cbuscar'>
-                </form>
             </li>
         </ul>
         <div class='blue-line'></div>

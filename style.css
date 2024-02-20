@@ -1039,6 +1039,47 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 /* FIN SLIDER */
 
+/*FILTRO*/
+
+#filtroCategoria {
+  display: flex;
+  align-items: center;
+  width: 183px;
+}
+
+#imagenFiltro {
+  margin-right: 10px;
+  width: 10%;
+  height: 10%;
+}
+
+#selectCategoria {
+  padding: 8px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#textoFiltro {
+  font-size: 17px;
+}
+
+/*FIN FILTRO*/
+
+/*CATEGORIA*/
+
+.graficos-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grafico {
+  padding-top: 5%;
+  width: 48%;
+}
+
+/*FIN FIRMA*/
+
 /* BUSCADOR */
 
 #Cbuscar,
@@ -1054,7 +1095,9 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   margin: 0 0 15px;
   border-bottom: 2px #537FE7 solid;
   font-size: 16px;
-  padding-left: 5%;
+  padding-left: 20%;
+  padding-right: 13%;
+  width: 47%;
 }
 
 /* FIN BUSCADOR */
@@ -1084,13 +1127,17 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  /* padding-top: 100px; */
+  /* padding-bottom: 100px; */
   width: 100%;
 }
 
-#tabla-pg{
-  padding-top: 5px !important;
+.cubosCat {
+  padding-top: 100px;
+}
+
+#tabla-pg {
+  padding-top: 0px !important;
 }
 
 .categoriaCubo:hover {
@@ -1102,7 +1149,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .categoriaCubo {
   padding: 1px;
-  width: 900px;
+  /* width: 900px; */
   height: 600px;
   background-color: #dfdfdf;
   background-position: bottom;
@@ -1132,14 +1179,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   font-size: 40px;
 }
 
-.rowCubosP a{
+/* .rowCubosP a {
   width: 100%;
-}
+} */
 
 .rowCubosP {
   display: flex;
   padding: 10px;
   flex-direction: row;
+  justify-content: center;
 }
 
 .letraP {
@@ -1153,7 +1201,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   text-decoration: none;
 }
 
-.cuboPG{
+.cuboPG {
   height: 550px !important;
   width: 365px !important;
   margin: 5px;
@@ -1167,7 +1215,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
-.buscadorPG{
+.buscadorPG {
   border: none;
 }
 
@@ -1186,12 +1234,13 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
-.cuboP:hover,.cuboPG:hover {
+.cuboP:hover,
+.cuboPG:hover {
   --escala: 0.95;
   cursor: pointer;
   transition: 0.25s;
   transform: scale(0.9);
-  border-radius: 20px;
+  /* border-radius: 20px; */
 
 }
 
@@ -1206,7 +1255,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 }
 
 .ZonaInfo {
-  padding-left: 50px;
+  /* padding-left: 50px; */
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -1307,11 +1356,20 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 }
 
+.buscador2{
+  width: 100%;
+  padding-left: 0;
+  font-family: "Roboto", sans-serif;
+  margin: 0 0 15px;
+  border-bottom: 2px #537FE7 solid;
+  font-size: 16px;
+}
+
 .div1_sexos:hover,
 .div2_sexos:hover {
   --escala: 0.95;
   cursor: pointer;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 
 }
 
@@ -1570,8 +1628,9 @@ a {
   content: '←';
 }
 
-Dots .slick-dotted.slick-slider {
+.slick-dotted.slick-slider {
   margin-bottom: 30px;
+  padding-top: 101px;
 }
 
 .slick-dots {
@@ -1804,6 +1863,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15px;
 }
 
 .botones-cont {
@@ -1875,7 +1935,7 @@ input {
 }
 
 .campoPrecio {
-  margin: 20px;
+  margin: 7px;
 }
 
 #text-precio {
@@ -1897,7 +1957,7 @@ input {
     display: block;
   }
 
-  .ZonaInfo{
+  .ZonaInfo {
     transform: scale(1.1) !important;
     padding-top: 30px;
   }
@@ -1906,7 +1966,7 @@ input {
   .cuboP {
     height: 350px;
     width: 250px;
-    
+
     text-align: center;
     background-position: center;
     position: relative;
@@ -1914,6 +1974,26 @@ input {
     display: flex;
     justify-content: center;
   }
+
+  .table-pedidos-thead{
+    font-size: 10px;
+  }
+
+  .cubosCategorias{
+    padding-bottom: 0px !important;
+  }
+
+  .table-pedidos tbody{
+    font-size: 12px;
+  }
+
+  .slick-dotted.slick-slider {
+    margin-bottom: 101px !important;
+  }
+
+  .slick-dotted.slick-slider {
+    padding-top: 7px !important;
+}
 
   .esconder-descripcion {
     display: none;
@@ -1924,6 +2004,16 @@ input {
     position: relative;
 
   }
+
+  #labelCantidad {
+    padding-top: 2px;
+    padding-right: 17px;
+}
+
+#cantidad{
+  transform: scale(1.4);
+}
+
   /*Acaba aqui*/
   .header .nav-links {
     position: fixed;
@@ -1932,7 +2022,7 @@ input {
     max-width: 350px;
     top: 5%;
     left: -107%;
-    background: #537FE7;
+    background: #EEEDED;
     display: block;
     padding: 50px 10px;
     line-height: 50px;
@@ -1977,12 +2067,8 @@ input {
   }
 
   .aMobil {
-    color: white !important;
+    color: black !important;
     padding: 0 !important;
-  }
-
-  .aMobil:hover {
-    background: #3A3B3C !important;
   }
 
   .nav-links .drop-menu {
@@ -2018,7 +2104,7 @@ input {
 
   .nav-links .mobile-item {
     display: block;
-    color: #f2f2f2;
+    color: black;
     font-size: 20px;
     font-weight: 500;
     padding-left: 20px;
@@ -2028,8 +2114,8 @@ input {
   }
 
   .nav-links .mobile-item:hover {
-    background: #3A3B3C;
-  }
+    background: #c0eef2 !important;
+}
 
   .mega-box {
     position: static;
@@ -2082,12 +2168,18 @@ input {
     height: 30%;
   }
 
+  .slick-list.draggable {
+    padding-bottom: 84px;
+    padding-top: 101px;
+  }
+
   /* Part Slider */
   .pag-item {
     width: 5px;
     height: 5px;
   }
-  .cuboPG{
+
+  .cuboPG {
     height: 200PX !important;
     width: 143PX !important;
     margin: 10px;
@@ -2102,22 +2194,27 @@ input {
     margin-bottom: -12PX;
   }
 
-  .letraP{
+  .letraP {
     bottom: -12px !important;
-    font-weight:normal;
+    font-weight: normal;
   }
 
-  .rowCubosP{
+  .rowCubosP {
     display: flex !important;
     flex-direction: row !important;
   }
 
-  .cubosCategorias {
-    padding-top: 5px !important;
+  .buscador{
+    width: 100% !important;
   }
+
   .cubosCategorias {
-    margin-top: 20% !important;
-    
+    /* padding-top: 5px !important; */
+  }
+
+  .cubosCategorias {
+    /* margin-top: 20% !important; */
+
   }
 }
 
@@ -2135,6 +2232,10 @@ input {
     align-items: center;
     padding-bottom: 90px;
   }
+
+  .contGeneralPro {
+    padding-bottom: 180px;
+}
 
   .Desktop1 {
     display: flex;
@@ -2160,9 +2261,9 @@ input {
     margin-top: 15%;
   }
 
-  .cubosCategorias {
+  /* .cubosCategorias {
     margin-bottom: 25%;
-  }
+  } */
 
   .rowCubos {
     display: block;
@@ -2198,6 +2299,7 @@ input {
 
   .menuPrecio {
     flex-direction: column;
+    transform: scale(1.3);
   }
 
   .carritoimg {
@@ -2294,7 +2396,9 @@ input {
   .table-pedidos .id {
     text-emphasis: none;
   }
-}@media screen and (min-width: 700px) and (max-width: 969px){
+}
+
+@media screen and (min-width: 700px) and (max-width: 969px) {
   .div1_sexos {
     margin: auto;
     height: 80%;
@@ -2310,9 +2414,27 @@ input {
   .titulo-cubosCategorias {
     padding-top: 10%;
   }
+
+  .Descripcion{
+    width: 90% !important;
+  }
+
+
+  .rowCubos {
+    width: 100%;
+    display: block;
+  }
+
+  .categoriaCubo {
+    padding: 1px;
+    width: auto;
+    margin-bottom: 3%;
+  }
+
 }
+
 /* Responsive tablet*/
-@media screen and (max-width: 1024px) and (min-width: 970px) {
+@media screen and (max-width: 1024px) and (min-width: 819px) {
   .nav-links .drop-menu {
     right: 3%;
   }
@@ -2322,15 +2444,21 @@ input {
     padding: 0 !important;
   }
 
+  .rowCubos {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+}
+
   .aMobil:hover {
-    background: #3A3B3C !important;
+    background: #c0eef2 !important;
   }
 
   .precioContanier {
     padding-left: 21px;
   }
 
-  .menu_sexos{
+  .menu_sexos {
     margin-top: 5%;
   }
 
@@ -2364,7 +2492,7 @@ input {
 
   .Descripcion {
     padding-top: 15px;
-    width: 100%;
+    /* width: 100%; */
   }
 
   .FotoZapato {
@@ -2430,7 +2558,7 @@ input {
   .campoPrecio {
     text-align: center;
   }
-  
+
   /*Responsive categorias*/
   .cuboP {
     height: 450px;
@@ -2443,11 +2571,12 @@ input {
     display: flex;
     justify-content: center;
   }
-  
+
   .rowCubosP {
     display: block;
     position: relative;
   }
+
   /*Acaba aqui*/
 
   /* Inicio sesion*/
@@ -2532,18 +2661,20 @@ input {
     height: 459px;
     padding: 30px;
     transform: scale(1);
-}
-.ZonaInfo{
-  transform: scale(1.4);
-  padding-top: 30px;
-}
-.Desktop1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 300px;
-}
+  }
+
+  .ZonaInfo {
+    transform: scale(1.4);
+    padding-top: 30px;
+  }
+
+  .Desktop1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 300px;
+  }
 
 }
 
@@ -2566,6 +2697,46 @@ input {
   }
 }
 
+.formgroup {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.destgroup{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+#labelDestacado{
+  margin-top: -13px;
+  margin-left: -12%;
+}
+
+.estadoGrorup{
+  display: flex;
+  flex-direction: row;
+}
+
+#checkestado{
+  width: 20%;
+}
+
+#labelestado{
+  margin-left: 10%;
+}
+
 .contBPG{
   padding-top: 100px;
+  display: flex;
+  justify-content: center;
 }
+
+input[type=number]::-webkit-outer-spin-button {
+  height: 200px;
+}
+
+

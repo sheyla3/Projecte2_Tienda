@@ -77,7 +77,7 @@ public function CrearTablaCompletaPG()
 
 function generarHTMLCubosProductos($productos)
 {
-    $htmlGenerado = "<div class='cubosCategorias'>";
+    $htmlGenerado = "<div class='cubosCategorias cubopgg'>";
     $contador = 0;
     foreach ($productos as $producto) {
         if ($producto['estado']) {

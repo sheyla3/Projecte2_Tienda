@@ -147,6 +147,10 @@ class Carrito extends Database {
                 case 'eliminar':
                     // Lógica para eliminar el producto del carrito
                     $consulta = $this->db->prepare("DELETE FROM carrito WHERE correo = ? AND id_producto = ?");
+                    if(isset($_SESSION['numcarrito'])) {
+                        $_SESSION['numcarrito']--; 
+                        
+                    }
                     break;
                 default:
                     // Acción no reconocida, no realizar ninguna operación
