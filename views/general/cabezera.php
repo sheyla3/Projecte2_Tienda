@@ -108,13 +108,23 @@
                             href="index.php?controller=Producto&action=mostrarProductosG"
                             class="tipo">Buscar</a></label>
                 </li>
+
                 <li>
-                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><?php echo $_SESSION['numcarrito']; ?><lord-icon
-                            src="https://cdn.lordicon.com/mfmkufkr.json" trigger="hover" style="width:25px;height:25px">
-                        </lord-icon></a>
-                    <label id="botonCarrito" class="mobile-item"><a href="index.php?controller=carrito&action=entrar"
-                            class="aMobil">Carrito</a></label>
+                    <a href="index.php?controller=carrito&action=entrar" class="tipo">
+                        <?php if(isset($_SESSION['numcarrito'])): ?>
+                            <?php echo $_SESSION['numcarrito']; ?>
+                        <?php endif; ?>
+                        <lord-icon src="https://cdn.lordicon.com/mfmkufkr.json" trigger="hover" style="width:25px;height:25px">
+                        </lord-icon>
+                    </a>
+                    <label class="mobile-item">
+                        <a href="index.php?controller=carrito&action=entrar" class="aMobil">Carrito     <?php if(isset($_SESSION['numcarrito'])): ?>
+                            <?php echo $_SESSION['numcarrito']; ?>
+                        <?php endif; ?></a>
+                       
+                    </label>
                 </li>
+
                 <li>
                     <?php
                     if (isset($_SESSION['email']) && $_SESSION['role'] == 'user') {

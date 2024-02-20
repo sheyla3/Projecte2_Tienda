@@ -1128,7 +1128,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   align-items: center;
   flex-direction: column;
   /* padding-top: 100px; */
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
   width: 100%;
 }
 
@@ -1179,14 +1179,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   font-size: 40px;
 }
 
-.rowCubosP a {
+/* .rowCubosP a {
   width: 100%;
-}
+} */
 
 .rowCubosP {
   display: flex;
   padding: 10px;
   flex-direction: row;
+  justify-content: center;
 }
 
 .letraP {
@@ -1978,9 +1979,21 @@ input {
     font-size: 10px;
   }
 
+  .cubosCategorias{
+    padding-bottom: 0px !important;
+  }
+
   .table-pedidos tbody{
     font-size: 12px;
   }
+
+  .slick-dotted.slick-slider {
+    margin-bottom: 101px !important;
+  }
+
+  .slick-dotted.slick-slider {
+    padding-top: 7px !important;
+}
 
   .esconder-descripcion {
     display: none;
@@ -2058,10 +2071,6 @@ input {
     padding: 0 !important;
   }
 
-  .aMobil:hover {
-    background: #3A3B3C !important;
-  }
-
   .nav-links .drop-menu {
     position: static;
     opacity: 1;
@@ -2105,8 +2114,8 @@ input {
   }
 
   .nav-links .mobile-item:hover {
-    background: #3A3B3C;
-  }
+    background: #c0eef2 !important;
+}
 
   .mega-box {
     position: static;
@@ -2224,6 +2233,10 @@ input {
     padding-bottom: 90px;
   }
 
+  .contGeneralPro {
+    padding-bottom: 180px;
+}
+
   .Desktop1 {
     display: flex;
     flex-direction: column;
@@ -2248,9 +2261,9 @@ input {
     margin-top: 15%;
   }
 
-  .cubosCategorias {
+  /* .cubosCategorias {
     margin-bottom: 25%;
-  }
+  } */
 
   .rowCubos {
     display: block;
@@ -2438,7 +2451,7 @@ input {
 }
 
   .aMobil:hover {
-    background: #3A3B3C !important;
+    background: #c0eef2 !important;
   }
 
   .precioContanier {
