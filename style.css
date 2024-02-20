@@ -1210,7 +1210,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 }
 
 .ZonaInfo {
-  padding-left: 50px;
+  /* padding-left: 50px; */
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -1574,8 +1574,9 @@ a {
   content: '←';
 }
 
-Dots .slick-dotted.slick-slider {
+.slick-dotted.slick-slider {
   margin-bottom: 30px;
+  padding-top: 101px;
 }
 
 .slick-dots {
@@ -2085,6 +2086,11 @@ input {
   .div2_sexos {
     height: 30%;
   }
+
+  .slick-list.draggable {
+    padding-bottom: 84px;
+    padding-top: 101px;
+}
 
   /* Part Slider */
   .pag-item {
