@@ -1077,11 +1077,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 48%;
 }
 
-.grafica{
-  
+/*FIN CATEGORIA*/
+
+/*FIRMA*/
+
+#signatureCanvas{
+  margin-top: 5%;
 }
 
-/*FIN CATEGORIA*/
+/*FIN FIRMA*/
 
 /* BUSCADOR */
 
