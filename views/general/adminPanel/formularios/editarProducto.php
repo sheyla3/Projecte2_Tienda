@@ -25,21 +25,37 @@
     	<label for="stock">Stock</label>
     	<input type="text" id="" name="stock" value="<?php echo $info[0]['stock']; ?>" required><br><br>
 
-    	<label for="destacado">Destacado</label>
-    	<input type="checkbox" id="" name="destacado" <?php if($info[0]['destacado']) echo 'checked'; ?>><br><br>
+		<div class="formgroup">
+			<div class="destgroup">
+			<label id="labelDestacado" for='destacado'>Destacado?</label>
+				<div class="formgroup">
+					<input type="checkbox" id="" name="destacado" <?php if($info[0]['destacado']) echo 'checked'; ?>>
 
-		<p>Categoria Asignada</p>
-    	<select id="categoria" name="categoria">
-        	<?php
-        	foreach ($categorias as $categoria) {
-            	$selected = ($categoria['id_categoria'] == $info[0]['id_categoria']) ? 'selected' : '';
-            	echo "<option value='{$categoria['id_categoria']}' $selected>{$categoria['nombre']}-{$categoria['sexo']}</option>";
-        	}
-        	?>
-    	</select>
+				</div>
+				<div class="formgroup">
+				<select id="categoria" name="categoria">
+					<?php
+					foreach ($categorias as $categoria) {
+						$selected = ($categoria['id_categoria'] == $info[0]['id_categoria']) ? 'selected' : '';
+						echo "<option value='{$categoria['id_categoria']}' $selected>{$categoria['nombre']}-{$categoria['sexo']}</option>";
+					}
+					?>
+				</select>
+				</div>
 
-    	<label for="estado">Estado</label>
-    	<input type="checkbox" id="" name="estado" <?php if($info[0]['estado']) echo 'checked'; ?>><br><br>
+			</div>
+			<div class="estadoGrorup">
+				<label for='estado' id='labelestado'>Estado</label>
+
+    			<input type="checkbox" id='checkestado' name="estado" <?php if($info[0]['estado']) echo 'checked'; ?>>
+			</div>
+
+
+		</div>
+
+	
+
+    	
 
     	<label for="referencia">Referencia</label>
     	<input type="text" id="" name="referencia" value="<?php echo $info[0]['referencia']; ?>"><br><br>

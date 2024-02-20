@@ -6,7 +6,7 @@ echo "
 			<li><h1 class='admin-panel-title'>Productos</h1></li>
 			<li class='derecha'><a class='admin-panel-add-link' href='index.php?controller=Producto&action=botonCrearProducto'>Añadir producto</a></li>
 			<li class='derecha'>
-			<form action='' aria-label='formulario' method='post' class='formCat buscador'>
+			<form action='' aria-label='formulario' method='post' class='formCat buscador2'>
 				<label for='Pbuscar' name='Pbuscar'><img src='views/img/AdminLupa.png' alt='Buscar' width='20' height='20'></label>
 				<input type='text' id='Pbuscar' name='Pbuscar'>
 			</form>
