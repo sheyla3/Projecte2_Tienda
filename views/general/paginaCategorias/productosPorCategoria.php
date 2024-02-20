@@ -1,4 +1,4 @@
-<div class="cubosCategorias">
+<div class="cubosCategorias cubosCat">
     <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioBajo&id_categoria=<?php echo $id_categoria; ?>">
         <img src="../../img/filtro.svg" alt="filtro" style="margin-right: 10px;">
         Productos por precio bajo

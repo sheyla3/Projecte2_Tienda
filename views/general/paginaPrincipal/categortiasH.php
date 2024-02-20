@@ -1,4 +1,4 @@
-<div class="cubosCategorias">
+<div class="cubosCategorias cubosCat">
     <?php
     $contador = 0;
     echo '<h3>Categorias Hombre</h3>';
