@@ -1065,6 +1065,24 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 /*FIN FILTRO*/
 
+/*CATEGORIA*/
+
+.graficos-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grafico {
+  padding-top: 5%;
+  width: 48%;
+}
+
+.grafica{
+  
+}
+
+/*FIN CATEGORIA*/
+
 /* BUSCADOR */
 
 #Cbuscar,

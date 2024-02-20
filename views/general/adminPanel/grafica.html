@@ -15,11 +15,26 @@
     <script src="./././jsGraficas/graficoMujer.js" defer></script> <!-- Agregado el nuevo script para el segundo canvas -->
 </head>
 <body>
-    <h1>Estadísticas de Productos Más Vendidos</h1>
-    <h2>Para Hombre</h2>
-    <canvas id="graficoProductos" width="500" height="300"></canvas>
-    
-    <h2>Para Mujer</h2>
-    <canvas id="graficoProductosMujer" width="500" height="300"></canvas>
+    <div class='admin-panel-content-container'>
+        <div class='admin-panel-title-container'>
+            <ul class='tituloMenu'>
+                <li><h1 class='admin-panel-title'>Estadísticas de productos más vendidos</h1></li>
+            </ul>
+            <div class='blue-line'></div>
+        </div>
+
+        <div class='graficos-container'>
+            <div class='grafico'>
+                <h2>Para Hombre</h2>
+                <canvas id="graficoProductos" class="grafica" width="500" height="300"></canvas>
+            </div>
+
+            <div class='grafico'>
+                <h2>Para Mujer</h2>
+                <canvas id="graficoProductosMujer" class="grafica" width="500" height="300"></canvas>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
