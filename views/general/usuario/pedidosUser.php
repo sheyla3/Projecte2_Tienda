@@ -8,7 +8,6 @@
     <table class="table-pedidos" aria-label='Tabla'>
         <thead>
             <tr>
-                <th class="table-pedidos-thead">ID Pedido</th>
                 <th class="table-pedidos-thead">Estado</th>
                 <th class="table-pedidos-thead">Fecha Pedido</th>
                 <th class="table-pedidos-thead">Fecha Envio</th>
@@ -19,9 +18,6 @@
         <tbody>
             <?php foreach ($pedidos as $pedido) { ?>
                 <tr>
-                    <td>
-                        <?php echo $pedido['id_pedido']; ?>
-                    </td>
                     <td>
                         <?php echo $pedido['estado']; ?>
                     </td>

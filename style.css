@@ -1149,7 +1149,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .categoriaCubo {
   padding: 1px;
-  width: 900px;
+  /* width: 900px; */
   height: 600px;
   background-color: #dfdfdf;
   background-position: bottom;
@@ -1368,7 +1368,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 .div2_sexos:hover {
   --escala: 0.95;
   cursor: pointer;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 
 }
 
@@ -1933,7 +1933,7 @@ input {
 }
 
 .campoPrecio {
-  margin: 20px;
+  margin: 7px;
 }
 
 #text-precio {
@@ -1973,6 +1973,14 @@ input {
     justify-content: center;
   }
 
+  .table-pedidos-thead{
+    font-size: 10px;
+  }
+
+  .table-pedidos tbody{
+    font-size: 12px;
+  }
+
   .esconder-descripcion {
     display: none;
   }
@@ -1982,6 +1990,15 @@ input {
     position: relative;
 
   }
+
+  #labelCantidad {
+    padding-top: 2px;
+    padding-right: 17px;
+}
+
+#cantidad{
+  transform: scale(1.4);
+}
 
   /*Acaba aqui*/
   .header .nav-links {
@@ -2268,6 +2285,7 @@ input {
 
   .menuPrecio {
     flex-direction: column;
+    transform: scale(1.3);
   }
 
   .carritoimg {
@@ -2383,6 +2401,11 @@ input {
     padding-top: 10%;
   }
 
+  .Descripcion{
+    width: 90% !important;
+  }
+
+
   .rowCubos {
     width: 100%;
     display: block;
@@ -2455,7 +2478,7 @@ input {
 
   .Descripcion {
     padding-top: 15px;
-    width: 100%;
+    /* width: 100%; */
   }
 
   .FotoZapato {
@@ -2660,7 +2683,6 @@ input {
   }
 }
 
-<<<<<<< HEAD
 .formgroup {
   display: flex;
   flex-direction: column;
@@ -2694,10 +2716,13 @@ input {
 }
 
 .contBPG{
-=======
-.contBPG {
->>>>>>> 8d2bf343b450394965794669f719afc11d5c0f30
   padding-top: 100px;
   display: flex;
   justify-content: center;
 }
+
+input[type=number]::-webkit-outer-spin-button {
+  height: 200px;
+}
+
+
