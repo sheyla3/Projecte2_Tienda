@@ -1041,25 +1041,26 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 /*FILTRO*/
 
-#filtroCategoria{
+#filtroCategoria {
   display: flex;
   align-items: center;
   width: 183px;
 }
 
-#imagenFiltro{
+#imagenFiltro {
   margin-right: 10px;
   width: 10%;
   height: 10%;
 }
 
-#selectCategoria{
-  padding: 8px; background-color: white;
+#selectCategoria {
+  padding: 8px;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-#textoFiltro{
+#textoFiltro {
   font-size: 17px;
 }
 
@@ -1077,9 +1078,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 48%;
 }
 
-.grafica{
-  
-}
+.grafica {}
 
 /*FIN CATEGORIA*/
 
@@ -1133,11 +1132,11 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 100%;
 }
 
-.cubosCat{
+.cubosCat {
   padding-top: 100px;
 }
 
-#tabla-pg{
+#tabla-pg {
   padding-top: 0px !important;
 }
 
@@ -1180,7 +1179,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   font-size: 40px;
 }
 
-.rowCubosP a{
+.rowCubosP a {
   width: 100%;
 }
 
@@ -1201,7 +1200,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   text-decoration: none;
 }
 
-.cuboPG{
+.cuboPG {
   height: 550px !important;
   width: 365px !important;
   margin: 5px;
@@ -1215,7 +1214,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
-.buscadorPG{
+.buscadorPG {
   border: none;
 }
 
@@ -1234,7 +1233,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   transition: 0.25s;
 }
 
-.cuboP:hover,.cuboPG:hover {
+.cuboP:hover,
+.cuboPG:hover {
   --escala: 0.95;
   cursor: pointer;
   transition: 0.25s;
@@ -1946,7 +1946,7 @@ input {
     display: block;
   }
 
-  .ZonaInfo{
+  .ZonaInfo {
     transform: scale(1.1) !important;
     padding-top: 30px;
   }
@@ -1955,7 +1955,7 @@ input {
   .cuboP {
     height: 350px;
     width: 250px;
-    
+
     text-align: center;
     background-position: center;
     position: relative;
@@ -1973,6 +1973,7 @@ input {
     position: relative;
 
   }
+
   /*Acaba aqui*/
   .header .nav-links {
     position: fixed;
@@ -2134,14 +2135,15 @@ input {
   .slick-list.draggable {
     padding-bottom: 84px;
     padding-top: 101px;
-}
+  }
 
   /* Part Slider */
   .pag-item {
     width: 5px;
     height: 5px;
   }
-  .cuboPG{
+
+  .cuboPG {
     height: 200PX !important;
     width: 143PX !important;
     margin: 10px;
@@ -2156,12 +2158,12 @@ input {
     margin-bottom: -12PX;
   }
 
-  .letraP{
+  .letraP {
     bottom: -12px !important;
-    font-weight:normal;
+    font-weight: normal;
   }
 
-  .rowCubosP{
+  .rowCubosP {
     display: flex !important;
     flex-direction: row !important;
   }
@@ -2169,9 +2171,10 @@ input {
   .cubosCategorias {
     /* padding-top: 5px !important; */
   }
+
   .cubosCategorias {
     /* margin-top: 20% !important; */
-    
+
   }
 }
 
@@ -2348,7 +2351,9 @@ input {
   .table-pedidos .id {
     text-emphasis: none;
   }
-}@media screen and (min-width: 700px) and (max-width: 969px){
+}
+
+@media screen and (min-width: 700px) and (max-width: 969px) {
   .div1_sexos {
     margin: auto;
     height: 80%;
@@ -2364,7 +2369,20 @@ input {
   .titulo-cubosCategorias {
     padding-top: 10%;
   }
+
+  .rowCubos {
+    width: 100%;
+    display: block;
+  }
+
+  .categoriaCubo {
+    padding: 1px;
+    width: auto;
+    margin-bottom: 3%;
+  }
+
 }
+
 /* Responsive tablet*/
 @media screen and (max-width: 1024px) and (min-width: 970px) {
   .nav-links .drop-menu {
@@ -2384,7 +2402,7 @@ input {
     padding-left: 21px;
   }
 
-  .menu_sexos{
+  .menu_sexos {
     margin-top: 5%;
   }
 
@@ -2484,7 +2502,7 @@ input {
   .campoPrecio {
     text-align: center;
   }
-  
+
   /*Responsive categorias*/
   .cuboP {
     height: 450px;
@@ -2497,11 +2515,12 @@ input {
     display: flex;
     justify-content: center;
   }
-  
+
   .rowCubosP {
     display: block;
     position: relative;
   }
+
   /*Acaba aqui*/
 
   /* Inicio sesion*/
@@ -2586,18 +2605,20 @@ input {
     height: 459px;
     padding: 30px;
     transform: scale(1);
-}
-.ZonaInfo{
-  transform: scale(1.4);
-  padding-top: 30px;
-}
-.Desktop1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 300px;
-}
+  }
+
+  .ZonaInfo {
+    transform: scale(1.4);
+    padding-top: 30px;
+  }
+
+  .Desktop1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 300px;
+  }
 
 }
 
@@ -2620,6 +2641,6 @@ input {
   }
 }
 
-.contBPG{
+.contBPG {
   padding-top: 100px;
 }
