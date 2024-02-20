@@ -1,4 +1,4 @@
-<div class="cubosCategorias">
+<div class="cubosCategorias cubosCat">
     <div id="filtroCategoria">
         <img src="././img/iconos/icono-filtro.svg" alt="filtro" id="imagenFiltro">
         <h3 id="textoFiltro">Filtrar productos:</h3>

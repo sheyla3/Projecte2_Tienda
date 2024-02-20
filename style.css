@@ -1110,13 +1110,17 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   padding-bottom: 100px;
   width: 100%;
 }
 
+.cubosCat{
+  padding-top: 100px;
+}
+
 #tabla-pg{
-  padding-top: 5px !important;
+  padding-top: 0px !important;
 }
 
 .categoriaCubo:hover {
@@ -1232,7 +1236,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 }
 
 .ZonaInfo {
-  padding-left: 50px;
+  /* padding-left: 50px; */
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -1596,8 +1600,9 @@ a {
   content: '←';
 }
 
-Dots .slick-dotted.slick-slider {
+.slick-dotted.slick-slider {
   margin-bottom: 30px;
+  padding-top: 101px;
 }
 
 .slick-dots {
@@ -2108,6 +2113,11 @@ input {
     height: 30%;
   }
 
+  .slick-list.draggable {
+    padding-bottom: 84px;
+    padding-top: 101px;
+}
+
   /* Part Slider */
   .pag-item {
     width: 5px;
@@ -2139,10 +2149,10 @@ input {
   }
 
   .cubosCategorias {
-    padding-top: 5px !important;
+    /* padding-top: 5px !important; */
   }
   .cubosCategorias {
-    margin-top: 20% !important;
+    /* margin-top: 20% !important; */
     
   }
 }
