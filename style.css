@@ -1084,13 +1084,13 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   padding-bottom: 100px;
   width: 100%;
 }
 
 #tabla-pg{
-  padding-top: 5px !important;
+  padding-top: 0px !important;
 }
 
 .categoriaCubo:hover {
@@ -2104,10 +2104,10 @@ input {
   }
 
   .cubosCategorias {
-    padding-top: 5px !important;
+    /* padding-top: 5px !important; */
   }
   .cubosCategorias {
-    margin-top: 20% !important;
+    /* margin-top: 20% !important; */
     
   }
 }
