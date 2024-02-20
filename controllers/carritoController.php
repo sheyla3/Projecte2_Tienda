@@ -81,6 +81,10 @@ public function añadirAlCarrito()
         echo("no data");
         // Manejar el caso en el que no haya una sesión de usuario activa
     }
+    if(isset($_SESSION['numcarrito'])) {
+        $_SESSION['numcarrito']++; 
+        
+    }
 }
 
 
@@ -127,7 +131,7 @@ public function crearHTMLcarrito($datos) {
         // Si no hay sesión de usuario, solo combinar los productos del carrito
         $productosCombinados = self::combinarProductos($datos);
     }
-
+    $_SESSION['numcarrito'] = count($productosCombinados);
     $precioTotal = 0;
     $htmlGenerado = '<div class="carrito1">
                         <div class="generalCarrito carritoContanier">';

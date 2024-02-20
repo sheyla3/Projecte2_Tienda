@@ -99,6 +99,7 @@
                     echo '</li>';
                 }
                 ?>
+
                 <li>
                     <a href="index.php?controller=Producto&action=mostrarProductosG" class="tipo"><lord-icon
                             src="https://cdn.lordicon.com/kkvxgpti.json" trigger="hover" style="width:25px;height:25px">
@@ -108,7 +109,7 @@
                             class="tipo">Buscar</a></label>
                 </li>
                 <li>
-                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><lord-icon
+                    <a href="index.php?controller=carrito&action=entrar" class="tipo" id="botonCarrito"><?php echo $_SESSION['numcarrito']; ?><lord-icon
                             src="https://cdn.lordicon.com/mfmkufkr.json" trigger="hover" style="width:25px;height:25px">
                         </lord-icon></a>
                     <label id="botonCarrito" class="mobile-item"><a href="index.php?controller=carrito&action=entrar"

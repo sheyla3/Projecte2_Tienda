@@ -1862,6 +1862,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15px;
 }
 
 .botones-cont {
@@ -2008,7 +2009,7 @@ input {
     max-width: 350px;
     top: 5%;
     left: -107%;
-    background: #537FE7;
+    background: #EEEDED;
     display: block;
     padding: 50px 10px;
     line-height: 50px;
@@ -2053,7 +2054,7 @@ input {
   }
 
   .aMobil {
-    color: white !important;
+    color: black !important;
     padding: 0 !important;
   }
 
@@ -2094,7 +2095,7 @@ input {
 
   .nav-links .mobile-item {
     display: block;
-    color: #f2f2f2;
+    color: black;
     font-size: 20px;
     font-weight: 500;
     padding-left: 20px;
