@@ -9,7 +9,8 @@
             <input type="radio" name="slider" id="menu-btn">
             <input type="radio" name="slider" id="close-btn">
             <ul class="nav-links">
-                <label for="close-btn" class="btn close-btn"><img src="views/img/close-sesion.svg" alt="cerrar" width="20" height="20"></label>
+                <label for="close-btn" class="btn close-btn"><img src="views/img/close-sesion.svg" alt="cerrar"
+                        width="20" height="20"></label>
                 <?php
                 $clase_seleccionadaM = ($_SESSION['seccion'] === "mujer") ? 'class="tipo selected"' : 'class="tipo"';
                 $clase_seleccionadaH = ($_SESSION['seccion'] === "hombre") ? 'class="tipo selected"' : 'class="tipo"';
@@ -31,7 +32,7 @@
                     echo '</div>';
                     echo '<div class="fila">';
                     echo '<ul class="categorias">';
-                
+
                     // Iterar sobre las categorías de mujer
                     foreach ($categoriasM as $categoriaM) {
                         // Verificar si se debe cerrar y abrir una nueva fila y lista de categorías
@@ -41,17 +42,17 @@
                             echo '<div class="fila">'; // Abrir una nueva fila
                             echo '<ul class="categorias">'; // Abrir una nueva lista de categorías
                         }
-                
+
                         // Imprimir el contenido de la categoría
                         echo '<li><a href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoriaM['id_categoria'] . '">' . $categoriaM['nombre'] . '</a></li>';
-                
+
                         $elementosImpresos++;
                     }
-                
-                    echo '</ul>'; 
-                    echo '</div>'; 
-                    echo '</div>'; 
-                    echo '</div>'; 
+
+                    echo '</ul>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                     echo '</li>';
                 }
 
@@ -61,7 +62,7 @@
                     $columnas = 2; // Número de columnas deseadas
                     $elementosPorColumna = ceil($totalCategorias / $columnas);  // Calcular el número de elementos por columna
                     $elementosImpresos = 0;  // Contador para rastrear el número actual de elementos impresos
-
+                
                     echo '<li>';
                     echo '<a href="index.php?controller=Categoria&action=MostrarCubosCategoriasHombre" ' . $clase_seleccionadaH . '>Hombre</a>';
                     echo '<input type="checkbox" id="showMega2">';
@@ -73,7 +74,7 @@
                     echo '</div>';
                     echo '<div class="fila">';
                     echo '<ul class="categorias">';
-                    
+
                     // Iterar sobre las categorías de mujer
                     foreach ($categoriasH as $categoriaH) {
                         // Verificar si se debe cerrar y abrir una nueva fila y lista de categorías
@@ -83,13 +84,13 @@
                             echo '<div class="fila">'; // Abrir una nueva fila
                             echo '<ul class="categorias">'; // Abrir una nueva lista de categorías
                         }
-                
+
                         // Imprimir el contenido de la categoría
                         echo '<li><a href="index.php?controller=Producto&action=mostrarProductosPorCatgeoria&id_categoria=' . $categoriaH['id_categoria'] . '">' . $categoriaH['nombre'] . '</a></li>';
-                
+
                         $elementosImpresos++;
                     }
-                    
+
                     echo '</ul>';
                     echo '</div>';
                     echo '</div>';
@@ -98,30 +99,37 @@
                 }
                 ?>
                 <li>
-                    <a href="index.php?controller=Producto&action=mostrarProductosG" class="tipo"><img src="views/img/magnifier.svg" alt="Buscar" width="20" height="20"></a>
-                    <label class="mobile-item"><a class="aMobil" href="index.php?controller=Producto&action=mostrarProductosG" class="tipo">Buscar</a></label>
+                    <a href="index.php?controller=Producto&action=mostrarProductosG" class="tipo"><lord-icon
+                            src="https://cdn.lordicon.com/kkvxgpti.json" trigger="hover" style="width:25px;height:25px">
+                        </lord-icon></a>
+                    <label class="mobile-item"><a class="aMobil"
+                            href="index.php?controller=Producto&action=mostrarProductosG"
+                            class="tipo">Buscar</a></label>
 
                 </li>
                 <li>
-                    <a href="index.php?controller=carrito&action=entrar" class="tipo"><img src="views/img/basket.svg" alt="Carrito" width="20" height="20"></a>
-                    <label class="mobile-item"><a href="index.php?controller=carrito&action=entrar" class="aMobil">Carrito</a></label>
+                    <a href="index.php?controller=carrito&action=entrar" class="tipo"><lord-icon
+                            src="https://cdn.lordicon.com/mfmkufkr.json" trigger="hover" style="width:25px;height:25px">
+                        </lord-icon></a>
+                    <label class="mobile-item"><a href="index.php?controller=carrito&action=entrar"
+                            class="aMobil">Carrito</a></label>
                 </li>
                 <li>
-                    <a href="index.php?controller=usuario&action=mostrarPerfil" class="tipo"><img src="views/img/usuario.svg" alt="Iniciar sesión" width="20" height="20"></a>
+                    <a href="index.php?controller=usuario&action=mostrarPerfil" class="tipo"><lord-icon
+                            src="https://cdn.lordicon.com/kddybgok.json" trigger="hover" style="width:25px;height:25px">
+                        </lord-icon></a>
                     <input type="checkbox" id="showDrop">
                     <label for="showDrop" class="mobile-item">Usuario</label>
                     <ul class="drop-menu">
-                        <li><a href="#">Favoritos</a></li>
                         <li><a href="index.php?controller=usuario&action=mostrarPerfil">Perfil</a></li>
                         <li><a href="index.php?controller=pedido&action=listarPedidosUsuario">Mis Pedidos</a></li>
                         <li><a href="././sortir.php">Cerrar sesión</a></li>
                     </ul>
                 </li>
             </ul>
-            <label for="menu-btn" class="btn menu-btn"><img src="views/img/menu_icono.png" alt="menu" width="20" height="20"></label>
+            <label for="menu-btn" class="btn menu-btn"><img src="views/img/menu_icono.png" alt="menu" width="20"
+                    height="20"></label>
         </div>
     </nav>
 
 </header>
-
-

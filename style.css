@@ -66,7 +66,7 @@ nav .header {
   background: #242526;
   max-width: 100%;
   width: 15%;
-  right: 10%;
+  right: 5%;
   line-height: 45px;
   padding: 0;
   visibility: hidden;
@@ -790,7 +790,7 @@ body {
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   border-radius: 30px;
-  width: 22%;
+  width: 50%;
   margin: auto;
 }
 
@@ -832,7 +832,7 @@ a.admin-panel-submit-link {
   border-radius: 5px;
   text-decoration: none;
   border: none;
-  width: 10%;
+  width: 100px;
   text-align: center;
 }
 
@@ -1191,6 +1191,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   cursor: pointer;
   transition: 0.25s;
   transform: scale(0.9);
+  border-radius: 20px;
+
 }
 
 /*pagina individual*/
@@ -1199,7 +1201,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
   width: 400px;
   height: 600px;
   padding: 30px;
-  transform: scale(0.9);
+  transform: scale(0.7);
+  border-radius: 50px;
 }
 
 .ZonaInfo {
@@ -1308,6 +1311,8 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 .div2_sexos:hover {
   --escala: 0.95;
   cursor: pointer;
+  border-radius: 20px;
+
 }
 
 .prodDestacado {
@@ -1910,6 +1915,10 @@ input {
     justify-content: center;
   }
 
+  .esconder-descripcion {
+    display: none;
+  }
+
   .rowCubosP {
     display: block;
     position: relative;
@@ -2285,8 +2294,23 @@ input {
   .table-pedidos .id {
     text-emphasis: none;
   }
-}
+}@media screen and (min-width: 700px) and (max-width: 969px){
+  .div1_sexos {
+    margin: auto;
+    height: 80%;
+    width: 100%;
+  }
 
+  .div2_sexos {
+    margin: auto;
+    height: 80%;
+    width: 100%;
+  }
+
+  .titulo-cubosCategorias {
+    padding-top: 10%;
+  }
+}
 /* Responsive tablet*/
 @media screen and (max-width: 1024px) and (min-width: 970px) {
   .nav-links .drop-menu {
@@ -2316,14 +2340,18 @@ input {
 
   .div1_sexos {
     margin: auto;
-    height: 60%;
-    width: 60%;
+    height: 100%;
+    width: 100%;
   }
 
-  div.div2_sexos {
+  .div2_sexos {
     margin: auto;
-    height: 60%;
-    width: 60%;
+    height: 100%;
+    width: 100%;
+  }
+
+  .titulo-cubosCategorias {
+    padding-top: 10%;
   }
 
   .carritoContanier {

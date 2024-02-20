@@ -1,6 +1,6 @@
 <div class="cubosCategorias">
     <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioBajo&id_categoria=<?php echo $id_categoria; ?>">
-        <img src="" alt="icono" style="margin-right: 10px;">
+        <img src="../../img/filtro.svg" alt="filtro" style="margin-right: 10px;">
         Productos por precio bajo
     </a>
     <a href="index.php?controller=Producto&action=mostrarProductosPorPrecioAlto&id_categoria=<?php echo $id_categoria; ?>">Productos por precio alto</a>
