@@ -2700,7 +2700,6 @@ input {
 .formgroup {
   display: flex;
   flex-direction: column;
-  padding-bottom: 10px;
 }
 
 .destgroup{
@@ -2709,16 +2708,22 @@ input {
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+  width: 20%;
+  margin: auto;
 }
 
 #labelDestacado{
-  margin-top: -13px;
-  margin-left: -12%;
+  /* margin-top: -13px;
+  margin-left: -12%; */
+  margin: auto;
 }
 
 .estadoGrorup{
+  padding-top: 5%;
+  padding-bottom: 5%;
   display: flex;
   flex-direction: row;
+  margin: auto;
 }
 
 #checkestado{
