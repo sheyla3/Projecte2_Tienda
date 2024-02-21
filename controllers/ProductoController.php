@@ -171,7 +171,6 @@ function generarHTMLTablaCategorias($categorias)
         <tr>
             <th>ID Producto</th>
             <th>Nombre</th>
-            <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Destacado?</th>
@@ -187,7 +186,6 @@ function generarHTMLTablaCategorias($categorias)
         $htmlGenerado .= "<tr>
                 <td class='text'>" . $producto['id_producto'] . "</td>
                 <td class='text'>" . $producto['nombre'] . "</td>
-                <td class='text'>" . $producto['descripcion'] . "</td>
                 <td class='text'>" . $producto['precio'] . "</td>
                 <td class='text'>" . $producto['stock'] . "</td>
                 <td class='text'>" . $destacado . "</td>
