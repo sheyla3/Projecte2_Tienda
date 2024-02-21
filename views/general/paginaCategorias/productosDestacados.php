@@ -31,7 +31,7 @@
                 {
                     breakpoint: 1300, // Tablet
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                         speed: 2000,
                         slidesToScroll: 1,
                     }

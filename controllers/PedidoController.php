@@ -127,6 +127,27 @@ class PedidoController
         }
     }
 
+    public function verDetallesPedidoAdmin()
+    {
+        if (isset($_GET['id_pedido'])) {
+            
+
+            $id_pedido = $_GET['id_pedido'];
+
+            $database = new Database();
+            $dbInstance = $database->getDB();
+            require_once "views/general/adminPanel/menu.php";
+
+            $pedidomodel = new Pedido($dbInstance, null, null, null, null, null);
+            $detallesPedido = $pedidomodel->obtenerDetallesCarritoPorPedido($id_pedido);
+
+            $this->mostrarDetallesPedidoAdmin($detallesPedido);
+        } else {
+            // Manejo de error: el ID del pedido no se proporcionó
+            echo "Error: ID del pedido no especificado";
+        }
+    }
+
     public function verDetallesPedidoPDF()
     {
         ob_clean();
@@ -155,6 +176,12 @@ class PedidoController
     {
         // Incluye la vista para mostrar los detalles del pedido
         include("views/general/usuario/detallePedido.php");
+    }
+
+    public function mostrarDetallesPedidoAdmin($detallesPedido)
+    {
+        // Incluye la vista para mostrar los detalles del pedido
+        include("views/general/adminPanel/detalleComanda.php");
     }
 
     public function mostrarPDFpedido($pedido,$productos_carrito,$datosE,$datosUser,$firma){

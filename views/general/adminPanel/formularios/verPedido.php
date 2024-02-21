@@ -1,6 +1,5 @@
 <br><br>
 
-
 <form class="admin-panel-form" action="index.php?controller=pedido&action=procesarActualizacionEstado" method="POST">
     <h2 class="h2-form">Cambiar Estado</h2>
     <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
