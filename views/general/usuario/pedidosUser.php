@@ -22,10 +22,16 @@
                         <?php echo $pedido['estado']; ?>
                     </td>
                     <td>
-                        <?php echo $pedido['fechapedido']; ?>
+                        <?php echo date("d-m-Y", strtotime($pedido['fechapedido'])); ?>
                     </td>
                     <td>
-                        <?php echo $pedido['fechaenvio']; ?>
+                        <?php 
+                            if ($pedido['estado'] === 'Enviado' && !empty($pedido['fechaenvio'])) {
+                                echo date("d-m-Y", strtotime($pedido['fechaenvio']));
+                            } else {
+                                echo "";
+                            }
+                        ?>
                     </td>
                     <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedidoPDF&id_pedido=" . $pedido['id_pedido'] . "'><img src='views/img/factura.svg' width='30px' height='30px'></a></td>"; ?>
                     <?php echo "<td><a href='index.php?controller=pedido&action=verDetallesPedido&id_pedido=" . $pedido['id_pedido'] . "'><img src='views/img/detail.svg' width='30px' height='30px'></a></td>"; ?>
