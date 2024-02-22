@@ -4,6 +4,8 @@ require "models/pedido.php";
 require "models/carrito.php";
 require "models/admin.php";
 require "models/usuario.php";
+require "models/producto.php";
+
 class PedidoController
 {
     public function mostrarProductos()
@@ -29,6 +31,10 @@ class PedidoController
         $datosProductos = json_decode(file_get_contents('php://input'), true);
         $database = new Database();
         $dbInstance = $database->getDB();
+        $productosSinStock = [];
+        $error = false;
+        $contPedido = 0;
+
 
         // Iterar sobre los datos de productos y añadir al carrito
         foreach ($datosProductos['carrito'] as $producto) {
@@ -38,17 +44,28 @@ class PedidoController
             $nombre = $producto['nombre'];
             $img = $producto['img'];
 
-            $carrito = new Carrito($dbInstance, null, $correo, $id_producto, $cantidad, $precio);
-            $funciona = $carrito->anadirProductoAlCarrito();
+            $producto = new Producto($dbInstance ,$id_producto, null, null, null, null, null,null, null, null, null);
+            $siFun = $producto->verificarStock($id_producto,$cantidad);
+            if($siFun){
+                $carrito = new Carrito($dbInstance, null, $correo, $id_producto, $cantidad, $precio);
+                $funciona = $carrito->anadirProductoAlCarrito();
+                $contPedido = $contPedido+1;
+            }else{
+                $error = true; 
+                $productosSinStock[] = $nombre;
+            }
 
             // Puedes hacer algo con $funciona si lo necesitas
         }
 
         // Llamar a la función para crear el pedido
-        $pedido = new Pedido($dbInstance, null, $correo, null, null, null);
-        $pedidos = $pedido->crearNuevoPedido();
-
-        echo json_encode(['success' => true, 'info' => $datosProductos]);
+        if($contPedido>0){
+            $pedido = new Pedido($dbInstance, null, $correo, null, null, null);
+            $pedidos = $pedido->crearNuevoPedido();
+        }
+       
+        ob_clean();
+        echo json_encode(['success' => true, 'error' => $error ,'productosSinStock' => $productosSinStock]);
         exit;
     }
 

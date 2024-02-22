@@ -7,12 +7,7 @@
             datosCarrito();
         });
         function comprarProductos() {
-            Swal.fire({
-                    title: '¡Compra realizada!',
-                    text: '¡Has comprado los productos del carrito con éxito!',
-                    icon: 'success', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
-                    confirmButtonText: 'Entendido'
-                  });
+      
             var productosSeleccionados = document.querySelectorAll('.producto-seleccionado');
             var datosProductos = [];
 
@@ -31,27 +26,48 @@
                 img: img
             });
         });
-            console.log(datosProductos);
+            //console.log(datosProductos);
             $.ajax({
                 url: 'index.php?controller=Pedido&action=añadirPedido',
                 type: 'POST',
                 contentType: 'application/json; charset=UTF-8',
                 data: JSON.stringify({ carrito: datosProductos }),
                 success: function (data) {
+                    
                     // Maneja la respuesta del servidor
                     if (data.success) {
-                        console.log("data");
+                        console.log(data);
+                        if(data.error){
+                            let errorMessage = '';
+                            if (data.productosSinStock.length > 0) {
+                                errorMessage += '\n\nLos siguientes productos no se han podido comprar:\n';
+                                data.productosSinStock.forEach(function(producto) {
+                                    errorMessage += '- ' + producto + '\n';
+                                });
+                            }
+                            Swal.fire({
+                                title: '¡Error al comprar algunos productos!',
+                                text: errorMessage,
+                                icon: 'error', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
+                                confirmButtonText: 'Entendido'
+                            });
+                        }else{
+                            Swal.fire({
+                            title: '¡Compra realizada!',
+                            text: '¡Has comprado los productos del carrito con éxito!',
+                            icon: 'success', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
+                            confirmButtonText: 'Entendido'
+                        });
+                        }
                         limpiarLocalStorage();
                         datosCarrito();
 
-                    } else {
-                        limpiarLocalStorage();
-                        datosCarrito();
-                        
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     // Maneja el error
+                    console.log(xhr);
+                    console.log(textStatus);
                     limpiarLocalStorage();
                     datosCarrito();
                 }

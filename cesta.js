@@ -41,15 +41,24 @@ $(document).ready(function () {
         botonAñadir.addEventListener('click', function () {
             // Llama a la función al hacer clic en el botón
             var cantidad = document.querySelector('[name="d_cantidad"]').value;
+            var stock = document.querySelector('[name="d_stock"]').value;
+
             if(cantidad>0){
                 Swal.fire({
                     title: '¡Producto añadido al carrito!',
                     text: '¡Has añadido el producto al carrito con éxito!',
-                    icon: 'success', // Puedes cambiar el ícono según el tipo de alerta (success, error, warning, info)
+                    icon: 'success',
                     confirmButtonText: 'Entendido'
                   });
                 this.classList.add("clicked");
                 agregarAlCarrito();
+            }else{
+                Swal.fire({
+                    title: 'Error al añadir el producto',
+                    text: '¡No se ha podido añadir el producto!',
+                    icon: 'error',
+                    confirmButtonText: 'Entendido'
+                  });
             }
             
         });

@@ -1149,14 +1149,15 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .categoriaCubo {
   padding: 1px;
-  /* width: 900px; */
+  width: 100%;
   height: 600px;
-  background-color: #dfdfdf;
+  /* background-color: #dfdfdf; */
   background-position: bottom;
   position: relative;
-  background-size: 91% 180%;
+  background-size: 50% 186%;
   transform: scale(var(--escala, 1));
   transition: 0.25s;
+  background-repeat: no-repeat;
 }
 
 .rowCubosA {
@@ -1166,7 +1167,7 @@ input[id="4"]:checked~.pagination .pag-item[for="4"] {
 
 .rowCubos {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -1995,8 +1996,8 @@ input {
     padding-top: 7px !important;
 }
 
-  .esconder-descripcion {
-    display: none;
+  .esconder-descripcion, .popup, .overlay {
+    display: none !important;
   }
 
   .rowCubosP {
@@ -2429,6 +2430,7 @@ input {
     padding: 1px;
     width: auto;
     margin-bottom: 3%;
+    background-size: 90% 186% !important;
   }
 
 }
@@ -2463,7 +2465,7 @@ input {
   }
 
   .slider1 {
-    margin-top: 5%;
+    margin-top: -11%;
   }
 
   .div1_sexos {
@@ -2573,7 +2575,7 @@ input {
   }
 
   .rowCubosP {
-    display: block;
+    /* display: block; */
     position: relative;
   }
 

@@ -82,13 +82,18 @@ class Pedido extends Database
             $idPedido = $consulta->fetchColumn();
 
             // Paso 2: Actualizar carrito
-            $consultaCarrito = $this->db->prepare("UPDATE carrito SET id_pedido = ?, comprado = true WHERE correo = ? AND id_pedido IS NULL AND comprado = false");
+            $consultaCarrito = $this->db->prepare("UPDATE carrito 
+                                       SET id_pedido = ?, comprado = true 
+                                       WHERE correo = ? 
+                                       AND id_pedido IS NULL 
+                                       AND comprado = false 
+                                       AND id_producto IN (SELECT id_producto FROM productos WHERE stock > 0)");
             $consultaCarrito->bindParam(1, $idPedido);
             $consultaCarrito->bindParam(2, $this->correo);
             $consultaCarrito->execute();
 
             // Obtener productos en el carrito para restar stock
-            $consultaProductosCarrito = $this->db->prepare("SELECT id_producto, cantidad FROM carrito WHERE id_pedido = ?");
+            $consultaProductosCarrito = $this->db->prepare("SELECT id_producto, cantidad FROM carrito WHERE id_pedido = ? AND stock > 0");
             $consultaProductosCarrito->bindParam(1, $idPedido);
             $consultaProductosCarrito->execute();
             $productosCarrito = $consultaProductosCarrito->fetchAll(PDO::FETCH_ASSOC);

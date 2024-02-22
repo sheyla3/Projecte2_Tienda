@@ -99,6 +99,21 @@ class Producto extends Database
         return $resultado;
     }
 
+    public function verificarStock($idProducto, $cantidad)
+    {
+        $consultaStock = $this->db->prepare("SELECT stock FROM productos WHERE id_producto = :id_producto");
+        $consultaStock->bindValue(':id_producto', $idProducto);
+        $consultaStock->execute();
+        $stockDisponible = $consultaStock->fetchColumn();
+
+        if ($stockDisponible >= $cantidad) {
+            return true; // La cantidad requerida está disponible en el stock
+        } else {
+            return false; // La cantidad requerida es mayor que el stock disponible
+        }
+    }
+
+
     public function productosBuscador($nombre)
     {
         // Inicializamos la consulta base

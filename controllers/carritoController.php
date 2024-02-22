@@ -149,7 +149,8 @@ public function crearHTMLcarrito($datos) {
                                 <div class="menuPrecio">
                                     <div class="cont-nombre-producto">
                                         <p class="campoPrecio">' . $producto['nombre'] . '</p>
-                                        <p class="campoPrecio">Precio: ' . $producto['precio'] * $producto['cantidad'] . '€</p>
+                                        <p class="campoPrecio">Precio: ' . $producto['precio'] . '€</p>
+                                        <p class="campoPrecio">Precio total: ' . $producto['precio'] * $producto['cantidad'] . '€</p>
                                     </div>
                                     <input type="hidden" class="producto-seleccionado" name="productos_seleccionados[' . $producto['id_producto'] . '][seleccionado]" value="' . $producto['id_producto'] . '">
                                     <input type="hidden" name="productos_seleccionados[' . $producto['id_producto'] . '][cantidad]" value="' . $producto['cantidad'] . '">
