@@ -64,6 +64,44 @@ $(document).ready(function () {
         });
     }
 
+    $(document).ready(function () {
+        var cantidadInput = $('[name="d_cantidad"]');
+        var botonAñadir = $('.d_botonAñadir');
+        var stock = parseInt(botonAñadir.data('stock'));
+    
+        $('.sumarCantidad').on('click', function() {
+            console.log('Sumar cantidad clicado');
+            var cantidad = parseInt(cantidadInput.val());
+            if (cantidad < stock) {
+                cantidadInput.val(cantidad + 1);
+            }
+        });
+    
+        $('.restarCantidad').on('click', function() {
+            console.log('Restar cantidad clicado');
+            var cantidad = parseInt(cantidadInput.val());
+            if (cantidad > 0) {
+                cantidadInput.val(cantidad - 1);
+            }
+        });
+    
+        botonAñadir.on('click', function () {
+            console.log('Botón añadir clicado');
+            var cantidad = parseInt(cantidadInput.val());
+            if (cantidad > stock) {
+                cantidadInput.val(stock);
+            }
+            // Resto de tu lógica para añadir al carrito...
+        });
+        
+    });
+    
+    
+    
+    
+    
+    
+
     window.onload = function() {
         // Obtener la cadena de búsqueda de la URL
         var queryString = new URL(window.location.href).search;

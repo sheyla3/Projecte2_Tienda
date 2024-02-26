@@ -7,7 +7,8 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
 
 
 <div class="Desktop1">
-    <img aria-label='Imagen del Producto' class="FotoZapato" src="<?php echo $producto['img']; ?>" alt="<?php echo $producto['nombre'] ?>" />
+    <img aria-label='Imagen del Producto' class="FotoZapato" src="<?php echo $producto['img']; ?>"
+        alt="<?php echo $producto['nombre'] ?>" />
     <div class="ZonaInfo">
         <div class="NombreProducto">
             <?php echo $producto['nombre']; ?>
@@ -66,10 +67,10 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
         <?php } else { ?>
             <form action='index.php?controller=carrito&action=añadirAlCarrito' method='POST' enctype="multipart/form-data"
                 class="formularioCarrito">
-                <div class="contenedorCant">
-                    <label for="cantidad" id="labelCantidad">Cantidad:</label>
-                    <input id="cantidad" type="number" name="d_cantidad" min="0" max="<?php echo $producto['stock']; ?>"
-                        value="0">
+                <div class="contenedorCantidad">
+                    <button type="button" class="restarCantidad">-</button>
+                    <input id="cantidad" type="text" name="d_cantidad" value="0" readonly>
+                    <button type="button" class="sumarCantidad">+</button>
                 </div>
                 <input type="hidden" name="d_id_producto" value="<?php echo $producto['id_producto']; ?>">
                 <input type="hidden" name="d_precio" value="<?php echo $producto['precio']; ?>">
@@ -81,6 +82,8 @@ $precioFormateado = number_format($producto['precio'], 2) . '€';
                 <!-- Cambios en el botón: agregamos onclick -->
                 <button type="button" class="d_botonAñadir"></button>
             </form>
+
+
         <?php } ?>
         <div class="Descripcion">
             <?php echo $producto['descripcion']; ?>
