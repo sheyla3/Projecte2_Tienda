@@ -5,14 +5,14 @@ $(document).ready(function () {
             this.email = email;
         }
     }
-    
+
     // Definición de la clase Carrito
     class Carrito {
         constructor(usuario) {
             this.usuario = usuario;
             this.productos = [];
         }
-    
+
         agregarProducto(id_producto, cantidad, precio, nombre, img, stock) {
             // Agregar el nuevo producto al array de productos
             this.productos.push({
@@ -25,12 +25,12 @@ $(document).ready(function () {
 
             });
         }
-    
+
         obtenerProducto() {
             return this.productos;
         }
     }
-    
+
 
     // carrito
 
@@ -43,45 +43,49 @@ $(document).ready(function () {
             var cantidad = document.querySelector('[name="d_cantidad"]').value;
             var stock = document.querySelector('[name="d_stock"]').value;
 
-            if(cantidad>0){
+            if (cantidad > 0) {
                 Swal.fire({
                     title: '¡Producto añadido al carrito!',
                     text: '¡Has añadido el producto al carrito con éxito!',
                     icon: 'success',
                     confirmButtonText: 'Entendido'
-                  });
+                });
                 this.classList.add("clicked");
                 agregarAlCarrito();
-            }else{
+            } else {
                 Swal.fire({
                     title: 'Error al añadir el producto',
                     text: '¡No se ha podido añadir el producto!',
                     icon: 'error',
                     confirmButtonText: 'Entendido'
-                  });
+                });
             }
-            
+
         });
     }
 
     $(document).ready(function () {
-        var cantidadInput = $('[name="d_cantidad"]');
         var botonAñadir = $('.d_botonAñadir');
-        var stock = parseInt(botonAñadir.data('stock'));
+        var cantidadInput = $('[name="d_cantidad"]');
+        var stock = parseInt($('[name="d_stock"]').val());
     
-        $('.sumarCantidad').on('click', function() {
+        $(document).on('click', '.sumarCantidad', function () {
             console.log('Sumar cantidad clicado');
             var cantidad = parseInt(cantidadInput.val());
             if (cantidad < stock) {
                 cantidadInput.val(cantidad + 1);
+            } else if (cantidad === stock) {
+                console.log('La cantidad ya ha alcanzado el stock máximo');
             }
         });
     
-        $('.restarCantidad').on('click', function() {
+        $('.restarCantidad').on('click', function () {
             console.log('Restar cantidad clicado');
             var cantidad = parseInt(cantidadInput.val());
             if (cantidad > 0) {
                 cantidadInput.val(cantidad - 1);
+            } else {
+                console.log('No se puede restar menos de 0');
             }
         });
     
@@ -93,32 +97,25 @@ $(document).ready(function () {
             }
             // Resto de tu lógica para añadir al carrito...
         });
-        
-    });
+    });        
     
-    
-    
-    
-    
-    
-
-    window.onload = function() {
+    window.onload = function () {
         // Obtener la cadena de búsqueda de la URL
         var queryString = new URL(window.location.href).search;
-      
+
         // Verificar si estamos en la URL específica
         if (queryString === "?carrito&action=entrar") {
-          // Ejecutar la función solo para la URL específica
-          console.log("adios");
+            // Ejecutar la función solo para la URL específica
+            console.log("adios");
         }
-      };
+    };
 
     var botonCarrito = document.querySelector('#botonCarrito1');
     if (botonCarrito) {
         botonCarrito.addEventListener('click', function () {
-            
+
             var datos = leerLocalStorage();
-    
+
             $.ajax({
                 url: 'index.php?controller=carrito&action=recibirLocalCarrito',
                 type: 'POST',
@@ -128,7 +125,7 @@ $(document).ready(function () {
                     // Maneja la respuesta del servidor
                     if (data.success) {
                         $('#tabla-carrito').html(data.info);
-                  
+
                     } else {
                         console.error('Error en la solicitud:', data.message);
                     }
@@ -141,8 +138,8 @@ $(document).ready(function () {
                 }
             });
         });
-    }  
-    
+    }
+
     function agregarAlCarrito() {
         // Acceder a los valores del formulario actual
         var id_producto = document.querySelector('[name="d_id_producto"]').value;
@@ -152,11 +149,11 @@ $(document).ready(function () {
         var img = document.querySelector('[name="d_img"]').value;
         var nombre = document.querySelector('[name="d_nombre"]').value;
         var stock = document.querySelector('[name="d_stock"]').value;
-      
 
-        if(correo){
+
+        if (correo) {
             const usuario1 = new Usuario(correo);
-        }else{
+        } else {
             const usuario1 = new Usuario("noValidado");
 
         }
@@ -167,10 +164,10 @@ $(document).ready(function () {
         //crear carrito con objecto usuario
         const carritoDelUsuario = new Carrito(usuario1);
 
-        carritoDelUsuario.agregarProducto(id_producto,cantidad,precio,nombre,img,stock);
+        carritoDelUsuario.agregarProducto(id_producto, cantidad, precio, nombre, img, stock);
 
         guardarEnLocalStorage(carritoDelUsuario);
-        
+
 
         var arrayActualizado = leerLocalStorage();
         console.log(arrayActualizado);
@@ -196,14 +193,14 @@ $(document).ready(function () {
         var arrayDeCarritos = leerLocalStorage();
 
         // Buscar el carrito actual en la lista
-        var carritoExistente = arrayDeCarritos.find(function(carrito) {
+        var carritoExistente = arrayDeCarritos.find(function (carrito) {
             return carrito.usuario.email === nuevoCarrito.usuario.email;
         });
 
         if (carritoExistente) {
             // Si el carrito ya existe, actualizar los productos existentes con los nuevos
-            nuevoCarrito.productos.forEach(function(nuevoProducto) {
-                var productoExistente = carritoExistente.productos.find(function(producto) {
+            nuevoCarrito.productos.forEach(function (nuevoProducto) {
+                var productoExistente = carritoExistente.productos.find(function (producto) {
                     return producto.id_producto === nuevoProducto.id_producto;
                 });
 
@@ -225,6 +222,6 @@ $(document).ready(function () {
     }
 
 
-    
+
 
 })
