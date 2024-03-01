@@ -75,7 +75,13 @@ $(document).ready(function () {
             if (cantidad < stock) {
                 cantidadInput.val(cantidad + 1);
             } else if (cantidad === stock) {
-                console.log('La cantidad ya ha alcanzado el stock máximo');
+                // console.log('La cantidad ya ha alcanzado el stock máximo');
+                Swal.fire({
+                    title: 'Error al añadir el producto',
+                    text: 'La cantidad ya ha alcanzado el stock máximo',
+                    icon: 'error',
+                    confirmButtonText: 'Entendido'
+                });
             }
         });
     
@@ -85,7 +91,12 @@ $(document).ready(function () {
             if (cantidad > 0) {
                 cantidadInput.val(cantidad - 1);
             } else {
-                console.log('No se puede restar menos de 0');
+                Swal.fire({
+                    title: 'Error al restar el producto',
+                    text: 'La cantidad no puede ser menor a 0',
+                    icon: 'error',
+                    confirmButtonText: 'Entendido'
+                });
             }
         });
     
@@ -95,7 +106,6 @@ $(document).ready(function () {
             if (cantidad > stock) {
                 cantidadInput.val(stock);
             }
-            // Resto de tu lógica para añadir al carrito...
         });
     });        
     

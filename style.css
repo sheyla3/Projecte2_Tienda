@@ -170,6 +170,10 @@ nav .header {
   color: #537FE7;
 }
 
+#signatureCanvas {
+  margin-right: 76px;
+}
+
 .div1-user {
   display: grid;
   grid-template-columns: 4fr 4fr;
@@ -765,7 +769,7 @@ body {
   padding: 0rem 1rem 0rem 1rem;
   text-align: center;
   height: 60px;
-  max-width: 100px;
+  max-width: 160px;
 }
 
 .admin-menu-bar-item:visited {
@@ -2011,9 +2015,9 @@ input {
     padding-right: 17px;
 }
 
-#cantidad{
+/* #cantidad{
   transform: scale(1.4);
-}
+} */
 
   /*Acaba aqui*/
   .header .nav-links {
@@ -2249,6 +2253,10 @@ input {
   .Descripcion {
     padding-top: 15px;
     width: 300px;
+  }
+
+  .linkAdminLogin{
+    display: none;
   }
 
   .FotoZapato {

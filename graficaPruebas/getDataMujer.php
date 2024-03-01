@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $usuario = "postgres";
-$contrasena = "admin1234";
+$contrasena = "123";
 $base_de_datos = "srg";
 
 $dsn = "pgsql:host=$host;dbname=$base_de_datos;port=5432";
